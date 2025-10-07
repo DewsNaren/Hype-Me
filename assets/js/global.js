@@ -177,7 +177,7 @@ const validateEmail = (email) => {
 function validateEmailVal(email,emailVal){
   if(emailVal===""){
     setError(email, 'Please Enter the  email');
-      return false;
+    return false;
   }
   else if (!validateEmail(emailVal)) {
     setError(email, 'Invalid email');
@@ -382,7 +382,7 @@ async function handleLogin(form) {
     const data = await res.json();
     if (res.ok) {
       
-      sessionStorage.setItem("token", data.token); 
+      localStorage.setItem("token", data.token); 
       form.reset();
       
       ["email","password"].forEach(field => {
@@ -451,7 +451,7 @@ confirmLogoutBtn.addEventListener('click',handleLogout)
 const API_LOGOUT="http://taskapi.devdews.com/api/logout";
 
 async function handleLogout() {
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
   if (token) {
     try {
       const res = await fetch("http://taskapi.devdews.com/api/logout", {
@@ -606,7 +606,7 @@ function setupLikeBtns() {
   likeBtns.forEach(likeBtn => {
     likeBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const token=sessionStorage.getItem("token")
+      const token=localStorage.getItem("token")
       if(token && token.trim() !== "" ){
         const likeBtnImg=likeBtn.querySelector("img");
         if (likeBtnImg.src.includes("liked-heart.png")) {
@@ -619,12 +619,13 @@ function setupLikeBtns() {
         return;
       }
       else{
-        overlayContainer.classList.add("active");
-        loginContainer.classList.add("active");
-        setupForms();
         body.classList.add("not-active");
+        overlayContainer.classList.add("active");
+        requestAnimationFrame(() => {
+          loginContainer.classList.add("active");
+        });
+        setupForms();
       }
-      
     });
   });
   overlayCloseBtns.forEach(overlayCloseBtn=>{
@@ -643,7 +644,10 @@ function openLogIn(){
   signUpContainer.classList.remove("active");
   body.classList.add("not-active");
   overlayContainer.classList.add("active");
-  loginContainer.classList.add("active");
+  requestAnimationFrame(()=>{
+    loginContainer.classList.add("active");
+  })
+  
   setupForms();
 }
 loginBtns.forEach(loginBtn=>{
@@ -664,13 +668,19 @@ function openSignUp(){
     resetContainer.classList.remove("active");
     body.classList.add("not-active");
     overlayContainer.classList.add("active");
-    signUpContainer.classList.add("active");
+    requestAnimationFrame(()=>{
+      signUpContainer.classList.add("active");
+    })
+    
     setupForms();
 }
 signUpBtns.forEach(signUpBtn=>{
   signUpBtn.addEventListener("click",(e)=>{
     e.stopPropagation();
-    openSignUp();
+    requestAnimationFrame(() => {
+      openSignUp();
+    });
+    
   })
 })
 
@@ -703,6 +713,9 @@ document.querySelector('.recent-slider-container').addEventListener('click', (e)
       window.location.href = link.href;
     }, 0);
   }
+  else{
+    openLogIn()
+  }
 });
 
 const viewAll=document.querySelector(".recently-posted .recent-slider-indicator-container .view-all")
@@ -712,4 +725,3 @@ viewAll.addEventListener('click',(e)=>{
   window.location.href=viewAll.href;
 })
 
-sessionStorage.removeItem("token")

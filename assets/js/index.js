@@ -101,7 +101,7 @@ function endSwipe(e) {
   }
 }
 
-const token=sessionStorage.getItem("token")
+const token=localStorage.getItem("token")
 function handleSearch(searchTerm = "", redirectUrl = "./product-list.html", preFilteredProducts = null) {
   let matchedProducts = [];
   let brandWord = "";
@@ -122,12 +122,11 @@ function handleSearch(searchTerm = "", redirectUrl = "./product-list.html", preF
 }
 
 const recentList = document.querySelector(".recent-searches .recent-search-list");
-let recentSearches = JSON.parse(sessionStorage.getItem("recentSearches")) || [
+let recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [
   "Jordon 5 Shoes","Adidas YZY Shoes","Nike Air Force","adidas Yeezy 700",
   "Nike Dunk","Nike Air Griffey Max","Adidas AW Run Alexander",
   "Nike Air Force 1","Jordan 3 Retro","Adidas Yeezy"
 ];
-
 function renderRecentSearches(){
   recentList.innerHTML="";
   recentSearches.forEach(search=>{
@@ -136,11 +135,11 @@ function renderRecentSearches(){
 }
 renderRecentSearches()
 const searchInput = document.querySelector(".main-container .search-wrapper .input-container input");
-if(token){
-  searchInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      const value = e.target.value.trim();
-      if (!value) return;
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const value = e.target.value.trim();
+    if (!value) return;
+    if(token){
       const existingIndex = recentSearches.indexOf(value);
       if (existingIndex !== -1) {
         recentSearches.splice(existingIndex, 1);
@@ -149,12 +148,17 @@ if(token){
       if (recentSearches.length > 10) {
         recentSearches.pop();
       }
-      sessionStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+      localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
       renderRecentSearches();
       handleSearch(value, "./product-list.html");
     }
-  });
-}
+    else{
+      openLogIn();
+    }
+  }
+});
+
+
 
 const recentSearchTags = document.querySelectorAll(".recent-search-list .recent-search-tag");
 
@@ -164,6 +168,9 @@ recentSearchTags.forEach(tag => {
     if(token){
       handleSearch(tag.textContent.trim(), tag.getAttribute("href"));
     }
+    else{
+      openLogIn();
+    }
   });
 });
 
@@ -171,15 +178,18 @@ recentSearchTags.forEach(tag => {
 
 const brandBoxes= document.querySelectorAll(".popular-brands .popular-shoe-container .brand-box")
 
-if(token){
-  brandBoxes.forEach(box=>{
-    box.addEventListener('click',()=>{
+brandBoxes.forEach(box=>{
+  box.addEventListener('click',()=>{
+    if(token){
       const shoeContainer =box.parentElement;
-    const name= shoeContainer.querySelector(".brand-name").textContent
-    handleSearch(name.toLowerCase().trim(), "./product-list.html");
-    })
+      const name= shoeContainer.querySelector(".brand-name").textContent
+      handleSearch(name.toLowerCase().trim(), "./product-list.html");
+    }
+    else{
+      openLogIn();
+    }
   })
-}
+})
 
 const budgetBtns = document.querySelectorAll(".shop-under-budget .shop-button-container .budget-btn");
 if(token){

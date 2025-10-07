@@ -303,8 +303,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 4;
+  z-index: 5;
   display: none;
+  overflow-y: auto;
 }
 
 .overlay.active{
@@ -315,11 +316,12 @@
     background-color: #33273B;
     color: #fff;
     overflow-y: auto;
-    position: absolute;
+    position: fixed;
+    top: 0;
     right: -100%;
-    top: 0; 
-    transition: transform 0.4s ease;
-    /* display: block; */
+    bottom: 0;
+    transition: right 0.6s ease-in-out;
+    z-index: 6;
 }
 
 .overlay-close-btn-container {
@@ -327,7 +329,7 @@
   justify-content: flex-end;
 }
 .form-container .overlay-close-btn {
-  background: transparent;
+  background-color: transparent;
   border: none;
   cursor: pointer;
 }
@@ -604,7 +606,7 @@
     padding: 2.6% 2.6% 6.25%;
 }
 .overlay .reset-container.active{
-    display: block;
+    right: 0;
 }
 .reset-container h2 {
     font-size: 2.8rem;
