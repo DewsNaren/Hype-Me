@@ -1,0 +1,1910 @@
+.hero-container{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+} 
+.slider-container{
+    display: flex;
+    width: 300%;
+    transition: transform 0.6s ease-in-out;
+    position: relative;
+    top: 0;
+}
+.slider{
+    position: relative;
+    width: 100%;
+}
+.slider-img{
+    width: 100%;
+    height: 100%;
+    display: block; 
+}
+
+.slider-item{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 41.5%;
+    transform: translateY(-42%);
+}
+
+.slider-desc{
+    width: 40%;
+    font-size: 60px;
+    margin-left: 150px;
+    color:rgb(37, 8, 92);
+    line-height: 80px;
+    font-weight: 800;
+    font-weight: 900;
+}
+.slider-indicator-container{
+    position: absolute;
+    bottom: 108px;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+.slider-indicator-container button{
+    width: 16px;
+    height: 16px;
+    display: block;
+    border-radius: 50%;
+    border: 2px solid rgb(76, 21, 187);
+    background-color: rgb(236, 218, 216);
+}
+.slider-indicator-container button.active{
+    background-color: rgb(76, 21, 187);
+}
+.slider-btn{
+    position: absolute;
+    top: 43.6%;
+    transform: translateY(-42%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    margin-top: 4px;
+}
+.prev{
+    left:3.4%;
+}
+
+.next{
+    right: 3.4%;
+}
+.discover-btn{
+    font-size: 1.25rem;
+    color: rgb(76, 21, 187);
+    margin-left: 150px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 60px;
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    padding:2px 5px;
+}
+.discover-btn .arrow{
+    margin-left: 20px;
+    width: 25px;
+}
+.discover-btn:hover{
+    color:#a400ff
+}
+.discover-btn:hover .arrow {
+  filter: sepia(1) saturate(1900%) hue-rotate(270deg) brightness(1);
+}
+/*Recent Searches*/
+.main-container{
+    background-color: rgb(52, 40, 60);
+    position: relative;
+}
+
+.search-wrapper{
+    position: absolute;
+    margin: 0 auto;
+    padding:40px 45px 30px;
+    left: 50%;
+    background-color: #fff;
+    width: 52.1%;
+    height: fit-content;
+    left: 50%;
+    transform: translate(-50%,-68px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.search-wrapper input{
+    border: none;
+    border-bottom: 1px solid rgb(138, 136, 149);
+    width: 100%;
+    font-size: 1.23rem;
+    padding: 0px 44px 17px;
+    background-color: transparent;
+    outline: none;
+}
+.search-wrapper input::placeholder{
+    color: rgb(156, 113, 231);
+}
+.input-container{
+    position: relative;
+}
+.input-container span{
+    position: absolute;
+    left: 5px;
+    bottom: 11px;
+}
+.recent-searches{
+    padding-top:72px;
+}
+.recent-searches h3{
+    text-align: center;
+    color: rgb(170, 162, 177);
+    font-weight: normal;
+    font-size: 1.3rem;
+}
+
+.recent-search-list {
+  display: flex;
+  justify-content: center;
+  max-width: 80%;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 0 auto;
+  padding: 40px 0px;
+}
+
+.recent-search-tag {
+  padding: 16px 28px;
+  background-color: rgb(88, 80, 95);
+  color: #fff;
+  border-radius: 30px;
+  font-size: 1.135rem;
+  transition: background-color 0.3s ease;
+  font-weight: normal;
+}
+
+.recent-search-tag:hover {
+  background-color: #5e3ea1;
+}
+/*Popular Brands */
+.popular-brands{
+    padding: 60px 0 40px;
+    width: 100%;
+}
+.section-title{
+    color: rgb(240, 242, 239);
+    text-align: center;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+}
+.popular-shoes-container{
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    padding:110px 0
+}
+.popular-shoe-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+.brand-box{
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 40px;
+  transform: rotate(45deg); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:  transform 0.6s ease;
+}
+
+
+.brand-box:hover .brand-rotated{
+    transform: rotate(-40deg);
+}
+.brand-box:hover{
+    background-color: rgb(235, 244, 239);
+}
+.brand-rotated {
+  transform-origin: center center;
+  transition: transform 0.6s ease;
+  transform: rotate(-20deg); 
+  width: 80%;
+}
+
+.brand-rotated img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    color: white;
+}
+
+/*Shop Under Budget */
+.shop-under-budget{
+    padding: 100px 0 300px;
+}
+.shop-button-container{
+    display: flex;
+    margin: 0 auto;
+    width: 1600px;
+    justify-content: center;
+    gap: 85px;
+    padding-top: 80px;
+}
+.budget-btn {
+  padding: 14px 10px;
+  width: 225px;
+  height: 225px;
+  color: #fff;
+  background-color: transparent; 
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  background-image: repeating-linear-gradient(
+    135deg,                        
+    rgba(255, 255, 255, 0.15),  
+    rgba(255, 255, 255, 0.15)5px,
+    transparent 9px                 
+  );
+}
+.budget-btn:hover{
+    background-image: repeating-linear-gradient(
+    135deg,                        
+    rgba(255, 255, 255, 0.15),  
+    rgba(255, 255, 255, 0.15)5px,
+    transparent 7px  )
+}
+.budget-btn span{
+    display: block;
+}
+.between{
+    font-size: 1.5rem;
+    color:rgb(141, 139, 144) ;
+    font-weight: 500;
+}
+.budget-price{
+    font-size: 2.2rem;
+    margin-top: 10px;
+    font-weight: bold;
+    color: rgb(242, 240, 245);
+}
+.insta-fixed-container{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: url("../images/instabg.jpg");
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*Sign Up Page */
+.overlay {
+  justify-content: flex-end;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  display: none;
+}
+
+.overlay.active{
+    display: flex;
+}
+.overlay .form-container{
+    width: 42.7%;
+    background-color: #33273B;
+    color: #fff;
+    overflow-y: auto;
+    position: absolute;
+    right: -100%;
+    top: 0; 
+    transition: transform 0.4s ease;
+    /* display: block; */
+}
+
+.overlay-close-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.form-container .overlay-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay .form-container h2{
+   font-size: 2.8rem;
+    text-align: center;  
+}
+
+.overlay .form-container .social-text {
+  font-size: 1.1rem;
+  margin: 0px 0 40px;
+  color: #ccc;
+  text-align: center;
+}
+
+.overlay .form-container .social-icons {
+  display: flex;
+  gap: 29px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.overlay .form-container .social-icons .social-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.overlay .form-container .or-text {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #aaa;
+}
+.overlay .form{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.overlay .form-container .form input {
+  padding: 15px 10px;
+  border: none;
+  border-bottom: 1px solid rgb(68, 57, 74);
+  background: transparent;
+  color: white;
+  outline: none;
+  font-size: 1.35rem;
+}
+.overlay .form-container .form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #33273B inset;
+  -webkit-text-fill-color: #fff ;
+  caret-color: #fff;
+  transition: background-color 5000s ease-in-out 0s, color 0s;
+}
+
+.overlay .form-container .form input:-moz-autofill {
+  box-shadow: 0 0 0px 1000px transparent inset;
+  -moz-text-fill-color: #fff;
+  caret-color: #fff ;
+}
+
+.overlay .form-container .form input:-webkit-autofill:hover,
+.overlay .form-container .form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff ;
+  caret-color: #fff;
+}
+
+
+.overlay .form-container .form .input-group:not(.checkbox-group) input {
+    width: 100%;
+}
+
+.overlay .form-container .form input::placeholder {
+  color: #aaa;
+  font-size: 1.35rem;
+}
+
+.form .password-group .eye-icon{
+    position: absolute;
+    cursor: pointer;
+}
+.form-container .form .submit-btn {
+  width: 100%;
+  background-color: rgb(87, 24, 190);
+  color: white;
+  padding: 22px 14px;
+  border: none;
+  font-size: 1.37rem;
+  border-radius: 4px;
+  cursor: pointer; 
+}
+
+.form .input-group .error,.error-zipcode{
+    color:rgb(242, 18, 18);
+    margin-left: 10px;
+    visibility: hidden;
+    font-size: 0.95rem;
+}
+
+/*Login Container*/
+.overlay .login-container {
+  padding: 2.6% 2.67% 13.6%;
+}
+.overlay .login-container.active{
+    right: 0;
+}
+.login-container h2 {
+  padding-top: 16.8%;
+}
+.login-form .email-group {
+  margin-bottom: 22px;
+}
+
+.overlay .form-container .login-form input {
+  font-size: 1.38rem;
+}
+.overlay .form-container .login-form input::placeholder {
+  font-size: 1.38rem;
+}
+
+.overlay .form-container .result{
+    text-align: center;
+    color: white;
+    font-size: clamp(10px,1.1vw,1.2rem);
+    margin-top: 1vw;
+    display: none;
+}
+.overlay .form-container .result.active{
+    display: block;
+}
+.login-form .password-group {
+  position: relative;
+  margin-bottom: 17px;
+}
+.login-form .password-group .eye-icon {
+  right: 6px;
+  top: 8px;
+}
+
+.login-form .forgot-link {
+  text-align: right;
+  margin-top: 11px;
+  margin-right: 5px;
+}
+
+.login-form .forgot-link a {
+  font-size: 0.85rem;
+  color: rgb(141, 86, 230);
+  text-decoration: none;
+}
+
+.login-form .forgot-link a:hover {
+  text-decoration: underline;
+}
+
+.login-text,.signup-text,.reset-text {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 1.05rem;
+  color: #aaa;
+}
+
+.login-text a,.signup-text a,.reset-text a {
+  color: rgb(128, 84, 221);
+  text-decoration: none;
+}
+
+.form-container .login-form .submit-btn {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.login-form .input-group .error.active{
+  visibility: visible;
+}
+
+
+/*Sign up container */
+.overlay .signup-container.active{
+    right: 0;
+}
+.overlay .signup-container {
+  padding: 2.6% 2.6% 6.25%;
+}
+
+.overlay .signup-container h2 {
+  margin-top: 20px;
+}
+
+.signup-form .input-group {
+  margin-bottom: 20px;
+}
+
+.signup-form .input-group.email-group{
+    margin-bottom: 17px;
+}
+
+.overlay .form-container .signup-form input[name="zipcode"]{
+    padding-top: 11px;
+}
+
+.signup-form .password-group {
+  position: relative;
+  margin-bottom: 0px !important;
+  display: flex;
+  flex-direction: column;
+}
+.signup-form .password-group .eye-icon {
+  right: 10px;
+  top: 12px;
+}
+
+
+.signup-form .password-group .password-hint {
+  font-size: 0.68rem;
+  color: #aaa;
+  margin-top: 10px;
+  padding-left: 8px;
+}
+
+.signup-form .checkbox-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 40px;
+  font-size: 0.8rem;
+  padding-left: 10px;
+  color: #aaa
+}
+.signup-form .checkbox-group input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: clamp(13px, 0.94vw, 18px);
+  height: clamp(13px, 0.94vw, 18px);
+  padding: 0 !important;
+  border: 1px solid rgb(149, 89, 247);
+  border-radius: 3px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+.signup-form .checkbox-group input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(9px, 0.8vw, 14px);
+  font-weight: 600;
+
+}
+.signup-form .checkbox-group input[type="checkbox"]:checked {
+  background-color: #5e3ea1;
+}
+
+
+.signup-form  .checkbox-group a {
+  color: rgb(128, 84, 221);
+  text-decoration: none;
+}
+
+.form-container .signup-form .submit-btn{
+    margin-top: 65px;
+    font-weight: 500;
+}
+
+.signup-form .input-group .error.active,.error-zipcode.active{
+    visibility: visible;
+}
+
+/*Reset Container*/
+.overlay .reset-container{
+    padding: 2.6% 2.6% 6.25%;
+}
+.overlay .reset-container.active{
+    display: block;
+}
+.reset-container h2 {
+    font-size: 2.8rem;
+    padding-top: 16%;
+}
+.reset-container .reset-desc {
+    font-size: 1.176rem;
+    margin:0 auto  65px;
+    color: #ccc;
+    width: 75%;
+    text-align: center;
+}
+.reset-container ,.reset-form input{
+    font-size: 1.38rem;
+}
+.reset-container .reset-form input::placeholder{
+    font-size: 1.38rem;
+}
+.form-container .reset-form .submit-btn{
+    margin-top: 30px;
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+.reset-text span{
+  color: rgb(128, 84, 221);
+}
+
+.reset-container .reset-success-message{
+    font-size: clamp(10px, 0.94vw, 18px);
+    text-align: center;
+    margin-top: 20px;
+    display: none;
+}
+.reset-container .reset-success-message.active{
+    display: block;
+}
+.reset-form .input-group .error.active{
+    visibility: visible;
+}
+.logout-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+.logout-overlay.active {
+  display: flex;
+}
+
+.logout-modal {
+  background: #fff;
+  padding:clamp(20px, 2.1vw, 40px) clamp(20px, 3vw, 70px);
+  border-radius: 8px;
+  max-width:clamp(400px, 35vw, 600px);
+  min-height:clamp(175px,12.6vw, 240px);
+  width: 90%;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.logout-modal .modal-close-btn{
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+.logout-modal .modal-close-btn img{
+    width: clamp(12px,1.2vw, 21px);
+}
+.logout-modal .logout-content-container.not-active{
+    display: none;
+}
+.logout-modal .logout-content-container h3 {
+  margin-bottom: clamp(10px, 0.84vw, 16px);
+  font-size: clamp(14px, 1.37vw, 26px);
+}
+.logout-modal p{
+    margin-bottom: clamp(10px, 0.84vw, 16px);
+    font-size: clamp(12px, 0.84vw, 16px);
+}
+.logout-modal .modal-buttons button {
+  margin-top:clamp(10px,1.065vw, 20px);
+  padding: clamp(6px, 0.7vw,10px) clamp(12px, 1.35vw,25px);
+  cursor: pointer;
+  border: transparent;
+  font-size: clamp(10px, 0.84vw, 16px);
+
+}
+.logout-modal .modal-buttons button.confirm-btn{
+    background-color:  rgb(76, 21, 187);
+    color: rgb(209, 208, 208);
+    margin-left: clamp(10px, 1.6vw, 30px);
+}
+.logout-modal .modal-buttons button.cancel-btn{
+    background-color:  transparent;
+    border: 1px solid rgb(76, 21, 187);
+    color: rgb(76, 21, 187);
+}
+
+.logout-success-container h3 {
+   margin-bottom: clamp(10px, 0.84vw, 16px);
+  font-size: clamp(14px, 1.37vw, 26px);
+  font-weight: 600;
+  color: #222;
+}
+
+.logout-success-container .logout-msg {
+  font-size:  clamp(12px, 0.95vw, 18px);
+  line-height: 1.5;
+  margin-top: clamp(10px,1vw, 1vw);
+  font-weight: 500;
+}
+.logout-success-container .logout-msg.success {
+  color: rgb(8,110,54);
+}
+
+.logout-success-container .logout-msg.failed {
+  color:rgb(221, 15, 15);
+}
+@media screen and (max-width:1600px){
+    .slider-item{
+        top: 44.9%;
+        transform: translateY(-50%);
+    }
+    .slider-desc{
+        font-size: 50px;
+        margin-left: 8.4%;
+        line-height: 66px;
+    }
+    .slider-btn img{
+        width: 30px;
+    }
+    .prev{
+        left:3.7%;
+    }
+    .next{
+        right: 3.7%;
+    }
+    .discover-btn{
+        font-size: 1.05rem;
+        margin-left:8.4%;
+        margin-top: 50px;
+    }
+    .discover-btn .arrow{
+        margin-left: 16px;
+        width: 25px;
+    }
+    .slider-indicator-container{
+        bottom: 90px;
+        gap: 16px;
+    }
+    .slider-indicator-container button{
+        width: 13px;
+        height: 13px;
+    }
+    .search-wrapper{
+        padding:28px 38px 26px;
+        width: 52.1%;
+        left: 50%;
+        transform: translate(-50%,-57px);
+    }
+    .search-wrapper input{
+        font-size: 1.1rem;
+        padding: 0px 38px 12px;
+    }
+      .input-container img{
+        width: 18px;
+    }
+    .input-container span{
+        bottom: 8px;
+    }
+    .recent-searches{
+        padding-top: 3.8%;
+    }
+    .recent-searches h3{
+        font-size: 1.1rem;
+    }
+    .recent-search-list{
+        gap: 18px;
+        padding: 32px 0px;
+    }
+    .recent-search-tag{
+        padding: 12px 24px;
+        font-size: 0.961rem;
+        border-radius: 25px;
+    }
+    .popular-brands{
+        padding: 52px 0 35px;
+    }
+    .section-title{
+        font-size: 2.48rem;
+        letter-spacing: 0.5px;
+    }
+    .popular-shoes-container{
+        padding: 90px 0;
+        gap: 104px;
+    }
+    .popular-shoe-container{
+        gap: 40px;
+    }
+    .brand-box{
+        width: 166px;
+        height: 166px;
+    }
+    .brand-rotated {
+        transform: rotate(-28deg); 
+    }
+    .brand-box:hover .brand-rotated{
+        transform: rotate(-48deg);
+    }
+    .brand-rotated img{
+        margin-bottom: 20px;
+    }
+    .brand-name{
+        font-size: 1.3rem;
+    }
+   
+    .shop-under-budget{
+        padding: 115px 0 245px;
+    }
+    .shop-button-container{
+        padding-top: 70px;
+        gap: 70px;
+        max-width: 100%;
+    }
+    .budget-btn{
+        padding:0px;
+        width: 188px;
+        height: 188px;
+        background-image: repeating-linear-gradient(
+        135deg,                        
+        rgba(255, 255, 255, 0.15),  
+        rgba(255, 255, 255, 0.15)2px,
+        transparent 7px );
+    }
+    .between{
+        font-size: 1.3rem;
+    }
+    .budget-price{
+        font-size: 1.9rem;
+    }
+    .insta-fixed-container{
+        width: 48px;
+        height: 48px;
+        top: 32px;
+    }
+    .insta-fixed-container img{
+        width: 30px;
+        height: 30px;
+    }
+    
+    .overlay-close-btn img{
+        width: 33px;
+    }
+    .overlay .form-container h2 {
+        font-size: 2.4rem;
+        margin-top: 17px;
+    }
+
+    .overlay .form-container .social-text {
+        font-size: 0.98rem;
+        margin: 0px 0 31px;
+    }
+
+    .overlay .form-container .social-icons {
+        gap: 25px;
+        margin-bottom: 20px;
+    }
+
+    .overlay .form-container .social-icons .social-btn img{
+        width: 30px;
+    }
+    .overlay .form-container .or-text {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+
+     .overlay .form-container .form input{
+        padding: 12px 8px;
+        font-size: 1.12rem;
+    }
+
+    .overlay .signup-container {
+        padding: 2.6% 2.6% 6.25%;
+    }
+
+    
+    .signup-form .input-group {
+        margin-bottom: 19px;
+    }
+
+    .signup-form .input-group.email-group{
+        margin-bottom: 17px;
+    }
+   
+    .overlay .form-container .signup-form input[name="zipcode"]{
+        padding-top: 10px;
+    }
+    .overlay .form-container .form input::placeholder {
+        font-size: 1.12rem;
+    }
+     .form-container .form .submit-btn {
+        padding: 18px 12px;
+        font-size: 1.2rem; 
+    }
+    .form .input-group .error,.error-zipcode{
+        margin-left: 8px;
+        font-size: 0.8rem;
+    }
+    .login-container h2 {
+        font-size: 2.4rem;
+    }
+
+    .login-form .email-group {
+        margin-bottom: 21px;
+    }
+    .login-form .password-group .eye-icon{
+        top: 6px;
+        right: 5px;
+        width: 24px;
+    }
+    .login-form .forgot-link{
+        margin-top: 6px;
+    }
+    .login-form .forgot-link a {
+        font-size: 0.68rem;
+    }
+    .login-form .password-group {
+        margin-bottom: 11px;
+    }
+    .form-container .login-form .submit-btn{
+        margin-top: 15px;
+    }
+    .login-text,.signup-text{
+        margin-top: 20px;
+        font-size: 0.87rem;
+    }
+
+    .signup-form .password-group  .eye-icon {
+        width: 24px;
+    }
+    .signup-form .password-group .password-hint {
+        font-size: 0.57rem;
+        margin-top: 8px;
+        padding-left: 8px;
+    }
+    .signup-form  .checkbox-group {
+        gap: 6px;
+        margin-top: 35px;
+        font-size: 0.66rem;
+    }
+    .form-container .signup-form .submit-btn{
+        margin-top: 45px;
+    }
+    .reset-container h2 {
+        font-size: 2.4rem;
+    }
+    .reset-container .reset-desc{
+        font-size: 1rem;
+        margin: 0 auto 48px;
+    }
+    .reset-container .reset-form .reset-form input{
+        font-size: 1.12rem;
+        padding: 15px 8px;
+    }
+    .reset-container .reset-form input::placeholder{
+        font-size: 1.12rem;
+    }
+    .form-container .reset-form .submit-btn {
+        padding: 18px 12px;
+        font-size: 1.25rem;
+        margin-top: 21px;
+    }
+    .reset-form .input-group .error{
+        margin-left: 7px;
+        font-size: 0.82rem;
+    }
+    
+}
+
+@media screen and (max-width:1400px){
+    .slider-item{
+        top: 44.7%;
+        transform: translateY(-50%);
+    }
+    .slider-desc{
+        font-size: 43px;
+        margin-left: 8.35%;
+        line-height: 57px;
+    }
+    .slider-btn img{
+        width: 25px;
+    }
+    .prev{
+        left:3.6%;
+    }
+    .next{
+        right: 3.6%;
+    }
+    .discover-btn{
+        font-size: 0.9rem;
+        margin-left:8.35%;
+        margin-top: 44px;
+    }
+    .discover-btn .arrow{
+        margin-left: 14px;
+        width: 20px;
+    }
+    .slider-indicator-container{
+        bottom: 78px;
+        gap: 16px;
+    }
+    .slider-indicator-container button{
+        width: 12px;
+        height: 12px;
+    }
+    .search-wrapper{
+        padding:26px 32px 22px;
+        width: 52.1%;
+        transform: translate(-50%,-51px);
+    }
+    .search-wrapper input{
+        font-size: 0.9rem;
+        padding: 0px 32px 11px;
+    }
+      .input-container img{
+        width: 15px;
+    }
+    .input-container span{
+        bottom: 6px;
+    }
+    .recent-searches h3{
+        font-size: 0.9rem;
+    }
+    .recent-search-list{
+        gap: 17px;
+        padding: 28px 0px;
+    }
+    .recent-search-tag{
+        padding: 11px 21px;
+        font-size: 0.8rem;
+    }
+    .popular-brands{
+        padding: 3.27% 0 35px;
+    }
+    .section-title{
+        font-size: 2.12rem;
+    }
+    .popular-shoes-container{
+        padding: 5.5% 0;
+        gap: 70px;
+        max-width: 83%;
+        flex-wrap:wrap;
+        align-items: center;
+        margin: 0 auto;
+    }
+    .popular-shoe-container{
+        gap: 35px;
+    }
+    .brand-box{
+        width: 142px;
+        height: 142px;
+        border-radius: 30px;
+    }
+    .brand-rotated {
+        transform: rotate(-26deg);
+        width: 76%; 
+    }
+     .brand-box:hover .brand-rotated{
+        transform: rotate(-40deg);
+    }
+    .brand-rotated img{
+        margin-bottom: 15px;
+    }
+    .brand-name{
+        font-size: 1.1rem;
+    }
+    
+    .shop-under-budget{
+        padding: 100px 0 210px;
+    }
+    .shop-button-container{
+        padding-top: 60px;
+        gap: 4.39%;
+    }
+    .budget-btn{
+        width: 161px;
+        height: 161px;
+        background-image: repeating-linear-gradient(
+        135deg,                        
+        rgba(255, 255, 255, 0.15),  
+        rgba(255, 255, 255, 0.15)2px,
+        transparent 7px );
+    }
+    .between{
+        font-size: 1.1rem;
+    }
+    .budget-price{
+        font-size: 1.5rem;
+        margin-top: 2px;
+    }
+    .insta-fixed-container{
+        width: 42px;
+        height: 42px;
+        top: 30px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+    .insta-fixed-container button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    .insta-fixed-container img{
+        width: 25px;
+        height: 25px;
+    }
+    
+    .overlay-close-btn img{
+        width: 28px;
+    }
+
+    .overlay .form-container h2 {
+        font-size: 2rem;
+    }
+
+    .social-text {
+        font-size: 0.82rem;
+        margin: 0px 0 26px;
+    }
+
+    .overlay .form-container .social-icons {
+        gap: 22px;
+        margin-bottom: 17px;
+    }
+
+    .overlay .form-container .social-icons .social-btn img{
+        width: 25px;
+    }
+    .overlay .form-container .or-text {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+    
+    .overlay .form-container .form input{
+        padding: 12px 7px;
+        font-size: 0.94rem;
+    }
+    .overlay .form-container .form input::placeholder {
+        font-size: 0.94rem;
+    }
+    .form-container .form .submit-btn {
+        padding: 15px 12px;
+        font-size: 1.05rem; 
+    }
+    
+    .form ,.error-zipcode{
+        margin-left: 8px;
+        font-size: 0.65rem;
+    }
+    .login-container h2 {
+        font-size: 2rem;
+    }
+
+    .login-form .email-group{
+        margin-bottom: 14px;
+    }
+    .login-form .password-group .eye-icon{
+        right: 4px;
+        top: 7px;
+        width: 20px;
+    }
+    .login-form .forgot-link{
+        margin-top: 3px;
+    }
+    .login-form .forgot-link a {
+        font-size: 0.55rem;
+    }
+    .form-container .login-form .submit-btn {
+        margin-top: 9px;
+    }
+
+    .login-text,.signup-text,.reset-text {
+        margin-top: 17px;
+        font-size: 0.74rem;
+    }
+
+    .overlay .signup-container h2{
+        margin-top: 15px;
+    }
+
+    .signup-form .input-group {
+        margin-bottom: 13px;
+    }
+
+    .signup-form .input-group.email-group{
+        margin-bottom: 12px;
+    }
+    .form-container .signup-form input[name="zipcode"]{
+        padding-top: 8px;
+    }
+    .signup-form .password-group .eye-icon {
+        width: 20px;
+    }
+    .signup-form .password-group .password-hint {
+        font-size: 0.5rem;
+        margin-top: 5px;
+        padding-left: 8px;
+    }
+    .signup-form .checkbox-group {
+        margin-top: 28px;
+        font-size: 0.55rem;
+    }
+    .signup-form .checkbox-group input[type="checkbox"] {
+        border-radius: 2px;
+    }
+    .form-container .signup-form .submit-btn{
+        margin-top: 40px;
+    }
+    .reset-container h2 {
+        font-size: 2.1rem;
+    }
+    .reset-container .reset-desc{
+        font-size: 0.84rem;
+        margin:0 auto 42px;
+    }
+
+    .reset-container .reset-form input{
+        padding: 12px 7px;
+        font-size: 0.94rem;
+    }
+    .reset-container .reset-form input::placeholder {
+        font-size: 0.94rem;
+    }
+    .form-container .reset-form .submit-btn {
+        padding: 15px 12px;
+        font-size: 1.1rem;
+        margin-top: 19px;
+    }
+    .reset-form .input-group .error{
+        margin-left: 8px;
+        font-size: 0.65rem;
+    }
+    .logout-modal {
+        border-radius: 6px;
+    }
+}
+
+@media screen and (max-width:1024px){ 
+    
+    .slider-item{
+        top: 47.5%;
+        transform: translateY(-50%);
+    }
+    .slider-desc{
+        font-size: 32px;
+        margin-left: 8.37%;
+        line-height: 45px;
+    }
+    .slider-btn img{
+        width: 18px;
+    }
+    .discover-btn{
+        font-size: 0.65rem;
+        margin-left:8.37%;
+        margin-top: 32px;
+    }
+    .discover-btn .arrow{
+        margin-left: 10px;
+        width: 15px;
+    }
+    .slider-indicator-container{
+        bottom: 13.87%;
+        gap: 12px;
+    }
+    .slider-indicator-container button{
+        width: 9px;
+        height: 9px;
+    }
+    .search-wrapper{
+        padding:15px 26px 18px;
+        transform: translate(-50%,-38px);
+    }
+    .search-wrapper input{
+        font-size: 0.7rem;
+        padding: 0px 28px 9px;
+    }
+    .input-container img{
+        width: 12px;
+    }
+    .input-container span{
+        bottom: 4px;
+    }
+    .recent-searches{
+        padding-top: 4%;
+    }
+    .recent-searches h3{
+        font-size: 0.7rem;
+    }
+    .recent-search-list{
+        gap: 12px;
+        padding: 20px 0px;
+    }
+    .recent-search-tag{
+        padding: 9px 15px;
+        font-size: 0.62rem;
+    }
+    .popular-brands{
+        padding: 3.27% 0 35px;
+    }
+    .section-title{
+        font-size: 1.55rem;
+    }
+    .popular-shoes-container{
+        padding: 5.5% 0 4.5%;
+        gap: 60px;
+    }
+    .popular-shoe-container{
+        gap: 27px;
+    }
+    .brand-box{
+        width: 107px;
+        height: 107px;
+        border-radius: 25px;
+    }
+    .brand-rotated {
+        transform: rotate(-26deg);
+        width: 78%; 
+    }
+    .brand-rotated img{
+        margin-bottom: 10px;
+    }
+    .brand-name{
+        font-size: 0.85rem;
+    }
+    
+    .shop-under-budget{
+        padding: 75px 0 158px;
+    }
+    .shop-button-container{
+        padding-top: 40px;
+        gap: 4.39%;
+    }
+    .budget-btn{
+        width: 122px;
+        height: 122px;
+        background-image: repeating-linear-gradient(
+        135deg,                        
+        rgba(255, 255, 255, 0.15),  
+        rgba(255, 255, 255, 0.15)1px,
+        transparent 5px );
+    }
+    .between{
+        font-size: 0.85rem;
+    }
+    .budget-price{
+        font-size: 1.05rem;
+        margin-top: 4px;
+    }
+    .insta-fixed-container{
+        width: 30px;
+        height: 30px;
+        top: 25px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .insta-fixed-container img{
+        width: 18px;
+        height: 18px;
+    }
+    .ad-container{
+        transform: translateY(-90px);
+    }
+    .ad-container img{
+        max-width: 95.41%;
+    }
+    
+    .overlay-close-btn img{
+        width: 21px;
+    }
+    .overlay .form-container h2{
+        font-size: 1.5rem;
+    }
+    
+    .overlay .form-container .social-text {
+        font-size: 0.62rem;
+        margin: 0px 0 22px;
+    }
+    .overlay .form-container .social-icons {
+        gap: 16px;
+        margin-bottom: 12px;
+    }
+    .overlay .form-container .social-icons .social-btn img{
+        width: 19px;
+    }
+    .overlay .form-container .or-text {
+        font-size: 0.62rem;
+        margin-bottom: 3px;
+    }
+   
+    .overlay .form-container .form input{
+        padding: 10px 5px;
+        font-size: 0.72rem;
+    }
+    .overlay .form input::placeholder {
+        font-size: 0.72rem;
+    }
+    
+    .form-container .form .submit-btn {
+        padding: 12px 10px;
+        font-size: 0.78rem; 
+    }
+    .form .input-group .error,.error-zipcode{
+        margin-left: 5px;
+        font-size: 0.55rem;
+    }
+
+    .login-form .email-group{
+        margin-bottom: 8px;
+    }
+    .login-form .password-group .eye-icon{
+        top: 5px;
+        right: 0;
+        width: 15px;
+    }
+    .login-form .forgot-link{
+        margin-top: 6px;
+        font-size: 0.4rem;
+    }
+    .login-form .forgot-link a{
+        font-size: 0.45rem;
+    }
+    .form-container .login-form .submit-btn{
+        margin-top: 3px;
+    }
+    .login-text,.signup-text,.reset-text {
+        margin-top: 12px;
+        font-size: 0.6rem;
+    }
+    .overlay .form-container{
+        width: 50%;
+    }
+
+    .overlay .signup-container h2 {
+        margin-top: 10px;
+    }
+    .signup-form .input-group {
+        margin-bottom: 9px;
+    }
+
+    .signup-form .input-group.email-group{
+        margin-bottom: 5px;
+    }
+    .signup-form .password-group .eye-icon {
+        width: 15px;
+    }
+    .signup-form .password-group .password-hint {
+        font-size: 0.5rem;
+        margin-top: 3px;
+        padding-left: 5px;
+    }
+    .signup-form  .checkbox-group {
+        gap: 4px;
+        margin-top: 20px;
+        font-size: 0.5rem;
+        padding-left: 5px;
+    }
+    .signup-form .checkbox-group input[type="checkbox"] {
+        width: 11px;
+        height: 11px;
+    }
+    .form-container .signup-form .submit-btn{
+        margin-top: 27px;
+    }
+
+    .reset-container h2 {
+        font-size: 1.55rem;
+        padding-top: 15%;
+    }
+    .reset-container .reset-desc{
+        font-size: 0.64rem;
+        margin:0 auto 35px;
+    }
+
+    .reset-container .reset-form input{
+        padding: 10px 5px;
+        font-size: 0.72rem;
+    }
+    .reset-container .reset-form input::placeholder {
+        font-size: 0.72rem;
+    }
+    .form-container .reset-form .submit-btn {
+        padding: 12px 10px;
+        font-size: 0.8rem;
+        margin-top: 6px;
+    }
+    .reset-form .input-group .error{
+        margin-left: 5px;
+        font-size: 0.55rem;
+    }
+    .logout-modal {
+        min-height:clamp(140px,12.6vw, 175px);
+        border-radius: 4px;
+    }
+    .logout-modal .modal-close-btn{
+        top: 15px;
+        right: 15px;
+    }
+    
+}
+
+@media screen and (max-width:768px) {
+    .slider-item{
+        top: 55%;
+    }
+    .slider-desc{
+        font-size: 26px;
+        line-height: 36px;
+        margin-left: 8.5%;
+    }
+    .slider-btn img{
+        width: 15px;
+    }
+    .discover-btn{
+        font-size: 0.65rem;
+        margin-left:8.5%;
+        margin-top: 25px;
+    }
+    .discover-btn .arrow{
+        margin-left: 10px;
+        width: 13px;
+    }
+    .slider-indicator-container{
+        gap: 10px;
+    }
+    .slider-indicator-container button{
+        width: 8px;
+        height: 8px;
+    }
+    .search-wrapper{
+        padding:10px 22px 14px;
+        transform: translate(-50%,-25px);
+    }
+    .search-wrapper input{
+        font-size: 0.7rem;
+        padding: 0px 26px 8px;
+    }
+    .input-container img{
+        width: 11px;
+    }
+    .input-container span{
+        bottom: 3px;
+    }
+    .recent-searches{
+        padding-top: 5.2%;
+    }
+    .popular-brands{
+        padding: 35px 0 35px;
+    }
+    .section-title{
+        font-size: 1.4rem;
+    }
+    .popular-shoes-container{
+        padding: 6% 0 4.1%;
+    }
+    .popular-shoe-container{
+        gap: 25px;
+    }
+    .brand-box{
+        width: 105px;
+        height: 105px;
+    }
+    .brand-name{
+        font-size: 0.8rem;
+    }
+    
+    .shop-under-budget{
+        padding: 50px 0 130px;
+    }
+    .shop-button-container{
+        padding-top: 40px;
+        gap: 35px;
+        max-width: 90%;
+        flex-wrap: wrap;
+    }
+    .budget-btn{
+        width: 110px;
+        height: 110px;
+    }
+    .between{
+        font-size: 0.75rem;
+    }
+    .budget-price{
+        font-size: 0.9rem;
+        margin-top: 4px;
+    }
+    .ad-container{
+        transform: translateY(-75px);
+    }
+    .ad-container img {
+        max-width: 90%;
+    }
+    .overlay-close-btn img{
+        width: 20px;
+    }
+    .overlay .form-container h2 {
+        font-size: 1.3rem;
+    }
+    .overlay .form-container .social-icons .social-btn img{
+        width: 20px;
+    }
+    .overlay .form-container .or-text {
+        font-size: 0.65rem;
+    }
+    .overlay .form{
+        width: 85%;
+    }
+   
+    .overlay .form-container .form  input,.form-container .signup-form input[name="zipcode"],.overlay .form-container .form input::placeholder{
+        font-size: 0.75rem;
+    }
+    .form .input-group .error,.error-zipcode{
+        font-size: 0.6rem;
+    }
+
+    .signup-form .input-group {
+        margin-bottom:12px;
+    }
+    .signup-form  .checkbox-group {
+        margin-top: 17px;
+    }
+    .signup-form .checkbox-group input[type="checkbox"] {
+        width: 10px;
+        height: 10px;
+    }
+    .signup-form .checkbox-group input[type="checkbox"]:checked::after {
+        content: "✓";
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-40%, -50%);
+        font-size: 8px;
+    }
+    .form-container .signup-form .submit-btn {
+        margin-top: 25px;
+    }
+    
+}
+
+@media screen and (max-width:600px){
+    .slider-item{
+        top: 58%;
+    }
+    .slider-desc{
+        margin-left: 9%;
+        font-size: 1.2rem;
+        line-height: 32px;
+    }
+    .hero-container,.slider-container{
+        min-height: 245px;
+    }
+    .slider img{
+        object-fit: cover;
+    }
+    .prev{
+        left: 3.2%;
+    }
+    .next{
+        right: 3.2%;
+    }
+    .discover-btn{
+        margin-left: 9%;
+        margin-top: 20px;
+    }
+    .discover-btn .arrow{
+        width: 12px;
+    }
+    .search-wrapper{
+        width: 53%;
+        padding:8px 20px 12px;
+        transform: translate(-50%,-20px);
+    }
+    .search-wrapper input{
+        font-size: 0.65rem;
+        padding: 0px 24px 7px;
+    }
+    .input-container img{
+        width: 10px;
+    }
+    .recent-searches{
+        padding-top: 45px;
+    }
+    .section-title{
+        font-size: 1.25rem;
+    }
+    .popular-shoes-container{
+        padding: 40px 0 4.1%;
+        gap: 50px;
+        width: 85%;
+    }
+    .brand-box{
+        width: 100px;
+        height: 100px;
+    }
+    .popular-shoe-container{
+        gap: 22px;
+    }
+    .brand-name{
+        font-size: 0.7rem;
+    }
+    .shop-under-budget{
+        padding: 45px 0 110px;
+    }
+    .budget-price{
+        margin-top: 3px;
+    }
+    .insta-fixed-container{
+        width: 26px;
+        height: 26px;
+    }
+    .insta-fixed-container img{
+        width: 16px;
+        height: 16px;
+    }
+    .ad-container{
+        transform: translateY(-65px);
+    }
+    
+    .overlay .form-container {
+        width: 65%;
+    }
+    .overlay-close-btn img{
+        width: 18px;
+    }
+}
+
+@media  screen and (max-width:480px){
+    .slider-desc{
+        width: 40%;
+        margin-left: 9%;
+        font-size: 0.9rem;
+        line-height: 25px;
+    }
+    .slider-btn img{
+        width: 12px;
+    }
+    .prev{
+        left: 3%;
+    }
+    .next{
+        right: 3%;
+    }
+    .search-wrapper{
+        width: 60%;
+        padding:6px 14px 12px;
+        transform: translate(-50%,-15px);
+    }
+    .search-wrapper input{
+        font-size: 0.65rem;
+        padding: 0px 24px 7px;
+    }
+    .input-container img{
+        width: 10px;
+    }
+    .section-title{
+        font-size: 1.1rem;
+    }
+    .recent-search-list {
+        max-width: 90%;
+    }
+    .popular-shoes-container{
+        padding: 40px 0 4.1%;
+        gap: 40px;
+        max-width: 100%;
+    }
+
+    .brand-box{
+        width: 95px;
+        height: 95px;
+    }
+    .popular-shoe-container{
+        gap: 20px;
+    }
+    .brand-name{
+        font-size: 0.65rem;
+    }
+    .shop-under-budget{
+        padding: 35px 0 80px;
+    }
+    .shop-button-container {
+        padding-top: 40px;
+        gap: 30px;
+    }
+    .insta-fixed-container{
+        width: 24px;
+        height: 24px;
+    }
+    .insta-fixed-container img{
+        width: 14px;
+        height: 14px;
+    }
+    .overlay .form-container{
+        width: 80%;
+    }
+    
+    .overlay-close-btn img{
+        width: 15px;
+    }
+    .overlay .form-container h2{
+        font-size: 1.3rem;
+    }
+    .overlay .form-container .social-text {
+        font-size: 0.62rem;
+        margin: 0px 0 15px;
+    }
+    .overlay .form-container .social-icons {
+        gap: 16px;
+        margin-bottom: 10px;
+    }
+    .overlay .form-container .social-icons .social-btn img{
+        width: 20px;
+    }
+    .overlay .form{
+        width: 90%;
+    }
+    .overlay .form-container .or-text {
+        font-size: 0.65rem;
+        margin-bottom: 3px;
+    }
+    .overlay .form-container .form input,.form-container .signup-form input[name="zipcode"]{
+        padding: 10px 5px 8px;
+        font-size: 0.75rem;
+    }
+    .overlay .form-container .form input::placeholder {
+        font-size: 0.72rem;
+    }
+    .form-container .form .submit-btn{
+        padding: 10px 8px;
+        font-size: 0.75rem;
+    }
+
+    .login-text,.signup-text,.reset-text {
+        margin-top: 8px;
+        font-size: 0.6rem;
+    }
+    .overlay .login-container{
+        padding: 20px 20px 40px;
+    }
+    .overlay .signup-container{
+        padding: 20px 20px 40px;
+    }
+    .signup-container h2 {
+        margin-top: 5px;
+    }
+    .signup-form .input-group {
+        margin-bottom:12px;
+    }
+
+    .signup-form .input-group.email-group{
+        margin-bottom: 5px;
+    }
+    
+    .signup-form .password-group .eye-icon {
+        width: 15px;
+    }
+    .signup-form .password-group .password-hint {
+        font-size: 0.45rem;
+        margin-top: 3px;
+        padding-left: 5px;
+    }
+    .signup-form .checkbox-group {
+        margin-top: 12px;
+        font-size: 0.45rem;
+    }
+    
+    .form-container .signup-form .submit-btn {
+        margin-top: 15px;
+    }
+    .overlay .reset-container{
+        padding: 20px 20px 40px;
+    }
+    
+}
+
+@media screen and (max-width:385px){
+    .overlay .form-container{
+        width: 100%;
+    }
+    .overlay .form{
+        width: 100%;
+    }
+}

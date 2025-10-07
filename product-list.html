@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hpye Me | Product List</title>
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/product-list.css">
+    <link rel="icon" href="./assets/images/fav.png" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo-container">
+            <a href="./index.html" class="logo"><img src="./assets/images/logo.png" alt="logo"></a>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><img src="./assets/images/g-search.png" class="g-search" alt="g-search"></li>
+                <li class="location-list"><span>TX 77441</span><img src="./assets/images/location.png" alt="location"></li>
+                <li><img src="./assets/images/profile.png" class="user-profile" alt="profile"><button type="button"><img src="./assets/images/profile-arrow.png" alt=""></button></li>
+                <li>
+                    <div class="nav-btn-container">
+                        <a href="#" class="buy-btn">Buy</a>
+                        <a href="#" class="sell-btn">Sell</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-container">
+        <div class="product-list-wrapper">
+            <nav class="breadcrumb">
+                <div>
+                    <a href="#">Home</a> <span class="separator">/</span>
+                    <span class="selected">Nike Shoes</span>
+                </div>
+                
+                <button class="filter-btn">
+                    <img src="./assets/images/filter.png" alt="filter"> Filter
+                </button>
+            </nav>
+            
+            <div class="product-list-container">
+                
+                <div class="filter-container">
+                    <h2>Filters</h2>
+                    <button class="filter-close-btn"><img src="./assets/images/close.png" alt="close"></button>
+                    <div class="filter-sub-container condition">
+                        <h3 class="filter-title">Condition</h3>
+                        <div class="condition-filter checkbox-filter">
+                            <input type="checkbox" name="condition"  id="new-shoes" value="new">
+                            <label for="new-shoes" class="filter-label">New Shoes</label>
+                        </div>
+                        <div class="condition-filter checkbox-filter">
+                            <input type="checkbox" name="condition"  id="used-shoes" value="used">
+                            <label for="used-shoes" class="filter-label">Used Shoes</label>
+                        </div>
+                    </div>
+                    <div class="filter-sub-container price">
+                        <div class="filter-sub-header-container">
+                            <h3 class="filter-title">Price</h3>
+                            <span class="dropdown-icon"><img src="./assets/images/up-arrow.png" alt="up-arrow"></span>
+                        </div>
+                        <span class="price-display">$80 - $499</span>
+                        <div class="range-container">
+                            <div class="highlight-box"></div>
+                            <div class="range-track"></div>
+                            <div class="range-fill"></div>
+                            <input type="range"   id="minRange" class="minRange range-input" min="0" max="1000" value="80" step="1">
+                            <input type="range" id="maxRange" class="maxRange range-input" min="0" max="1000" value="499" step="1">
+                        </div>
+                    </div>  
+                    <div class="filter-sub-container brand">
+                        <div class="filter-sub-header-container">
+                            <h3 class="filter-title">Brand</h3>
+                            <span class="dropdown-icon"><img src="./assets/images/up-arrow.png" alt="up-arrow"></span>
+                        </div>
+                        <div class="input-search-wrapper">
+                            <input type="text" name="brand-search-input" class="brand-search-input" placeholder="Search" autocomplete="off">
+                            <span class="brand-search-icon"><img src="./assets/images/brand-search.png"  alt="brand-search"></span>
+                        </div>
+                        <div class="brand-list"></div>
+                        <p class="no-brand">No Searched brand available</p>
+                        <a href="#" class="brand-more-link">1860 More</a>
+                    </div> 
+                    <div class="filter-sub-container filter-sub-container-close model">
+                        <div class="filter-sub-header-container">
+                            <h3 class="filter-title filter-title-close">Model</h3>
+                            <span class="dropdown-icon"><img src="./assets/images/down-arrow.png" alt="down-arrow"></span>
+                        </div>
+                    </div> 
+                    <div class="filter-sub-container filter-sub-container-close categories">
+                        <div class="filter-sub-header-container">
+                            <h3 class="filter-title filter-title-close">Categories</h3>
+                            <span class="dropdown-icon"><img src="./assets/images/down-arrow.png" alt="down-arrow"></span>
+                        </div>
+                    </div>
+                    <div class="filter-sub-container filter-sub-container-close color">
+                        <div class="filter-sub-header-container">
+                            <h3 class="filter-title filter-title-close">Color</h3>
+                            <span class="dropdown-icon"><img src="./assets/images/down-arrow.png" alt="down-arrow"></span>
+                        </div>
+                    </div>
+                    <div class="filter-sub-container filter-sub-container-close size-type">
+                        <div class="filter-sub-header-container">
+                            <h3 class="filter-title filter-title-close">Size Type</h3>
+                            <span class="dropdown-icon"><img src="./assets/images/down-arrow.png" alt="down-arrow"></span>
+                        </div>
+                    </div>
+                    <div class="filter-sub-container filter-sub-container-close size">
+                        <div class="filter-sub-header-container">
+                            <h3 class="filter-title filter-title-close">size</h3>
+                            <span class="dropdown-icon"><img src="./assets/images/down-arrow.png" alt="down-arrow"></span>
+                        </div>
+                    </div>
+                    <div class="filter-sub-container filter-sub-container-close release-year">
+                        <div class="filter-sub-header-container">
+                            <h3 class="filter-title filter-title-close">Release Year</h3>
+                            <span class="dropdown-icon"><img src="./assets/images/down-arrow.png" alt="down-arrow"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-list">
+                    <div class="product-list-header">
+                        <h2>Nike Shoes  <span>(Showing 1 - 45 products of 8,921 products)</span></h2>
+                        <div class="sort-wrapper">
+                            <span class="sort-label">Sort by:</span>
+                            <div class="sort-dropdown">
+                                <button type="button" class="sort-button">
+                                    Featured <img src="./assets/images/down-arrow.png" alt="down-arrow">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-list-body">
+                    </div>
+                    <div class="spinner-container">
+                        <div class="spinner">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="spinner">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="spinner">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="spinner">
+                        <div class="circle"></div>
+                        </div>
+                        <div class="spinner">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="spinner">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="spinner">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="spinner">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </main>
+    <footer>
+        <div class="quick-links">
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Why Hype Me</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Disclaimer</a></li>
+            </ul>
+        </div>
+        <div class="social-media-links">
+            <ul>
+                <li><a href="#"><img src="./assets/images/footer-instagram.png" class="insta-img" alt="instagram"></a></li>
+                <li><a href="#"><img src="./assets/images/footer-facebook.png" class="fb-img" alt="facebook"></a></li>
+                <li><a href="#"><img src="./assets/images/footer-twitter.png"class="twitter-img" alt="twitter"></a></li>
+            </ul>
+        </div>
+        <div class="copyright-container">
+            <p>&copy; 2021 Hype-me. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="./assets/js/product.js" defer></script>
+    <script src="./assets/js/product-list.js"></script>
+</body>
+</html>

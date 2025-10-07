@@ -1,0 +1,430 @@
+/*Recently Posted */
+.recent-slider-wrapper{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 75px 0;
+} 
+.recent-slider-frame{
+    width: 1600px;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 90%;
+}
+.recent-slider-container{
+    display: flex;
+    gap: 2.08334vw;
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 0.6s ease-in-out;
+}
+.recent-slider{
+    flex: 0 0 19.27vw;
+    width: 19.27vw;
+}
+.recent-slider-item a img{
+    width: 19.27vw;
+}
+.recent-slider-item{
+    position: relative;
+    display: block;
+}
+.recent-slider-item a{
+    display: inline-block;
+}
+.recent-slider-item span{
+    position: absolute;
+    right: 30px;
+    top: 25px;
+    cursor: pointer;
+}
+.recent-slider-content{
+    margin-top: 20px;
+}
+.recent-shoe-name{
+    font-size: 1.3rem;
+    color:rgb(204, 193, 210);
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+.recent-shoe-price{
+    font-size: 1.2rem;
+    color:rgb(231, 229, 229);
+    font-weight: 500
+}
+
+.recent-slider-btn{
+    position: absolute;
+    top: 43.6%;
+    transform: translateY(-42%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    margin-top: 4px;
+}
+
+.recent-slider-btn img{
+    filter: invert(100%) brightness(200%);
+}
+.prev{
+    left:3.4%;
+}
+
+.next{
+    right: 3.4%;
+}
+
+.recent-slider-indicator-container{
+    width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    gap: 80px;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+}
+.outer{
+    display: flex;
+    width: 100%;
+    height: 8px;
+    background-color: rgb(115, 107, 120);
+    border-radius: 25px;
+}
+.inner{
+    display: inline-block;
+    width: 21.8%;
+    height: 8px;
+    background-color: rgb(170, 168, 171);
+    border-radius: 25px;
+}
+.view-all{
+    display: inline-flex;
+    align-items: center;
+    color: rgb(126, 74, 230);
+    gap: 25px;
+    font-size: 1.3rem;
+    text-wrap: nowrap;
+    justify-content: center;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+.view-all:hover{
+    border-bottom: 1px solid rgb(126, 74, 230);
+}
+
+@media screen and (max-width:1600px){
+     .recent-slider-wrapper{
+        padding: 60px 0 55px;
+    }
+    .recent-slider-frame{
+        max-width: 83.3%;
+    }
+    .recent-slider{
+        flex: 0 0 19.375vw;
+        width: 19.375vw;
+    }
+    .recent-slider-item a img{
+        width: 19.375vw;
+    }
+    .recent-slider-item span{
+        right: 25px;
+        top: 20px;
+    }
+    .recent-slider-item span img{
+        width: 25px;
+    }
+    .recent-shoe-name{
+        font-size: 0.961rem;
+    }
+    .recent-shoe-price{
+        font-size: 1.1rem;
+    }
+    .recent-slider-indicator-container{
+        max-width: 83.3%;
+        gap: 75px;
+    }
+    .outer,.inner{
+        height: 5px;
+    }
+    .inner{
+        width: 21.8%;
+    }
+    .view-all{
+        font-size: 1.1rem;
+        color: rgb(126, 78, 223);
+        gap: 20px;
+    }
+    .view-all img{
+        width: 25px;
+        filter:sepia(1) saturate(1900%) hue-rotate(250deg) brightness(0.8);
+    }
+}
+
+@media screen and (max-width:1400px){
+    .recent-slider-wrapper{
+        padding: 3.8% 0 3.4%;
+    }
+    .recent-slider-frame{
+        max-width: 83.3%;
+    }
+    .recent-slider{
+        flex: 0  0 19.03vw;
+        width: 19.03vw;
+    }
+    .recent-slider-item a img{
+        width: 19.03vw;
+    }
+    .recent-slider-item span{
+        right: 15px;
+        top: 20px;
+    }
+    .recent-slider-item span img{
+        width: 20px;
+    }
+    .recent-slider-content{
+        margin-top: 12px;
+    }
+    .recent-shoe-name{
+        font-size: 0.9.2rem;
+        margin-bottom: 2px;
+    }
+    .recent-shoe-price{
+        font-size: 0.95rem;
+    }
+    .recent-slider-btn{
+        top: 38%;
+        transform: translateY(-40%);
+    }
+    .recent-slider-btn img{
+        width: 23px;
+    }
+    .recent-slider-indicator-container{
+        max-width: 83.3%;
+        gap: 64px;
+    }
+    .outer,.inner{
+        height: 4px;
+    }
+    .inner{
+        width: 21.8%;
+    }
+    .view-all{
+        font-size: 0.9rem;
+        gap: 16px;
+    }
+    .view-all img{
+        width: 22px;
+    }
+}
+
+@media screen and (max-width:1024px){
+    .recent-slider-wrapper{
+        padding: 3.8% 0 3.4%;
+    }
+    .recent-slider-frame{
+        max-width: 83.4%;
+    }
+    .recent-slider-container{
+        gap: 20px;
+    }
+    .recent-slider{
+        flex: 0 0 19.14vw;
+        width: 19.14vw;
+    }
+    .recent-slider-item a img{
+        width: 19.14vw;
+    }
+    .recent-slider-item span{
+        right: 10px;
+        top: 10px;
+    }
+    .recent-slider-item span img{
+        width: 15px;
+    }
+    .recent-slider-content{
+        margin-top: 5px;
+    }
+    .recent-shoe-name{
+        font-size: 0.72rem;
+        margin-bottom: 2px;
+    }
+    .recent-shoe-price{
+        font-size: 0.8rem;
+    }
+    .recent-slider-btn{
+        top: 38%;
+        transform: translateY(-40%);
+    }
+    .recent-slider-btn img{
+        width: 18px;
+    }
+    .recent-slider-indicator-container{
+        max-width: 83.3%;
+        gap: 48px;
+    }
+    .outer,.inner{
+        height: 3px;
+    }
+    .inner{
+        width: 21.8%;
+    }
+    .view-all{
+        font-size: 0.72rem;
+        gap: 12px;
+    }
+    .view-all img{
+        width: 15px;
+    }
+}
+
+@media screen and (max-width:768px){
+    .recent-slider-wrapper{
+        padding: 4.1% 0 3.6%;
+    }
+    .recent-slider-frame,.recent-slider-indicator-container{
+        max-width: 85%;
+    }
+    .recent-slider{
+        flex: 0 0 19.2vw;
+        width: 19.2vw;
+    }
+    .recent-slider-item a img{
+        width: 19.2vw;
+    }
+    .recent-slider-item span{
+        right: 8px;
+        top: 5px;
+    }
+    .recent-slider-item span img{
+        width: 12px;
+    }
+    .recent-slider-content{
+        margin-top: 5px;
+    }
+    .recent-shoe-name{
+        font-size: 0.65rem;
+        margin-bottom: 2px;
+    }
+    .recent-shoe-price{
+        font-size: 0.7rem;
+    }
+    .recent-slider-btn.next{
+        right: 3.2%;
+    }
+    .recent-slider-btn.prev{
+        left: 3.2%;
+    }
+    .recent-slider-btn img{
+        width: 15px;
+    }
+    .recent-slider-indicator-container{
+        gap: 40px;
+    }
+    .outer,.inner{
+        height: 3px;
+    }
+    .inner{
+        width: 21.8%;
+    }
+    .view-all{
+        font-size: 0.65rem;
+        gap: 10px;
+    }
+    .view-all img{
+        width: 14px;
+    }
+}
+
+@media screen and (max-width:600px){
+    .recent-slider-wrapper{
+        padding: 35px 0 25px;
+    }
+    .recent-slider-frame,.recent-slider-indicator-container{
+        max-width: 83.4%;
+    }
+    .recent-slider{
+        flex: 0 0 25vw;
+        width: 25vw;
+    }
+    .recent-slider-item a img{
+        width: 25vw;
+    }
+    .recent-slider-btn.next{
+        right: 3.5%;
+    }
+    .recent-slider-btn.prev{
+        left: 3.5%;
+    }
+    .recent-slider-btn img{
+        width: 13px;
+    }
+    .recent-slider-indicator-container{
+        min-width: 83.4%;
+    }
+}
+
+@media screen and (max-width:480px){
+    .recent-slider-wrapper{
+        padding: 35px 0 20px;
+    }
+    .recent-slider-frame,.recent-slider-indicator-container{
+        width: 80%;
+    }
+    .recent-slider{
+        flex: 0 0 36.4vw;
+        width: 36.4vw;
+    }
+    .recent-slider-item a img{
+        width: 36.4vw;
+    }
+    .recent-slider-btn img{
+        width: 12px;
+    }
+    .recent-slider-indicator-container{
+        gap: 25px
+    }
+    .view-all{
+        font-size: 0.55rem;
+        gap: 7px;
+    }
+    .view-all img{
+        width: 10px;
+    }
+}
+
+@media screen and (max-width:385px){
+    .recent-slider-btn.prev {
+        left: 18px;
+    }
+    .recent-slider-btn.next {
+        right: 18px;
+    }
+    .recent-slider-btn img{
+        width: 15px;
+    }
+    .recent-slider-frame{
+        width: 70%;
+    }
+    .recent-slider {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+    .recent-slider-item a{
+        width: 100%;
+    }
+    .recent-slider-item a img{
+        width: 100%;
+    }
+    .recent-slider-item span{
+        top: 8px;
+    }
+    .recent-slider-item span img {
+        width: 15px;
+    }
+    .recent-slider-indicator-container {
+        min-width: 70%;
+        gap: 20px;
+        width: 70%;;
+    }
+}

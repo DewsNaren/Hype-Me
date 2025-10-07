@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hpye Me | Edit Profile</title>
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/edit-profile.css">
+    <link rel="icon" href="./assets/images/fav.png" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo-container">
+            <a href="./index.html" class="logo"><img src="./assets/images/logo.png" alt="logo"></a>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><img src="./assets/images/g-search.png" class="g-search" alt="g-search"></li>
+                <li class="location-list"><span>TX 77441</span><img src="./assets/images/location.png" alt="location"></li>
+                <li><span class="user-profile">MC</span><button type="button"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button></li>
+                <li>
+                    <div class="nav-btn-container">
+                        <a href="#" class="buy-btn">Buy</a>
+                        <a href="#" class="sell-btn">Sell</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-container">
+        <div class="close-btn-container">
+            <button type="button" class="close-btn"><img src="./assets/images/close.png" alt="close"></button>
+        </div>
+        <div class="seller-profile-wrapper">
+            <h2 class="profile-title">Edit Profile</h2>
+            <div class="profile-outer-container">
+                <div class="profile-inner-container">
+                    <div class="personal-data-container">
+                        <h3 class="personal-title" >Personal Data</h3>
+                        <div class="personal-form-container">
+                            <form id="profile-form" class="profile-form">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <div class="input-wrapper">
+                                        <input name="username" id="username" class="username" type="text" placeholder="malhotra" autocomplete="off">
+                                        <p class="error">no error</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group image-group">
+                                    <p class="label-title">Profile image</p>
+                                    <div class="profile-image-preview">
+                                        <img src="./assets/images/profile-pic.jpg" alt="Profile">
+                                        <button type="button" class="action-btn delete-image-btn">Delete Image</button>
+                                        <input type="hidden" class="del-profile-input" name="delProfile" value="false">
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="first-name">First name</label>
+                                    <div class="input-wrapper">
+                                        <input name="first-name" id="first-name" class="first-name" type="text" placeholder="Malhotra" autocomplete="off" >
+                                        <p class="error">no error</p>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="last-name">Last name</label>
+                                    <div class="input-wrapper">
+                                        <input  name="last-name" id="last-name" class="last-name" type="text" placeholder="Collections">
+                                        <p class="error">no error</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <div class="input-wrapper">
+                                        <div class="custom-select">
+                                            <select id="country" name="country" class="country" autocomplete="off">
+                                                <option>United States</option>
+                                                <option>India</option>
+                                                <option>Canada</option>
+                                            </select>
+                                            <span class="dropdown-icon"><img src="./assets/images/drop-down.png"  alt="dropdown"></span>
+                                        </div>
+                                        <p class="error">no error</p>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <div class="input-wrapper">
+                                        <div class="custom-select">
+                                            <select id="city" class="city">
+                                                <option>Texas</option>
+                                                <option>India</option>
+                                                <option>Canada</option>
+                                            </select>
+                                            <span class="dropdown-icon"><img src="./assets/images/drop-down.png"  alt="dropdown"></span>
+                                        </div>
+                                        <p class="error">no error</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="zip-code">Zip Code</label>
+                                    <div class="input-wrapper">
+                                        <input name="zip-code" id="zip-code" class="zip-code" type="text" placeholder="77441">
+                                        <p class="error">no error</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="options-container">
+                        <h3 class="option-title">Options</h3>
+                        <div class="option-form-container">
+                            <div class="form-row sign-in-option">
+                                <label for="email-address" class="form-row-label">Email address</label>
+                                <div class="inline-text">
+                                    <input type="email" id="email-address" name="email-address" class="email-input" value="malhotra@gmail.com" autocomplete="email">
+                                    <a href="#">Change Email</a>
+                                </div>
+                            </div>
+
+                            <div class="form-row sign-in-option social-btn-container">
+                                <p class="label-title">Sign in with</p>
+                                <div class="social-buttons">
+                                    <button type="button" class="fb-btn">Facebook</button>
+                                    <button type="button" class="google-btn">Google</button>
+                                </div>
+                            </div>
+
+                            <div class="form-row check-row">
+                                <p class="label-title">Email notifications</p>
+                                <div class="checkbox-list">
+                                    <div class="custom-checkbox">
+                                        <input name="private-messages" type="checkbox" id="private-messages">
+                                        <label class="custom-label" for="private-messages">Private messages</label>
+                                    </div>
+                                    <div class="custom-checkbox">
+                                        <input name="news-tips" type="checkbox" id="news-tips" checked>
+                                        <label class="custom-label" for="news-tips">Send me latest news and tips</label>
+                                    </div>
+                                    <div class="custom-checkbox">
+                                        <input name="notifications" type="checkbox" id="notifications" checked>
+                                        <label class="custom-label" for="notifications">Send me important notifications</label>
+                                    </div>
+                                    <div class="custom-checkbox">
+                                        <input name="new-comments" type="checkbox" id="new-comments" checked>
+                                        <label class="custom-label" for="new-comments">Notify me of new comments</label>
+                                    </div>
+                                    <div class="custom-checkbox">
+                                        <input name="friend-messages" type="checkbox" id="friend-images" checked>
+                                        <label class="custom-label" for="friend-images">Notify me of new images uploaded by friends</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row more-options">
+                                <p class="label-title">More</p>
+                                <div>
+                                    <a href="#">Change Password</a>
+                                    <a href="#" class="danger">Delete Account</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="save-btn" form="profile-form" type="submit">Save and Close</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./assets/js/edit-profile.js"></script>
+</body>
+</html>

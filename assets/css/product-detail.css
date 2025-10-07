@@ -1,0 +1,878 @@
+.header{
+    position: sticky;
+    top: 0px;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.nav-btn-container a{
+    display: inline-block;
+    font-size: 1.1rem;
+}
+.add-btn{
+    background-color: rgb(76, 21, 187);
+    color: rgb(233, 233, 233);
+    padding: 12px 14px;
+    font-weight: bold;
+}
+.sell-btn{
+    background-color: rgb(233, 233, 233);
+    color: rgb(76, 21, 187);
+    padding: 12px 15px;
+    font-weight: 500;
+}
+.main-container{
+    background-color: rgb(52, 40, 60);
+}
+
+.product-detail-container {
+    max-width: 92.71%;
+    color: #fff;
+    margin: 0 auto;
+    padding: 25px 30px 80px;
+    border-bottom: 1px solid rgb(71, 68, 73);
+}
+.breadcrumb {
+    color:rgb(186, 181, 185);
+}
+.breadcrumb a{
+    font-size: 0.94rem;
+    color:rgb(186, 181, 185);
+    color: rgb(214, 209, 216);
+}
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+.breadcrumb .separator{
+    font-size: 0.9rem;
+}
+.breadcrumb span {
+    color: #aaa;
+}
+.product-container-wrapper{
+    max-width: 87.2%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.product-header-container{
+    display: flex;
+    justify-content: space-between;
+    padding:40px 0 35px;
+    padding-right: 35px;
+}
+.icon-group{
+    display: flex;
+    gap: 25px;
+}
+.icon-group button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.product-body-container{
+    display: flex;
+    gap: 50px;
+}
+.product-description-container{
+    width: 60.14%;
+}
+.selected-shoe-name{
+    font-size: 2.19rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.main-image-container {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.main-image {
+    width: 100%;     
+    height: 90%;   
+    object-fit: contain;
+
+}
+
+.thumbnail-row {
+  display: flex;
+  gap: 20px;
+  margin-top:25px
+}
+
+.thumbnail-row .thumb-wrapper {
+  width: 120px;
+  height: 120px ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.thumb1{
+    transform: rotate(-180deg);
+}
+.thumb3{
+    transform: rotate(90deg) ; 
+}
+.thumb4{
+    transform: rotate(270deg); 
+}
+.thumbnail-row .thumb-wrapper.active{
+    border: 2px solid #8f44fd;
+}
+.thumbnail-row .thumb-wrapper img {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
+}
+.product-description{
+    margin-top: 100px;
+}
+.product-description h3{
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: rgb(236, 243, 243);
+    margin-bottom: 35px;
+}
+.product-description p{
+    color: #aaa;
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+.product-description p.hidden{
+    display: none;
+}
+.read-more{
+    color: rgb(145, 99, 238);
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+.read-more:hover{
+    text-decoration: underline;
+}
+/* Selected Product Details */
+.product-info{
+    color: rgb(100, 97, 97);
+    min-width: 530px;
+}
+
+.selected-product-detail{
+    background-color: rgb(233, 233, 233);
+    padding: 25px;
+}
+.price-container{
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-left: 5px;
+}
+.price-container p{
+    display: flex;
+    flex-direction: column;
+}
+.price {
+    color: rgb(56, 53, 52);
+    font-size: 3rem;
+    font-weight: bold;
+    
+}
+.seller-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+  margin-left: 5px;
+}
+
+.seller-info img{
+    align-self: flex-start;
+}
+
+.seller-name {
+    font-size: 1.6rem;
+    color: #41403e;
+    font-weight: 500;
+    -webkit-text-stroke-width: thin;
+}
+.member-since{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.selected-product-review{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 14px;
+    margin-bottom: 21px;
+}
+
+.selected-product-rating .fa-star{
+    color: #5718be;
+    font-size: clamp(9px, 0.84vw, 16px);
+}
+.selected-product-rating .fa-star.fa-half{
+    background: linear-gradient(90deg, #5718be 50%, #a4a4a4 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.selected-product-review p{
+    color:rgb(87, 24, 190);
+    font-weight: 500;
+}
+.selected-product-review p a{
+    color:rgb(87, 24, 190);
+}
+.buy-now-btn{
+  background-color: rgb(87, 24, 190);
+  color: white;
+  border: none;
+  padding: 20px 2rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  width: 100%;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.product-specs {
+    color: white;
+    padding: 25px;
+    padding-left: 27px;
+    margin: 20px auto;
+}
+
+.product-specs h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    border-bottom: 1px solid rgb(71, 68, 73);
+}
+
+
+.details-table {
+    width: max-content;
+    margin-bottom: 20px;
+}
+.details-table tr.hidden{
+    display: none;
+}
+.details-table .spec-name,.spec-value{
+    padding: 6px 0;
+}
+.details-table .spec-name {
+    font-weight: 500;
+    color: #a7a2a2;
+    font-size: 1.3rem;
+    
+}
+
+.details-table .spec-value {
+    font-weight: 500;
+    color: #fdfcfce0;
+    font-size: 1.3rem;
+    padding-left: 60px;
+    text-transform: capitalize;
+}
+
+.view-more {
+    margin-top: 40px;
+}
+
+.view-more a {
+    color: rgb(145, 99, 238);
+    text-decoration: none;
+    font-size:1.2rem;
+    font-weight: 500;
+}
+
+.view-more a:hover {
+    text-decoration: underline;
+}
+
+/*Similar Products */
+.similar-products{
+    padding: 70px 0 40px;
+}
+.section-title{
+    color: rgb(240, 242, 239);
+    text-align: center;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+}
+
+/*Footer */
+footer{
+    padding-top: 90px;
+}
+
+.quick-links{
+    padding-top: 0;
+}
+
+@media screen and (max-width:1600px){
+    .nav-btn-container a{
+        font-size: 0.9rem;
+    }
+    .location-list img{
+        width: 19px;
+    }
+    .g-search{
+        margin-right: 7px;
+    }
+    .add-btn{
+        padding: 10px 12px;
+    }
+    .sell-btn{
+        padding: 10px 13px;
+    }
+    .product-detail-container {
+        padding: 17px 24px 65px;
+    }
+    .breadcrumb .separator{
+        font-size: 0.7rem;
+        color: #aaa;
+    }
+    .breadcrumb a,.selected{
+        font-size: 0.8rem;
+    }
+    .product-container-wrapper{
+        padding: 0 8px;
+    }
+    .product-header-container{
+        padding: 34px 0 25px;
+        padding-right: 30px;
+    }
+    .product-body-container{
+        gap: 41px;
+    }
+    .selected-shoe-name{
+        font-size: 1.94rem;
+    }
+    .icon-group .like-btn img{
+        width: 22px;
+    }
+    .icon-group .share-btn img{
+        width: 20px;
+    }
+    .main-image-container{
+        height: 500px;
+    }
+    .thumbnail-row{
+        margin-top: 20px;
+        gap:17px;
+    }
+    .thumbnail-row .thumb-wrapper{
+        width: 101px;
+        height: 101px;
+    }
+    .thumbnail-row .thumb-wrapper.active{
+        border: 1px solid #8f44fd;
+    }
+    .product-description{
+        margin-top: 80px;
+    }
+    
+    .product-description h3{
+        font-size: 1.32rem;
+        margin-bottom: 30px;
+    }
+    .product-description p{
+        font-size: 0.97rem;
+        margin-bottom: 22px;
+    }
+    .read-more{
+        font-size: 1rem;
+    }
+    .product-info{
+        min-width:442px ;
+    }
+    .selected-product-detail{
+        padding: 20px;
+    }
+    .price-container{
+        font-size: 1rem;
+    }
+    .price{
+        font-size: 2.5rem;
+    }
+    .seller-info{
+        gap: 15px;
+        margin-top: 25px;
+    }
+    .seller-info img{
+        width: 67px;
+    }
+    .seller-name{
+        font-size: 1.37rem;
+    }
+    .member-since{
+        font-size: 0.88rem;
+    }
+    .selected-product-review{
+        margin-top: 10px;
+        margin-bottom: 13px;
+    }
+    .selected-product-review p{
+        font-size: 0.8rem;
+    }
+    .buy-now-btn{
+        padding: 18px 1.8rem;
+        font-size: 1.4rem;
+    }
+    .product-specs{
+        padding: 22px;
+        margin:18px 0;
+    }
+    .product-specs h3{
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+        padding-bottom: 8px;
+    }
+    .details-table .spec-name,.spec-value{
+        padding: 4px 0;
+    }
+    .details-table .spec-name,.details-table .spec-value {
+        font-size: 1.15rem;
+    }
+    .details-table .spec-value {
+        padding-left: 50px;
+    }
+    .view-more{
+        margin-top: 35px;
+    }
+    .view-more a{
+        font-size: 1.05rem;
+    }
+    .section-title{
+        font-size: 2.48rem;
+        letter-spacing: 0.5px;
+    }
+    .similar-products{
+        padding: 60px 0 35px;
+    }
+    footer{
+        padding-top: 80px;
+    }
+}
+
+@media screen and (max-width:1400px){
+    .location-list img{
+        width: 16px;
+    }
+    .nav-btn-container a{
+        font-size: 0.8rem;
+    }
+    .add-btn{
+        padding: 8px 10px;
+    }
+    .sell-btn{
+        padding: 8px 11px;
+    }
+    .product-detail-container {
+        padding: 12px 21px 50px;
+    }
+    .breadcrumb .separator{
+        font-size: 0.55rem;
+        color: #aaa;
+    }
+    .breadcrumb a,.selected{
+        font-size: 0.67rem;
+    }
+    .product-container-wrapper{
+        padding: 0 7px;
+    }
+    .product-header-container{
+        padding: 28px 0 22px;
+        padding-right: 30px;
+    }
+    .product-body-container{
+        gap: 35px;
+    }
+    .selected-shoe-name{
+        font-size: 1.65rem;
+    }
+    .icon-group .like-btn img{
+        width: 19px;
+    }
+    .icon-group .share-btn img{
+        width: 17px;
+    }
+    .main-image-container{
+        height: 400px;
+    }
+    .thumbnail-row{
+        margin-top: 17px;
+        gap:14px;
+    }
+    .thumbnail-row .thumb-wrapper{
+        width: 86px;
+        height: 86px;
+    }
+    .product-description{
+        margin-top: 68px;
+    }
+    
+    .product-description h3{
+        font-size: 1.12rem;
+        margin-bottom: 22px;
+    }
+    .product-description p{
+        font-size: 0.82rem;
+        margin-bottom: 16px;
+    }
+    .read-more{
+        font-size: 0.9rem;
+    }
+    .product-info{
+        min-width:377px;
+    }
+    .selected-product-detail{
+        padding: 15px 16px;
+    }
+    .price-container{
+        font-size: 0.9rem;
+    }
+    .price{
+        font-size: 2.1rem;
+    }
+    .seller-info{
+        gap: 12px;
+        margin-top: 25px;
+        align-items: flex-start;
+    }
+    .seller-info img{
+        width: 57px;
+    }
+    .seller-name{
+        font-size: 1.22rem;
+    }
+    .member-since{
+        font-size: 0.81rem;
+    }
+    .selected-product-review{
+        margin-top: 3px;
+        margin-bottom: 13px;
+        gap: 15px;
+    }
+    .selected-product-review p{
+        font-size: 0.67rem;
+    }
+    .buy-now-btn{
+        padding: 16px 1.7rem;
+        font-size: 1.2rem;
+    }
+    .product-specs{
+        padding: 18px;
+        margin:18px 0;
+    }
+    .product-specs h3{
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        padding-left: 3px;
+        padding-bottom: 8px;
+    }
+
+    .details-table .spec-name,.spec-value{
+        padding: 2px 0;
+    }
+
+    .details-table .spec-name,.details-table .spec-value {
+        font-size: 1rem;
+    }
+    .details-table .spec-value {
+        padding-left: 40px;
+    }
+    .view-more{
+        margin-top: 20px;
+    }
+    .view-more a{
+        font-size: 0.95rem;
+    }
+    .section-title{
+        font-size: 2.12rem;
+    }
+    .similar-products{
+        padding: 52px 0 28px;
+    }
+    footer{
+        padding-top: 68px;
+    }
+}
+
+@media screen and (max-width:1024px){
+    .location-list img{
+        width: 12px;
+    }
+    .nav-btn-container a{
+        font-size: 0.62rem;
+    }
+    .add-btn{
+        padding: 7px 7px;
+    }
+    .sell-btn{
+        padding: 7px 8px;
+    }
+    .product-detail-container {
+        padding: 6px 15px 40px;
+    }
+    .product-container-wrapper{
+        width: 87%;
+        padding: 0 5px;
+    }
+    .breadcrumb .separator{
+        font-size: 0.4rem;
+        color: #aaa;
+    }
+    .breadcrumb a,.selected{
+        font-size: 0.48rem;
+    }
+    .product-header-container{
+        padding: 18px 0 16px;
+        padding-right: 10px;
+    }
+    .product-body-container{
+        gap: 27px;
+        padding-right: 6px;
+    }
+    .product-description-container{
+        width: 61.5%;
+    }
+    .selected-shoe-name{
+        font-size: 1.25rem;
+    }
+    .icon-group{
+        gap: 15px;
+    }
+    .icon-group .like-btn img{
+        width: 14px;
+    }
+    .icon-group .share-btn img{
+        width: 13px;
+    }
+    .main-image-container{
+        height: 320px;
+    }
+    .thumbnail-row{
+        margin-top: 12px;
+        gap:12px;
+    }
+    .thumbnail-row .thumb-wrapper{
+        width: 63px;
+        height: 63px;
+    }
+    .product-description{
+        margin-top: 55px;
+    }
+    
+    .product-description h3{
+        font-size: 0.84rem;
+        margin-bottom: 15px;
+    }
+    .product-description p{
+        font-size: 0.6rem;
+        margin-bottom: 10px;
+    }
+    .read-more{
+        font-size: 0.7rem;
+    }
+    .product-info{
+        min-width:282px;
+        max-width: 282px;
+    }
+    .selected-product-detail{
+        padding: 10px 11px;
+    }
+    .price-container{
+        font-size: 0.7rem;
+        margin-left: 0;
+    }
+    .price{
+        font-size: 1.5rem;
+    }
+    .seller-info{
+        gap: 8px;
+        margin-top: 25px;
+        margin-left: 0;
+    }
+    .seller-info img{
+        width: 43px;
+    }
+    .seller-name{
+        font-size: 0.9rem;
+    }
+    .member-since{
+        font-size: 0.65rem;
+    }
+    .selected-product-review{
+        margin-top: 0px;
+        margin-bottom: 2px;
+        gap: 10px;
+    }
+    .selected-product-review p{
+        font-size: 0.55rem;
+    }
+    .buy-now-btn{
+        padding: 11px 1.3rem;
+        font-size: 0.95rem;
+    }
+    .product-specs{
+        padding: 12px;
+        margin:17px 0 10px;
+    }
+    .product-specs h3{
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+        padding-left: 3px;
+        padding-bottom: 8px;
+    }
+    .details-table{
+        margin-bottom: 15px;
+    }
+    .details-table .spec-name,.spec-value{
+        padding: 1px 0;
+    }
+    .details-table .spec-name,.details-table .spec-value {
+        font-size: 0.78rem;
+    }
+    .details-table .spec-value {
+        padding-left: 28px;
+    }
+    .view-more{
+        margin-top: 0px;
+    }
+    .view-more a{
+        font-size: 0.7rem;
+    }
+    .section-title{
+        font-size: 1.55rem;
+    }
+    .similar-products{
+        padding: 38px 0 22px;
+    }
+    footer{
+        padding-top: 50px;
+    }
+}
+
+@media screen and (max-width:768px){
+    .product-detail-container{
+        width: 90%;
+        padding: 10px 15px 20px;
+    }
+    .product-container-wrapper{
+        padding: 0 20px;
+    }
+    
+    .breadcrumb a,.selected{
+        font-size: 0.55rem;
+    }
+    .product-header-container{
+        padding: 18px 0;
+    }
+    .product-body-container{
+        padding-right: 0;
+        flex-direction: column;
+    }
+    .product-description-container{
+        width: 100%;
+    }
+    .product-description p{
+        font-size: 0.7rem;
+    }
+    .details-table .spec-name,.spec-value{
+        padding: 3px 0;
+    }
+    .section-title{
+        font-size: 1.4rem;
+    }
+    .product-info{
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .selected-product-review p{
+        font-size: 0.6rem;
+    }
+    .buy-btn{
+        padding: 14px 1.2rem;
+    }
+    footer{
+        padding-top: 40px;
+    }
+}
+
+@media screen and (max-width:600px){
+    .product-detail-container{
+        width: 95%;
+    }
+    .section-title{
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width:480px){
+    .product-container-wrapper{
+        padding: 0px;
+        width: 100%;
+    }
+    .product-detail-container{
+        width: 100%;
+        padding: 15px 0;
+    }
+    .selected-shoe-name{
+        font-size: 1rem;
+    }
+    .thumbnail-row{
+        margin-top: 10px;
+        gap: 10px;
+    }
+     .thumbnail-img{
+        width: 55px;
+        height: 50.4px;
+    }
+    .product-description{
+        margin-top: 35px;
+    }
+    .product-description h3{
+        font-size: 0.75rem;
+    }
+    .product-description p{
+        font-size: 0.61rem;
+    }
+    .read-more{
+        font-size: 0.65rem;
+    }
+    .price{
+        font-size: 1.4rem;
+    }
+    .seller-info img{
+        width: 40px;
+    }
+    .selected-product-detail{
+        padding: 8px;
+    }
+    .selected-product-review p{
+        font-size: 0.55rem;
+    }
+    .details-table .spec-name,.details-table .spec-value {
+        font-size: 0.75rem;
+    }
+    .details-table .spec-value {
+        padding-left: 30px;
+    }
+    .section-title{
+        font-size: 1.1rem;
+    }
+    .similar-products{
+        padding: 32px 0 22px;
+    }
+
+}

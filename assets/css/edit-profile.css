@@ -1,0 +1,809 @@
+.header{
+    position: sticky;
+    top: 0;
+    position: relative;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.user-profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-weight: 500;
+    background-color: rgb(224, 220, 147);
+    color: rgb(22, 18, 18);
+    font-size: 1.4rem;
+}
+
+.buy-btn{
+    background-color: rgb(76, 21, 187);
+    color: rgb(233, 233, 233);
+}
+.sell-btn{
+    background-color: rgb(233, 233, 233);
+    color: rgb(76, 21, 187);
+}
+
+.main-container{
+    background-color: rgb(52, 40, 60);
+    padding: 45px 40px;
+}
+
+.close-btn-container{
+    display: flex;
+    justify-content: flex-end;
+}
+.close-btn{
+    background: transparent;
+    border: none;
+}
+
+.seller-profile-wrapper{
+    max-width: 92.392%;
+    margin: 0 auto;
+    padding-top: 8px;
+}
+.profile-title{
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 28px;
+}
+.profile-outer-container{
+    background-color: #fff;
+    padding: 40px 90px 110px 55px ;
+    padding: 2.08332vw 4.6875vw 5.72918vw 2.86459vw;
+    
+}
+.profile-inner-container{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 7.291667vw;
+}
+.personal-title, .option-title{
+    font-size: 1.5rem;
+    color:rgba(26, 23, 23, 0.7);
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(180, 180, 180);
+}
+.personal-form-container{
+    padding-top: 2.08332vw;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 77.445%;
+    padding-right: 1.46vw;
+}
+.personal-data-container{
+    width: 42.766%;
+}
+.form-group{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.9vw;
+    gap: 2.08332vw;
+}
+.form-group label {
+    font-weight: 500;
+    color: #9e9999;
+    font-size: 1.15rem;
+    width: 120px;
+    text-align: right;
+}
+
+.form-group input[type="text"],.custom-select {
+    padding: 15px;
+    border: 1px solid #ccc;
+    width: 17.188vw;
+}
+.form-group input[type="text"],.custom-select select{
+    font-size: 1.15rem;
+    color: grey;
+    outline: none;
+}
+.image-group{
+    display: flex;
+    align-items: start;
+    gap: 2.08332vw;
+    margin-bottom: 2.08332vw;
+}
+.profile-image-preview {
+    position: relative;
+    height: 200px;
+}
+
+.action-btn {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(230, 221, 221);
+    border: none;
+    padding: 12px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+}
+
+.custom-select-wrapper {
+  position: relative;
+}
+
+.custom-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.custom-select select {
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.custom-select .dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;  
+}
+.input-wrapper .error{
+    color:rgb(242, 18, 18);
+    font-size:clamp(10px, 0.83vw,0.95rem);
+    visibility:hidden;
+}
+
+.input-wrapper.error input{
+    border-color:rgb(206, 67, 67);
+}
+
+.input-wrapper.error .error{
+    visibility: visible;
+}
+
+
+/*Options*/
+.options-container{
+    padding-right: 2.08332vw;
+    padding-left: 8px;
+    width: 47%;
+}
+.option-title{
+    margin-right: 15px;
+}
+.option-form-container{
+    padding-top: 3.3854vw;
+    padding-left: 1.625vw;
+}
+
+.social-btn-container{
+    align-items: center;
+}
+.form-row{
+    display: flex;
+    gap: 2.08322vw;
+    margin-bottom: 1.45835vw;
+}
+
+.form-row-label,.label-title{
+    font-weight: 500;
+    color: #9e9999;
+    font-size: 1.15rem;
+}
+
+.form-row-label, .sign-in-option .label-title,.more-options .label-title{
+    width: 169px;
+    text-align: right;
+}
+
+.inline-text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.email-input{
+    border: none;
+    outline: none;
+    font-size: 1.15rem;
+    color: rgba(0, 0, 0, 0.7);
+}
+.inline-text a {
+  color: #6428d4;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.social-buttons button {
+  margin-right: 15px;
+  padding: 10px 16px;
+  border: none;
+  color: rgb(109, 107, 107);
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: 500;
+  border-radius: 25px;
+}
+.fb-btn{
+    background-color: #ccc;
+}
+.google-btn{
+    background-color: #e7e6e6;
+}
+.check-row{
+    margin-top: 2.60416vw;
+}
+
+.custom-checkbox{
+    margin-bottom: 16px;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: none; 
+  background-image: url('../images/blank-check-box.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 2px;
+  transition: background-image 0.2s ease;
+}
+
+.custom-checkbox input[type="checkbox"]:checked {
+  background-image: url('../images/check-box.png')
+}
+
+
+.custom-label{
+    color: rgba(26, 23, 23, 0.7);
+    font-size: 1.1rem;
+    margin-left: 8px;
+}
+
+.more-options a {
+  display: block;
+  margin-bottom: 1.5625vw;
+  color: #6428d4;
+  font-weight: 500;
+}
+
+
+.form-actions {
+  text-align: center;
+  padding-top: 4.16666vw;
+  border-top: 1px solid #ccc;
+  max-width: 72.917vw;
+  margin: 0 auto;
+}
+
+.save-btn {
+  background-color: rgb(87, 24, 190);
+  color: rgb(228, 221, 221);
+  padding: 15px 45px;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width:1600px){
+    .location-list img{
+        width: 19px;
+    }
+    .g-search{
+        margin-right: 7px;
+    }
+    .user-profile{
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    .close-btn img{
+        width: 33px;
+    }
+    .main-container{
+        padding: 38px 34px;
+    }
+    .seller-profile-wrapper{
+        max-width: 92.392%;
+        padding-top: 3px;
+    }
+    .profile-title{
+        font-size: 1.84rem;
+        margin-bottom: 23px;
+    }
+    .profile-outer-container{
+        padding: 1.98vw 4.6875vw 5.72918vw 2.86459vw;
+        
+    }
+    
+    .personal-title, .option-title{
+        font-size: 1.26rem;
+        padding-bottom: 15px;
+    }
+    .personal-form-container{
+        padding-top: 2.345vw;
+        max-width: 77.445%;
+        padding-right: 1.46vw;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+        width: 105px;
+    }
+
+    .form-group input[type="text"],.custom-select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        width: 17.188vw;
+    }
+    .form-group input[type="text"],.custom-select select{
+        font-size: 1rem;
+        color: grey;
+        outline: none;
+    }
+    .profile-image-preview {
+        height: 160px;
+    }
+    .profile-image-preview img{
+        height: 160px;
+    }
+    .action-btn {
+        padding: 10px 0;
+        font-size: 0.9rem;
+    }
+
+    .custom-select .dropdown-icon {
+        right: 12px;
+    }
+    .custom-select .dropdown-icon img{
+        width: 12px;
+    }
+
+    .form-row{
+        margin-bottom: 25px;
+    }
+    .form-row-label,.label-title,.email-input{
+        font-size: 1rem;
+    }
+    .form-row-label, .sign-in-option .label-title,.more-options .label-title{
+        width: 147px;
+    }
+    .inline-text{
+        gap: 5px;
+    }
+    .inline-text a {
+        font-size: 0.9rem;
+    }
+
+    .social-buttons button {
+        margin-right: 12px;
+        padding: 8px 14px;
+        font-size: 1rem;
+    }
+
+    .custom-checkbox{
+        margin-bottom: 12px;
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+        width: 20px;
+        height: 20px;   
+    }
+
+    .custom-label{
+        font-size: 0.9rem;
+    }
+    .more-options a {
+        margin-bottom: 22px;
+        font-size: 0.9rem;
+    }
+
+    .save-btn {
+        padding: 12px 32px;
+        font-size: 0.95rem;
+    }
+}
+
+@media screen and (max-width:1400px){
+    .location-list img{
+        width: 16px;
+    }
+    .g-search{
+        margin-right: 7px;
+    }
+    .user-profile{
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    .close-btn img{
+        width: 28px;
+    }
+    .main-container{
+        padding: 33px 29px;
+    }
+    .seller-profile-wrapper{
+        max-width: 92.4324%;
+        padding-top: 3px;
+    }
+    .profile-title{
+        font-size: 1.5rem;
+        margin-bottom: 21px;
+    }
+    .profile-outer-container{
+        padding: 1.98vw 4.6875vw 5.72918vw 2.86459vw;
+        
+    }
+    .personal-data-container{
+        width: 42.99%;
+    }
+    .personal-title, .option-title{
+        font-size: 1.08rem;
+        padding-bottom: 12px;
+    }
+    .personal-form-container{
+        padding-top: 2.345vw;
+        max-width: 77.445%;
+        padding-right: 1.46vw;
+    }
+    .form-group label {
+        font-size: 0.83rem;
+        width: 87px;
+    }
+
+    .form-group input[type="text"],.custom-select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        width: 17.188vw;
+    }
+    .form-group input[type="text"],.custom-select select{
+        font-size: 0.88rem;
+    }
+
+    .profile-image-preview {
+        height: 140px;
+    }
+    .profile-image-preview img{
+        width: 140px;
+        height: 140px;
+    }
+    .action-btn {
+        padding: 8px 0;
+        font-size: 0.75rem;
+    }
+
+    .custom-select .dropdown-icon {
+        right: 10px;
+    }
+    .custom-select .dropdown-icon img{
+        width: 10px;
+    }
+
+    .options-container{
+        width: 47.5%;
+    }
+    .option-form-container{
+        padding-top: 3.3854vw;
+        padding-left: 1.55vw;
+    }
+    .option-title{
+        margin-right: 12px;
+    }
+
+    .form-row{
+        gap: 2.08332vw;
+        margin-bottom: 25px;
+    }
+    .form-row-label,.label-title,.email-input{
+        font-size: 0.83rem;
+    }
+    .form-row-label, .sign-in-option .label-title,.more-options .label-title{
+        width: 122px;
+    }
+    .inline-text{
+        gap: 5px;
+    }
+    .inline-text a {
+        font-size: 0.78rem;
+    }
+
+    .social-buttons button {
+        margin-right: 10px;
+        padding: 7px 14px;
+        font-size: 0.83rem;
+    }
+
+    .custom-checkbox{
+        margin-bottom: 10px;
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+        width: 17px;
+        height: 17px;   
+    }
+
+    .custom-label{
+        font-size: 0.78rem;
+        margin-left: 5px;
+    }
+
+    .more-options a {
+        margin-bottom: 18px;
+        font-size: 0.78rem;
+    }
+
+    .save-btn {
+        padding: 10px 28px;
+        font-size: 0.85rem;
+    }
+}
+
+@media screen and (max-width:1024px){
+    .location-list img{
+        width: 12px;
+    }
+   
+    .user-profile{
+        width: 28px;
+        height: 28px;
+        font-size: 0.72rem;
+    }
+    .close-btn img{
+        width: 21px;
+    }
+    .main-container{
+        padding: 25px 21px 65px;
+    }
+    .seller-profile-wrapper{
+        max-width:  92.362%;
+        padding-top: 0px;
+    }
+    .profile-title{
+        font-size: 1.2rem;
+        margin-bottom: 14px;
+    }
+    .profile-outer-container{
+        padding: 1.98vw 4.6875vw 5.72918vw 2.86459vw;
+        
+    }
+    .personal-data-container{
+        width: 42.99%;
+    }
+    .personal-title, .option-title{
+        font-size: 0.82rem;
+        padding-bottom: 8px;
+    }
+    .personal-form-container{
+        padding-top: 2.345vw;
+        max-width: 77.5%;
+        padding-right: 1.46vw;
+    }
+    .form-group label {
+        font-size: 0.65rem;
+        width: 63px;
+    }
+
+    .form-group input[type="text"],.custom-select {
+        padding: 7px;
+        width: 17.188vw;
+    }
+    .form-group input[type="text"],.custom-select select{
+        font-size: 0.7rem;
+    }
+
+    .profile-image-preview {
+        height: 105px;
+    }
+    .profile-image-preview img{
+        width: 105px;
+        height: 105px;
+    }
+    .delete-image-btn {
+        padding: 5px 0;
+        font-size: 0.6rem;
+    }
+
+    .custom-select .dropdown-icon {
+        right: 10px;
+    }
+    .custom-select .dropdown-icon img{
+        width: 10px;
+    }
+
+    .options-container{
+        width: 47.7%;
+        padding-right: 1vw;
+    }
+    .option-form-container{
+        padding-top: 3.3854vw;
+        padding-left: 1.55vw;
+    }
+    .option-title{
+        margin-right: 12px;
+    }
+    .form-row{
+        gap: 2.08332vw;
+        margin-bottom: 10px;
+    }
+    .form-row-label,.label-title{
+        font-size: 0.6rem;
+    }
+    .form-row-label, .sign-in-option .label-title,.more-options .label-title{
+        width: 88px;
+    }
+    .email-input{
+        font-size: 0.7rem;
+    }
+    .inline-text{
+        gap: 5px;
+    }
+    .inline-text a {
+        font-size: 0.6rem;
+    }
+
+    .social-buttons button {
+        margin-right: 7px;
+        padding: 5px 9px;
+        font-size: 0.65rem;
+    }
+
+    .custom-checkbox{
+        margin-bottom: 2px;
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+        width: 13px;
+        height: 13px; 
+        margin-top: 6px;  
+    }
+
+    .custom-label{
+        font-size: 0.62rem;
+        margin-left: 2px;
+    }
+
+    .more-options a {
+        margin-bottom: 14px;
+        font-size: 0.6rem;
+    }
+
+    .save-btn {
+        padding: 8px 23px;
+        font-size: 0.68rem;
+    }
+}
+@media screen and (max-width:768px){
+    .location-list img{
+        width: 12px;
+    }
+   .profile-title{
+        font-size: 1.1rem;
+    }
+    .profile-inner-container{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .personal-data-container,.options-container{
+        width: 80%;
+    }
+    
+    .form-group input[type="text"], .custom-select {
+        width: 160px;
+    }
+
+    .custom-select .dropdown-icon {
+        right: 8px;
+    }
+    .custom-select .dropdown-icon img{
+        width: 8px;
+    }
+
+    .options-container{
+        padding: 0;
+    }
+    .option-title{
+        padding-left: 0;
+    }
+
+    .options-form-container{
+        padding-left: 0;
+    }
+    .personal-form-container{
+        padding-top: 20px;
+        padding-right: 0;
+    }
+
+}
+
+@media screen and (max-width:600px){
+    .profile-title{
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+    .profile-outer-container{
+        padding: 15px 25px 30px;
+    }
+    .personal-data-container,.options-container{
+        width: 85%;
+    }
+    .form-group{
+        margin-bottom: 15px;
+        gap: 15px;
+    }
+    .input-wrapper .error {
+        font-size: 0.6rem;
+    }
+    .image-group{
+        margin-bottom: 15px;
+    }
+
+    .form-row{
+        gap: 15px;
+    }
+    .option-form-container{
+        padding-top: 20px;
+    }
+    .personal-form-container{
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width:480px){
+    .user-profile{
+        width: 25px;
+        height: 25px;
+        font-size: 0.65rem;
+    }
+    .main-container{
+        padding: 20px;
+    }
+    .close-btn img{
+        width: 15px;
+    }
+    .profile-title{
+        font-size: 0.9rem;
+    }
+    .profile-outer-container {
+        padding: 15px 15px 25px;
+    }
+    .personal-data-container,.options-container{
+        width: 90%;
+    }
+    .form-group{
+        flex-direction: column;
+        margin: 0 auto 15px;
+        gap: 8px;
+        align-items: flex-start; 
+        width: fit-content;
+    }
+    .input-wrapper .error{
+        font-size: 0.55rem;
+    }
+    .image-group{
+        width: 160px;
+    }
+    .form-group label{
+        text-align: left;
+        width: fit-content;
+    }
+    .form-row{
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .form-row-label, .sign-in-option .label-title,.more-options .label-title{
+        text-align: left;
+        width: fit-content;
+    }
+}

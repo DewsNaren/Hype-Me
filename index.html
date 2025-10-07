@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hpye Me | Landing Page</title>
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/slider.css">
+    <link rel="icon" href="./assets/images/fav.png" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo-container">
+            <a href="./index.html" class="logo"><img src="./assets/images/logo.png" alt="logo"></a>
+        </div>
+        <nav class="navbar">
+            <ul class="navList">
+                <li><img src="./assets/images/g-search.png" class="g-search" alt="g-search"></li>
+                <li class="location-list"><span>TX 77441</span><img src="./assets/images/location.png" alt="location">
+                </li>
+                <li class="profile-container"><img src="./assets/images/profile.png" class="user-profile" alt="profile">
+                    <button type="button" class="profile-toggle"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button>
+                    <div class="profile-menu">
+                        <a href="#" class="signup-btn">Sign Up</a>
+                        <a href="#" class="login-btn">LogIn</a>
+                        <a href="#" class="logout-btn">Logout</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-btn-container">
+                        <a href="#" class="buy-btn">Buy</a>
+                        <a href="./my-products.html" class="sell-btn">Sell</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="sentinel"></div>
+        <section class="hero-container">
+            <button class="slider-btn prev hidden"  type="button" >
+                <img src="./assets/images/disable-left-arrow.png" alt="Prev-arrow">
+            </button>
+            <button class="slider-btn next" type="button">
+                <img src="./assets/images/next-arrow.png" alt="Next-arrow">
+            </button>   
+            <div class="slider-indicator-container">
+                <button type="button" class="active"></button>
+                <button type="button"></button>
+                <button type="button"></button>
+            </div>
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="./assets/images/banner-img.jpg" class="slider-img"  alt="banner1">
+                    <div class="slider-item active">
+                        <h2 class="slider-desc">Most Inexpensive, Efficient, & Convenient service in Hype!</h2>                                                 
+                        <a href="#" class="discover-btn">Discover<img src="./assets/images/discover-arrow.png" class="arrow" alt="Arrow"></a> 
+                    </div>          
+                </div>
+                <div class="slider">
+                    <img src="./assets/images/banner-img.jpg" class="slider-img"  alt="banner2">
+                    <div class="slider-item">
+                        <h2 class="slider-desc">Most Inexpensive, Efficient, & Convenient service in Hype!</h2>                                             
+                        <a href="#" class="discover-btn">Discover<img src="./assets/images/discover-arrow.png" class="arrow" alt="Arrow"></a> 
+                    </div> 
+                </div>
+                <div class="slider">
+                    <img src="./assets/images/banner-img.jpg" class="slider-img"  alt="banner3">
+                    <div class="slider-item">
+                        <h2 class="slider-desc">Most Inexpensive, Efficient, & Convenient service in Hype!</h2>                                             
+                        <a href="#" class="discover-btn">Discover<img src="./assets/images/discover-arrow.png" class="arrow" alt="Arrow"></a> 
+                    </div> 
+                </div>
+            </div>
+        </section>
+        
+        <section class="main-container">
+            <div class="search-wrapper">
+                <div class="input-container">
+                    <input type="text" name="search" placeholder="Search..." autocomplete="off">
+                    <span><img src="./assets/images/front-search.png" alt="front-search"></span>
+                </div>
+            </div>
+            <section class="recent-searches">
+                <h3>Recent Searches</h3>
+                <div class="recent-search-list">
+                </div>
+            </section>
+            <section class="popular-brands">
+                <h2 class="section-title">Popular brands of shoes</h2>
+                <div class="popular-shoes-container">
+                    <div class="popular-shoe-container">
+                        <div class="brand-box">
+                            <div class="brand-rotated">
+                                <img src="./assets/images/off-white.png" alt="off-white" />
+                            </div>
+                        </div>
+                        <p class="brand-name">Off-white</p>
+                    </div>
+                    <div class="popular-shoe-container">
+                        <div class="brand-box">
+                            <div class="brand-rotated">
+                                <img src="./assets/images/nike.png" alt="nike"/>
+                            </div>
+                        </div>
+                        <p class="brand-name">Nike</p>
+                    </div>
+                    <div class="popular-shoe-container">
+                        <div class="brand-box">
+                            <div class="brand-rotated">
+                                <img src="./assets/images/adidas.png" alt="adidas" />
+                            </div>
+                        </div>
+                        <p class="brand-name">Adidas</p>
+                    </div>
+                    <div class="popular-shoe-container">
+                        <div class="brand-box">
+                            <div class="brand-rotated">
+                            <img src="./assets/images/yeezy.png" alt="yeezy" />
+                            </div>
+                        </div>
+                        <p class="brand-name">Yeezy</p>
+                    </div>
+                    <div class="popular-shoe-container">
+                        <div class="brand-box">
+                            <div class="brand-rotated">
+                            <img src="./assets/images/jordan.png" alt="jordan" />
+                            </div>
+                        </div>
+                        <p class="brand-name">Jordan</p>
+                    </div>
+                </div>
+            </section>
+            <section class="recently-posted">
+                <h2 class="section-title">Recently Posted New Shoes</h2>
+                <div class="recent-slider-wrapper">
+                    <button class="recent-slider-btn prev hidden"  type="button" >
+                        <img src="./assets/images/disable-left-arrow.png" alt="Prev-arrow">
+                    </button>
+                    <button class="recent-slider-btn next" type="button">
+                        <img src="./assets/images/next-arrow.png" alt="Next-arrow">
+                    </button>
+                    <div class="recent-slider-frame">
+                        <div class="recent-slider-container">
+                        </div>
+                    </div>  
+                </div>
+                <div class="recent-slider-indicator-container">
+                    <span class="outer">
+                        <span class="inner"></span>
+                    </span>
+                    <a href="./product-list.html" class="view-all">View All <span><img src="./assets/images/discover-arrow.png" alt="discover-arrow" ></span></a>
+                </div>
+            </section>
+            <section class="shop-under-budget">
+                <h2 class="section-title">Shop under Budget</h2>
+                <div class="shop-button-container">
+                    <button class="budget-btn">
+                        <span class="between">Between</span>
+                        <span class="budget-price" data-filter="1-200" >$1 - $200</span>
+                    </button>
+                    <button class="budget-btn">
+                        <span class="between">Between</span>
+                        <span class="budget-price" data-filter="200-400" >$200 - $400</span>
+                    </button>
+                    <button class="budget-btn">
+                        <span class="between">Between</span>
+                        <span class="budget-price" data-filter="400-600">$400 - $600</span>
+                    </button>
+                    <button class="budget-btn">
+                        <span class="between">Between</span>
+                        <span class="budget-price" data-filter="600-1000">$600 - $1K</span>
+                    </button>
+                    <button class="budget-btn">
+                        <span class="between">Above</span>
+                        <span class="budget-price" data-filter="1000+">$1000</span>
+                    </button>
+                </div>
+            </section>
+            <div class="insta-fixed-container">
+                <button>
+                    <img src="./assets/images/instagram.png" alt="instagram">
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <aside class="ad-container">
+            <img src="./assets/images/running-shoes-add.jpg" alt="running-shoes-add">
+        </aside>
+        <div class="quick-links">
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Why Hype Me</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Disclaimer</a></li>
+            </ul>
+        </div>
+        <div class="social-media-links">
+            <ul>
+                <li><a href="#"><img src="./assets/images/footer-instagram.png" class="insta-img" alt="instagram"></a></li>
+                <li><a href="#"><img src="./assets/images/footer-facebook.png" class="fb-img" alt="facebook"></a></li>
+                <li><a href="#"><img src="./assets/images/footer-twitter.png" class="twitter-img" alt="twitter"></a></li>
+            </ul>
+        </div>
+        <div class="copyright-container">
+            <p>&copy; 2021 Hype-me. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <div class="overlay">
+        <div class="form-container login-container">
+            <div class="overlay-close-btn-container">
+                <button type="button" class="overlay-close-btn login-close-btn">
+                    <img src="./assets/images/close.png" alt="close">
+                </button>
+            </div>
+            <h2>Hello,</h2>
+            <p class="social-text">Log In with your social network</p>
+            <div class="social-icons">
+                <button type="button" class="social-btn"><img src="./assets/images/fb.png" alt="fb"></button>
+                <button type="button" class="social-btn"><img src="./assets/images/google.png" alt="google"></button>
+            </div>
+            <p class="or-text">or</p>
+
+            <form action="/" class="form login-form">
+                <div class="input-group email-group">
+                    <input type="input" name="email" class="email" placeholder="Email" autocomplete="on">
+                    <p class="error error-email">no error</p>
+                </div>
+                <div class="input-group password-group">
+                    <input type="password" name="password" class="password" placeholder="Password">
+                    <img src="./assets/images/hide_password.png" class="eye-icon" alt="hide_password">
+                    <p class="forgot-link"><a href="#">Forget Password</a></p>
+                    <p class="error error-password">no error</p>
+                </div>
+                <button type="submit" class="submit-btn">Log In</button>
+            </form>
+
+            <p class="signup-text">Don't you have an account? <a href="#" class="signup-btn">Sign Up</a></p>
+            <p class="result"></p>
+        </div>
+        <div class="form-container signup-container">
+            <div class="overlay-close-btn-container">
+                <button type="button" class="overlay-close-btn signup-close-btn">
+                    <img src="./assets/images/close.png" alt="close">
+                </button>
+            </div>
+            <h2>Hello,</h2>
+            <p class="social-text">Sign Up with your social network</p>
+            <div class="social-icons">
+            <button type="button" class="social-btn"><img src="./assets/images/fb.png" alt="fb"></button>
+            <button type="button" class="social-btn"><img src="./assets/images/google.png" alt="google"></button>
+            </div>
+            <p class="or-text">or</p>
+
+            <form  class="form signup-form">
+                <div class="input-group">
+                    <input type="text" name="name" class="name" placeholder="Full Name" autocomplete="on">
+                    <p class="error error-name">no error</p>
+                </div>
+                <div class="input-group email-group">
+                    <input type="input" name="email" class="email" placeholder="Email" autocomplete="on">
+                    <p class="error error-email">no error</p>
+                </div>
+                <div class="input-group password-group">
+                    <input type="text" name="password" class="password" placeholder="Password">
+                    <img src="./assets/images/hide_password.png"class="eye-icon" alt="hide_password">
+                    <small class="password-hint">At least 8 characters, 1 uppercase letter, 1 number & 1 symbol</small>
+                    <p class="error error-password">no error</p>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="zipcode" class="zipcode" placeholder="Zip Code">
+                    <p class="error">no error</p>
+                </div>
+                <div class="input-group checkbox-group">
+                    <input type="checkbox" class="terms" id="terms">
+                    <label for="terms">By signing up, you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                <p class="error error-zipcode">no error</p>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+
+            <p class="login-text">Already have an account? <a href="#" class="login-btn">Log In</a></p>
+            <p class="result"></p>
+        </div>
+        <div class="form-container reset-container">
+            <div class="overlay-close-btn-container">
+                <button type="button" class="overlay-close-btn">
+                    <img src="./assets/images/close.png" alt="close">
+                </button>
+            </div>
+            <h2>Reset Password</h2>
+            <p class="reset-desc">Enter the mail address associated with your account, and we'll email you a link to reset your password.</p>
+            <form action="/" class="form reset-form">
+                <div class="input-group">
+                    <input type="input" class="email" name="email"  placeholder="Email Address" autocomplete="on">
+                    <p class="error error-email">no error</p>
+                </div>
+                <button type="submit" class="submit-btn">Send reset link</button>
+            </form>
+
+            <p class="reset-text">Back to <span><a href="#" class="login-btn">Log In </a> / <a href="#" class="signup-btn">Sign Up</a></span></p>
+            <p class="reset-success-message">Password reset link has been sent to your email successfully!.</p>
+        </div>
+    </div>
+    <div class="logout-overlay">
+        <div class="logout-modal">
+            <button class="modal-close-btn"><img src="./assets/images/modal-close.png" alt="modal-close"></button>
+            <div class="logout-content-container">
+                <h3>Confirm Logout</h3>
+                <p>Are you sure you want to logout?</p>
+                <div class="modal-buttons">
+                    <button class="cancel-btn">Cancel</button>
+                    <button class="confirm-btn">Logout</button>
+                </div>
+            </div>
+            <div class="logout-success-container">
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/product.js" defer></script>
+    <script src="./assets/js/global.js"></script>
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/profile-dropdown.js"></script>
+</body>
+</html>

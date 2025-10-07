@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hpye Me | Sell Your Products</title>
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/sell-your-products.css">
+    <link rel="icon" href="./assets/images/fav.png" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo-container">
+            <a href="./index.html" class="logo"><img src="./assets/images/logo.png" alt="logo"></a>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><img src="./assets/images/g-search.png" class="g-search" alt="g-search"></li>
+                <li class="location-list"><span>TX 77441</span><img src="./assets/images/location.png" alt="location"></li>
+                <li><span class="user-profile">MC</span><button type="button"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button></li>
+                <li>
+                    <div class="nav-btn-container">
+                        <a href="#" class="buy-btn">Buy</a>
+                        <a href="#" class="sell-btn">Sell</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-container">
+        <section class="sell-products">
+            <h2>Sell Your Products</h2>
+            <div class="sell-container">
+                <div class="search-existing">
+                    <p>Is the product already listed on Hype-Me?</p>
+                    <div class="search-box">
+                        <input type="text" name="search" placeholder="Search..." autocomplete="off">
+                        <img src="./assets/images/front-search.png" class="search-img" alt="search">
+                        <span class="search-note">Search products available on Hype-Me Catalog.</span>
+                    </div>
+                    
+                </div>
+                <div class="add-unique">
+                    <p>Have unique products to sell?</p>
+                    <button class="add-product-btn">Add your Product</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-listing">
+            <h2>Products Listings</h2>
+            <div class="table-wrapper">
+                <div class="table-header">
+                    <div class="status-filter">
+                    <p class="dropdown-toggle">Filter by Status <img src="./assets/images/filled-arrow.png" alt="filled-arrow"></p>
+                    <div class="custom-dropdown" id="statusDropdown">
+                            <ul class="dropdown-list">
+                                <li data-value="all" class="dropdown-list-item active">All</li>
+                                <li data-value="draft" class="dropdown-list-item">Draft</li>
+                                <li data-value="posted"class="dropdown-list-item">Posted</li>
+                                <li data-value="in-progress" class="dropdown-list-item">Test in Progress</li>
+                                <li data-value="failed" class="dropdown-list-item">Failed</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="search-brand-container">
+                        <input type="text" class="search-brand" name="search-brand" placeholder="Search Brand or Model" autocomplete="off">
+                        <img src="./assets/images/magnifying-glass.png" alt="magnifying-glass">
+                    </div>
+                </div>
+
+                <table class="product-table">
+                    <thead>
+                        <tr>
+                            <th class="selling-id-header"><img src="./assets/images/up-and-down-arrow.png" alt="up-and-down-arrow">Selling ID</th>
+                            <th>Brand</th>
+                            <th>Model</th>
+                            <th>Created On</th>
+                            <th>Last Processed On</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                </div>
+            </div>
+        </section>
+        <div class="toast-container">
+            <p></p>
+            <img src="./assets/images/close-toast.png" alt="close-toast">
+        </div>
+    </main>
+    <footer>
+        <div class="quick-links">
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Why Hype Me</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Disclaimer</a></li>
+            </ul>
+        </div>
+        <div class="social-media-links">
+            <ul>
+                <li><a href="#"><img src="./assets/images/footer-instagram.png" class="insta-img" alt="instagram"></a></li>
+                <li><a href="#"><img src="./assets/images/footer-facebook.png" class="fb-img" alt="facebook"></a></li>
+                <li><a href="#"><img src="./assets/images/footer-twitter.png" class="twitter-img" alt="twitter"></a></li>
+            </ul>
+        </div>
+        <div class="copyright-container">
+            <p>&copy; 2021 Hype-me. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="./assets/js/sell-your-product.js"></script>
+</body>
+</html>

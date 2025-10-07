@@ -1,0 +1,977 @@
+.header{
+    position: sticky;
+    top: 0px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.user-profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-weight: 500;
+    background-color: rgb(224, 220, 147);
+    color: rgb(22, 18, 18);
+    font-size: 1.4rem;
+}
+
+.buy-btn{
+    color: rgb(233, 233, 233);
+    background-color: rgb(76, 21, 187);
+}
+.sell-btn{
+    color: rgb(76, 21, 187);
+    background-color: rgb(233, 233, 233);
+}
+
+.main-container{
+    background-color: rgb(52, 40, 60);
+    padding: 40px;
+}
+
+.chat-close-btn-container{
+    display: flex;
+    justify-content: flex-end;
+}
+.chat-close-btn{
+    background: transparent;
+    border: none;
+}
+
+.chat-wrapper{
+    max-width: 92.392%;
+    margin: 0 auto;
+}
+.chat-title{
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+.chat-outer-container{
+    background-color: #fff;
+    padding: 45px 48px 90px;
+    padding-right: 57px;
+}
+.chat-inner-container{
+    display: flex;
+    border: 1px solid rgb(212, 212, 212);
+}
+/*chat conversations*/
+.chat-conversations{
+    flex: 0 1 63.745%; 
+   
+}
+.conversation-header{
+    padding: 30px 30px 20px;
+}
+.chat-search-wrapper{
+    position: relative;
+    margin-bottom: 20px;
+}
+.chat-search-input{
+    padding: 10px 10px 10px 35px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(119, 109, 109, 0.2);
+    font-size: 1.2rem;
+    width: 100%;
+    outline: none;
+}
+.chat-search-icon{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.convo-filter-btn{
+    font-size: 1.1rem;
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid grey;
+    color: grey;
+}
+.convo-filter-btn.active{
+    background-color: rgb(229, 229, 229);
+    border: none;
+}
+.unread-btn{
+    margin-left: 15px;
+}
+.convo-item{
+    padding: 25px 30px;
+    border-bottom: 1px solid rgb(233, 233, 233);
+}
+.convo-item.active{
+    background-color: rgb(229, 229, 229);
+}
+.convo-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.convo-detail{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+.convo-user-info{
+    margin-left: 20px;
+}
+.contact-name{
+    font-weight: bold;
+    font-size: 1.15rem;
+    color: rgb(0,0,0,0.9);
+}
+.product-preview{
+    color: rgb(82, 80, 80);
+}
+
+.double-tick-icon{
+    width: 12px;
+    color: rgb(122, 122, 122);
+}
+.convo-product-picture{
+    width: 56px;
+    height: 56px;
+}
+.message-preview{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+.message-preview img,.message-preview span{
+    display: inline-block;
+}
+.message-preview span{
+    color:rgb(122, 122, 122);
+}
+.convo-time{
+    display: flex;
+    gap: 7px;
+    flex-direction: column;
+    align-items: center;
+}
+.time{
+    color:rgb(122, 122, 122);
+    font-size: 0.9rem;
+}
+.convo-time span{
+    text-align: center;
+}
+
+.chat-active {
+  width: 100%;
+  min-height:680px;
+  max-height: 680px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgb(212, 212, 212);
+}
+
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 35px 40px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.contact-info{
+    width: 100%;
+    display: flex;
+    gap: 30px;
+}
+
+.chat-header .contact-name {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: rgba(0,0,0,0.7);
+}
+
+.product-info {
+  font-size:1.3rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 3px;
+}
+
+.product-info .product-price{
+    font-weight: 600;
+}
+
+.contact-details{
+    margin-right: 10px;
+}
+.right-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  align-self: flex-start;
+}
+
+
+/* Message*/
+.chat-messages {
+    flex-grow: 1;
+    padding: 30px 45px;
+    overflow-y: auto;
+    background: rgb(251, 251, 251);
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+}
+.chat-date {
+    position: sticky;
+    top: 0;
+    text-align: center;
+    color: #494747;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+.message {
+    width: fit-content;
+    max-width: 40%;
+    padding: 7px 10px;
+    font-size: 1.15rem;
+    position: relative;
+    border-radius: 8px;
+    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+.incoming {
+    align-self: flex-start;
+    background-color: #e6f0ff;
+    color: #000;
+    border-top-left-radius: 0;
+    display: flex;
+    margin-top: 15px;
+}
+
+.incoming::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 0px;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #e6f0ff;
+}
+
+.outgoing {
+    align-self: flex-end;
+    background-color: #fff;
+    color: #000;
+    margin-top: 20px;
+    border-top-right-radius: 0;
+}
+
+.outgoing::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 0px;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #ffffff;
+}
+.message-meta {
+    align-self: flex-end;
+    gap: 5px;
+    color: #555;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+.message-text{
+    align-self: flex-start;
+    color: rgba(0,0,0,0.7);
+}
+.message-meta .tick-icon {
+    width: 14px;
+    height: 14px;
+    opacity: 0.7;
+    filter: brightness(0) saturate(79%) invert(58%) sepia(92%) saturate(495%) hue-rotate(140deg) brightness(97%) contrast(93%);
+}
+
+.message-time {
+    font-size:0.9rem;
+    color: #666;
+    text-wrap: nowrap;
+}
+
+.message-composer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 35px;
+    border-top: 1px solid #ddd;
+}
+
+.message-composer input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 1.15rem;
+    padding: 10px 10px;
+    background: transparent;
+    color: #424242;
+}
+.message-composer input::placeholder{
+    color: #9c9a9a;
+}
+.message-composer img{
+    cursor: pointer;
+}
+
+@media screen and (max-width:1600px){
+    .location-list img{
+        width: 19px;
+    }
+    .g-search{
+        margin-right: 7px;
+    }
+    .user-profile{
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    .chat-close-btn img{
+        width: 33px;
+    }
+    .main-container{
+        padding: 37px 34px;
+    }
+    .chat-title{
+        font-size: 1.8rem;
+        padding-top: 3px;
+        margin-bottom: 24px;
+    }
+    .chat-outer-container{
+        padding: 41px 40px 70px;
+    }
+    .conversation-header{
+        padding: 22px 25px 20px;
+    }
+    .chat-search-wrapper{
+        margin-bottom: 15px;
+    }
+    .chat-search-input{
+        padding: 8px 10px 10px 31px;
+        font-size: 1.05rem;
+    }
+    .chat-search-icon{
+        top: 55%;
+    }
+    .chat-search-icon img{
+        width: 20px;
+    }
+    .convo-filter-btn{
+        font-size: 0.9rem;
+        border-radius: 25px;
+        padding: 8px 15px;
+    }
+    .unread-btn{
+        margin-left: 12px;
+    }
+    .convo-item{
+        padding: 20px 25px;
+    }
+    .convo-info{
+        gap: 10px;
+    }
+    .convo-detail{
+        gap: 10px;
+    }
+    .convo-user-info{
+        margin-left: 15px;
+    }
+
+    .convo-product-picture{
+        width: 45px;
+        height: 45px;
+    }
+    .contact-name,.product-preview,.message-preview span{
+        font-size: 0.9rem;
+    }
+    .double-tick-icon{
+        width: 12px;
+    }
+    .convo-time{
+        gap: 7px;
+    }
+    .time{
+        font-size: 0.8rem;
+    }
+    .convo-time span img{
+        width: 4px;
+    }
+    .chat-active {
+        min-height:580px;
+        max-height: 580px;
+    }
+    .chat-header {
+        padding:28px 35px;
+    }
+    .contact-info{
+        gap: 22px;
+    }
+    .contact-info .product-img{
+        width: 60px;
+        height: 60px;
+    }
+    .chat-header .contact-name {
+        font-size: 1.25rem;
+    }
+    .product-info {
+        font-size:1.1rem;
+        gap: 20px;
+        margin-top: 0px;
+    }
+    .right-actions {
+        gap: 25px;
+    }
+    .right-actions > img{
+        width: 4px;
+    }
+    .right-actions span img{
+        width: 17px;
+    }
+    .chat-messages {
+        padding: 25px 40px;
+    }
+    .chat-date {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+    .message {
+        padding: 5px 10px;
+        font-size: 0.95rem;
+        border-radius: 8px;
+        gap: 20px; 
+    }
+    .incoming{
+        margin-top: 10px;
+        border-top-left-radius: 0;
+    }
+    .incoming::after {
+        left: -10px;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #e6f0ff;
+    }
+    .outgoing::after {
+        right: -10px;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid #ffffff;
+    }
+    .message-meta {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    .message-meta .tick-icon {
+        width: 14px;
+        height: 14px;
+    }
+    .message-time {
+        font-size: 0.8rem;
+    }
+    .message-composer { 
+        gap: 15px;
+        padding: 10px 30px;
+   
+    }
+    .message-composer .attach{
+        width: 23px;
+    }
+    .message-composer input {
+        font-size: 0.95rem;
+        padding: 8px;
+    }
+    .message-composer .voice-btn{
+        width: 13px;
+    }
+    .message-composer .send-btn{
+        width: 22px;
+    }
+}
+
+@media screen and (max-width:1400px){
+    .location-list img{
+        width: 16px;
+    }
+    .g-search{
+        margin-right: 7px;
+    }
+    .user-profile{
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    .chat-close-btn img{
+        width: 28px;
+    }
+    .main-container{
+        padding: 33px 29px;
+    }
+    .chat-wrapper{
+        max-width: 92.433%;
+    }
+    .chat-title{
+        font-size: 1.5rem;
+        padding-top: 3px;
+        margin-bottom: 21px;
+    }
+    .chat-outer-container{
+        padding: 36px 35px 65px;
+        padding-right: 42px;
+    }
+    .chat-conversations{
+        flex: 0 1 64.28%; 
+    }
+    .conversation-header{
+        padding: 15px 22px 15px;
+    }
+    .chat-search-wrapper{
+        margin-bottom: 15px;
+    }
+    .chat-search-input{
+        padding: 8px 10px 10px 26px;
+        font-size: 0.9rem;
+    }
+    .chat-search-icon{
+        top: 55%;
+    }
+    .chat-search-icon img{
+        width: 16px;
+    }
+    .convo-filter-btn{
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    .unread-btn{
+        margin-left: 10px;
+    }
+    .convo-item{
+        padding: 17px 20px;
+    }
+    .convo-info{
+        gap: 10px;
+    }
+    .convo-detail{
+        gap: 10px;
+    }
+    .convo-user-info{
+        margin-left: 10px;
+    }
+
+    .convo-product-picture{
+        width: 40px;
+        height: 40px;
+    }
+    .contact-name{
+        font-size: 0.8rem;
+    }
+    .product-preview,.message-preview span{
+        font-size: 0.75rem;
+    }
+    .message-preview{
+        gap: 7px;
+    }
+    .double-tick-icon{
+        width: 11px;
+    }
+    .convo-time{
+        gap: 5px;
+    }
+    .time{
+        font-size: 0.7rem;
+    }
+    .convo-time span img{
+        width: 3px;
+    }
+    .chat-active {
+        min-height:500px;
+        max-height: 500px;
+    }
+    .chat-header {
+        padding:23px 28px;
+    }
+    .contact-info{
+        gap: 22px;
+    }
+    .contact-info .product-img{
+        width: 50px;
+        height: 50px;
+    }
+    .chat-header .contact-name {
+        font-size: 1.1rem;
+    }
+    .product-info {
+        font-size:0.9rem;
+        gap: 20px;
+    }
+    .right-actions {
+        gap: 20px;
+    }
+    .right-actions > img{
+        width: 3.5px;
+    }
+    .right-actions span img{
+        width: 15px;
+    }
+    .chat-messages {
+        padding: 20px 30px;
+    }
+    .chat-date {
+        font-size: 0.7rem;
+    }
+    .message {
+        padding: 4px 10px;
+        font-size: 0.8rem;
+        border-radius: 6px;
+        gap: 15px; 
+    }
+    .incoming{
+        border-top-left-radius: 0;
+    }
+    .incoming::after {
+        left: -10px;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #e6f0ff;
+    }
+    .outgoing::after {
+        right: -10px;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid #ffffff;
+    }
+    .message-meta {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    .message-meta .tick-icon {
+        width: 13px;
+        height: 13px;
+    }
+    .message-time {
+        font-size: 0.65rem;
+    }
+    .message-composer { 
+        gap: 12px;
+        padding: 8px 25px;
+   
+    }
+    .message-composer .attach{
+        width: 20px;
+    }
+    .message-composer input {
+        font-size: 0.85rem;
+        padding: 6px;
+    }
+    .message-composer .voice-btn{
+        width: 11px;
+    }
+    .message-composer .send-btn{
+        width: 19px;
+    }
+}
+
+@media screen and (max-width:1024px){
+    .location-list img{
+        width: 12px;
+    }
+    .user-profile{
+        width: 28px;
+        height: 28px;
+        font-size: 0.72rem;
+    }
+    .chat-close-btn img{
+        width: 21px;
+    }
+    .main-container{
+        padding: 25px 21px 100px;
+    }
+    .chat-wrapper{
+        max-width: 92.35%;
+    }
+    .chat-title{
+        font-size: 1.2rem;
+        padding-top: 0px;
+        margin-bottom: 14px;
+    }
+    .chat-outer-container{
+        padding: 28px 25px 50px;
+        padding-right: 30px;
+    }
+    .chat-conversations{
+        flex: 0 1 60.435%; 
+    }
+    .conversation-header{
+        padding: 10px 22px 15px;
+    }
+    .chat-search-wrapper{
+        margin-bottom: 10px;
+    }
+    .chat-search-input{
+        padding: 5px 10px 10px 22px;
+        font-size: 0.7rem;
+    }
+    .chat-search-icon{
+        top: 50%;
+    }
+    .chat-search-icon img{
+        width: 13px;
+    }
+    .convo-filter-btn{
+        font-size: 0.65rem;
+        padding: 5px 10px;
+    }
+    .unread-btn{
+        margin-left: 8px;
+    }
+    .convo-item{
+        padding: 12px 15px 10px;
+    }
+    .convo-info{
+        gap: 10px;
+    }
+    .convo-detail{
+        gap: 10px;
+    }
+    .convo-user-info{
+        margin-left: 8px;
+    }
+    .convo-product-picture{
+        width: 30px;
+        height: 30px;
+    }
+    .contact-name{
+        font-size: 0.6rem;
+    }
+    .product-preview,.message-preview span{
+        font-size: 0.55rem;
+    }
+    .message-preview{
+        gap: 5px;
+        margin-top: 3px;
+    }
+    .double-tick-icon{
+        width: 11px;
+    }
+    .convo-time{
+        gap: 5px;
+    }
+    .convo-time .more{
+        line-height: 12px;
+    }
+    .time{
+        font-size: 0.5rem;
+    }
+    .convo-time span img{
+        width: 3px;
+        height: 10px;
+    }
+    .chat-active {
+        min-height:400px;
+        max-height: 400px;
+    }
+    .chat-header {
+        padding:18px 22px;
+    }
+    .contact-info{
+        gap: 18px;
+    }
+    .contact-info .product-img{
+        width: 40px;
+        height: 40px;
+    }
+    .chat-header .contact-name {
+        font-size: 0.8rem;
+    }
+    .product-info {
+        font-size:0.7rem;
+        gap: 15px;
+    }
+    .right-actions {
+        gap: 20px;
+    }
+    .right-actions > img{
+        height: 12px;
+    }
+    .right-actions span{
+        line-height: 12px; 
+    }
+    .right-actions span img{
+        width: 12px;
+    }
+    .chat-messages {
+        padding: 12px 25px;
+    }
+    .chat-date {
+        font-size: 0.6rem;
+        margin-bottom: 10px;
+    }
+    .message {
+        padding: 4px 10px;
+        font-size: 0.6rem;
+        border-radius: 5px;
+        gap: 10px; 
+    }
+    .incoming{
+        border-top-left-radius: 0;
+    }
+    .incoming::after {
+        left: -8px;
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid #e6f0ff;
+    }
+    .outgoing::after {
+        right: -8px;
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid #ffffff;
+    }
+    .message-meta {
+        gap: 5px;
+        margin-top: 7px;
+    }
+    .message-meta .tick-icon {
+        width: 10px;
+        height: 10px;
+    }
+    .message-time {
+        font-size: 0.5rem;
+    }
+    .message-composer { 
+        gap: 10px;
+        padding: 5px 20px;
+   
+    }
+    .message-composer .attach{
+        width: 15px;
+    }
+    .message-composer input {
+        font-size: 0.7rem;
+        padding: 6px 5px;
+    }
+    .message-composer .voice-btn{
+        width: 10px;
+    }
+    .message-composer .send-btn{
+        width: 15px;
+    }
+}
+
+@media screen and (max-width:768px){
+    .location-list img{
+        width: 11px;
+    }
+    
+    .chat-conversations{
+        flex: 0 1 100%; 
+        height: 400px;
+    }
+    .chat-conversations.not-active{
+        display: none;
+    }
+    .chat-active {
+        display: none;
+    }
+    
+   .chat-active.active{
+        display: flex;
+   }
+}
+
+@media screen and (max-width:600px){
+    .chat-close-btn img{
+        width: 18px;
+    }
+    .main-container {
+        padding: 20px 16px 70px;
+    }
+    .chat-title{
+        font-size: 1.1rem;
+        padding-top: 0px;
+        margin-bottom: 12px;
+    }
+    .user-profile{
+        width: 25px;
+        height: 25px;
+        font-size: 0.65rem;
+    }
+    .chat-outer-container{
+        padding: 22px 25px 50px;
+        padding-right: 30px;
+    }
+}
+
+@media screen and (max-width:480px){
+    .user-profile{
+        width: 25px;
+        height: 25px;
+        font-size: 0.65rem;
+    }
+    .chat-close-btn img{
+        width: 18px;
+    }
+    .main-container {
+        padding: 18px 15px 70px;
+    }
+    .chat-title{
+        font-size: 1.1rem;
+        padding-top: 0px;
+        margin-bottom: 12px;
+    }
+   
+    .chat-outer-container{
+        padding: 18px 18px 30px;
+        padding-right: 22px;
+    }
+    .conversation-header {
+        padding: 10px 15px 12px;
+    }
+    .convo-item {
+        padding: 10px 12px 10px;
+    }
+    .convo-detail{
+        gap: 6px;
+    }
+    .chat-header {
+        padding: 15px 15px;
+    }
+    .contact-info{
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .contact-info .product-img {
+        width: 45px;
+        height: 45px;
+    }
+    .product-info{
+        font-size: 0.65rem;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    .chat-messages {
+        padding: 10px 18px;
+    }
+    .right-actions{
+        alignment-baseline: 10px;
+    }
+    .message {
+        width: fit-content;
+        max-width: 80%;
+    }
+}
