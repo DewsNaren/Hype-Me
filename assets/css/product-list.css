@@ -342,6 +342,7 @@ a.brand-more-link.not-active{
     position: absolute;
     right: 22px;
     top: 25px;
+    cursor: pointer;
 }
 .product-content{
     margin-top: 20px;
@@ -408,6 +409,9 @@ a.brand-more-link.not-active{
     margin-top: 40px;
     padding:40px 0 50px;
     border-top: 1px solid rgb(134, 131, 136);
+}
+.pagination.not-active{
+    display: none;
 }
 .page-btn-container{
     display: flex;
@@ -854,7 +858,7 @@ footer{
     }
     .filter-label{
         margin-left: 5px;
-        font-size: 0.55rem;
+        font-size: 0.6rem;
     }
     .checkbox-filter{
         margin-bottom: 0px;
@@ -1050,7 +1054,7 @@ footer{
     .breadcrumb{
         max-width: 90%;
         margin: 0 auto;
-        padding: 10px 0;
+        padding: 20px 0;
     }
     .filter-btn{
         display: flex;

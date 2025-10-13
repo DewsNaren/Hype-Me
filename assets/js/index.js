@@ -192,9 +192,10 @@ brandBoxes.forEach(box=>{
 })
 
 const budgetBtns = document.querySelectorAll(".shop-under-budget .shop-button-container .budget-btn");
-if(token){
-  budgetBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+
+budgetBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    if(token){
       const priceContainer = btn.querySelector(".budget-price");
       const priceArr = priceContainer.getAttribute("data-filter").split('-');
       const min = Number(priceArr[0]);
@@ -205,9 +206,12 @@ if(token){
         max
       });
       window.location.href = "./product-list.html";
-    });
+    }
+    else{
+      openLogIn();
+    }
   });
-}
+});
 
 
 function initHeaderScroll(headerSelector, targetSelector, thresholdValue = 0.1) {

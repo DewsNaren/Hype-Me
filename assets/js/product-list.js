@@ -83,6 +83,7 @@ function applyFilters(page = 1) {
   conditionInputs.forEach((input) => { 
     if (input.classList.contains("active")) { 
       activeTypes.push(input.value); 
+      
     } 
   }); 
   if (activeTypes.length > 0) { 
@@ -99,12 +100,15 @@ function applyFilters(page = 1) {
   filteredProducts = filtered; 
   let headerLabel = "All Shoes";
 
-  if (activeTypes.includes("new")) {
+  if (activeTypes.includes("new") && activeTypes.includes("used")) {
+    headerLabel = "All Shoes";
+  } else if (activeTypes.includes("new")) {
     headerLabel = "New Shoes";
   } else if (activeTypes.includes("used")) {
     headerLabel = "Used Shoes";
+  } else {
+    headerLabel = "Shoes";
   }
-
   filteredProducts = filtered;
   renderProducts(filteredProducts, page, headerLabel);
 } 
@@ -117,7 +121,10 @@ function renderProducts(products, page = 1, headerLabel = "All Shoes") {
     return; 
   } 
   let start = (page - 1) * itemsPerPage; 
-  let end = start + itemsPerPage; let paginatedProducts = products.slice(start, end); 
+  let end = start + itemsPerPage; 
+  let endIndex=Math.min(end, filteredProducts.length);
+  let paginatedProducts = products.slice(start, end); 
+
   if (paginatedProducts.length === 0) { 
     productList.classList.add("active"); 
     productList.innerHTML =`<p class="no-product">No products found. Try another meaningful search.</p>`; 
@@ -125,7 +132,7 @@ function renderProducts(products, page = 1, headerLabel = "All Shoes") {
   } 
   productList.classList.remove("active"); 
   productList.innerHTML = `<div class="product-list-header"> 
-                <h2>${headerLabel}<span>(Showing 1 - 45 products of 8,921 products)</span></h2> 
+                <h2>${headerLabel}<span>(Showing ${start+1} - ${endIndex} products of ${filteredProducts.length} products)</span></h2> 
                 <div class="sort-wrapper"> <span class="sort-label">Sort by:</span> 
                   <div class="sort-dropdown"> 
                     <button type="button" class="sort-button"> Featured <img src="./assets/images/down-arrow.png" alt="down-arrow"> </button> 
@@ -136,11 +143,16 @@ function renderProducts(products, page = 1, headerLabel = "All Shoes") {
               <div class="pagination"> 
                 <div class="page-btn-container"></div> 
               </div>`; 
+  if (products.length > 15) {
+    renderPagination(products.length, page);
+  } else {
+    document.querySelector(".pagination").classList.add("not-active");
+  }
   initSpinnerAnimation();
   const productListBody = document.querySelector(".product-list-body"); 
   productListBody.innerHTML = ""; 
   paginatedProducts.forEach((product) => {
-    productListBody.innerHTML += `<div class="product"> 
+    productListBody.innerHTML += `<div class="product" data-product-id=${product._id}> 
       <div class="product-item"> 
         <img src="./assets/images/${product.image}" alt="${product.name}"> <span><img src="./assets/images/heart.png" alt="heart"></span> 
       </div> 
@@ -151,12 +163,15 @@ function renderProducts(products, page = 1, headerLabel = "All Shoes") {
     </div> `; 
   }); 
   renderPagination(products.length, page); 
+  setUpLikes();
+  redirectToProductDetail()
 } 
 function renderPagination(totalItems, currentPage) { 
   const paginationContainer = document.querySelector( ".pagination .page-btn-container" ); 
   paginationContainer.innerHTML = ""; 
   if (totalItems === 0) return; 
   const totalPages = Math.ceil(totalItems / itemsPerPage); 
+ 
   if (currentPage > 1) { 
     const prevBtn = document.createElement("button"); 
     prevBtn.textContent = "Prev"; 
@@ -315,3 +330,38 @@ document.addEventListener("change", (e) => {
     applyFilters(1);
   }
 });
+
+function setUpLikes(){
+  const productLikeBtns=document.querySelectorAll(".product .product-item span")
+  productLikeBtns.forEach(productLikeBtn=>{
+    productLikeBtn.addEventListener('click',(e)=>{
+      e.preventDefault();
+      const likeImg=productLikeBtn.querySelector("img");
+    
+      if(likeImg.alt=="likes"){
+        likeImg.src="./assets/images/heart.png"
+        likeImg.alt="heart"
+      }
+      else{
+        likeImg.src="./assets/images/likes.png"
+        likeImg.alt="likes"
+      }
+    })
+  })
+}
+
+function redirectToProductDetail(){
+  const productItems=document.querySelectorAll('.product-item > img')
+  productItems.forEach(productItem=>{
+  productItem.addEventListener('click', (e) => {
+  const product = e.target.closest('div[data-product-id]');
+  const id=product.getAttribute("data-product-id");
+  if (!id) return; 
+
+    window.name=id;
+    setTimeout(() => {
+      window.location.href = "./product-detail.html";
+    }, 0);
+  })
+});
+}

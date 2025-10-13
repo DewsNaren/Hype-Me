@@ -432,14 +432,14 @@
 
 /*Login Container*/
 .overlay .login-container {
-  padding: 2.6% 2.67% 13.6%;
+  padding: 2.6% 2.67% 0;
 }
 .overlay .login-container.active{
     right: 0;
 }
-.login-container h2 {
-  padding-top: 16.8%;
-}
+.login-container h2, .overlay .signup-container h2{
+  margin-top: 20px;
+} 
 .login-form .email-group {
   margin-bottom: 22px;
 }
@@ -516,9 +516,7 @@
   padding: 2.6% 2.6% 6.25%;
 }
 
-.overlay .signup-container h2 {
-  margin-top: 20px;
-}
+
 
 .signup-form .input-group {
   margin-bottom: 20px;
@@ -927,7 +925,7 @@
         margin-left: 8px;
         font-size: 0.8rem;
     }
-    .login-container h2 {
+    .login-container h2  {
         font-size: 2.4rem;
     }
 
@@ -1178,6 +1176,9 @@
         margin-left: 8px;
         font-size: 0.65rem;
     }
+    .login-container h2, .overlay .signup-container h2{
+        margin-top: 15px;
+    }
     .login-container h2 {
         font-size: 2rem;
     }
@@ -1205,9 +1206,7 @@
         font-size: 0.74rem;
     }
 
-    .overlay .signup-container h2{
-        margin-top: 15px;
-    }
+    
 
     .signup-form .input-group {
         margin-bottom: 13px;
@@ -1434,7 +1433,9 @@
         margin-left: 5px;
         font-size: 0.55rem;
     }
-
+    .lgoin-container h2, .overlay .signup-container h2 {
+        margin-top: 10px;
+    }
     .login-form .email-group{
         margin-bottom: 8px;
     }
@@ -1461,9 +1462,7 @@
         width: 50%;
     }
 
-    .overlay .signup-container h2 {
-        margin-top: 10px;
-    }
+    
     .signup-form .input-group {
         margin-bottom: 9px;
     }

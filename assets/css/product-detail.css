@@ -625,7 +625,7 @@ footer{
         padding: 6px 15px 40px;
     }
     .product-container-wrapper{
-        width: 87%;
+        width: 90%;
         padding: 0 5px;
     }
     .breadcrumb .separator{
@@ -674,11 +674,11 @@ footer{
     }
     
     .product-description h3{
-        font-size: 0.84rem;
+        font-size: 14px;
         margin-bottom: 15px;
     }
     .product-description p{
-        font-size: 0.6rem;
+        font-size: 11px;
         margin-bottom: 10px;
     }
     .read-more{
@@ -692,7 +692,7 @@ footer{
         padding: 10px 11px;
     }
     .price-container{
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         margin-left: 0;
     }
     .price{
@@ -729,7 +729,7 @@ footer{
         margin:17px 0 10px;
     }
     .product-specs h3{
-        font-size: 0.8rem;
+        font-size: 13px;
         margin-bottom: 10px;
         padding-left: 3px;
         padding-bottom: 8px;

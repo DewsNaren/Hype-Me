@@ -416,6 +416,12 @@ const logoutContentContainer=logoutModal.querySelector(".logout-modal .logout-co
 const cancelLogoutBtn = logoutModal.querySelector(".cancel-btn");
 const confirmLogoutBtn = logoutModal.querySelector(".confirm-btn");
 const logoutSuccessContainer=logoutModal.querySelector(".logout-modal .logout-success-container")
+const userToken=localStorage.getItem("token");
+if(userToken){
+  logoutBtn.classList.add("active")
+}else{
+  logoutBtn.classList.remove("active")
+}
 logoutBtn.addEventListener("click", () => {
   logoutOverlay.classList.add("active");
   body.classList.add("not-active");
@@ -465,7 +471,7 @@ async function handleLogout() {
       const data = await res.json();
 
       if (res.ok) {
-        sessionStorage.removeItem("token"); 
+        localStorage.removeItem("token"); 
          logoutContentContainer.classList.add("not-active");
           logoutSuccessContainer.innerHTML+=`<h3>Logout Successful!</h3>
         <p class="logout-msg success">You have been securely logged out. Thank you for using our service. See you soon!</p>`
@@ -720,8 +726,17 @@ document.querySelector('.recent-slider-container').addEventListener('click', (e)
 
 const viewAll=document.querySelector(".recently-posted .recent-slider-indicator-container .view-all")
 
+if(userToken){
+  console.log(userToken)
+}
 viewAll.addEventListener('click',(e)=>{
-  window.name=""
-  window.location.href=viewAll.href;
+  e.preventDefault();
+  if(!userToken){
+    openLogIn();
+  }
+  else{
+    window.name=""
+    window.location.href=viewAll.href;
+  }
 })
 

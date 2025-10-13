@@ -108,14 +108,24 @@ a{
   text-align: center;
   font-size: clamp(11px, 0.84vw, 16px);
 }
-.profile-container .profile-menu a {
+.profile-container .profile-menu a.signup-btn {
     border-bottom: 1px solid rgb(185, 183, 183);
 }
+
 .profile-container .profile-menu a:last-child{
     border-bottom: none;
 }
 .profile-menu a:hover {
   background: #f5f5f5;
+}
+.profile-container .profile-menu a.logout-btn{
+    display: none;
+}
+.profile-container .profile-menu a.logout-btn.active{
+    display: inline;
+}
+.profile-menu a.login-btn:has(+ a.logout-btn.active){
+    border-bottom: 1px solid rgb(185, 183, 183);
 }
 .location-list{
     gap: 12px;
@@ -126,6 +136,9 @@ a{
 }
 .user-profile{
     width: 50px;
+}
+.user-profile.not-active{
+    display: none;
 }
 .nav-btn-container{
     height: fit-content;
