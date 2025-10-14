@@ -116,10 +116,32 @@
     font-size: 1.1rem;
 }
 
+
 .filter-sub-header-container{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
 }
+
+.filter-dropdown-container {
+  /* max-height: 500px; */
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 1;
+}
+
+.filter-dropdown-container.hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* .filter-sub-container .dropdown-icon  {
+    cursor: pointer;
+}  */
+
+
 
 .price-display {
     display: block;
@@ -223,15 +245,13 @@
     z-index: 3; 
 }
 
-.filter-sub-container.brand{
-    padding-bottom: 30px;
-}
+
 
 .input-search-wrapper{
     position: relative;
     margin-bottom: 20px;
 }
-.brand-search-input{
+.brand-search-input,.model-search-input{
     padding: 10px 10px 10px 35px;
     background-color: transparent;
     border: none;
@@ -240,32 +260,34 @@
     outline: none;
     color: #dfdada;
 }
-.brand-search-icon{
+.brand-search-icon,.model-search-icon{
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
 }
-.hidden-brand {
+.hidden-brand,.hidden-model,.hidden-year {
   display: none;
 }
 
-a.brand-more-link{
+a.brand-more-link,a.model-more-link,a.year-more-link{
     display: block;
     margin-top: 30px;
     color: rgb(148, 120, 194);
     font-size: 1.05rem;
+    padding-bottom: clamp(10px, 1.065vw, 20px)
 }
-a.brand-more-link.not-active{
+
+a.brand-more-link.not-active,a.model-more-link.not-active,.year-more-link.not-active{
     display: none;
 }
-.no-brand{
+.no-brand, .no-model{
     display: none;
     margin-top: 10px;
     color: #dfdada;
     font-size: clamp(11px, 0.84vw, 1rem);
 }
-.no-brand.active{
+.no-brand.active,.no-model.active{
     display: block;
 }
 /*Product lists */
@@ -509,7 +531,7 @@ footer{
         margin-bottom: 8px;
         margin-left: 1px;
     }
-    .filter-sub-container .dropdown-icon img{
+    .filter-sub-container .dropdown-icon {
         width: 16px;
     }
     .range-container{
@@ -530,20 +552,17 @@ footer{
         width: 20px;
         height: 20px;
     }
-    .filter-sub-container.brand{
-        padding-bottom: 26px;
-    }
     .input-search-wrapper{
         margin-bottom: 18px;
     }
-    .brand-search-input{
+    .brand-search-input,.model-search-input{
         padding: 7px 10px 10px 30px;
         font-size: 1rem;
     }
-    .brand-search-icon img{
+    .brand-search-icon img,.model-search-icon img{
         width: 15px;
     }
-    a.brand-more-link{
+    a.brand-more-link,a.model-more-link,a.year-more-link{
         margin-top: 24px;
         font-size: 0.9rem;
     }
@@ -685,8 +704,9 @@ footer{
         margin-bottom: 4px;
         margin-left: 1px;
     }
-    .filter-sub-container .dropdown-icon img{
+    .filter-sub-container .dropdown-icon {
         width: 14px;
+        height: auto;
     }
     .range-container{
         margin-bottom: 14px;
@@ -710,20 +730,17 @@ footer{
         width: 17px;
         height: 17px;
     }
-    .filter-sub-container.brand{
-        padding-bottom: 24px;
-    }
     .input-search-wrapper{
         margin-bottom: 15px;
     }
-    .brand-search-input{
+    .brand-search-input,.model-search-input{
         padding: 6px 10px 8px 27px;
         font-size: 0.85rem;
     }
-    .brand-search-icon img{
+    .brand-search-icon img,.model-search-icon img{
         width: 13px;
     }
-    a.brand-more-link{
+    a.brand-more-link,a.model-more-link,a.year-more-link{
         margin-top: 20px;
         font-size: 0.8rem;
     }
@@ -865,7 +882,7 @@ footer{
         margin-left: 0px;
         height: 22px;
     }
-    .filter-sub-container .dropdown-icon img{
+    .filter-sub-container .dropdown-icon {
         width: 10px;
     }
     .range-container{
@@ -890,21 +907,18 @@ footer{
         width: 14px;
         height: 14px;
     }
-    .filter-sub-container.brand{
-        padding-bottom: 17px;
-    }
     .input-search-wrapper{
         margin-bottom: 12px;
     }
-    .brand-search-input{
+    .brand-search-input,.model-search-input{
         padding: 6px 6px 7px 22px;
         font-size: 0.7rem;
     }
     
-    .brand-search-icon img{
+    .brand-search-icon img,.model-search-icon img{
         width: 11px;
     }
-    a.brand-more-link{
+    a.brand-more-link,a.model-more-link,a.year-more-link{
         margin-top: 15px;
         font-size: 0.7rem;
     }

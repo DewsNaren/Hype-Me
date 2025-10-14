@@ -102,16 +102,6 @@ selectedProductLikeBtn.addEventListener('click',()=>{
   }
 })
 
-const profileLinkss=document.querySelectorAll(".profile-container .profile-menu a")
-
- 
-profileLinkss.forEach(link=>{
-  link.addEventListener('click',(e)=>{
-    e.stopPropagation();
-      window.name=link.classList;
-      window.location.href="./index.html";
-  })
-})
 
 const viewMore=document.querySelector(".product-specs .view-more a");
 

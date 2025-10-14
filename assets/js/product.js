@@ -11,7 +11,7 @@ async function fetchProducts() {
   try {
     const res = await fetch('http://taskapi.devdews.com/api/products');
     const data = await res.json();
-    
+    console.log(data)
     allProducts = data.map((product, index) => ({
       ...product,
       image: images[index % images.length],

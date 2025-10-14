@@ -47,7 +47,7 @@ ProductTabs.forEach(ProductTab => {
 
       addProductBtn.style.display = 'block';
     } 
-    else if (tabName.includes("user reviews(1620)")) {
+    else if (tabName.includes("user reviews(265)")) {
       userReviewWrapper.classList.add("show");
       userReviewWrapper.classList.remove("hide");
 

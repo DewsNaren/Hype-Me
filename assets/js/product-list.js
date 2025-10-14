@@ -24,7 +24,7 @@ function initSpinnerAnimation() {
     circles[i - 1].style.animationDelay = `${i * 0.25}s`;
   }
 }
-
+initSpinnerAnimation();
 const filterBtn = document.querySelector(".filter-btn"); 
 const filterContainer = document.querySelector(".filter-container"); 
 const filterClostBtn = document.querySelector(".filter-close-btn"); 
@@ -89,14 +89,21 @@ function applyFilters(page = 1) {
   if (activeTypes.length > 0) { 
     filtered = filtered.filter((p) => activeTypes.includes(p.type)); 
   }
-  const checkedBrands = Array.from(
-    document.querySelectorAll(".brand-filter input:checked")
-  ).map((input) => input.value);
+  const checkedBrands = Array.from(document.querySelectorAll(".brand-filter input:checked")).map((input) => input.value);
 
   if (checkedBrands.length > 0) {
     filtered = filtered.filter((p) => checkedBrands.includes(p.brand));
   }
-  
+  const checkedModels = Array.from(document.querySelectorAll(".model-filter input:checked")).map((input) => input.value);
+
+  if (checkedModels.length > 0) {
+    filtered = filtered.filter((p) => checkedModels.includes(p.model));
+  }
+  const checkedyears = Array.from(document.querySelectorAll(".year-filter input:checked")).map((input) => input.value);
+
+  if (checkedyears.length > 0) {
+    filtered = filtered.filter((p) => checkedyears.includes(p.release_year));
+  }
   filteredProducts = filtered; 
   let headerLabel = "All Shoes";
 
@@ -148,13 +155,13 @@ function renderProducts(products, page = 1, headerLabel = "All Shoes") {
   } else {
     document.querySelector(".pagination").classList.add("not-active");
   }
-  initSpinnerAnimation();
+  
   const productListBody = document.querySelector(".product-list-body"); 
   productListBody.innerHTML = ""; 
   paginatedProducts.forEach((product) => {
     productListBody.innerHTML += `<div class="product" data-product-id=${product._id}> 
       <div class="product-item"> 
-        <img src="./assets/images/${product.image}" alt="${product.name}"> <span><img src="./assets/images/heart.png" alt="heart"></span> 
+        <img src="./assets/images/${product.image}" alt="${product.model}"> <span><img src="./assets/images/heart.png" alt="heart"></span> 
       </div> 
       <div class="product-content"> 
         <p class="product-shoe-name">${product.model || "Unknown Product"}</p> 
@@ -203,6 +210,8 @@ function renderPagination(totalItems, currentPage) {
 document.addEventListener("DOMContentLoaded", async () => { 
   totalProducts = await fetchProducts(); 
   changeBrandFilters(totalProducts); 
+  changeModelFilters(totalProducts);
+  changeYearFilters(totalProducts);
   getProducts(); 
   let budgetObj = {}; 
   try { 
@@ -246,9 +255,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       applyFilters(1); 
     }); 
   }); 
+  setdropDownHeight();
 });
 
 
+/*Brand Search*/
 const filterContainers = document.querySelectorAll(".filter-sub-container");
 const brandMoreLink = document.querySelector(".brand-more-link");
 
@@ -275,6 +286,7 @@ function changeBrandFilters(totalProducts){
         brandMoreLink.onclick = (e) => {
           e.preventDefault();
           const hiddenBrands = brandList.querySelectorAll(".hidden-brand");
+          const parentContainer = brandList.closest(".filter-dropdown-container");
           if (hiddenBrands.length > 0) {
             
             hiddenBrands.forEach(el => el.classList.remove("hidden-brand"));
@@ -286,11 +298,15 @@ function changeBrandFilters(totalProducts){
             });
             brandMoreLink.textContent = `${totalBrands.length - 5} More`;
           }
+          if (parentContainer) {
+            parentContainer.style.maxHeight = parentContainer.scrollHeight + "px";
+          }
         };
       } 
     }
   });
 }
+
 
 const brandSearchInput = document.querySelector(".brand-search-input");
 const brandList = document.querySelector(".brand-list");
@@ -325,12 +341,179 @@ brandSearchInput.addEventListener("input", () => {
   }
 });
 
+
+
+
+/*Model Search*/
+
+const modelMoreLink = document.querySelector(".model-more-link");
+
+function changeModelFilters(totalProducts){ 
+  filterContainers.forEach(container => {
+    if(container.querySelector(".filter-title").textContent.trim() === "Model"){
+      const modelList = container.querySelector(".model-list");
+      const totalModels = [...new Set(totalProducts.map(p => p.model))];
+      modelList.innerHTML = "";
+
+      totalModels.forEach((model, index) => {  
+        const div = document.createElement("div");
+        div.className = "model-filter checkbox-filter";
+        if (index >= 5) div.classList.add("hidden-model"); 
+        div.innerHTML = `
+          <input type="checkbox" name="model" id="${model}" value="${model}">
+          <label for="${model}" class="filter-label">${model}</label>`;
+        modelList.appendChild(div);
+      });
+
+      if (totalModels.length > 5) { 
+        modelMoreLink.textContent = `${totalModels.length - 5} More`;
+
+        modelMoreLink.onclick = (e) => {
+          e.preventDefault();
+          const hiddenModels = modelList.querySelectorAll(".hidden-model");
+          const parentContainer = modelList.closest(".filter-dropdown-container");
+          if (hiddenModels.length > 0) {
+            
+            hiddenModels.forEach(el => el.classList.remove("hidden-model"));
+            modelMoreLink.textContent = "Show Less";
+          } else {
+            
+            modelList.querySelectorAll(".model-filter").forEach((el, i) => {
+              if (i >= 5) el.classList.add("hidden-model");
+            });
+            modelMoreLink.textContent = `${totalModels.length - 5} More`;
+          }
+           if (parentContainer) {
+            parentContainer.style.maxHeight = parentContainer.scrollHeight + "px";
+          }
+        };
+      } 
+    }
+  });
+}
+
+
+const modelSearchInput = document.querySelector(".model-search-input");
+const modelList = document.querySelector(".model-list");
+const noModelMsg = document.querySelector(".no-model");
+modelSearchInput.addEventListener("input", () => {
+  const query = modelSearchInput.value.toLowerCase();
+  let matched = 0;
+
+  modelList.querySelectorAll(".model-filter").forEach((el) => {
+    const label = el.querySelector("label").textContent.toLowerCase();
+    if (label.includes(query)) {
+      el.classList.remove("hidden-model");
+      matched++;
+    } else {
+      el.classList.add("hidden-model");
+    }
+  });
+
+  if (query === "") {
+    modelList.querySelectorAll(".model-filter").forEach((el, i) => {
+      if (i >= 5) el.classList.add("hidden-model");
+    });
+    modelMoreLink.classList.remove("not-active");
+  } else {
+    modelMoreLink.classList.add("not-active");
+  }
+
+  if (matched === 0) {
+    noModelMsg.classList.add("active");
+  } else {
+    noModelMsg.classList.remove("active");
+  }
+});
+
+
+
+
+
+/* release year*/
+
+const yearMoreLink = document.querySelector(".year-more-link");
+
+function changeYearFilters(totalProducts){ 
+  filterContainers.forEach(container => {
+    if(container.querySelector(".filter-title").textContent.trim() === "Release Year"){
+      const yearList = container.querySelector(".year-list");
+      let totalYears = [...new Set(totalProducts.map(p => p.release_year))];
+      totalYears=totalYears.sort((a,b)=>a-b)
+      yearList.innerHTML = "";
+
+      totalYears.forEach((release_year, index) => {  
+        const div = document.createElement("div");
+        div.className = "year-filter checkbox-filter";
+        if (index >= 5) div.classList.add("hidden-year"); 
+        div.innerHTML = `
+          <input type="checkbox" name="year" id="${release_year}" value="${release_year}">
+          <label for="${release_year}" class="filter-label">${release_year}</label>`;
+        yearList.appendChild(div);
+      });
+      if (totalYears.length > 5) { 
+        yearMoreLink.textContent = `${totalYears.length - 5} More`;
+
+        yearMoreLink.onclick = (e) => {
+          e.preventDefault();
+          const parentContainer = yearList.closest(".filter-dropdown-container");
+          if(totalYears.length - 5 == 0){
+            yearMoreLink.classList.add("not-active")
+          }
+          else if (totalYears.length - 5 == 1) {
+            const hiddenYear = yearList.querySelector(".hidden-year");
+
+            if (yearMoreLink.textContent.includes("More")) {
+            
+              hiddenYear.classList.remove("hidden-year");
+              yearMoreLink.textContent = "Show Less";
+            } else {
+              
+              yearList.querySelectorAll(".year-filter").forEach((el, i) => {
+                if (i > 4) el.classList.add("hidden-year");
+              });
+              yearMoreLink.textContent = `${totalYears.length - 5} More`;
+            }
+          }
+
+          else{
+            const hiddenYears = yearList.querySelectorAll(".hidden-year");
+            if (hiddenYears.length > 0) {
+              
+              hiddenYears.forEach(el => el.classList.remove("hidden-year"));
+              yearMoreLink.textContent = "Show Less";
+            } else {
+              
+              yearList.querySelectorAll(".year-filter").forEach((el, i) => {
+                if (i >= 5) el.classList.add("hidden-year");
+              });
+              yearMoreLink.textContent = `${totalYears.length - 5} More`;
+            }
+          }
+           if (parentContainer) {
+            parentContainer.style.maxHeight = parentContainer.scrollHeight + "px";
+          }
+        };
+      } 
+    }
+  });
+}
+
+
+
 document.addEventListener("change", (e) => {
   if (e.target.matches(".brand-filter input")) {
     applyFilters(1);
   }
+  else if (e.target.matches(".model-filter input")) {
+    applyFilters(1);
+  }
+  else if (e.target.matches(".year-filter input")) {
+    applyFilters(1);
+  }
 });
 
+/*Likes and render to product detail*/
 function setUpLikes(){
   const productLikeBtns=document.querySelectorAll(".product .product-item span")
   productLikeBtns.forEach(productLikeBtn=>{
@@ -351,17 +534,58 @@ function setUpLikes(){
 }
 
 function redirectToProductDetail(){
-  const productItems=document.querySelectorAll('.product-item > img')
+  const productItems=document.querySelectorAll('.product-item > img');
   productItems.forEach(productItem=>{
-  productItem.addEventListener('click', (e) => {
-  const product = e.target.closest('div[data-product-id]');
-  const id=product.getAttribute("data-product-id");
-  if (!id) return; 
+    productItem.addEventListener('click', (e) => {
+    const product = e.target.closest('div[data-product-id]');
+    const id=product.getAttribute("data-product-id");
+    if (!id) return; 
 
-    window.name=id;
-    setTimeout(() => {
-      window.location.href = "./product-detail.html";
-    }, 0);
-  })
+      window.name=id;
+      setTimeout(() => {
+        window.location.href = "./product-detail.html";
+      }, 0);
+    })
+  });
+}
+const filterHeaders=document.querySelectorAll(".filter-sub-header-container")
+
+filterHeaders.forEach(header => {
+  header.addEventListener("click", (e) => {
+    const container = header.nextElementSibling;
+    if (!container || !container.classList.contains("filter-dropdown-container")) return;
+
+    const icon = header.querySelector(".dropdown-icon");
+    const key = header.getAttribute("data-key");
+
+    if (container.classList.contains(key)) {
+      if (container.classList.contains("hidden")) {
+        container.classList.remove("hidden");
+        requestAnimationFrame(() => {
+          container.style.maxHeight = container.scrollHeight + "px";
+          icon.src = "./assets/images/up-arrow.png";
+        });
+      } else {
+        container.style.maxHeight = "0px";
+        container.classList.add("hidden");
+        icon.src = "./assets/images/down-arrow.png";
+      }
+    }
+  e.stopPropagation();
+  });
+
 });
+
+document.querySelectorAll(
+  ".brand-list, .model-list, .year-list"
+).forEach(list => {
+  list.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+})
+
+function setdropDownHeight(){
+  document.querySelectorAll(".filter-dropdown-container").forEach(dropdown => {
+    dropdown.style.maxHeight = dropdown.scrollHeight + "px"; 
+  });
 }
