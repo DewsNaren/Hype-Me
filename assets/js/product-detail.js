@@ -1,4 +1,9 @@
 function renderProductDetail(product){
+
+  const selected= document.querySelector(".main-container .product-detail-container .product-container-wrapper .breadcrumb .selected");
+
+  selected.textContent=product.model
+
   const mainImgContainer = document.querySelector('.main-image-container');
   mainImgContainer.innerHTML="";
 
@@ -145,3 +150,10 @@ productReadMoreBtn.addEventListener('click',(e)=>{
     })
   }
 })
+
+const sellerName=document.querySelector(".product-container-wrapper .product-info .selected-product-wrapper .selected-product-detail .seller-info .seller-name");
+
+sellerName.addEventListener('click',()=>{
+  window.location.href="./profile-page.html"
+})
+console.log(sellerName)

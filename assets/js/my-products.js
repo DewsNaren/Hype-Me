@@ -7,6 +7,10 @@ const totalLikesCount=document.querySelector(".user-stats .stat-box .likes-count
 const totalViewsCount=document.querySelector(".user-stats .stat-box .views-count");
 const followersCount=document.querySelector(".user-stats .stat-box .followers-count");
 const followingCount=document.querySelector(".user-stats .stat-box .following-count");
+const userProfilePicture=document.querySelector(".user-info .profile-img-wrapper img")
+
+
+
 let formData;
 if(window.name){
   formData = JSON.parse(window.name)
@@ -17,10 +21,14 @@ if(formData){
   username.innerHTML=`${formData.firstName} ${formData.lastName}`;
   zipcode.textContent=`TX ${formData.zipCode}`;
   locationListZipCode.textContent=`TX ${formData.zipCode}`;
-  if(formData.delProfile){
+  if(formData.delProfile=="true"){
     let profileHtml=`<span class="user-profile">${formData.firstName[0]}${formData.lastName[0]}</span><button type="button"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button>`;
     profileList.innerHTML="";
     profileList.innerHTML=profileHtml;
+    userProfilePicture.src="./assets/images/default-profile-pic.jpg"
+  }
+  else{
+    userProfilePicture.src=`./assets/images/${formData.profileImg}`
   }
 }
 
@@ -59,7 +67,12 @@ ProductTabs.forEach(ProductTab => {
   });
 });
 
-
+if(addProductBtn){
+  addProductBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    window.location.href="./add-product.html"
+  })
+}
 function renderProducts(products){
   const productList=document.querySelector(".products-wrapper .products-body .product-list")
   productList.innerHTML="";

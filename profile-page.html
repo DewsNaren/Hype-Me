@@ -6,6 +6,7 @@
     <title>Hpye Me | Profile Page</title>
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/profile-page.css">
+    <link rel="stylesheet" href="./assets/css/authenticate.css">
     <link rel="icon" href="./assets/images/fav.png" type="image/x-icon">
 </head>
 <body>
@@ -17,7 +18,16 @@
             <ul>
                 <li><img src="./assets/images/g-search.png" class="g-search" alt="g-search"></li>
                 <li class="location-list"><span>TX 77441</span><img src="./assets/images/location.png" alt="location"></li>
-                <li><img src="./assets/images/profile.png" class="user-profile" alt="profile"><button type="button"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button></li>
+                <li class="profile-container">
+                    <img src="./assets/images/user.png" class="user-profile default" alt="profile">
+                    <img src="./assets/images/profile.png" class="user-profile login-profile" alt="profile">
+                    <button type="button" class="profile-toggle"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button>
+                    <div class="profile-menu">
+                        <a href="#" class="signup-btn">Sign Up</a>
+                        <a href="#" class="login-btn">LogIn</a>
+                        <a href="#" class="logout-btn">Logout</a>
+                    </div>
+                </li>
                 <li>
                     <div class="nav-btn-container">
                         <a href="#" class="buy-btn">Buy</a>
@@ -97,7 +107,120 @@
             <p>&copy; 2021 Hype-me. All Rights Reserved.</p>
         </div>
     </footer>
+    <div class="overlay">
+        <div class="form-container login-container">
+            <div class="overlay-close-btn-container">
+                <button type="button" class="overlay-close-btn login-close-btn">
+                    <img src="./assets/images/close.png" alt="close">
+                </button>
+            </div>
+            <h2>Hello,</h2>
+            <p class="social-text">Log In with your social network</p>
+            <div class="social-icons">
+                <button type="button" class="social-btn"><img src="./assets/images/fb.png" alt="fb"></button>
+                <button type="button" class="social-btn"><img src="./assets/images/google.png" alt="google"></button>
+            </div>
+            <p class="or-text">or</p>
+
+            <form action="/" class="form login-form">
+                <div class="input-group email-group">
+                    <input type="input" name="email" class="email" placeholder="Email" autocomplete="on">
+                    <p class="error error-email">no error</p>
+                </div>
+                <div class="input-group password-group">
+                    <input type="password" name="password" class="password" placeholder="Password">
+                    <img src="./assets/images/hide_password.png" class="eye-icon" alt="hide_password">
+                    <p class="forgot-link"><a href="#">Forget Password</a></p>
+                    <p class="error error-password">no error</p>
+                </div>
+                <button type="submit" class="submit-btn">Log In</button>
+            </form>
+
+            <p class="signup-text">Don't you have an account? <a href="#" class="signup-btn">Sign Up</a></p>
+            <p class="result"></p>
+        </div>
+        <div class="form-container signup-container">
+            <div class="overlay-close-btn-container">
+                <button type="button" class="overlay-close-btn signup-close-btn">
+                    <img src="./assets/images/close.png" alt="close">
+                </button>
+            </div>
+            <h2>Hello,</h2>
+            <p class="social-text">Sign Up with your social network</p>
+            <div class="social-icons">
+            <button type="button" class="social-btn"><img src="./assets/images/fb.png" alt="fb"></button>
+            <button type="button" class="social-btn"><img src="./assets/images/google.png" alt="google"></button>
+            </div>
+            <p class="or-text">or</p>
+
+            <form  class="form signup-form">
+                <div class="input-group">
+                    <input type="text" name="name" class="name" placeholder="Full Name" autocomplete="on">
+                    <p class="error error-name">no error</p>
+                </div>
+                <div class="input-group email-group">
+                    <input type="input" name="email" class="email" placeholder="Email" autocomplete="on">
+                    <p class="error error-email">no error</p>
+                </div>
+                <div class="input-group password-group">
+                    <input type="text" name="password" class="password" placeholder="Password">
+                    <img src="./assets/images/hide_password.png"class="eye-icon" alt="hide_password">
+                    <small class="password-hint">At least 8 characters, 1 uppercase letter, 1 number & 1 symbol</small>
+                    <p class="error error-password">no error</p>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="zipcode" class="zipcode" placeholder="Zip Code">
+                    <p class="error">no error</p>
+                </div>
+                <div class="input-group checkbox-group">
+                    <input type="checkbox" class="terms" id="terms">
+                    <label for="terms">By signing up, you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                <p class="error error-zipcode">no error</p>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+
+            <p class="login-text">Already have an account? <a href="#" class="login-btn">Log In</a></p>
+            <p class="result"></p>
+        </div>
+        <div class="form-container reset-container">
+            <div class="overlay-close-btn-container">
+                <button type="button" class="overlay-close-btn">
+                    <img src="./assets/images/close.png" alt="close">
+                </button>
+            </div>
+            <h2>Reset Password</h2>
+            <p class="reset-desc">Enter the mail address associated with your account, and we'll email you a link to reset your password.</p>
+            <form action="/" class="form reset-form">
+                <div class="input-group">
+                    <input type="input" class="email" name="email"  placeholder="Email Address" autocomplete="on">
+                    <p class="error error-email">no error</p>
+                </div>
+                <button type="submit" class="submit-btn">Send reset link</button>
+            </form>
+
+            <p class="reset-text">Back to <span><a href="#" class="login-btn">Log In </a> / <a href="#" class="signup-btn">Sign Up</a></span></p>
+            <p class="reset-success-message">Password reset link has been sent to your email successfully!.</p>
+        </div>
+    </div>
+    <div class="logout-overlay">
+        <div class="logout-modal">
+            <button class="modal-close-btn"><img src="./assets/images/modal-close.png" alt="modal-close"></button>
+            <div class="logout-content-container">
+                <h3>Confirm Logout</h3>
+                <p>Are you sure you want to logout?</p>
+                <div class="modal-buttons">
+                    <button class="cancel-btn">Cancel</button>
+                    <button class="confirm-btn">Logout</button>
+                </div>
+            </div>
+            <div class="logout-success-container">
+            </div>
+        </div>
+    </div>
     <script src="./assets/js/product.js" defer></script>
     <script src="./assets/js/profile-page.js"></script>
+    <script src="./assets/js/profile-dropdown.js"></script>
+    <script src="./assets/js/authenticate.js"></script>
 </body>
 </html>

@@ -99,7 +99,7 @@ async function populateProductsTable() {
   } catch (err) {
     console.error("Error fetching published products:", err);
   }
-
+  
   allProducts = [...drafts];
 
   published.forEach(prod => {
@@ -109,6 +109,11 @@ async function populateProductsTable() {
   });
 
   filteredProducts = [...allProducts]; 
+  filteredProducts.reverse()
+//   filteredProducts = [
+//   ...allProducts.filter(p => !p.isPosted),  
+//   ...allProducts.filter(p => p.isPosted)   
+// ];
   renderTable();
   renderPagination();
 }
@@ -224,6 +229,10 @@ function handleEdit(product) {
   } catch {
     allProducts = [];
   }
+    allProducts = allProducts.map(p => {
+    const { editing, ...rest } = p; 
+    return rest;
+  });
 
   const productIndex = allProducts.findIndex(p => p._id === product._id);
   if (productIndex === -1) {

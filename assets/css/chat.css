@@ -888,10 +888,9 @@
     .chat-active {
         display: none;
     }
-    
-   .chat-active.active{
+    .chat-active.active{
         display: flex;
-   }
+    }
 }
 
 @media screen and (max-width:600px){

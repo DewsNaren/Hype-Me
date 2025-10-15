@@ -22,6 +22,28 @@ convofilterBtns.forEach(convofilterBtn => {
   });
 });
 
+const chatHeader=document.querySelector(".chat-inner-container .chat-active .chat-header")
+const activeImg=chatHeader.querySelector(".contact-info .product-img")
+const activeName=chatHeader.querySelector(".contact-info .contact-details .contact-user-info .contact-name")
+const activeProductPreview=chatHeader.querySelector(".contact-info .contact-details .contact-user-info .active-product-preview")
+const activePrice=chatHeader.querySelector(".contact-info .contact-details .contact-user-info .product-price")
+
+
+convoItems.forEach(convoItem=>{
+  convoItem.addEventListener('click',()=>{
+    const selectedProductImg=convoItem.querySelector(".convo-info .convo-detail .convo-product-picture");
+    activeImg.src=selectedProductImg.src;
+    activeImg.alt=selectedProductImg.alt;
+
+    const contactName=convoItem.querySelector(".convo-info .convo-detail .convo-user-info .contact-name");
+    activeName.textContent=contactName.textContent;
+    
+    const productPreview=convoItem.querySelector(".convo-info .convo-detail .convo-detail .convo-user-info .product-preview");
+    activeProductPreview.textContent=productPreview.textContent
+
+    activePrice.textContent=`$${Math.floor(Math.random()*90+999)-90}`
+  })
+})
 
 inputField.addEventListener('input', () => {
   if(inputField.value.trim()== ''){
@@ -100,3 +122,23 @@ const chatCloseBtn=document.querySelector(".chat-close-btn-container .chat-close
 chatCloseBtn.addEventListener('click',()=>{
   window.location.href="./product-detail.html"
 })
+
+const chatConversations=document.querySelector(".chat-inner-container .chat-conversations");
+
+const chatActive=document.querySelector(".chat-inner-container .chat-active");
+
+const chatActiveClose=chatHeader.querySelector(".chat-active-close-btn");
+
+if(window.innerWidth<=768){
+  convoItems.forEach(convoItem=>{
+    convoItem.addEventListener('click',()=>{
+      chatConversations.classList.add("not-active");
+      chatActive.classList.add("active")
+    })
+  })
+  chatActiveClose.addEventListener("click",()=>{
+    chatActive.classList.remove("active")
+    chatConversations.classList.remove("not-active");
+      
+  })
+}

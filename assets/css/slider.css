@@ -14,7 +14,6 @@
 .recent-slider-container{
     display: flex;
     gap: 2.08334vw;
-    align-items: center;
     justify-content: flex-start;
     transition: transform 0.6s ease-in-out;
 }
@@ -286,19 +285,20 @@
         max-width: 85%;
     }
     .recent-slider{
-        flex: 0 0 19.2vw;
-        width: 19.2vw;
+        flex: 0 0 calc((100% - 2 * 20px) / 3);
+        width: calc((100% - 2 * 20px) / 3);
     }
     .recent-slider-item a img{
-        width: 19.2vw;
+        /* width: calc((100% - 2 * 20px) / 3); */
+       width:  100%;
     }
     .recent-slider-item span{
         right: 8px;
         top: 5px;
     }
-    .recent-slider-item span img{
+    /* .recent-slider-item span img{
         width: 12px;
-    }
+    } */
     .recent-slider-content{
         margin-top: 5px;
     }

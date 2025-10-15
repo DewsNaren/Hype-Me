@@ -9,7 +9,10 @@ const lastName = fromContainer.querySelector('.input-wrapper .last-name');
 const country = fromContainer.querySelector('.input-wrapper .country');
 const city = fromContainer.querySelector('.input-wrapper .city');
 const zipCode = fromContainer.querySelector('.input-wrapper .zip-code');
+const addImageInput=fromContainer.querySelector('.profile-image-preview  .add-image-input');
 
+
+let profileImgSrc="profile-pic.jpg";
 actionBtn.addEventListener('click', () => {
     if (actionBtn.classList.contains('delete-image-btn')) {
         profileImage.src = './assets/images/default-profile-pic.jpg';
@@ -18,6 +21,17 @@ actionBtn.addEventListener('click', () => {
         actionBtn.classList.remove('delete-image-btn');
         actionBtn.classList.add('add-image-btn');
     } 
+    else if(actionBtn.classList.contains('add-image-btn')){
+        addImageInput.click()
+        addImageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            profileImgSrc=file.name;
+            delProfileInput.value = 'false';
+            profileImage.src=`./assets/images/${profileImgSrc}`
+        })
+        
+    }
+
 })
 
 
@@ -96,6 +110,7 @@ function getData(){
         city: city.value.trim().toLowerCase(),
         zipCode: zipCode.value.trim().toLowerCase(),
         delProfile:delProfileInput.value,
+        profileImg:profileImgSrc,
     };
 
     window.name=JSON.stringify(formData)

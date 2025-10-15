@@ -1003,11 +1003,11 @@ footer{
         font-size: 0.55rem;
     }
     .product-list-wrapper {
-        max-width: 90%;
+        max-width: 92%;
     }
     .filter-container{
-        min-width: 130px;
-        max-width: 130px;
+        min-width: 165px;
+        max-width: 165px;
     }
      .highlight-box {
         height: 16px;
@@ -1018,6 +1018,7 @@ footer{
     }
     .product-list-body{
         gap: 18px;
+        grid-template-columns: repeat(2, minmax(100px,1fr));
     }
     .product-shoe-name{
         font-size: 0.6rem;
@@ -1032,13 +1033,41 @@ footer{
 }
 
 @media screen and (max-width:600px){
-    .product-list-header{
-        flex-direction: column;
-        align-items: flex-start;
+    .breadcrumb{
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 20px 0;
     }
+    .filter-btn{
+        display: flex;
+    }
+    
+    
     .filter-container{
-        min-width: 140px;
-        max-width: 140px;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        bottom: 0;
+        background-color: rgb(26, 25, 25);
+        transition: left 0.5s ease-in-out;
+        color: black;
+        padding: 20px 30px;
+    }
+    .filter-container.active{
+        left: 0%;
+        min-width: 100%;
+        z-index: 4;
+     }
+    .filter-sub-container{
+        width: 100%;
+    }
+    .filter-close-btn.active{
+        display: block;
+    }
+    .product-list{
+        max-width: 90%;
+        margin: 0 auto 0;
+        padding-bottom: 30px;
     }
     .product-list-wrapper{
         max-width: 93.5%;
@@ -1046,8 +1075,8 @@ footer{
     .product-list-container{
         gap: 20px;
     }
-    .product-list-body{
-        grid-template-columns: repeat(2, minmax(100px,1fr));
+    .product-list{
+        min-height: 70vh;
     }
     .page-btn:not(.next-btn){
         width: 15px;
@@ -1063,57 +1092,27 @@ footer{
     
     .product-list-wrapper{
         padding:0;
-        max-width: 90%;
+        max-width: 100%;
     }
-    .breadcrumb{
-        max-width: 90%;
-        margin: 0 auto;
-        padding: 20px 0;
-    }
-    .filter-btn{
-        display: flex;
-    }
+    
+    
     .product-list-container{
         margin-top: 0;
     }
 
-    .filter-container{
-        position: absolute;
-        top: 0;
-        left: -100%;
-        bottom: 0;
-        background-color: rgb(26, 25, 25);
-        transition: left 0.5s ease-in-out;
-        color: black;
-        padding: 20px 30px;
-     }
-
-     .product-shoe-name,.product-shoe-price{
+    .product-shoe-name,.product-shoe-price{
         font-size: 0.7rem;
-     }
-     .filter-container.active{
-        left: 0%;
-        min-width: 100%;
-        z-index: 4;
-     }
-    .filter-sub-container{
-        width: 100%;
     }
-
-    .product-list{
-        max-width: 90%;
-        margin: 25px auto 0;
-        padding-bottom: 30px;
+     
+    .product-list-header{
+        flex-direction: column;
+        align-items: flex-start;
     }
     .product-list-body{
         border-bottom: none;
         gap: 22px;
     }
      
-    .filter-close-btn.active{
-        display: block;
-    }
-
     .page-btn-container{
         margin: 0 auto;
     }
