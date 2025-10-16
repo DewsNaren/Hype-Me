@@ -10,6 +10,7 @@ const priceDisplay = document.querySelector(".price-display");
 const rangeFill = document.querySelector(".range-fill"); 
 const highlightBox = document.querySelector(".highlight-box"); 
 const sortBtn = document.querySelector(".sort-button"); 
+
 sortBtn.addEventListener("click", function () { 
   this.closest(".sort-dropdown").classList.toggle("active"); 
 }); 
@@ -25,19 +26,25 @@ function initSpinnerAnimation() {
   }
 }
 initSpinnerAnimation();
+
 const filterBtn = document.querySelector(".filter-btn"); 
 const filterContainer = document.querySelector(".filter-container"); 
 const filterClostBtn = document.querySelector(".filter-close-btn"); 
-const footer = document.querySelector("footer"); 
+
 filterBtn.addEventListener("click", () => { 
   filterContainer.classList.add("active"); 
-  footer.classList.add("not-active"); 
-  filterClostBtn.classList.add("active"); 
+
+  filterClostBtn.classList.add("active");
+  setTimeout(()=>{
+    body.classList.add("not-active");
+  }, 500)
+  
+
 }); 
 filterClostBtn.addEventListener("click", () => { 
   filterContainer.classList.remove("active"); 
-  footer.classList.remove("not-active");
   filterClostBtn.classList.remove("active"); 
+  body.classList.remove("not-active");
 }); 
 function getProducts() {
   let receivedObj;

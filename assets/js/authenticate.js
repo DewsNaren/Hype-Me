@@ -410,10 +410,17 @@ function showErrors(messages,form) {
     }
   });
 }
+const forms = document.querySelectorAll('.form');
 
-function changePasswordType(container) {
-  const password = container.querySelector(".password");
-  const eyeIcon = container.querySelector(".eye-icon");
+
+
+function changePasswordType(){
+  forms.forEach(form => {
+    
+  
+  const password = form.querySelector(".password");
+  const eyeIcon = form.querySelector(".eye-icon");
+
   if (password && eyeIcon) {
     eyeIcon.addEventListener('click', () => {
         if (password.type === "text") {
@@ -427,17 +434,12 @@ function changePasswordType(container) {
         }
     });
   }
+});
 }
-
+changePasswordType()
 function setupForms() {
   const forms = document.querySelectorAll('.form');
 
-  forms.forEach(form => {
-    const container = form.closest('.form-container');
-    if (container.classList.contains("active")){
-      changePasswordType(container);
-    } 
-  });
 
   forms.forEach(form => {
     form.addEventListener('submit', (e) => {
@@ -487,6 +489,7 @@ function openLogIn(){
   signUpContainer.classList.remove("active");
   body.classList.add("not-active");
   overlayContainer.classList.add("active");
+  
   requestAnimationFrame(()=>{
     loginContainer.classList.add("active");
   })
@@ -515,7 +518,7 @@ function openSignUp(){
       signUpContainer.classList.add("active");
     })
     
-    setupForms();
+  setupForms();
 }
 signUpBtns.forEach(signUpBtn=>{
   signUpBtn.addEventListener("click",(e)=>{

@@ -626,7 +626,7 @@ footer{
         padding: 6px 15px 40px;
     }
     .product-container-wrapper{
-        width: 92%;
+        max-width: 92%;
         padding: 0 5px;
     }
     .breadcrumb .separator{
@@ -770,11 +770,11 @@ footer{
         padding: 10px 15px 20px;
     }
     .product-container-wrapper{
-        padding: 0 20px;
+        max-width: 96%;
     }
     
     .breadcrumb a,.selected{
-        font-size: 0.55rem;
+        font-size: 10px;
     }
     .product-header-container{
         padding: 18px 0;

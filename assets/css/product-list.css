@@ -42,6 +42,7 @@
     gap: 5px;
     padding: 5px;
     font-size: 0.7rem;
+    cursor: pointer;
 }
 /* Filter Container */
 .filter-container{
@@ -63,6 +64,7 @@
     border: none;
     z-index: 3;
     display: none;
+    cursor: pointer;
 }
 .filter-close-btn img{
     width: 18px;
@@ -653,7 +655,7 @@ footer{
     }
     
     .product-list-wrapper{
-        padding: 12px 9px 50px;
+        padding: 15px 9px 50px;
     }
     .breadcrumb {
         padding-left: 8px;
@@ -663,7 +665,7 @@ footer{
         font-size: 0.55rem;
     }
     .breadcrumb a,.selected{
-        font-size: 0.67rem;
+        font-size: 12px;
     }
     .product-list-container{
         margin-top: 30px;
@@ -832,7 +834,8 @@ footer{
         width: 12px;
     }
     .product-list-wrapper{
-        padding: 6px 5px 50px;
+        padding: 12px 5px 50px;
+        max-width: 90%;
     }
     .breadcrumb {
         padding-left: 8px;
@@ -842,7 +845,7 @@ footer{
         font-size: 0.4rem;
     }
     .breadcrumb a,.selected{
-        font-size: 0.5rem;
+        font-size: 11px;
     }
     .product-list-container{
         margin-top: 19px;
@@ -938,18 +941,18 @@ footer{
         font-size: 0.8rem;
     }
     .product-list-header h2 span{
-        font-size: 0.56rem;
+        font-size: 0.7rem;
         margin-left: 5px;
     }
     .sort-wrapper{
         padding-right: 5px;
     }
     .sort-label{
-        font-size: 0.6rem;
+        font-size: 0.7rem;
     }
     .sort-button{
         margin-left: 4px;
-        font-size: 0.6rem;
+        font-size: 0.7rem;
     }
     .sort-button img{
         margin-left: 5px;
@@ -966,10 +969,10 @@ footer{
         margin-top: 5px;
     }
     .product-shoe-name{
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
     .product-shoe-price{
-        font-size:0.7rem;
+        font-size:0.8rem;
     }
     .spinner-container{
         padding:40px 0 30px;
@@ -985,11 +988,11 @@ footer{
         margin-top: 25px;
     }
     .page-btn:not(.next-btn){
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
     }
     .page-btn{
-        font-size: 0.65rem;
+        font-size: 0.68rem;
     }
     .next-btn{
         padding: 0 6px;
@@ -1000,7 +1003,7 @@ footer{
 }
 @media screen and (max-width:768px){
     .breadcrumb a,.selected{
-        font-size: 0.55rem;
+        font-size: 10px;
     }
     .product-list-wrapper {
         max-width: 92%;
@@ -1009,22 +1012,32 @@ footer{
         min-width: 165px;
         max-width: 165px;
     }
-     .highlight-box {
+    .highlight-box {
         height: 16px;
         top: -4px;
     }
     .brand-search-input{
         max-width: 80%;
     }
+    .product-list-header h2 span{
+        font-size: 0.6rem;
+    }
+    .sort-label{
+        font-size: 0.6rem;
+    }
+    .sort-button{
+        font-size: 0.6rem;
+    }
     .product-list-body{
         gap: 18px;
         grid-template-columns: repeat(2, minmax(100px,1fr));
     }
-    .product-shoe-name{
-        font-size: 0.6rem;
+     .page-btn:not(.next-btn){
+        width: 17px;
+        height: 17px;
     }
-    .product-shoe-price{
-        font-size:0.65rem;
+    .page-btn{
+        font-size: 0.65rem;
     }
     footer{
         padding-top: 40px;
@@ -1033,33 +1046,59 @@ footer{
 }
 
 @media screen and (max-width:600px){
+    .main-container{
+        min-height: 65vh;
+    }
     .breadcrumb{
         max-width: 90%;
         margin: 0 auto;
         padding: 20px 0;
     }
+
     .filter-btn{
         display: flex;
     }
-    
+    .product-list-wrapper{
+        max-width: 95%;
+    }
+    .product-list-container{
+        gap: 20px;
+    }
     
     .filter-container{
-        position: absolute;
+        position: fixed;
         top: 0;
         left: -100%;
-        bottom: 0;
         background-color: rgb(26, 25, 25);
-        transition: left 0.5s ease-in-out;
+        transition: left 0.5s ease-in, min-width 0.5s ease-in;
         color: black;
         padding: 20px 30px;
+        overflow-y: hidden;
+        height: 100vh;
+        min-width: 0;
+        z-index: 4;
     }
     .filter-container.active{
-        left: 0%;
+        left: 0;
         min-width: 100%;
-        z-index: 4;
+        overflow-y: auto;
+        transition: left 0.5s ease-in, overflow-y 0.5s ease-in;
      }
     .filter-sub-container{
         width: 100%;
+    }
+
+    .filter-label {
+        margin-left: 5px;
+        font-size: 11px;
+    }
+    .checkbox-filter {
+        margin-bottom: 5px;
+    }
+
+    .checkbox-filter input {
+        width: 10px;
+        height: 10px;
     }
     .filter-close-btn.active{
         display: block;
@@ -1069,14 +1108,13 @@ footer{
         margin: 0 auto 0;
         padding-bottom: 30px;
     }
-    .product-list-wrapper{
-        max-width: 93.5%;
+    
+    
+    .product-shoe-name{
+        font-size: 0.7rem;
     }
-    .product-list-container{
-        gap: 20px;
-    }
-    .product-list{
-        min-height: 70vh;
+    .product-shoe-price{
+        font-size:0.75rem;
     }
     .page-btn:not(.next-btn){
         width: 15px;
@@ -1084,6 +1122,9 @@ footer{
     }
     .page-btn{
         font-size: 0.6rem;
+    }
+    footer.not-active{
+        display: none;
     }
 }
 
@@ -1094,7 +1135,20 @@ footer{
         padding:0;
         max-width: 100%;
     }
-    
+    .product-list-header h2 span{
+        font-size: 0.65rem;
+        margin-left: 5px;
+    }
+    .sort-wrapper{
+        padding-right: 5px;
+    }
+    .sort-label{
+        font-size: 0.65rem;
+    }
+    .sort-button{
+        margin-left: 4px;
+        font-size: 0.65rem;
+    }
     
     .product-list-container{
         margin-top: 0;
@@ -1125,9 +1179,7 @@ footer{
         padding-top: 30px;
     }
 
-    footer.not-active{
-        display: none;
-    }
+    
 }
 
 @media screen and (max-width:385px){

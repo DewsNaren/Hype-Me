@@ -267,9 +267,11 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-top: 20px;
   padding: 2.345vw 0 10px;
   gap: 10px;
   flex-wrap: wrap;
+  border-top: 1px solid rgb(134, 131, 136);
 }
 
 .pagination .page, .pagination .prev, .pagination .next {
@@ -297,7 +299,7 @@
  .pagination .page.active{
   background-color: rgb(85, 21, 180);
   border-radius: 50%;
-  color: #fff;
+  color: whitesmoke;
 }
 
 .add-product-btn{
@@ -981,9 +983,13 @@ footer{
   }
   .top-profile-section {
     margin: 26px auto 10px;
+    max-width: 90%;
   }
   .profile-img-wrapper .profile-picture{
     width: 70px;
+  }
+  .user-details h2 {
+    font-size: 12px;
   }
   .camera-icon {
     bottom: 5px;
@@ -994,13 +1000,13 @@ footer{
   }
   .edit-link{
     margin-left: 3px;
-    font-size: 0.55rem;
+    font-size: 0.6rem;
   }
   .edit-link img{
-    width: 6px;
+    width: 7px;
   }
   .member-since{
-    font-size: 0.55rem;
+    font-size: 0.6rem;
   }
   .user-location{
     margin: 5px 0;
@@ -1018,13 +1024,14 @@ footer{
     width: 25px;
   }
   .stat-text{
-    font-size: 0.5rem;
+    font-size: 0.57rem;
   }
   .count{
     font-size: 1.45rem ;
   }
   .products-wrapper{
     padding-top: 11px;
+    max-width:90%;
   }
   .product-main-tabs {
     padding: 0 2.8646vw 1.4vw;
@@ -1037,7 +1044,7 @@ footer{
     gap: 1.9vw;
   }
   .product-sub-tab{
-    font-size: 0.64rem;
+    font-size: 11px;
   }
   .product-sub-tab.active::after {
     bottom: -10px;
@@ -1064,24 +1071,24 @@ footer{
   }
   .product-meta-item{
     gap: 10px;
-    font-size: 0.6rem;
+    font-size: 11px;
     padding-right: 10px;
   }
   .product-meta-item p{
     gap: 5px;
   }
   .product-meta-item .views{
-    width: 14px;
+    width: 15px;
   }
   .product-meta-item .likes{
     width: 10px;
   }
   .pagination .page,.pagination .prev,.pagination .next{
-    font-size: 9.77px;
+    font-size: 11px;
   }
   .pagination .page {
-    width: 19px;
-    height: 19px;
+    width: 20px;
+    height: 20px;
   }
   .rating-bar-group{
     gap: 6px;
@@ -1145,7 +1152,10 @@ footer{
 
   .user-details h2{
     text-wrap: nowrap;
-    font-size: 12px;
+    font-size: 14px;
+  }
+  .member-since{
+    font-size: 10px;
   }
   .main-container{
     padding: 15px 0 50px;
@@ -1154,12 +1164,13 @@ footer{
     margin: 26px auto 10px;
     gap: 20px;
     flex-direction: column;
+    max-width: 92%;
   }
   .user-info{
-    width: 294px;
+    width: 340px;
   }
   .profile-img-wrapper .profile-picture{
-    width: 60px;
+    width: 70px;
   }
   .camera-icon {
     bottom: 1px;
@@ -1174,23 +1185,23 @@ footer{
     flex-wrap: wrap;
     min-width: fit-content;
   }
-  .stat-box img{
-    width: 20px;
-  }
   .stat-text{
-    font-size: 0.45rem;
+    font-size: 0.65rem;
   }
   .count{
     font-size: 1.15rem ;
   }
+  .products-wrapper {
+    max-width: 92%;
+  }
   .product-main-tabs {
-    padding: 0 18px 10px ;
+    padding: 0 10px 10px ;
   }
   .product-tab{
     font-size: 0.75rem;
   }
   .product-sub-tabs-wrapper {
-    padding: 15px 22px 0;
+    padding: 15px 10px 0;
   }
   .product-sub-tabs {
     gap: 1.9vw;
@@ -1208,7 +1219,7 @@ footer{
   }
  
   .product-list{
-    padding: 25px 22px;
+    padding: 25px 10px;
     grid-template-columns:  repeat(3, minmax(150px, 1fr));
     gap: 15px;
   }
@@ -1226,10 +1237,13 @@ footer{
   }
   
   .product-meta-item .views{
-    width: 13px;
+    width: 14px;
   }
   .product-meta-item .likes{
     width: 9px;
+  }
+  .pagination{
+    margin-top: 15px;
   }
   .pagination .page, .pagination .prev,.pagination .next{
     font-size: 10px;
@@ -1322,10 +1336,18 @@ footer{
   }
   .top-profile-section {
     margin: 20px auto 10px;
+    max-width: 92%;
   }
-
+  
+  .product-main-tabs {
+    padding: 0 5px 10px;
+  }
+  .product-sub-tabs-wrapper {
+    padding: 15px 5px 0;
+  }
   .product-list{
     grid-template-columns:  repeat(2, minmax(150px, 1fr));
+    padding: 25px 5px;
   }
   .product-content{
     margin-top: 5px;
@@ -1349,6 +1371,18 @@ footer{
     height: 25px;
     font-size: 0.65rem;
   }
+  .profile-img-wrapper .profile-picture {
+    width: 60px;
+  }
+  .user-info{
+    width: 290px;
+  }
+  .stat-box img {
+    margin-left: 0px;
+}
+  .stat-text{
+    font-size: 0.6rem;
+  }
   .product-tab{
     font-size: 0.7rem;
   }
@@ -1358,12 +1392,7 @@ footer{
   .product-sub-tabs{
     gap: 15px;
   }
-  .product-shoe-name{
-    font-size: 0.65rem;
-  }
-  .product-shoe-price{
-    font-size: 0.7rem;
-  }
+ 
   .pagination .page{
     width: 18px;
     height: 18px;
@@ -1398,11 +1427,10 @@ footer{
 
 }
 
-@media  screen and (max-width:385px) {
+@media  screen and (max-width:390px) {
   .product-sub-tabs-wrapper{
     flex-direction: column;
     align-items: flex-start;
-    padding: 15px 20px;
     gap: 20px;
   }
   .product-sort-control{
@@ -1413,29 +1441,37 @@ footer{
   }
   .top-profile-section{
     align-items: flex-start;
-    padding: 15px ;
+    padding: 15px 10px;
+    max-width: 90%;
   }
   .user-info{
     width: fit-content;
   }
 
   .user-stats{
-    gap: 20px;
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 100%;
+  }
+  .stat-box{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .stat-box img {
+    width: 24px;
   }
   .count{
-    font-size: 1rem;
+    font-size: 14px;
   }
   .product-sub-tab.active::after{
     bottom: -6px;
   }
   .product-list{
     grid-template-columns: repeat(1, minmax(150px, 1fr));
-    padding: 20px 22px;
   }
-  .add-product-btn{
-    width: 25px;
-    height: 25px;
-  }
+ 
   .filter-buttons{
     gap: 7px;
   }

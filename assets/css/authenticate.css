@@ -767,7 +767,7 @@
         font-size: 0.6rem;
     }
     .overlay .form-container{
-        width: 50%;
+        width: 60%;
     }
 
     
@@ -839,6 +839,9 @@
     .overlay-close-btn img{
         width: 20px;
     }
+    .overlay .form-container{
+        width: 70%;
+    }
     .overlay .form-container h2 {
         font-size: 1.3rem;
     }
@@ -884,7 +887,7 @@
 
 @media screen and (max-width:600px){
     .overlay .form-container {
-        width: 65%;
+        width: 100%;
     }
     .overlay-close-btn img{
         width: 18px;
@@ -892,9 +895,7 @@
 }
 
 @media screen and (max-width:480px){
-    .overlay .form-container{
-        width: 80%;
-    }
+    
     
     .overlay-close-btn img{
         width: 15px;
@@ -975,9 +976,7 @@
 }
 
 @media screen and (max-width:390px){
-    .overlay .form-container{
-        width: 100%;
-    }
+   
     .overlay .form{
         width: 100%;
     }
