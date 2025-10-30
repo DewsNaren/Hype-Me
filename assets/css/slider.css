@@ -230,11 +230,11 @@
         margin-top: 5px;
     }
     .recent-shoe-name{
-        font-size: 0.72rem;
+        font-size: 14px;
         margin-bottom: 2px;
     }
     .recent-shoe-price{
-        font-size: 0.8rem;
+        font-size: 13px;
     }
     .recent-slider-btn{
         top: 38%;
@@ -254,7 +254,7 @@
         width: 21.8%;
     }
     .view-all{
-        font-size: 0.72rem;
+        font-size: 0.8rem;
         gap: 12px;
     }
     .view-all img{
@@ -285,11 +285,11 @@
         margin-top: 5px;
     }
     .recent-shoe-name{
-        font-size: 0.68rem;
+        font-size: 13px;
         margin-bottom: 2px;
     }
     .recent-shoe-price{
-        font-size: 0.7rem;
+        font-size: 12px;
     }
     .recent-slider-btn.next{
         right: 3.2%;
@@ -310,7 +310,7 @@
         width: 21.8%;
     }
     .view-all{
-        font-size: 0.65rem;
+        font-size: 0.7rem;
         gap: 10px;
     }
     .view-all img{
@@ -359,15 +359,13 @@
         gap: 25px
     }
     .view-all{
-        font-size: 0.55rem;
+        font-size: 0.65rem;
         gap: 7px;
     }
-    .view-all img{
-        width: 10px;
-    }
+
 }
 
-@media screen and (max-width:385px){
+@media screen and (max-width:390px){
     .recent-slider-btn.prev {
         left: 18px;
     }
@@ -387,7 +385,12 @@
     .recent-slider-item a{
         width: 100%;
     }
-    
+     .recent-shoe-name{
+        font-size:13px;
+    }
+    .recent-shoe-price{
+        font-size: 12px;
+    }
     .recent-slider-item span{
         top: 8px;
     }

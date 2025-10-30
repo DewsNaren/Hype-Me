@@ -880,7 +880,7 @@ footer{
 
 @media  screen and (max-width:390px) {
     .product-detail-container {
-        padding: 15px 20px;
+        padding: 15px 16px;
         max-width: 100%;
     }
     .product-container-wrapper{

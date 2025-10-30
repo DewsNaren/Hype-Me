@@ -78,10 +78,10 @@ function getEventY(e) {
   return e.type.includes('mouse') ? e.pageY : e.changedTouches[0].screenY;
 }
 
-document.addEventListener('touchstart', startSwipe, { passive: true });
-document.addEventListener('touchend', endSwipe);
-document.addEventListener('mousedown', startSwipe);
-document.addEventListener('mouseup', endSwipe);
+container.addEventListener('touchstart', startSwipe, { passive: true });
+container.addEventListener('touchend', endSwipe);
+container.addEventListener('mousedown', startSwipe);
+container.addEventListener('mouseup', endSwipe);
 
 function startSwipe(e) {
   startX = getEventX(e);

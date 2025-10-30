@@ -835,7 +835,7 @@ footer{
     }
     .product-list-wrapper{
         padding: 12px 5px 50px;
-        max-width: 90%;
+        max-width: 93%;
     }
     .breadcrumb {
         padding-left: 8px;
@@ -878,7 +878,7 @@ footer{
     }
     .filter-label{
         margin-left: 5px;
-        font-size: 0.6rem;
+        font-size: 0.65rem;
     }
     .checkbox-filter{
         margin-bottom: 0px;
@@ -922,7 +922,7 @@ footer{
         width: 11px;
     }
     a.brand-more-link,a.model-more-link,a.year-more-link{
-        margin-top: 15px;
+        margin-top: 10px;
         font-size: 0.7rem;
     }
     .filter-title-close{
@@ -1005,19 +1005,48 @@ footer{
     .breadcrumb a,.selected{
         font-size: 10px;
     }
-    .product-list-wrapper {
-        max-width: 92%;
-    }
     .filter-container{
-        min-width: 165px;
-        max-width: 165px;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        background-color: rgb(26, 25, 25);
+        transition: left 0.5s ease-in, min-width 0.5s ease-in;
+        color: black;
+        padding: 20px 30px;
+        overflow-y: hidden;
+        height: 100vh;
+        min-width: 0;
+        z-index: 4;
+    }
+    .filter-container.active{
+        left: 0;
+        min-width: 100%;
+        overflow-y: auto;
+        transition: left 0.5s ease-in, overflow-y 0.5s ease-in;
+     }
+    .filter-sub-container{
+        width: 100%;
+    }
+     .filter-btn{
+        display: flex;
+    }
+    .filter-close-btn.active{
+        display: block;
+    }
+    .filter-title{
+        font-size: 14px;
+    }
+     .filter-label {
+        margin-left: 5px;
+        font-size: 12px;
     }
     .highlight-box {
         height: 16px;
         top: -4px;
     }
-    .brand-search-input{
+    .brand-search-input,.model-search-input{
         max-width: 80%;
+        font-size: 12px;
     }
     .product-list-header h2 span{
         font-size: 0.6rem;
@@ -1050,48 +1079,19 @@ footer{
         min-height: 65vh;
     }
     .breadcrumb{
-        max-width: 90%;
+        max-width: 95%;
         margin: 0 auto;
         padding: 20px 0;
     }
 
-    .filter-btn{
-        display: flex;
-    }
+   
     .product-list-wrapper{
         max-width: 95%;
     }
     .product-list-container{
         gap: 20px;
     }
-    
-    .filter-container{
-        position: fixed;
-        top: 0;
-        left: -100%;
-        background-color: rgb(26, 25, 25);
-        transition: left 0.5s ease-in, min-width 0.5s ease-in;
-        color: black;
-        padding: 20px 30px;
-        overflow-y: hidden;
-        height: 100vh;
-        min-width: 0;
-        z-index: 4;
-    }
-    .filter-container.active{
-        left: 0;
-        min-width: 100%;
-        overflow-y: auto;
-        transition: left 0.5s ease-in, overflow-y 0.5s ease-in;
-     }
-    .filter-sub-container{
-        width: 100%;
-    }
 
-    .filter-label {
-        margin-left: 5px;
-        font-size: 11px;
-    }
     .checkbox-filter {
         margin-bottom: 5px;
     }
@@ -1100,21 +1100,21 @@ footer{
         width: 10px;
         height: 10px;
     }
-    .filter-close-btn.active{
-        display: block;
+    .price-display{
+        font-size: 11px;
     }
+    
     .product-list{
-        max-width: 90%;
+        max-width: 95%;
         margin: 0 auto 0;
         padding-bottom: 30px;
     }
     
-    
     .product-shoe-name{
-        font-size: 0.7rem;
+        font-size: 14px;
     }
     .product-shoe-price{
-        font-size:0.75rem;
+        font-size:13px;
     }
     .page-btn:not(.next-btn){
         width: 15px;
@@ -1130,7 +1130,12 @@ footer{
 
 
 @media screen and (max-width:480px){
-    
+    .breadcrumb{
+        max-width: 90%;
+     }
+     .product-list{
+        max-width: 90%;
+     }
     .product-list-wrapper{
         padding:0;
         max-width: 100%;
@@ -1153,9 +1158,11 @@ footer{
     .product-list-container{
         margin-top: 0;
     }
-
+    .filter-container{
+        padding: 20px;
+    }
     .product-shoe-name,.product-shoe-price{
-        font-size: 0.7rem;
+        font-size: 13px;
     }
      
     .product-list-header{

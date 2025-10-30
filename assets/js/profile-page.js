@@ -68,4 +68,38 @@ document.addEventListener("DOMContentLoaded", async () => {
   products = await fetchProducts(); 
   renderProducts();
   renderPagination();
+  setUpLikes();
 });
+
+
+const followBtn = document.querySelector(".product-list-container .follow-btn");
+
+followBtn.addEventListener("click", () => {
+  if(followBtn.childNodes[2].textContent === "Follow") {
+    followBtn.childNodes[2].textContent = "Following";
+  } else {
+    followBtn.childNodes[2].textContent = "Follow";
+  }
+});
+
+function setUpLikes(){
+  const productLikeBtns=document.querySelectorAll(".product .product-item span")
+  productLikeBtns.forEach(productLikeBtn=>{
+    productLikeBtn.addEventListener('click',(e)=>{
+      e.preventDefault();
+      const likeImg=productLikeBtn.querySelector("img");
+    
+      if(likeImg.alt=="likes"){
+        likeImg.src="./assets/images/heart.png"
+        likeImg.alt="heart"
+      }
+      else{
+        likeImg.src="./assets/images/likes.png"
+        likeImg.alt="likes"
+      }
+    })
+  })
+}
+
+
+

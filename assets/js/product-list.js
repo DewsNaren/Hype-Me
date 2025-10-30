@@ -520,7 +520,7 @@ document.addEventListener("change", (e) => {
   }
 });
 
-/*Likes and render to product detail*/
+
 function setUpLikes(){
   const productLikeBtns=document.querySelectorAll(".product .product-item span")
   productLikeBtns.forEach(productLikeBtn=>{
@@ -596,3 +596,5 @@ function setdropDownHeight(){
     dropdown.style.maxHeight = dropdown.scrollHeight + "px"; 
   });
 }
+
+window.addEventListener('resize',setdropDownHeight())

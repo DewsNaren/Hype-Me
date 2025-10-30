@@ -11,7 +11,7 @@
 .product-list-wrapper{
     max-width: 89.584%;
     margin: 0 auto;
-    padding: 22px 0px 480px;
+    padding: 22px 0px 130px;
     padding-left: 10px;
 }
 
@@ -22,7 +22,7 @@
 }
 /* Profile Card  Container */
 .profile-card{
-    min-width: 23.85vw;
+    min-width: clamp(240px, 23.85vw,23.85vw);
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -73,7 +73,7 @@
 }
 
 .location {
-  font-size: 1.04vw;
+  font-size:clamp(10px, 1.04vw, 1.04vw);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,6 +109,13 @@
   margin: 0 11px;
   cursor: pointer;
 }
+.social-icons a{
+    display: inline-block;
+    transition: transform 0.3s ease-in;
+}
+.social-icons a:hover {
+ transform: scale(1.1);
+}
 /*Product lists */
 .product-list-header{
     padding-bottom: 36px;
@@ -143,6 +150,8 @@
     border: none;
     color: rgb(148, 120, 194);
     font-size: 1.1rem;
+    display: flex;
+    align-items: center;
 }
 .sort-button img{
     margin-left: 30px;
@@ -193,7 +202,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 2.345vw 0 10px;
+  padding: clamp(30px, 2.345vw, 2.345vw) 0 10px;
   gap: 10px;
   flex-wrap: wrap;
 }
@@ -201,7 +210,7 @@
 .pagination .page, .pagination .prev, .pagination .next {
   border: none;
   background-color: transparent;
-  font-size: 0.92vw;
+  font-size:clamp(12px, 0.92vw, 0.92vw);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -214,6 +223,10 @@
 }
 .pagination .prev,.pagination .next{
   padding: 5px;
+}
+.pagination .page:hover{
+    background-color: rgb(85, 21, 180);
+    border-radius: 50%;
 }
 .pagination .prev:hover,
 .pagination .next:hover{
@@ -244,7 +257,7 @@ footer{
         margin-right: 7px;
     }
     .product-list-wrapper{
-        padding: 20px 0px 400px;
+        padding: 20px 0px 100px;
     }
     .product-list-container{
         padding-top: 2.78vw;
@@ -332,7 +345,7 @@ footer{
         margin-right: 7px;
     }
     .product-list-wrapper{
-        padding: 20px 0px 340px;
+        padding: 20px 0px 80px;
     }
     .product-list-container{
         padding-top: 2.54vw;
@@ -346,7 +359,7 @@ footer{
         width: 30px;
     }
     .member-since{
-        font-size: 8.5px;
+        font-size: 12px;
     }
     .location-icon{
         width: 12px;
@@ -416,7 +429,7 @@ footer{
 @media screen and (max-width:1024px){
     .product-list-wrapper{
         max-width: 88.5%;
-        padding: 18px 0px 250px;
+        padding: 18px 0px 50px;
     }
     .product-list-container{
         padding-top: 2.2vw;
@@ -439,11 +452,11 @@ footer{
         gap: 4px;
     }
     .location-icon{
-        width: 9px;
+        width: 11px;
     }
     .follow-btn {
-        font-size: 0.6rem;
-        padding: 4px 40px;
+        font-size: 11px;
+        padding: 6px 40px;
         margin: 18px 0 15px;
         width: 135px;
     }
@@ -455,22 +468,22 @@ footer{
         padding: 8px 0px 0px;
     }
     .social-icons img {
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         margin: 0 5px;
     }
     .product-list-header{
         padding-bottom: 15px;
     }
     .product-list-header h2{
-        font-size: 0.75rem;
+        font-size: 0.9rem;
         margin-left: 9px;
     }
     .product-list-header h2 span{
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
     .sort-label,.sort-button{
-        font-size: 0.6rem;
+        font-size: 13px;
     }
     .sort-button{
         margin-left: 2px;
@@ -491,14 +504,11 @@ footer{
         margin-top: 5px;
     }
     .product-shoe-name{
-        font-size: 0.75rem;
+        font-size: 14px;
         margin-bottom: 2px;
     }
     .product-shoe-price{
-        font-size: 0.7rem;
-    }
-    .pagination .page,.pagination .prev,.pagination .next{
-        font-size: 9.77px;
+        font-size: 13px;
     }
     .pagination .page {
         width: 19px;
@@ -511,35 +521,39 @@ footer{
 
 @media screen and (max-width:768px){
     .product-list-wrapper{
-        padding: 18px 0px 180px;
+        padding: 18px 0px 45px;
     }
     .product-list-container{
         padding-top: 18px;
         gap: 22px;
+        flex-direction: column;
+        
     }
     .profile-card{
         padding: 20px 0;
-        min-width: 200px;
+        min-width: 70%;
+        max-width: 80%;
+        margin: 0 auto;
     }
     .avatar {
-        font-size: 18px;
+        font-size: 20px;
         line-height: 28px;
-        width: 65px;
-        height: 65px;
+        width: 70px;
+        height: 70px;
     }
     .profile-name{
-        font-size: 12px;
+        font-size: 15px;
+    }
+     .member-since{
+        font-size: 11px;
     }
     .location{
         margin-top: 5px;
-        gap: 4px;
-        font-size: 8px;
+        gap: 4px;  
     }
     
     .follow-btn {
         margin: 15px 0 12px;
-        width: 120px;
-        gap: 5px;
     }
     .follow-icon{
         width: 18px;
@@ -550,7 +564,7 @@ footer{
         padding-bottom: 15px;
     }
     .product-list-header h2{
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         margin-left: 5px;
     }
     .product-list-header h2 span{
@@ -568,14 +582,12 @@ footer{
         margin-top: 3px;
     }
     .product-shoe-name{
-        font-size: 0.7rem;
+        font-size:13px;
     }
     .product-shoe-price{
-        font-size: 0.65rem;
+        font-size: 12px;
     }
-    .pagination .page, .pagination .prev,.pagination .next{
-        font-size: 10px;
-    }
+    
     footer{
         padding-top: 40px;
     }
@@ -584,7 +596,7 @@ footer{
 
 @media screen and (max-width:600px){
     .product-list-wrapper{
-        padding: 18px 0px 130px;
+        padding: 18px 0px 40px;
         gap: 25px;
     }
     .product-list-container{
@@ -593,8 +605,8 @@ footer{
         flex-direction: column;
     }
     .profile-card{
-        min-width: 80%;
-        margin: 0 auto;
+        min-width: 100%;
+        max-width: 100%;
     }
     .profile-name{
         font-size: 14px;
@@ -606,9 +618,24 @@ footer{
     
 }
 @media screen and (max-width:480px){
+     .avatar {
+        font-size: 18px;
+        width: 65px;
+        height: 65px;
+    }
+     .product-list-header h2{
+        font-size: 0.8rem;
+        margin-left: 9px;
+    }
+    .product-list-header h2 span{
+        font-size: 0.7rem;
+    }
+    .sort-label,.sort-button{
+        font-size: 11px;
+    }
     .product-list-wrapper{
-        max-width: 80%;
-        padding: 18px 0px 130px;
+        max-width:90%;
+        padding: 12px 0px 30px;
     }
     .product-list-header h2{
         margin-left: 5px;
@@ -617,10 +644,13 @@ footer{
         width: 18px;
         height: 18px;
     }
+    .pagination .page, .pagination .prev,.pagination .next{
+        font-size: 11px;
+    }
 
 }
 
-@media screen and (max-width:400px){
+@media screen and (max-width:390px){
     .profile-card{
         min-width: 100%;
     }
