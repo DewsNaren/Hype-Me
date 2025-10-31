@@ -86,6 +86,11 @@ container.addEventListener('mouseup', endSwipe);
 function startSwipe(e) {
   startX = getEventX(e);
   startY = getEventY(e);
+  const slides = [...document.querySelectorAll('.slider')];
+  slides.forEach(slide=>{
+    const sliderItem=slide.querySelector(".slider-item")
+    sliderItem.classList.add("select-none")
+  })
 }
 
 function endSwipe(e) {
@@ -99,6 +104,11 @@ function endSwipe(e) {
     if (dx < -threshold) goToSlide(false);
     else if (dx > threshold) goToSlide(true);
   }
+  const slides = [...document.querySelectorAll('.slider')];
+  slides.forEach(slide=>{
+    const sliderItem=slide.querySelector(".slider-item")
+    sliderItem.classList.remove("select-none")
+  })
 }
 
 const token=localStorage.getItem("token")

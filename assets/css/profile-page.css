@@ -168,7 +168,7 @@
 
 .product-list-body{
     display: grid;
-    grid-template-columns: repeat(3,minmax(140px, 1fr));
+    grid-template-columns: repeat(3,minmax(120px, 1fr));
     gap: 2.083333vw;
 }
 .product-item{

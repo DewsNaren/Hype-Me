@@ -296,7 +296,7 @@
   background-color:  black;
   color: white;
 }
- .pagination .page.active{
+ .pagination .page.active, .pagination .page:hover{
   background-color: rgb(85, 21, 180);
   border-radius: 50%;
   color: whitesmoke;
@@ -325,24 +325,24 @@
 .review-title{
   color: rgb(231, 229, 229);
   margin-bottom: 8px;
-  font-size: 1.625vw;
+  font-size:clamp(14px, 1.625vw, 1.625vw);
   font-weight: 500;
 }
 .review-title-desc{
-  font-size: 1vw;
+  font-size:clamp(12px, 1vw, 1vw);
   margin-bottom: 2.1875vw;
 }
 .user-review-container{
   display: flex;
 }
 .user-review-profile{
-  padding: 1.56vw 2.14vw 0;
+  padding:clamp(16px, 1.56vw, 1.56vw)  2.14vw 0;
   padding-right: 3.125vw;
   border-right: 1px solid #a8a8a8;
   min-width: 31.3541vw;
   max-width: 31.3541vw;
   min-height: 31.3541vw;
-  max-height: 31.3541vw;
+  max-height: 270px;
   background-color: #fff;
 
 }
@@ -353,7 +353,7 @@
 }
 
 .profile-pic{
-  width: 11.354vw;
+  width:clamp(100px, 11.35vw, 11.35vw);
 }
 
 .profile-rating-container {
@@ -369,21 +369,21 @@
 }
 
 .profile-star {
-  font-size: 1.46vw;
+  font-size:clamp(12px, 1.46vw, 1.46vw) ;
   color: rgb(85, 21, 180);
 }
 .profile-rating-score{
   color: rgba(0,0,0,0.7);
-  font-size: 	1.75vw;
+  font-size:clamp(16px, 1.75vw, 1.75vw);
 }
 .rating-score {
-  font-size: 1.0835vw;
+  font-size: clamp(12px, 1.0835vw, 1.0835vw);
   font-weight: bold;
   color: grey
 }
 
 .rating-count {
-  font-size: 1.0835vw;
+  font-size:clamp(11px, 1.085vw, 1.0835vw);
   color: #444;
 }
 
@@ -391,14 +391,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-top: 1.56vw;
+  padding-top:clamp(20px, 1.56vw, 1.56vw);
 }
 
 .rating-bar {
   display: flex;
   align-items: center;
   gap: 20px;
-  font-size: 0.92vw;
+  font-size:clamp(11px, 0.92vw, 0.92vw);
   color: #444;
 }
 .profile-rater-name{
@@ -471,7 +471,7 @@
   border-radius: 20px;
   cursor: pointer;
   font-weight: 500;
-  font-size: 1vw;
+  font-size:clamp(11px, 1vw, 1vw);
   background-color: transparent;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -564,11 +564,13 @@
 }
 .review-rating{
   margin-top: 10px;
+  display: flex;
 }
 
 .review-rating .fa-star.fa-solid  {
   color: rgb(107, 88, 204);
-  font-size: 0.83vw;
+  font-size:clamp(11px, 0.83vw, 0.83vw);
+  margin-left: 3px;
 }
 
 .review-rating .fa-star.fa-unfill {
@@ -583,7 +585,7 @@
 }
 
 .review-helpful{
-  font-size: 0.75vw;
+  font-size:clamp(11px, 0.75vw, 0.75vw);
   color: #666;
   padding-right: 15px;
 }
@@ -878,7 +880,7 @@ footer{
     padding: 0 5px;
   }
   .product-list{
-    padding: 2.6vw 2.7vw;
+    padding:clamp(30px, 2.6vw, 2.6vw)  2.7vw;
     padding-left: 2.9vw;
   }
   .product-content{
@@ -948,7 +950,7 @@ footer{
     width: 10px;
   }
   .review-text{
-    font-size: 0.955vw;
+    font-size:clamp(12px, 0.955vw, 0.955vw);
   }
   .review-pagination{
     gap: 8px;
@@ -967,13 +969,16 @@ footer{
 }
 
 @media screen and (max-width:1024px){
+  .top-profile-section{
+    padding: 3.22919vw 3vw 2.8125vw;
+  }
   .user-profile{
     width: 28px;
     height: 28px;
     font-size: 0.72rem;
   }
   .user-profile-pic{
-    width: 24px;
+    width: 30px;
   }
   .location-list img {
     width: 13px;
@@ -989,7 +994,7 @@ footer{
     width: 70px;
   }
   .user-details h2 {
-    font-size: 12px;
+    font-size: 14px;
   }
   .camera-icon {
     bottom: 5px;
@@ -1006,7 +1011,7 @@ footer{
     width: 7px;
   }
   .member-since{
-    font-size: 0.6rem;
+    font-size: 11px;
   }
   .user-location{
     margin: 5px 0;
@@ -1020,11 +1025,9 @@ footer{
   .user-stats {
     gap: 4.1667vw;
   }
-  .stat-box img{
-    width: 25px;
-  }
+  
   .stat-text{
-    font-size: 0.57rem;
+    font-size: 0.594rem;
   }
   .count{
     font-size: 1.45rem ;
@@ -1084,26 +1087,23 @@ footer{
     width: 10px;
   }
   .pagination .page,.pagination .prev,.pagination .next{
-    font-size: 11px;
+    font-size: 12px;
   }
   .pagination .page {
     width: 20px;
     height: 20px;
   }
-  .rating-bar-group{
-    gap: 6px;
+  .user-review-profile-header {
+    gap: 4.5vw;
   }
   .rating-bar{
     gap: 10px;
-    font-size: 9.5px;
   }
   .rating-bar .bar{
-    height: 6px;
+    height: 7px;
   }
   .filter-buttons button{
     padding: 5px 10px;
-    gap: 3px;
-    font-size: 10px;
   }
   .review-filter-bar {
     padding-bottom: 15px;
@@ -1121,16 +1121,13 @@ footer{
     padding: 7px 18px 9px 0px;
   }
   .review-heading{
-    font-size: 12px;
+    font-size: 14px;
   }
   .review-text,.review-pagination .page,.review-pagination .prev, .review-pagination .next{
-    font-size: 9.77px;
+    font-size: 12px;
   }
   .styled-select-wrapper label, .styled-select select,.review-meta,.read-more,.review-helpful{
-    font-size: 8px;
-  }
-  .review-rating .fa-star.fa-solid {
-    font-size: 8.5px;
+    font-size: 11px;
   }
   .review-pagination .page {
     width: 19px;
@@ -1153,9 +1150,6 @@ footer{
   .user-details h2{
     text-wrap: nowrap;
     font-size: 14px;
-  }
-  .member-since{
-    font-size: 10px;
   }
   .main-container{
     padding: 15px 0 50px;
@@ -1186,7 +1180,13 @@ footer{
     min-width: fit-content;
   }
   .stat-text{
-    font-size: 0.65rem;
+    font-size: 11px;
+  }
+  .edit-link{
+    font-size: 11px;
+  }
+   .edit-link img{
+    width: 8px;
   }
   .count{
     font-size: 1.15rem ;
@@ -1196,9 +1196,6 @@ footer{
   }
   .product-main-tabs {
     padding: 0 10px 10px ;
-  }
-  .product-tab{
-    font-size: 0.75rem;
   }
   .product-sub-tabs-wrapper {
     padding: 15px 10px 0;
@@ -1221,7 +1218,7 @@ footer{
   .product-list{
     padding: 25px 10px;
     grid-template-columns:  repeat(3, minmax(150px, 1fr));
-    gap: 15px;
+    gap: 20px;
   }
   .product-content{
     margin-top: 5px;
@@ -1245,18 +1242,13 @@ footer{
   .pagination{
     margin-top: 15px;
   }
-  .pagination .page, .pagination .prev,.pagination .next{
-    font-size: 10px;
-  }
+  
   .add-product-btn{
     width: 30px;
     height: 30px;
   }
-  .review-title{
-    font-size: 13px;
-  }
+
   .review-title-desc {
-    font-size: 9px;
     margin-bottom: 18px;
   }
   .user-review-container{
@@ -1266,7 +1258,7 @@ footer{
     padding: 15px 18px;
     min-width: 100%;
     min-height: 270px;
-    max-height: 270px;
+    max-height: 290px;
     border-bottom: 1px solid #a8a8a8;
     display: flex;
     flex-direction: column;
@@ -1288,9 +1280,6 @@ footer{
   .profile-rating-score {
     font-size: 15px;
   }
-  .rating-score,.rating-count{
-    font-size: 10px;
-  }
   .rating-bar-group{
     padding-top: 15px;
     width: 50%;
@@ -1309,10 +1298,7 @@ footer{
   }
   .review-text{
     padding: 15px 10px;
-    font-size: 10px;
-  }
-  .styled-select-wrapper label, .styled-select select, .review-text,.review-meta, .read-more, .review-helpful,.review-actions button,.review-pagination .page,.review-pagination .next {
-    font-size: 10px;
+    font-size: 12px;
   }
   .review-actions button i {
     font-size: 12px;
@@ -1353,7 +1339,10 @@ footer{
     margin-top: 5px;
   }
   .product-shoe-name{
-    font-size: 0.7rem;
+    font-size: 13px;
+  }
+  .product-price{
+    font-size: 12px;
   }
   .review-filter-bar{
     padding: 0 10px 15px;
@@ -1371,8 +1360,14 @@ footer{
     height: 25px;
     font-size: 0.65rem;
   }
+   .user-profile-pic{
+    width: 25px;
+  }
   .profile-img-wrapper .profile-picture {
     width: 60px;
+  }
+  .product-shoe-name{
+    font-size: 14px;
   }
   .user-info{
     width: 290px;
@@ -1381,10 +1376,7 @@ footer{
     margin-left: 0px;
 }
   .stat-text{
-    font-size: 0.6rem;
-  }
-  .product-tab{
-    font-size: 0.7rem;
+    font-size: 11px;
   }
   .product-main-tabs{
     gap: 17px;
@@ -1396,6 +1388,9 @@ footer{
   .pagination .page{
     width: 18px;
     height: 18px;
+  }
+   .pagination .page,.pagination .prev,.pagination .next{
+    font-size: 11px;
   }
   .user-review-wrapper{
     padding: 10px 0;
@@ -1460,7 +1455,7 @@ footer{
     gap: 12px;
   }
   .stat-box img {
-    width: 24px;
+    width: 28px;
   }
   .count{
     font-size: 14px;
@@ -1471,19 +1466,20 @@ footer{
   .product-list{
     grid-template-columns: repeat(1, minmax(150px, 1fr));
   }
- 
+  .review-filter-bar {
+    padding: 0 0px 15px;
+  }
   .filter-buttons{
     gap: 7px;
   }
   .filter-buttons button{
     padding: 5px 8px;
-    font-size: 8px;
-  }
-  .filter-buttons i{
-    font-size: 0.45rem;
   }
   .rating-bar-group{
     width:75%;
+  }
+  .review-item {
+    padding: 20px 5px;
   }
   .review-helpful{
     padding-right: 0;

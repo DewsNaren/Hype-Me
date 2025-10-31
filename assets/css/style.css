@@ -27,7 +27,13 @@
     top: 41.5%;
     transform: translateY(-42%);
 }
-
+.slider-item.select-none{
+    user-select: none;
+    cursor:default
+}
+.slider-item:hover{
+    cursor: default;
+}
 .slider-desc{
     width: 40%;
     font-size: 60px;

@@ -172,6 +172,7 @@
     color:rgb(242, 18, 18);
     font-size:clamp(10px, 0.83vw,0.95rem);
     visibility:hidden;
+    margin-top: 5px;
 }
 
 .input-wrapper.error input{
@@ -599,7 +600,7 @@
         width: 44%;
     }
     .personal-title, .option-title{
-        font-size: 0.82rem;
+        font-size: 16px;
         padding-bottom: 8px;
     }
     .personal-form-container{
@@ -608,8 +609,8 @@
         padding-right: 1.46vw;
     }
     .form-group label {
-        font-size: 0.68rem;
-        width: 63px;
+        font-size: 12px;
+        width: 79px;
     }
 
     .form-group input[type="text"],.custom-select {
@@ -617,19 +618,21 @@
         width: 17.188vw;
     }
     .form-group input[type="text"],.custom-select select{
-        font-size: 0.7rem;
+        font-size: 12px;
     }
-
+    .image-group{
+        margin-bottom: 25px;
+    }
     .profile-image-preview {
-        height: 105px;
+        height: 110px;
     }
     .profile-image-preview img{
-        width: 105px;
-        height: 105px;
+        width: 110px;
+        height: 110px;
     }
     .delete-image-btn {
         padding: 5px 0;
-        font-size: 0.62rem;
+        font-size: 0.65rem;
     }
 
     .custom-select .dropdown-icon {
@@ -655,25 +658,25 @@
         margin-bottom: 10px;
     }
     .form-row-label,.label-title{
-        font-size: 0.68rem;
+        font-size: 12px;
     }
     .form-row-label, .sign-in-option .label-title,.more-options .label-title{
         width: 88px;
     }
     .email-input{
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
     .inline-text{
         gap: 5px;
     }
     .inline-text a {
-        font-size: 0.62rem;
+        font-size: 0.65rem;
     }
 
     .social-buttons button {
         margin-right: 7px;
-        padding: 5px 11px;
-        font-size: 0.68rem;
+        padding: 6px 13px;
+        font-size: 12px;
     }
 
     .custom-checkbox{
@@ -687,18 +690,18 @@
     }
 
     .custom-label{
-        font-size: 0.65rem;
+        font-size: 12px;
         margin-left: 2px;
     }
 
     .more-options a {
         margin-bottom: 14px;
-        font-size: 0.65rem;
+        font-size: 12px;
     }
 
     .save-btn {
         padding: 8px 25px;
-        font-size: 0.7rem;
+        font-size: 12px;
     }
 }
 @media screen and (max-width:768px){
@@ -720,7 +723,6 @@
         max-width:100%;
         padding-left: 1.55vw;
     }
-    
     .form-group input[type="text"], .custom-select {
         width: 160px;
     }
@@ -761,14 +763,14 @@
         width: 85%;
     }
     .form-group{
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         gap: 15px;
     }
     .input-wrapper .error {
         font-size: 0.6rem;
     }
     .image-group{
-        margin-bottom: 15px;
+        margin-bottom: 25px;
     }
 
     .form-row{
@@ -789,7 +791,10 @@
         font-size: 0.65rem;
     }
     .main-container{
-        padding: 20px;
+        padding: 20px 16px;
+    }
+    .seller-profile-wrapper{
+        max-width: 100%;
     }
     .close-btn img{
         width: 15px;
@@ -805,16 +810,14 @@
     }
     .form-group{
         flex-direction: column;
-        margin: 0 auto 15px;
+        margin: 0 0 10px;
         gap: 8px;
         align-items: flex-start; 
         width: fit-content;
     }
-    .input-wrapper .error{
-        font-size: 0.55rem;
-    }
     .image-group{
         width: 160px;
+        margin-bottom: 25px;
     }
     .form-group label{
         text-align: left;
