@@ -12,6 +12,9 @@ const modalContainers=document.querySelectorAll(".modal-container");
 const saveProductsBtn=document.querySelector(".add-product-outer-container .save-btn-container .save-btn");
 const submitProductsBtn=document.querySelector(".add-product-outer-container .save-btn-container .submit-btn");
 
+const productModalContent = document.querySelector('.product-modal-content');
+const body=document.body;
+
 let savedProducts = [];
 try {
   savedProducts = JSON.parse(window.name || "[]");
@@ -22,9 +25,14 @@ try {
 function closeModal(){
   modalContainers.forEach(modalContainer=>{
     modalContainer.classList.remove("active");
+    body.classList.remove("not-active");
   })
 }
-
+productModalContainer.addEventListener('click', (e) => {
+  if (!productModalContent.contains(e.target)) {
+    closeModal(); 
+  }
+});
 //For uploading images 
 const uploadImgBtn = document.querySelector(".image-upload-container .upload-img-btn");
 const imgEditBtn = document.querySelector(".add-product-inner-container .image-upload-container .image-header-container button");
@@ -32,6 +40,7 @@ const imgEditBtn = document.querySelector(".add-product-inner-container .image-u
 if(uploadImgBtn){
   uploadImgBtn.addEventListener('click', () => {
    productModalContainer.classList.add("active");
+   body.classList.add("not-active");
   });
 
 }
@@ -222,8 +231,7 @@ function initPreviewDragAndDrop() {
   let draggedPreviewItem = null;
 
   thumbnailPreviewImgs.forEach(thumbnailContainer => {
-    // Make sure the container is draggable
-    thumbnailContainer.draggable = true;
+      thumbnailContainer.draggable = true;
     
     thumbnailContainer.addEventListener("dragstart", (e) => {
       draggedPreviewItem = thumbnailContainer;
@@ -316,6 +324,7 @@ function saveProductImages() {
     ProductImgStatImg.alt = "completed tick";
   }
   updateSaveAndSubmitStatus();
+  body.classList.remove("not-active");
 }
 
 productModalCloseBtn.addEventListener('click',()=>{
@@ -351,6 +360,7 @@ function DelProductImages() {
   selectedFiles.length = 0; 
   productModalMainImageContainer.innerHTML = ""; 
   productModalContainer.classList.remove("active"); 
+  body.classList.remove("not-active");
 }
 
 
@@ -362,7 +372,7 @@ if (imgEditBtn) {
   imgEditBtn.addEventListener('click', () => {
     selectedFiles=[];
     productModalContainer.classList.add("active");
-    
+    body.classList.add("not-active");
   });
 }
 
@@ -377,6 +387,14 @@ const additionalForm=document.querySelector(".form-modal-container .form-modal-c
 const addAditionalBtn=document.querySelector(".add-product-inner-container .details-container .details-header-container .add-additional-btn");
 const editAdditionalBtn=document.querySelector(".add-product-inner-container .details-container .details-header-container .edit-additional-btn")
 
+
+const formModalContent = formModalContainer.querySelector('.form-modal-content');
+
+productModalContainer.addEventListener('click', (e) => {
+  if (!productModalContent.contains(e.target)) {
+    closeModal(); 
+  }
+});
 let activeSection = null; 
 
 //Product Form
@@ -386,10 +404,12 @@ function openProductForm(){
   formModalContainer.classList.add("active");
   formModalTitle.innerHTML="Product Details";
   activeSection = 'product';
+  
 }
 
 addProductDetailsBtn.addEventListener('click',()=>{
  openProductForm();
+ body.classList.add("not-active");
 });
 
 
@@ -486,6 +506,7 @@ function openAdditionalForm(){
   additionalForm.classList.add("active")
   formModalTitle.innerHTML="Additional Details";
   activeSection = 'additional';
+  body.classList.add("not-active");
 }
 addAditionalBtn.addEventListener('click',()=>{
   openAdditionalForm()
@@ -868,12 +889,14 @@ function updateAPIProductDetails(productData,editing) {
       let finalProduct = buildFinalProduct();
       const keysToRemove = ["image", "thumb1", "thumb2", "thumb3", "thumb4"];
       let payload = {};
-
+      
       for (const key in finalProduct) {
         if (finalProduct.hasOwnProperty(key) && !keysToRemove.includes(key)) {
           payload[key] = finalProduct[key];
+        
         }
       }
+      
       const res = await fetch(`http://taskapi.devdews.com/api/products/update/${productData._id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -921,13 +944,14 @@ function updateLocalProductDetails(productData,editing) {
 
   let additionalData = {};
   const additionalInputs = document.querySelectorAll(".additional-form input, .additional-form select");
-  console.log(additionalInputs)
+
+  const updateLocalProductBtn=document.querySelector(".add-product-outer-container .save-btn-container .save-local-btn");
   additionalInputs.forEach(input => {
     const key = input.name.replace(/^input-/, "");
     if (productData[key] !== undefined) {
       input.value = productData[key];
       additionalData[key] = productData[key];
-      console.log(additionalData[key])
+
     }
     
   });
@@ -936,9 +960,10 @@ function updateLocalProductDetails(productData,editing) {
   editAdditionalBtn.classList.add("active");  
 
   loadProductImages(productData);
-
-  if (updateProductBtn) {
-    updateProductBtn.addEventListener("click", () => {
+  saveProductsBtn.classList.add("not-active")
+  updateLocalProductBtn.classList.add("active");
+  if (updateLocalProductBtn) {
+    updateLocalProductBtn.addEventListener("click", () => {
 
       const finalProduct = buildFinalProduct();
       
@@ -946,8 +971,8 @@ function updateLocalProductDetails(productData,editing) {
       saveOrUpdateProduct(finalProduct)
       scrollToTop();
       showToast("#19762d", "Product updated successfully");
-      updateProductBtn.classList.remove("active");
-      formSaveBtn.classList.add("active");
+      updateLocalProductBtn.classList.remove("active");
+      saveProductsBtn.classList.remove("not-active")
       setTimeout(() => {
         toastContainer.classList.remove("show");
         window.name = JSON.stringify(savedProducts);
@@ -955,7 +980,61 @@ function updateLocalProductDetails(productData,editing) {
       },5000);
     })
   }
+   if (updateProductBtn) {
+
+    updateProductBtn.addEventListener("click", async() => {
+    delete productData.editing
+      try {
+      let finalProduct = buildFinalProduct();
+      finalProduct={...finalProduct, delId:productData._id}
+      const keysToRemove = ["image", "thumb1", "thumb2", "thumb3", "thumb4"];
+      let payload = {};
+
+      for (const key in finalProduct) {
+        if (finalProduct.hasOwnProperty(key) && !keysToRemove.includes(key)) {
+          payload[key] = finalProduct[key];
+        }
+      }
+
+      const userToken = localStorage.getItem("token");
+      payload.token = userToken;
+
+      const res = await fetch("http://taskapi.devdews.com/api/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      saveOrUpdateProduct(finalProduct)
+      let data;
+      const contentType = res.headers.get("content-type");
+
+      if (contentType && contentType.includes("application/json")) {
+        data = await res.json(); 
+      } else {
+        data = await res.text(); 
+      }
+        
+      if (res.ok && data.includes("Product Created Successfully")) {
+        showToast("#19762d","Product Created Successfully");
+
+      } else {
+        showToast("#ea2f4b","Failed to create product. Try again.");
+        console.error("Error creating product:", data);
+        
+      }
+    
+        } catch (err) {
+          console.error("Network or code error:", err);
+        }
+         formSaveBtn.classList.remove("not-active");
+        updateProductBtn.classList.remove("active");
+        setTimeout(() => {
+          toastContainer.classList.remove("show");
+        }, 5000);
+    })
+  }
 }
+
 
 function saveOrUpdateProduct(product) {
   const existingIndex = savedProducts.findIndex(p => p._id === product._id);
@@ -980,7 +1059,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   const filteredDrafts = allProducts.filter(p => !(p.editing && p.isPosted));
   savedProducts=filteredDrafts;
-  console.log(filteredDrafts)
 
   const productToEdit = allProducts.find(p => p.editing === true);
   if (productToEdit) {

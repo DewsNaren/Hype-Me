@@ -20,7 +20,7 @@
                 <li><span class="user-profile">MC</span><button type="button"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button></li>
                 <li>
                     <div class="nav-btn-container">
-                        <a href="#" class="buy-btn">Buy</a>
+                        <a href="./index.html" class="buy-btn">Buy</a>
                         <a href="#" class="sell-btn">Sell</a>
                     </div>
                 </li>
@@ -119,12 +119,19 @@
 
                 <div class="save-btn-container">
                     <button type="button" class="save-btn"  disabled="true">Save and Close</button>
+                    <button type="button" class="save-local-btn">Save and Close</button>
                     <button type="submit" class="submit-btn" disabled="true">Submit</button>
                     <button type="button" class="update-btn">Submit</button>
                 </div>
             </div>
         </div>
-        <div class="modal-container form-modal-container">
+        
+        <div  class="toast-container">
+            <p>Product Created Successfully</p>
+            <span><img src="./assets/images/close-toast.png" alt=""></span>
+        </div>
+    </main>
+    <div class="modal-container form-modal-container">
             <div class="form-modal-content">
                 <div class="form-modal-header">
                     <h3>Product Details</h3>
@@ -399,11 +406,6 @@
                 </div>
             </div>
         </div>
-        <div  class="toast-container">
-            <p>Product Created Successfully</p>
-            <span><img src="./assets/images/close-toast.png" alt=""></span>
-        </div>
-    </main>
     <script src="./assets/js/add-product.js"></script>
 </body>
 </html>

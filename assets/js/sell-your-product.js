@@ -5,6 +5,7 @@ const dropdownList = document.querySelector('.dropdown-list');
 const toastContainer = document.querySelector(".toast-container");
 
 
+
 addProductBtn.addEventListener('click', () => {
   let existingProducts = [];
 
@@ -16,6 +17,8 @@ addProductBtn.addEventListener('click', () => {
 
   if (Array.isArray(allProducts) && allProducts.length > 0) {
 
+    allProducts = allProducts.filter(product => !product.editing);
+
     const allIds = new Set(existingProducts.map(p => p.id));
     allProducts.forEach(product => {
       if (!allIds.has(product.id)) {
@@ -23,8 +26,10 @@ addProductBtn.addEventListener('click', () => {
       }
     });
   }
-  window.name = JSON.stringify(existingProducts);
 
+  existingProducts = existingProducts.filter(p => !p.editing);
+
+  window.name = JSON.stringify(existingProducts);
   window.location.href = './add-product.html';
 });
 
@@ -101,19 +106,18 @@ async function populateProductsTable() {
   }
   
   allProducts = [...drafts];
-
+  allProducts = allProducts.filter(product => !product.delId);
   published.forEach(prod => {
     if (!drafts.find(d => d._id === prod._id)) {
       allProducts.push({ ...prod, isPosted: true }); 
     }
   });
 
-  filteredProducts = [...allProducts]; 
-  filteredProducts.reverse()
-//   filteredProducts = [
-//   ...allProducts.filter(p => !p.isPosted),  
-//   ...allProducts.filter(p => p.isPosted)   
-// ];
+
+  filteredProducts = [
+  ...allProducts.filter(p => !p.isPosted),  
+  ...allProducts.filter(p => p.isPosted).reverse()
+];
   renderTable();
   renderPagination();
 }

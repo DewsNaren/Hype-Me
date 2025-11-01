@@ -61,7 +61,7 @@
 }
 
 .sell-products .sell-container .search-existing p{
-  font-size: clamp(10px, 1vw, 1.12rem);
+  font-size: clamp(14px, 1vw, 1.12rem);
   margin-bottom: 15px;
   text-align: center;
   font-weight: 600;
@@ -98,7 +98,7 @@
 .sell-container .search-existing .search-box .search-note {
   display: block;
   margin-top: 10px;
-  font-size: clamp(8px, 0.735vw, 14px);
+  font-size: clamp(11px, 0.735vw, 14px);
   color: #888;
 }
 .sell-container .add-unique {
@@ -106,8 +106,8 @@
   text-align: center;
 }
 .sell-container .add-unique p{
-  font-size:clamp(11px, 1.05vw, 1.2rem) ;
-  margin-bottom: clamp(10px, 1.9vw, 40px);
+  font-size:clamp(14px, 1.05vw, 1.2rem) ;
+  margin-bottom: clamp(14px, 1.9vw, 40px);
   font-weight: 600;
   color: rgba(0,0,0,0.6);
 }
@@ -117,7 +117,7 @@
   color: rgb(233, 233, 233);
   padding: 15px 25px;
   border: none;
-  font-size: clamp(10px,0.92vw, 1.1rem);
+  font-size: clamp(12px,0.92vw, 1.1rem);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -152,7 +152,7 @@
   align-items: center;
   gap: 5px;
   color: grey;
-  font-size:clamp(9px, 0.9vw, 16px);
+  font-size:clamp(12px, 0.9vw, 16px);
   cursor: pointer;
   
 }
@@ -204,7 +204,7 @@
   width: 100%;
   padding: 0px 10px 8px clamp(15px, 1.6vw, 30px);
   border: none;
-  font-size: clamp(10px, 0.86vw, 1.02rem);
+  font-size: clamp(12px, 0.86vw, 1.02rem);
   color: rgb(146, 140, 140);
   outline: none;
   border-bottom: 1px solid #979797;
@@ -216,8 +216,8 @@
   position: absolute;
   left: 5px;
   transform: translateY(5%);
-  width: clamp(9px, 1.1vw, 20px);
-  height: clamp(9px, 1.1vw, 20px);
+  width: clamp(11px, 1.1vw, 20px);
+  height: clamp(11px, 1.1vw, 20px);
 }
 
 
@@ -235,7 +235,7 @@
   text-transform: uppercase;
   color: grey;
   font-weight: 500;
-  font-size: clamp(10px, 0.85vw, 1.1rem)
+  font-size: clamp(12px, 0.85vw, 1.1rem)
 }
 .products-listing .table-wrapper .product-table th.selling-id-header img{
   width: 15px;
@@ -245,7 +245,7 @@
   padding: 15px 0;
   border-bottom: 1px solid #ddd;
   color:rgb(75, 74, 74);
-  font-size: clamp(9px, 0.82vw, 1rem);
+  font-size: clamp(11px, 0.82vw, 1rem);
   text-align: center;
   text-transform: capitalize;
 }
@@ -279,7 +279,7 @@
 .products-listing .table-wrapper .pagination .next {
   border: none;
   background-color: transparent;
-  font-size: 0.92vw;
+  font-size:clamp(11px, 0.92vw, 0.92vw);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -327,7 +327,7 @@ footer .quick-links {
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  font-size: clamp(10px,1vw, 1vw);
+  font-size: clamp(12px,1vw, 1vw);
 
 }
 
@@ -467,9 +467,6 @@ footer .quick-links {
     margin-top: 5px;
   }
 
-  .sell-container .add-unique .add-product-btn {
-    padding: 10px 15px;
-  }
   .products-listing{
     padding:8px 18px;
   }
@@ -545,6 +542,9 @@ footer .quick-links {
 
 }
 @media  screen and (max-width:1024px) {
+  .sell-products {
+    max-width: 95%;
+  }
   .user-profile{
     width: 28px;
     height: 28px;
@@ -566,20 +566,22 @@ footer .quick-links {
     min-width: 47.2vw;
     max-width: 47.2vw;
   }
+  .sell-products .sell-container .search-existing .search-box {
+    width: 75%;
+  }
   .sell-products .sell-container .search-existing p {
-    font-size: 0.65rem;
-    margin-bottom: 5px;
-    }
+    font-size: 13px;
+  }
   .sell-container .search-existing .search-box .search-img {
     width: 12px;
     transform: translateY(120%);
   }
   .sell-container .add-unique p{
-    font-size: 0.687rem;
+    font-size: 13px;
   }
   .sell-container .add-unique .add-product-btn {
-    padding: 8px 10px;
-    font-size: 0.625rem;
+    padding: 9px 14px;
+    font-size: 12px
   }
   .sell-container .search-existing .search-box input {
     margin-top: 6px;
@@ -587,6 +589,7 @@ footer .quick-links {
   }
   .products-listing {
     padding: 6px 14px;
+    max-width: 95%;
   }
   .products-listing .table-wrapper {
     padding: 20px 10px;
@@ -594,12 +597,7 @@ footer .quick-links {
   .products-listing .table-wrapper .table-header {
     margin-bottom: 12px;
   }
-  .products-listing .table-wrapper .table-header .status-filter p {
-    font-size: 0.57rem;
-  }
-  .products-listing .table-wrapper .table-header .status-filter p  img{
-    width: 6px;
-  }
+
   .products-listing .table-wrapper  .table-header .status-filter .custom-dropdown {
     width: 110px;
     font-size: 9px;
@@ -620,10 +618,7 @@ footer .quick-links {
   .products-listing .table-wrapper .table-header .search-brand-container input {
     padding: 0px 8px 5px 16px
   }
-  .products-listing .table-wrapper .product-table th,.products-listing .table-wrapper .product-table td {
-    padding: 10px 0px;
-    font-size: 0.58rem;
-  }
+ 
   .products-listing .table-wrapper .product-table th.selling-id-header img{
     margin-right: 2px;
   }
@@ -643,15 +638,7 @@ footer .quick-links {
   .products-listing .table-wrapper .product-table tbody  td.actions button.delete-btn img{
     width: 8.5px;
   }
-  .products-listing .table-wrapper .pagination .page,
-  .products-listing .table-wrapper .pagination .prev,
-  .products-listing .table-wrapper .pagination .next{
-    font-size: 9.77px;
-  }
-  .products-listing .table-wrapper  .pagination .page {
-    width: 19px;
-    height: 19px;
-  }
+
   footer{
     padding-top: 50px;
   }
@@ -690,16 +677,12 @@ footer .quick-links {
     padding-bottom: 20px;
   }
   .sell-products .sell-container .search-existing p {
-    font-size: 0.68rem;
     margin-bottom: 10px;
   }
   .sell-container .search-existing .search-box .search-note {
     margin-top: 6px;
-    font-size: 0.55rem;
-
   }
   .sell-container .add-unique p{
-    font-size: 0.69rem;
     margin-bottom: 15px;
   }
   .products-listing {
@@ -715,33 +698,7 @@ footer .quick-links {
   .products-listing .table-wrapper .product-table tbody td.actions button.delete-btn {
     margin-left: 12px;
   }
-  .products-listing .table-wrapper .pagination .page, 
-  .products-listing .table-wrapper .pagination .prev,
-  .products-listing .table-wrapper .pagination .next{
-    font-size: 10px;
-  }
-}
-@media screen and (max-width:600px){
-  .user-profile{
-    width: 25px;
-    height: 25px;
-    font-size: 0.65rem;
-  }
-  .products-listing .table-wrapper .product-table{
-    display: flex;
-    
-  }
-  .products-listing .table-wrapper .table-header {
-    margin-bottom: 15px;
-  }
-  .products-listing .table-wrapper .table-header .status-filter .custom-dropdown {
-    width: 95px;
-  }
-  .products-listing .table-wrapper .table-header .search-brand-container{
-    padding-right: 5px;
-    width: 150px;
-  }
-  .products-listing .table-wrapper .product-table, .products-listing .table-wrapper .product-table thead,
+   .products-listing .table-wrapper .product-table, .products-listing .table-wrapper .product-table thead,
   .products-listing .table-wrapper .product-table tbody, .products-listing .table-wrapper .product-table th,
   .products-listing .table-wrapper .product-table tbody td, 
   .products-listing .table-wrapper .product-table tr {
@@ -783,6 +740,26 @@ footer .quick-links {
   }
 
   
+}
+@media screen and (max-width:600px){
+  .user-profile{
+    width: 25px;
+    height: 25px;
+    font-size: 0.65rem;
+  }
+
+  .products-listing .table-wrapper .table-header {
+    margin-bottom: 15px;
+  }
+  .products-listing .table-wrapper .table-header .status-filter .custom-dropdown {
+    width: 95px;
+  }
+  .products-listing .table-wrapper .table-header .search-brand-container{
+    padding-right: 5px;
+    width: 150px;
+  }
+ 
+  
   .products-listing .table-wrapper .product-table tbody td.actions {
     display: block;
   }
@@ -796,6 +773,9 @@ footer .quick-links {
     width: 25px;
     height: 25px;
     font-size: 0.65rem;
+  }
+  .sell-products .sell-container .search-existing {
+    min-width: 80%;
   }
   .sell-products h2,.products-listing h2{
     font-size: 14px;
@@ -817,10 +797,10 @@ footer .quick-links {
     max-width: 96%;
   }
   .sell-products .sell-container .search-existing p {
-    font-size: 0.65rem;
+    font-size: 13px;
   }
   .sell-products .sell-container .search-existing{
-    min-width: 80%;
+    min-width: 90%;
   }
   .products-listing .table-wrapper .table-header {
     flex-direction: column;

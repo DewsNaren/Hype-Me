@@ -311,6 +311,10 @@
   right: 2.8646vw;
   top: 50%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease-in;
+}
+.add-product-btn:hover{
+  transform: scale(1.1);
 }
 .add-product-btn img{
   width: 100%;
