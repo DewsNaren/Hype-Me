@@ -111,7 +111,7 @@ function endSwipe(e) {
   })
 }
 
-const token=localStorage.getItem("token")
+
 function handleSearch(searchTerm = "", redirectUrl = "./product-list.html", preFilteredProducts = null) {
   let matchedProducts = [];
   let brandWord = "";
@@ -132,6 +132,7 @@ function handleSearch(searchTerm = "", redirectUrl = "./product-list.html", preF
 }
 
 const recentList = document.querySelector(".recent-searches .recent-search-list");
+
 let recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [
   "Jordon 5 Shoes","Adidas YZY Shoes","Nike Air Force","adidas Yeezy 700",
   "Nike Dunk","Nike Air Griffey Max","Adidas AW Run Alexander",
@@ -143,12 +144,16 @@ function renderRecentSearches(){
     recentList.innerHTML+=`<a class="recent-search-tag" href="./product-list.html">${search}</a>`
   })
 }
-renderRecentSearches()
+renderRecentSearches();
+
+
 const searchInput = document.querySelector(".main-container .search-wrapper .input-container input");
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
+
     const value = e.target.value.trim();
     if (!value) return;
+    const token=localStorage.getItem("token");
     if(token){
       const existingIndex = recentSearches.indexOf(value);
       if (existingIndex !== -1) {
@@ -175,6 +180,7 @@ const recentSearchTags = document.querySelectorAll(".recent-search-list .recent-
 recentSearchTags.forEach(tag => {
   tag.addEventListener("click", (e) => {
     e.preventDefault();
+    const token=localStorage.getItem("token");
     if(token){
       handleSearch(tag.textContent.trim(), tag.getAttribute("href"));
     }
@@ -190,6 +196,7 @@ const brandBoxes= document.querySelectorAll(".popular-brands .popular-shoe-conta
 
 brandBoxes.forEach(box=>{
   box.addEventListener('click',()=>{
+    const token=localStorage.getItem("token");
     if(token){
       const shoeContainer =box.parentElement;
       const name= shoeContainer.querySelector(".brand-name").textContent
@@ -205,6 +212,7 @@ const budgetBtns = document.querySelectorAll(".shop-under-budget .shop-button-co
 
 budgetBtns.forEach(btn => {
   btn.addEventListener('click', () => {
+    const token=localStorage.getItem("token");
     if(token){
       const priceContainer = btn.querySelector(".budget-price");
       const priceArr = priceContainer.getAttribute("data-filter").split('-');
@@ -222,6 +230,7 @@ budgetBtns.forEach(btn => {
     }
   });
 });
+
 
 
 function initHeaderScroll(headerSelector, targetSelector, thresholdValue = 0.1) {

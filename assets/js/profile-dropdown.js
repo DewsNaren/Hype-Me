@@ -1,9 +1,12 @@
 const profileContainer = document.querySelector('.profile-container');
 const profileMenu = profileContainer.querySelector('.profile-menu');
 const profileLinks=profileMenu.querySelectorAll("a");
-const loginToken=localStorage.getItem("token");
+
 const profiles=profileContainer.querySelectorAll(".user-profile");
-profiles.forEach(profile => {
+
+function changeProfile(){
+  const loginToken=localStorage.getItem("token");
+  profiles.forEach(profile => {
   profile.classList.remove("not-active");
 });
 
@@ -22,25 +25,28 @@ else{
   })
 }
 
+}
 profileContainer.addEventListener('click', () => {
   profileMenu.classList.toggle("active")
 });
-
+changeProfile();
 window.addEventListener('click', (e) => {
   if (!e.target.closest('.profile-container')) {
     profileMenu.classList.remove("active")
   }
 });
 
+
 const sellBtn=document.querySelector(".header nav .nav-btn-container .sell-btn");
 
 sellBtn.addEventListener('click',(e)=>{
+  const loginToken=localStorage.getItem("token");
   if(loginToken){
     window.name="";
-    window.location.href=sellBtn.href;
+    window.location.href="./my-products.html";
   }
   else{
     e.preventDefault();
+    openLogIn();
   }
 })
-

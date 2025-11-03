@@ -309,7 +309,7 @@
   height: 4.167vw;
   border-radius: 50%;
   right: 2.8646vw;
-  top: 50%;
+  bottom: 10%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transition: transform 0.2s ease-in;
 }

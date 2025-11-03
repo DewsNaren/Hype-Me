@@ -213,7 +213,7 @@
 
 
 .brand-box:hover .brand-rotated{
-    transform: rotate(-40deg);
+    transform: rotate(-45deg);
 }
 .brand-box:hover{
     background-color: rgb(235, 244, 239);
@@ -529,7 +529,7 @@
         width: 76%; 
     }
      .brand-box:hover .brand-rotated{
-        transform: rotate(-40deg);
+        transform: rotate(-43deg);
     }
     .brand-rotated img{
         margin-bottom: 15px;
@@ -905,7 +905,7 @@
         right: 3%;
     }
     .search-wrapper{
-        width: 60%;
+        width: 65%;
         padding:6px 14px 12px;
         transform: translate(-50%,-15px);
     }
@@ -926,6 +926,7 @@
         padding: 40px 0 4.1%;
         gap: 40px;
         max-width: 100%;
+        width: 90%;
     }
 
     .brand-box{
@@ -954,7 +955,4 @@
         font-size: 13.7px;
         line-height: 22px;
     }
-    /* .popular-shoes-container{
-        padding: 40px ;
-    } */
 }

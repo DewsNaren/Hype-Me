@@ -46,6 +46,7 @@ if(uploadImgBtn){
 }
 
 const productModalMainImageContainer = productModalContainer.querySelector(".product-img-wrapper .product-img-container .main-img-container");
+const prodMainImgWrapper=productModalMainImageContainer.querySelector(".main-img-wrapper");
 const productModalCloseBtn=document.querySelector(".product-modal-container .product-modal-content .product-modal-header .modal-close-btn");
 const uploadImgInputs = productModalContainer.querySelectorAll(".product-img-wrapper .product-img-container .thumbnail-img-container .upload-img-input");
 
@@ -81,7 +82,7 @@ uploadImgInputs.forEach((input, index) => {
     thumbnail.setAttribute("draggable", "true");
 
     if (index === 0) {
-      productModalMainImageContainer.innerHTML = `
+      prodMainImgWrapper.innerHTML = `
         <img src="./assets/images/${imageUrl}" class="main-img" alt="main image">
       `;
     }
@@ -109,6 +110,7 @@ thumbnailContainers.forEach(thumbnail => {
     updateThumbnailLabels();
     updateSelectedFilesOrder();
     updateMainImageAfterReorder();
+    changeHeaderText();
   });
 
   thumbnail.addEventListener("dragover", (e) => {
@@ -127,6 +129,7 @@ thumbnailContainers.forEach(thumbnail => {
       wrapper.insertBefore(draggedItem.parentNode, draggingOver.parentNode);
     }
   });
+
 });
 
 const labels = ["Front View", "Side View", "Side / Top", "Top / Bottom"];
@@ -139,6 +142,21 @@ function updateThumbnailLabels() {
       p.textContent = labels[index] || `View ${index + 1}`;
     }
   });
+}
+
+function changeHeaderText(){
+    thumbnailContainers.forEach(thubImg => {
+   
+  const computedStyle = window.getComputedStyle(thubImg);
+   const imgTextHeader=document.querySelector(".product-img-wrapper .product-img-desc-container h3")
+   console.log(thubImg) 
+   if (computedStyle.border === "1px solid rgb(143, 68, 253)") {
+      let parentContainer = thubImg.parentElement;
+      const clickedText=parentContainer.querySelector(".img-text")
+      console.log()
+      imgTextHeader.childNodes[0].textContent=clickedText.childNodes[0].data
+    }
+});
 }
 
 function updateSelectedFilesOrder() {
@@ -160,7 +178,7 @@ function updateSelectedFilesOrder() {
 function updateMainImageAfterReorder() {
   const firstThumb = document.querySelector(".thumbnail-img-container .thumbnail-img img[class^='thumb-']");
   if (firstThumb) {
-    const mainImg = productModalMainImageContainer.querySelector(".main-img");
+    const mainImg = prodMainImgWrapper.querySelector(".main-img");
     if (mainImg) {
       mainImg.src = firstThumb.src;
     }
@@ -168,15 +186,23 @@ function updateMainImageAfterReorder() {
 }
 
 function initThumbnailClickHandler() {
+  const imgTextHeader=document.querySelector(".product-img-wrapper .product-img-desc-container h3")
   const container = document.querySelector(".product-img-wrapper .product-img-container .thumbnail-img-wrapper");
   if (!container) return; 
   
   container.addEventListener("click", (e) => {
     const clickedImg = e.target.closest(".thumbnail-img img[class^='thumb-']");
     if (!clickedImg) return;
-    
-    const mainImg = productModalMainImageContainer.querySelector(".main-img");
-    
+    const thumbnailImgContainers=container.querySelectorAll(".thumbnail-img")
+    const clickedContainer=e.target.closest(".thumbnail-img");
+    const clickedParentContainer= clickedContainer.parentElement;
+    const clickedText=clickedParentContainer.querySelector(".img-text")
+    imgTextHeader.childNodes[0].textContent=clickedText.childNodes[0].data
+    thumbnailImgContainers.forEach(imgContainer=>{
+      imgContainer.style.border="1px solid #ddd";
+    })
+    clickedContainer.style.border="1px solid #8f44fd";
+    const mainImg = prodMainImgWrapper.querySelector(".main-img");
     if (mainImg && clickedImg.src) {
       mainImg.src = clickedImg.src;
     }
@@ -277,9 +303,9 @@ const ProductImgSaveBtn = productModalContainer.querySelector(".save-btn");
 function saveProductImages() {
 
   if (selectedFiles.length > 0) {
-    const currentMainImg = productModalMainImageContainer.querySelector(".main-img");
+    const currentMainImg = prodMainImgWrapper.querySelector(".main-img");
     if (currentMainImg && currentMainImg.src) {
-      mainImageContainer.innerHTML = `<img src="${currentMainImg.src}" class="main-image" />`;
+      mainImageContainer.innerHTML = `<img src="${currentMainImg.src}" class="main-image"/>`;
     }
   }
 
@@ -294,25 +320,25 @@ function saveProductImages() {
     );
   });
 
-  productModalMainImageContainer.innerHTML = "";
+  // productModalMainImageContainer.innerHTML = "";
   initPreviewDragAndDrop() 
-  const modalThumbnails = productModalContainer.querySelectorAll(".thumbnail-img");
+  // const modalThumbnails = productModalContainer.querySelectorAll(".thumbnail-img");
 
-  modalThumbnails.forEach(thumbnail => {
-    const previewImg = thumbnail.querySelector("img[class^='thumb-']");
-    if (previewImg) previewImg.remove();
+  // modalThumbnails.forEach(thumbnail => {
+  //   const previewImg = thumbnail.querySelector("img[class^='thumb-']");
+  //   if (previewImg) previewImg.remove();
 
-    const span = thumbnail.querySelector("span");
-    if (span) span.remove();
+  //   const span = thumbnail.querySelector("span");
+  //   if (span) span.remove();
 
-    const label = thumbnail.querySelector("label");
-    if (label && label.classList.contains("not-active")) {
-      label.classList.remove("not-active");
-    }
-  });
+  //   const label = thumbnail.querySelector("label");
+  //   if (label && label.classList.contains("not-active")) {
+  //     label.classList.remove("not-active");
+  //   }
+  // });
 
   productModalContainer.classList.remove("active");
-  selectedFiles = [];
+  // selectedFiles = [];
   productImgEditBtn.classList.add("active");
   uploadImgBtn.classList.add("not-active");
   ProductImgStat.innerHTML = `(${thumbnailPreview.children.length}/4)`;
@@ -337,7 +363,9 @@ ProductImgSaveBtn.addEventListener('click',saveProductImages)
 const productImgCancelBtn = document.querySelector(".product-modal-container .product-modal-content .modal-footer .cancel-btn");
 
 function DelProductImages() {
-  const thumbnails = document.querySelectorAll(
+  const uploadImgBtn = document.querySelector(".image-upload-container .upload-img-btn");
+  if(!uploadImgBtn.classList.contains('not-active')){
+      const thumbnails = document.querySelectorAll(
     ".product-img-wrapper .product-img-container .thumbnail-img"
   );
 
@@ -358,7 +386,9 @@ function DelProductImages() {
   });
 
   selectedFiles.length = 0; 
-  productModalMainImageContainer.innerHTML = ""; 
+  prodMainImgWrapper.innerHTML = ""; 
+  }
+
   productModalContainer.classList.remove("active"); 
   body.classList.remove("not-active");
 }
@@ -370,8 +400,22 @@ if (productImgCancelBtn) {
 
 if (imgEditBtn) {
   imgEditBtn.addEventListener('click', () => {
-    selectedFiles=[];
-    productModalContainer.classList.add("active");
+    // selectedFiles=[];
+
+    const mainImg=mainImageContainer.querySelector(".main-image")
+    prodMainImgWrapper.innerHTML=`<img src="${mainImg.src}" class="main-img" alt="main image">`;
+    const thumbnailImgsWrapper = productModalContainer.querySelector(".thumbnail-img-wrapper");
+    const thumbnailPreviewImgs=document.querySelectorAll(".thumbnail-preview-img-container .thumbnail-preview-img")
+    const thumbImgs=thumbnailImgsWrapper.querySelectorAll("img[class^='thumb-']");
+    const previewImgSrcs = Array.from(thumbnailPreviewImgs).map(img => img.src);
+
+
+    thumbImgs.forEach((thumb, index) => {
+      if (previewImgSrcs[index]) {
+        thumb.src = previewImgSrcs[index];
+      }
+    });
+     productModalContainer.classList.add("active");
     body.classList.add("not-active");
   });
 }
@@ -529,7 +573,7 @@ const addDetailsHeaderContainer=addDetailsContainer.querySelector(".details-head
 const addStatusImg=addDetailsHeaderContainer.querySelector("img");
 const addStatusCount=addDetailsHeaderContainer.querySelector("p span");
 const addDetailsBodyContainer=addDetailsContainer.querySelector(".details-body-container");
-const addTexts=addDetailsBodyContainer.querySelectorAll("p")
+const addTexts=addDetailsBodyContainer.querySelectorAll("p");
 
 
 function displayAddData(addData) {
@@ -645,24 +689,66 @@ function checkUpdateConditions() {
 
 
 formCancelBtn.addEventListener('click', () => {
-  if (activeSection === 'product') {
-    productForm.reset();  
-  }
-  else if (activeSection === 'additional') {
-    additionalForm.reset();
-  }
   closeModal()
 });
 
 
 //Edit Form Data
 editProductBtn.addEventListener('click',()=>{
-  productDetailsData = []
+  const prodTexts=productDetailsBodyContainer.querySelectorAll("p")
+  let productDat={};
+    prodTexts.forEach(p => {
+      const span = p.querySelector("span[class^='view-']");
+      if (span) {
+        const key = span.className.replace("view-", "").trim();
+
+        const value = span.innerHTML.trim();
+        
+        productDat[key] = value;
+      }
+    })
+    const ProductInputs = productForm.querySelectorAll('input, select');
+    ProductInputs.forEach(input=>{
+    for (let key in productDat) {
+        let el = input; 
+        
+        if (el.name === `input-${key}` || el.name === key) {
+          el.value = productDat[key];
+        }
+      }
+  })  
   openProductForm();
 })
 
 editAdditionalBtn.addEventListener('click',()=>{
-  additionalDetailsData = []
+    let additData={};
+    const addTexts=addDetailsBodyContainer.querySelectorAll("p");
+    addTexts.forEach(p => {
+      const span = p.querySelector("span");
+      if (span) {
+        const className = span.className.trim();
+        
+
+        const key = className.startsWith("view-")
+          ? className.replace("view-", "")
+          : className;
+        const value = span.innerHTML.trim();
+
+        additData[key] = value;
+      }
+    });
+      const additionalInputs = document.querySelectorAll(".additional-form input, .additional-form select");
+    
+      additionalInputs.forEach(input=>{
+      for (let key in additData) {
+        let el = input; 
+        
+        if (el.name === `input-${key}` || el.name === key) {
+          el.value = additData[key];
+        }
+      }
+    })  
+
   openAdditionalForm();
 })
 

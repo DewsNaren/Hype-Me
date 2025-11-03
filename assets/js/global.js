@@ -135,7 +135,7 @@ function setupLikeBtns() {
   likeBtns.forEach(likeBtn => {
     likeBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const token=localStorage.getItem("token")
+      const token=localStorage.getItem("token");
       if(token && token.trim() !== "" ){
         const likeBtnImg=likeBtn.querySelector("img");
         if (likeBtnImg.src.includes("liked-heart.png")) {
@@ -173,6 +173,7 @@ document.querySelector('.recent-slider-container').addEventListener('click', (e)
   if (!link) return; 
 
   e.preventDefault(); 
+  const token=localStorage.getItem("token");
   if(token){
     const productId = link.dataset.productId;
 
@@ -191,6 +192,7 @@ const viewAll=document.querySelector(".recently-posted .recent-slider-indicator-
 
 viewAll.addEventListener('click',(e)=>{
   e.preventDefault();
+  const userToken=localStorage.getItem("token");
   if(!userToken){
     openLogIn();
   }
@@ -200,7 +202,3 @@ viewAll.addEventListener('click',(e)=>{
   }
 })
 
-
-
-localStorage.setItem("token","fdb56316803f37815e41af1412c07694f9150c267d4a0c8319a6af71873f2be7cdd0362695ed52f14d801e94ba17c42f90e668e0e910a029f17595701928ebda540cbcc4d7336496819a46a1b6882c85a650af219cb0948b6e38592a30968e0e910a02ad")
-// localStorage.removeItem("token")

@@ -228,7 +228,7 @@ async function handleSignUp(form) {
       setTimeout(() => {
         result.classList.remove("active");
         closeOverlay();
-      }, 6000);
+      }, 4000);
     } else {
       if (typeof data === "object") {
         showErrors(data.messages, form);
@@ -270,11 +270,13 @@ async function handleLogin(form) {
       result.classList.add("active");
     
       result.innerHTML=data.message;
-      
+      enableLogout();
+      changeProfile();
       setTimeout(()=>{
         result.classList.remove("active");
         closeOverlay();
-      },6000)
+        
+      },4000)
 
     } else {
       showErrors(data.messages,form);
@@ -282,6 +284,7 @@ async function handleLogin(form) {
   } catch (err) {
     console.error("Login error:", err);
   }
+ 
 }
 
 const logoutBtn=document.querySelector(".profile-container .profile-menu .logout-btn");
@@ -292,16 +295,26 @@ const logoutContentContainer=logoutModal.querySelector(".logout-modal .logout-co
 const cancelLogoutBtn = logoutModal.querySelector(".cancel-btn");
 const confirmLogoutBtn = logoutModal.querySelector(".confirm-btn");
 const logoutSuccessContainer=logoutModal.querySelector(".logout-modal .logout-success-container")
-const userToken=localStorage.getItem("token");
-if(userToken){
-  logoutBtn.classList.add("active")
-}else{
-  logoutBtn.classList.remove("active")
+const signUpBtn=document.querySelector(".profile-container .profile-menu .signup-btn");
+const loginBtn=document.querySelector(".profile-container .profile-menu .login-btn");
+
+function enableLogout(){
+  const userToken=localStorage.getItem("token");
+  if(userToken){
+    logoutBtn.classList.add("active");
+    signUpBtn.classList.add("not-active");
+    loginBtn.classList.add("not-active");
+  }else{
+    logoutBtn.classList.remove("active");
+    signUpBtn.classList.remove("not-active");
+    loginBtn.classList.remove("not-active");
+  }
+  logoutBtn.addEventListener("click", () => {
+    logoutOverlay.classList.add("active");
+    body.classList.add("not-active");
+  });
 }
-logoutBtn.addEventListener("click", () => {
-  logoutOverlay.classList.add("active");
-  body.classList.add("not-active");
-});
+enableLogout();
 
 if(window.name=="logout-btn"){
   logoutOverlay.classList.add("active");
@@ -327,7 +340,11 @@ logoutOverlay.addEventListener("click", (e) => {
     closeLogout();
   }
 });
-
+let defaultSearches = [
+  "Jordon 5 Shoes","Adidas YZY Shoes","Nike Air Force","adidas Yeezy 700",
+  "Nike Dunk","Nike Air Griffey Max","Adidas AW Run Alexander",
+  "Nike Air Force 1","Jordan 3 Retro","Adidas Yeezy"
+];
 
 confirmLogoutBtn.addEventListener('click',handleLogout)
 const API_LOGOUT="http://taskapi.devdews.com/api/logout";
@@ -351,7 +368,9 @@ async function handleLogout() {
          logoutContentContainer.classList.add("not-active");
           logoutSuccessContainer.innerHTML+=`<h3>Logout Successful!</h3>
         <p class="logout-msg success">You have been securely logged out. Thank you for using our service. See you soon!</p>`
-
+        enableLogout();
+        changeProfile();
+        
       } else {
         logoutContentContainer.classList.add("not-active");
         logoutSuccessContainer.innerHTML = `
@@ -376,11 +395,14 @@ async function handleLogout() {
           It seems you haven't logged in yet. Please log in to continue.
         </p>`
   }
+
    setTimeout(()=>{
       logoutSuccessContainer.innerHTML="";
       closeLogout();
       logoutContentContainer.classList.remove("not-active");
-    },5000)
+      window.location.href="./index.html"
+      localStorage.setItem("recentSearches", JSON.stringify(defaultSearches));
+    },4000)
     
 }
 
