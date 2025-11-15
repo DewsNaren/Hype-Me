@@ -22,7 +22,7 @@
 }
 /* Profile Card  Container */
 .profile-card{
-    min-width: clamp(240px, 23.85vw,23.85vw);
+    min-width: clamp(260px, 23.85vw,23.85vw);
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -429,7 +429,7 @@ footer{
 
 @media screen and (max-width:1024px){
     .product-list-wrapper{
-        max-width: 88.5%;
+        max-width: 90%;
         padding: 18px 0px 50px;
     }
     .product-list-container{
@@ -493,6 +493,9 @@ footer{
         width: 8px;
         margin-right: 10px;
         margin-left: 15px;
+    }
+    .product-list-body{
+        grid-template-columns: repeat(2,minmax(140px, 1fr));
     }
     .product-item span{
         right: 12px;

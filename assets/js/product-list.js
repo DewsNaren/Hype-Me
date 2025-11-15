@@ -65,15 +65,32 @@ function getProducts() {
 function applyFilters(page = 1) { 
   let minVal = parseInt(minRange.value); 
   let maxVal = parseInt(maxRange.value); 
-  if (minVal >= maxVal) { 
-    minVal = maxVal - 1; 
-    if (minVal < parseInt(minRange.min)) 
-      minVal = parseInt(minRange.min); minRange.value = minVal; 
-  } if (maxVal <= minVal) { 
-    maxVal = minVal + 1; 
-    if (maxVal > parseInt(maxRange.max)) maxVal = parseInt(maxRange.max); 
-      maxRange.value = maxVal; 
-  } 
+
+  if (minVal > 900) {
+    minVal = 901;
+    minRange.value = 901;
+  }
+
+  if (minVal >= maxVal) {
+    minVal = maxVal - 1;
+
+    if (minVal < parseInt(minRange.min)) {
+      minVal = parseInt(minRange.min);
+    }
+
+    minRange.value = minVal;
+  }
+
+  if (maxVal <= minVal) {
+    maxVal = minVal + 1;
+
+    if (maxVal > parseInt(maxRange.max)) {
+      maxVal = parseInt(maxRange.max);
+    }
+
+    maxRange.value = maxVal;
+  }
+
   const minPercent = ((minVal - parseInt(minRange.min)) / (parseInt(minRange.max) - parseInt(minRange.min))) * 100; 
   const maxPercent = ((maxVal - parseInt(maxRange.min)) / (parseInt(maxRange.max) - parseInt(maxRange.min))) * 100; 
   rangeFill.style.left = minPercent + "%"; 

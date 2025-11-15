@@ -216,8 +216,8 @@
         gap: 20px;
     }
     .recent-slider{
-        flex: 0 0 19.14vw;
-        width: 19.14vw;
+        flex: 0 0 calc((100% - 2 * 20px) / 3);
+        width: calc((100% - 2 * 20px) / 3);
     }
     .recent-slider-item span{
         right: 10px;
@@ -268,10 +268,6 @@
     }
     .recent-slider-frame,.recent-slider-indicator-container{
         max-width: 85%;
-    }
-    .recent-slider{
-        flex: 0 0 calc((100% - 2 * 20px) / 3);
-        width: calc((100% - 2 * 20px) / 3);
     }
     .recent-slider-item a img{
        width:  100%;
@@ -335,6 +331,12 @@
     .recent-slider-btn img{
         width: 13px;
     }
+
+    .recent-slider {
+        flex: 0 0 calc((100% - 20px) / 2);
+        width: calc((100% - 20px) / 2);
+    }
+
     .recent-slider-indicator-container{
         min-width: 83.4%;
     }
@@ -347,11 +349,7 @@
     .recent-slider-frame,.recent-slider-indicator-container{
         width: 80%;
     }
-    .recent-slider{
-        flex: 0 0 36.4vw;
-        width: 36.4vw;
-    }
- 
+    
     .recent-slider-btn img{
         width: 12px;
     }

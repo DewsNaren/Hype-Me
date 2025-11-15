@@ -1,20 +1,28 @@
 const overlayContainer=document.querySelector(".overlay");
 const overlayCloseBtns=document.querySelectorAll(".overlay-close-btn");
 const formContainers=overlayContainer.querySelectorAll(".form-container");
+const loginContainer=overlayContainer.querySelector(".login-container");
+const signUpContainer=overlayContainer.querySelector(".signup-container");
+const resetContainer=overlayContainer.querySelector(".reset-container");
+
 
 const body = document.body;
 function closeOverlay(){
   formContainers.forEach(formContainer=>{
     formContainer.classList.remove("active");
   })
-  overlayContainer.classList.remove("active");
-  body.classList.remove("not-active");
+  setTimeout(()=>{
+    overlayContainer.classList.remove("active");
+    body.classList.remove("not-active");
+  },600)
+  
 }
 overlayCloseBtns.forEach(overlayCloseBtn=>{
     overlayCloseBtn.addEventListener('click',()=>{
     closeOverlay();
   })
 })
+
 overlayContainer.addEventListener("click", (e) => {
   if (!e.target.closest(".form-container")) {
     closeOverlay();
@@ -176,7 +184,7 @@ function validateResetForm(form) {
 }
 
 function setError(element,message){
-  const inputGroup = element.parentElement;
+  const inputGroup = element.closest('.input-group');
   
   const errorElement = inputGroup.querySelector('.error')
   errorElement.innerText = message;
@@ -184,7 +192,7 @@ function setError(element,message){
 }
 
 function setSuccess(element){
-  const inputGroup = element.parentElement;
+  const inputGroup = element.closest('.input-group');
   const errorElement = inputGroup.querySelector('.error')
 
   errorElement.innerText = 'no error';
@@ -502,9 +510,7 @@ function setupForms() {
 }
 
 
-const loginContainer=overlayContainer.querySelector(".login-container");
-const signUpContainer=overlayContainer.querySelector(".signup-container");
-const resetContainer=overlayContainer.querySelector(".reset-container");
+
 const loginBtns=document.querySelectorAll(".login-btn");
 function openLogIn(){
   resetContainer.classList.remove("active");

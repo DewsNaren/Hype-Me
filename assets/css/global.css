@@ -446,7 +446,7 @@ footer{
         gap: 64px;
     }
     .quick-links ul li a{
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
     .social-media-links{
         width: 98.3%;
@@ -504,9 +504,13 @@ footer{
 
     .quick-links ul{
         gap: 45px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-inline: clamp(20px, 5vw, 5vw);
     }
     .quick-links ul li a{
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
     .social-media-links ul li .insta-img{
         width: 24px;
@@ -551,14 +555,13 @@ footer{
     }
 
     .quick-links ul{
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
         gap: 30px;
+        margin: 0 auto;
+        row-gap: 18px;
     }
-    .quick-links ul li a{
-        font-size: 0.6rem;
-    }
+    /* .quick-links ul li a{
+        font-size: 0.7rem;
+    } */
     .social-media-links{
         gap: 30px;
     }
@@ -597,16 +600,12 @@ footer{
         min-height: 75px;
     }
     .quick-links{
-        padding-top: 16%;
+        padding-top:clamp(60px, 16%, 16%);
     }
-    .quick-links ul{
-        max-width: 90%;
-        margin: 0 auto;
-        row-gap: 18px;
+     .quick-links ul li a{
+        font-size: 12px;
     }
-    .quick-links ul li a{
-        font-size: 0.66rem;
-    }
+
     .social-media-links{
         padding: 10% 0 5.8%;
     }

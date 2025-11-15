@@ -128,7 +128,7 @@
         
         <div  class="toast-container">
             <p>Product Created Successfully</p>
-            <span><img src="./assets/images/close-toast.png" alt=""></span>
+            <span><img src="./assets/images/close-toast.png" alt="close"></span>
         </div>
     </main>
     <div class="modal-container form-modal-container">
@@ -337,8 +337,15 @@
                 <div class="product-img-wrapper">
                     <div class="product-img-container">
                         <div class="main-img-container">
-                            <div class="main-img-wrapper"></div>
-                            <button type="button" class="edit-thumb-img-btn">Edit</button>
+                            <div class="main-img-inner">
+                                <div class="main-img-wrapper"></div>
+    
+                            </div>
+                            <div class="main-img-btn-container">
+                                <button type="button" class="edit-thumb-img-btn">Edit</button>
+                                <button type="button" class="delete-thumb-img-btn">Delete</button>
+                            </div>
+                            
                         </div>
                         <div class="thumbnail-img-wrapper">
                             <div class="thumbnail-img-container">
@@ -404,6 +411,38 @@
                     <div>
                         <button type="button" class="cancel-btn">Cancel</button>
                         <button type="submit" class="save-btn" disabled="true" >Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-container review-modal-container">
+            <div class="review-modal-content">
+                <div class="review-modal-header">
+                    <h3>Review Your Details</h3>
+                     <button type="button" class="modal-close-btn"><img src="./assets/images/modal-close.png" alt="close"></button>
+                </div>
+                <form class="review-form">
+                    <div class="input-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" value="Malhotra Collections" autocomplete="off" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="contact">Contact</label>
+                        <input type="text" name="contact" id="contact" value="+1 (713)-585-1189" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="location">Location</label>
+                        <input type="text" name="location" id="location" value="TX7741" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Eamil</label>
+                        <input type="text" name="email" id="email" value="malhotra@gmail.com" autocomplete="off" readonly>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <div>
+                        <button type="button" class="edit-btn">Edit</button>
+                        <button type="submit" class="confirm-btn">Confirm</button>
                     </div>
                 </div>
             </div>

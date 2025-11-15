@@ -27,7 +27,10 @@
     transition: right 0.6s ease-in-out;
     z-index: 6;
 }
-
+.overlay .form-container.active{
+    right: 0;
+    transition: right 0.6s ease-in-out;
+}
 .overlay-close-btn-container {
   display: flex;
   justify-content: flex-end;
@@ -138,9 +141,7 @@
 .overlay .login-container {
   padding: 2.6% 2.67% 0;
 }
-.overlay .login-container.active{
-    right: 0;
-}
+
 .login-container h2, .overlay .signup-container h2{
   margin-top: 20px;
 } 
@@ -169,9 +170,13 @@
   position: relative;
   margin-bottom: 17px;
 }
+.login-form .password-group .password-wrapper{
+    position: relative;
+}
 .login-form .password-group .eye-icon {
   right: 6px;
-  top: 8px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .login-form .forgot-link {
@@ -213,9 +218,7 @@
 
 
 /*Sign up container */
-.overlay .signup-container.active{
-    right: 0;
-}
+
 .overlay .signup-container {
   padding: 2.6% 2.6% 6.25%;
 }
@@ -234,15 +237,24 @@
     padding-top: 11px;
 }
 
+
+
+/* .signup-form . */
+
 .signup-form .password-group {
-  position: relative;
+ position: relative;
   margin-bottom: 0px !important;
   display: flex;
   flex-direction: column;
 }
+.signup-form .password-group .password-wrapper{
+    position: relative;
+}
+
 .signup-form .password-group .eye-icon {
   right: 10px;
-  top: 12px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 
@@ -307,9 +319,7 @@
 .overlay .reset-container{
     padding: 2.6% 2.6% 6.25%;
 }
-.overlay .reset-container.active{
-    right: 0;
-}
+
 .reset-container h2 {
     font-size: 2.8rem;
     padding-top: 16%;
@@ -507,7 +517,6 @@
         margin-bottom: 21px;
     }
     .login-form .password-group .eye-icon{
-        top: 6px;
         right: 5px;
         width: 24px;
     }
@@ -624,7 +633,6 @@
     }
     .login-form .password-group .eye-icon{
         right: 4px;
-        top: 7px;
         width: 20px;
     }
     .login-form .forgot-link{
@@ -748,7 +756,6 @@
         margin-bottom: 8px;
     }
     .login-form .password-group .eye-icon{
-        top: 5px;
         right: 0;
         width: 15px;
     }

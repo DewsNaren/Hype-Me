@@ -302,7 +302,7 @@ header{
     display: none;
 }
 /*Form */
-.form-modal-container{
+.form-modal-container,.review-modal-container{
     display: none;
     position: fixed;
     z-index: 4;
@@ -311,9 +311,10 @@ header{
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
     justify-content: center;
 }
-.form-modal-container.active{
+.form-modal-container.active,.review-modal-container.active{
     display: flex;
 }
 .form-modal-container .form-modal-content{
@@ -322,21 +323,32 @@ header{
     width: 62.5%;
     padding:clamp(10px, 1.78vw, 34px)  clamp(15px, 2.65vw, 50px);
     padding-right: 70px;
-    height:80vh;
+    height:max-content;
+    max-height: 80vh;
     overflow-y: auto;
 }
-.form-modal-container .form-modal-content .form-modal-header{
+.review-modal-container .review-modal-content{
+    background-color: #fff;
+    margin:10vh 0 10vh;
+    width: 62.5%;
+    padding:clamp(10px, 1.78vw, 34px)  clamp(15px, 2.65vw, 50px);
+    padding-right: 70px;
+    height: max-content;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.form-modal-container .form-modal-content .form-modal-header,.review-modal-container .review-modal-content .review-modal-header{
     display: flex;
     justify-content: space-between;
     padding-bottom: 15px;
     border-bottom: 1px solid rgb(192, 192, 194);
 }
 
-.form-modal-container .form-modal-content .form-modal-header h3{
+.form-modal-container .form-modal-content .form-modal-header h3,.review-modal-container .review-modal-content .review-modal-header h3{
     font-size: clamp(15px, 1.2vw, 1.4rem);
     color: rgba(0, 0, 0, 0.7);
 }
-.form-modal-container .form-modal-content .form-modal-header .modal-close-btn{
+.form-modal-container .form-modal-content .form-modal-header .modal-close-btn,.review-modal-container .review-modal-content .review-modal-header .modal-close-btn{
     background: transparent;
     border: none;
     cursor: pointer;
@@ -348,7 +360,10 @@ header{
    overflow-y: scroll;
    margin-right: 20px;
    display: none;
-   
+}
+.review-modal-container .review-modal-content form{
+    margin-top: 50px;
+   padding: 0px 40px;
 }
 .form-modal-container .form-modal-content::-webkit-scrollbar,
  .product-modal-container .product-modal-content::-webkit-scrollbar{
@@ -388,7 +403,8 @@ header{
 .form-modal-container .form-modal-content form .input-group-container{
     max-width: 90%;
 }
-.form-modal-container .form-modal-content form .input-group{
+.form-modal-container .form-modal-content form .input-group,
+.review-modal-container .review-modal-content form .input-group{
     display: flex;
     align-items: center;
     gap: 20px;
@@ -396,12 +412,11 @@ header{
     justify-content: center;
     margin: 0 auto 0.9vw;
 }
-.form-modal-container .form-modal-content form .input-group label{
+.form-modal-container .form-modal-content form .input-group label,
+.review-modal-container .review-modal-content form .input-group label{
     font-size: 1.15rem;
     color: rgb(175, 174, 174);
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
+    text-align: right;
 }
 
 .form-modal-container .form-modal-content form.active{
@@ -411,6 +426,9 @@ header{
 .form-modal-container .form-modal-content .product-form label:not([for=input-listing-stat]){
     width: 163px;
     justify-content: flex-end;
+}
+.review-modal-container .review-modal-content form .input-group label:not([for="location"]){
+    width: 78.12px;
 }
 .form-modal-container .form-modal-content form .input-group label .star,.form-modal-container .form-modal-content .modal-footer p span{
     color: red;
@@ -425,9 +443,11 @@ header{
     height: 50px;
     outline: none;
 }
-.form-modal-container .form-modal-content form .input-group select,.form-modal-container .form-modal-content form .input-group input{
-    width:clamp(150px, 17.188vw, 17.88vw) ;
-    font-size: clamp(12px, 1vw, 1.2rem);
+.form-modal-container .form-modal-content form .input-group select,
+.form-modal-container .form-modal-content form .input-group input{
+
+    width:clamp(180px, 17.188vw, 17.88vw) ;
+    font-size: clamp(13px, 1vw, 1.2rem);
     border: 1px solid rgb(229, 229, 231);
     height: 50px;
     color: rgba(0, 0, 0, 0.7);
@@ -436,6 +456,15 @@ header{
     font-size: clamp(12px, 1vw, 1.2rem);
 }
 .form-modal-container .form-modal-content form .input-group input{
+    padding: 10px;
+    outline: none;
+}
+.review-modal-container .review-modal-content form .input-group input{
+    width:clamp(180px, 17.188vw, 17.88vw) ;
+    font-size: clamp(13px, 1vw, 1.2rem);
+    border: 1px solid rgb(229, 229, 231);
+    height: 50px;
+    color: rgba(0, 0, 0, 0.7);
     padding: 10px;
     outline: none;
 }
@@ -454,10 +483,17 @@ header{
     visibility: visible;
 }
 .form-modal-container .form-modal-content .modal-footer,
-.product-modal-container .product-modal-content .modal-footer{
+.product-modal-container .product-modal-content .modal-footer,
+.review-modal-container .review-modal-content .modal-footer{
     padding: 40px 0 6px;
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid rgb(192, 192, 194);
+}
+.review-modal-container .review-modal-content .modal-footer{
+    padding: 40px 0 6px;
+    display: flex;
+    justify-content: flex-end;
     border-top: 1px solid rgb(192, 192, 194);
 }
 .form-modal-container .form-modal-content .modal-footer p,
@@ -469,13 +505,15 @@ header{
 }
 
 .form-modal-container .form-modal-content .modal-footer div,
-.product-modal-container .product-modal-content .modal-footer div{
+.product-modal-container .product-modal-content .modal-footer div ,
+.review-modal-container .review-modal-content .modal-footer div{
     display: flex;
     gap: 28px;
 }
 
 .form-modal-container .form-modal-content .modal-footer button,
-.product-modal-container .product-modal-content .modal-footer button{
+.product-modal-container .product-modal-content .modal-footer button,
+.review-modal-container .review-modal-content .modal-footer button{
     background: transparent;
     border: none;
     padding: clamp(8px,0.7vw ,14px) clamp(16px, 1.3vw, 25px);
@@ -484,14 +522,16 @@ header{
 }
 
 .form-modal-container .form-modal-content .modal-footer .cancel-btn,
-.product-modal-container .product-modal-content .modal-footer .cancel-btn{
+.product-modal-container .product-modal-content .modal-footer .cancel-btn,
+.review-modal-container .review-modal-content .modal-footer .edit-btn{
     border: 1px solid rgb(76, 21, 187);
     background-color: transparent;
     color: rgb(76, 21, 187);
 }
 
 .form-modal-container .form-modal-content .modal-footer .save-btn,
-.product-modal-container .product-modal-content .modal-footer .save-btn{    
+.product-modal-container .product-modal-content .modal-footer .save-btn,
+.review-modal-container .review-modal-content .modal-footer .confirm-btn{    
     color: rgb(209, 208, 208);
     background-color: rgb(76, 21, 187);
     border: 1px solid transparent;
@@ -500,7 +540,9 @@ header{
 .product-modal-container .product-modal-content .modal-footer .save-btn{ 
     opacity: 0.5;
 }
-
+.product-modal-container .product-modal-content .modal-footer .save-btn.active{
+    opacity: 1;
+}
 .form-modal-container .form-modal-content .modal-footer .save-btn.not-active{
     display: none;
 }
@@ -515,7 +557,8 @@ header{
 .form-modal-container .form-modal-content .additional-form.active{
     display: block;
 }
-.form-modal-container .form-modal-content .additional-form .input-group{
+.form-modal-container .form-modal-content .additional-form .input-group,
+.review-modal-container .review-modal-content form .input-group{
     margin-bottom:clamp(25px, 2.08332vw, 2.08332vw);
 }
 /*Product Modal*/
@@ -539,7 +582,7 @@ header{
     overflow-y: auto;
     margin: 10vh 0  10vh;
     width: 62.5%;
-    padding:clamp(10px, 1.78vw, 34px)  clamp(15px, 2.65vw, 50px);
+    padding:clamp(20px, 1.78vw, 34px)  clamp(15px, 2.65vw, 50px);
 }
 .product-modal-container .product-modal-content .product-modal-header{
     display: flex;
@@ -561,7 +604,7 @@ header{
     margin-top: 35px;
     display: flex;
     gap: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     border-bottom: 1px solid #ddd;
     height: fit-content;
 }
@@ -571,19 +614,29 @@ header{
     
 }
 .product-modal-content .product-img-wrapper .product-img-container .main-img-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
     border-bottom: 1px solid #6e6969;
     padding-bottom: 40px;
     height: 23.9828vw;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    gap: 10px;
+}
+.product-modal-content .product-img-wrapper .product-img-container .main-img-container .main-img-inner{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+.product-modal-content .product-img-wrapper .product-img-container .main-img-btn-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .product-modal-content .product-img-wrapper .product-img-container .main-img-container .main-img-wrapper{
-    width: 90%;
+    width: 100%;
     height: 100%;
     gap: 10px;
 }
@@ -592,7 +645,27 @@ header{
     color: blueviolet;
     background-color: transparent;
     display: none;
+    cursor: pointer;
+    font-size: clamp(11px, 0.88vw, 0.88vw);
 }
+.product-modal-content .product-img-wrapper .product-img-container .main-img-container .delete-thumb-img-btn{
+    border: none;
+    color: blueviolet;
+    background-color: transparent;
+    display: none;
+    cursor: pointer;
+    font-size: clamp(11px, 0.88vw, 0.88vw);
+    align-self: flex-end;
+}
+.product-modal-content .product-img-wrapper .product-img-container .main-img-container .delete-thumb-img-btn.active{
+    display: block;
+}
+
+.product-modal-content .product-img-wrapper .product-img-container .main-img-container .edit-thumb-img-btn.active{
+    display: block;
+}
+
+
 .product-modal-content .product-img-wrapper .product-img-container .main-img-container .main-img{
     object-fit: contain;
     width: 100%;
@@ -612,6 +685,10 @@ header{
     border: 1px solid #ddd;
     background-color: #fff;
 }
+.product-img-wrapper .product-img-container .thumbnail-img-wrapper .thumbnail-img-container .thumbnail-img.clicked{
+    border: 1px solid rgb(143, 68, 253);
+}
+
 .product-img-wrapper .product-img-container .thumbnail-img-wrapper .thumbnail-img-container .thumbnail-img .upload-label{
     cursor: pointer;
 }
@@ -697,8 +774,7 @@ header{
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  font-size: clamp(10px,1vw, 1vw);
-
+  font-size: clamp(14px,1vw, 1vw);
 }
 
 .toast-container.show {
@@ -798,6 +874,11 @@ header{
         /* height: 463px; */
         margin-right: 16px;
     }
+    .review-modal-container .review-modal-content form {
+        margin-top: 42px;
+        padding: 0px 32px;
+    }
+
     .form-modal-container .form-modal-content::-webkit-scrollbar,
     .product-modal-container .product-modal-content::-webkit-scrollbar {
         width: 6px;
@@ -812,7 +893,8 @@ header{
         gap: 20px;
     }
     
-    .form-modal-container .form-modal-content form .input-group label {
+    .form-modal-container .form-modal-content form .input-group label,
+    .review-modal-container .review-modal-content form .input-group label{
         font-size: 1rem;
         gap: 6px;
     }
@@ -820,13 +902,17 @@ header{
     .form-modal-container .form-modal-content .product-form label:not([for=input-listing-stat]){
         width: 137px;
     }
+    .review-modal-container .review-modal-content form .input-group label:not([for="location"]){
+        width: 68px;
+    }
     .form-modal-container .form-modal-content form .input-group .custom-select {
         padding-left: 12px;
         padding-right: 32px; 
         height: 45px;
         background-size: 12px auto;
     }
-    .form-modal-container .form-modal-content form .input-group select,.form-modal-container .form-modal-content form .input-group input{
+    .form-modal-container .form-modal-content form .input-group select,.form-modal-container .form-modal-content form .input-group input,
+    .review-modal-container .review-modal-content form .input-group input{
         height: 45px;
     }
     .form-modal-container .form-modal-content form .input-group label .info img{
@@ -834,8 +920,9 @@ header{
     }
     
     .form-modal-container .form-modal-content .modal-footer,
-    .product-modal-container .product-modal-content .modal-footer{
-        padding: 32px 0 5px;
+    .product-modal-container .product-modal-content .modal-footer,
+    .review-modal-container .review-modal-content .modal-footer{
+        padding: 30px 0 10px;
     }
     .form-modal-container .form-modal-content .modal-footer div,
     .product-modal-container .product-modal-content .modal-footer div{
@@ -974,17 +1061,22 @@ header{
     .add-product-outer-container .save-btn-container button{
         padding: 10px 16px;
     }
-     .form-modal-container .form-modal-content{
-        width: 70%;
+    .form-modal-container .form-modal-content,.review-modal-container .review-modal-content{
+        width: 75%;
     }
     .form-modal-container .form-modal-content .form-modal-header .modal-close-btn img,
-    .product-modal-container .product-modal-content .product-modal-header .modal-close-btn img{
+    .product-modal-container .product-modal-content .product-modal-header .modal-close-btn img,
+    .review-modal-container .review-modal-content .review-modal-header .modal-close-btn img{
         width: 17px;
     }
     .form-modal-container .form-modal-content form{
-        margin-top: 42px;
+        margin-top: 35px;
         padding: 0px 32px;
         margin-right: 12px;
+    }
+    .review-modal-container .review-modal-content form {
+        margin-top: 35px;
+        padding: 0px 32px;
     }
     .form-modal-container .form-modal-content::-webkit-scrollbar ,
     .product-modal-container .product-modal-content::-webkit-scrollbar{
@@ -1000,13 +1092,17 @@ header{
         gap: 15px;
     }
     
-    .form-modal-container .form-modal-content form .input-group label {
+    .form-modal-container .form-modal-content form .input-group label,
+    .review-modal-container .review-modal-content form .input-group label{
         font-size: 0.84rem;
         gap: 5px;
     }
     
     .form-modal-container .form-modal-content .product-form label:not([for=input-listing-stat]){
         width: 115.5px;
+    }
+    .review-modal-container .review-modal-content form .input-group label:not([for="location"]){
+        width: 57.1px;
     }
     .form-modal-container .form-modal-content form .input-group .custom-select {
         background: url('../images/drop-down.png') no-repeat right 8px center;
@@ -1019,6 +1115,10 @@ header{
         height: 38px;
     }
     .form-modal-container .form-modal-content form .input-group input{
+        padding: 8px;
+    }
+    .review-modal-container .review-modal-content form .input-group input{
+        height: 38px;
         padding: 8px;
     }
     .form-modal-container .form-modal-content form .input-group label .info img{
@@ -1037,7 +1137,7 @@ header{
         width: 142.8px;
     }
     .product-modal-container .product-modal-content {
-        width: 70%;
+        width: 75%;
     }
     .product-modal-container .product-modal-content .product-img-wrapper {
         margin-top: 25px;
@@ -1056,8 +1156,8 @@ header{
         margin-top: 12px;
     }
     .product-modal-content .product-img-wrapper .product-img-container .main-img-container {
-        height: 20.4vw;
-        padding-bottom: 0;
+        /* height: 20.4vw; */
+        padding-bottom: 20px;
     }
     .product-img-wrapper .product-img-container .thumbnail-img-wrapper .thumbnail-img-container .thumbnail-img > img{
         padding-top: 10px;
@@ -1180,7 +1280,7 @@ header{
         gap: 15px;
     }
     
-    .form-modal-container .form-modal-content{
+    .form-modal-container .form-modal-content,.review-modal-container .review-modal-content{
         padding: 15px 25px;
         width: 85%;
     }
@@ -1188,13 +1288,18 @@ header{
         font-size: 16px;
     }
     .form-modal-container .form-modal-content .form-modal-header .modal-close-btn img,
-    .product-modal-container .product-modal-content .product-modal-header .modal-close-btn img{
-        width: 13px;
+    .product-modal-container .product-modal-content .product-modal-header .modal-close-btn img,
+    .review-modal-container .review-modal-content .review-modal-header .modal-close-btn img{
+        width: 16px;
     }
     .form-modal-container .form-modal-content .form-modal-header {
         padding-bottom: 10px;
     }
     .form-modal-container .form-modal-content form{
+        margin-top: 28px;
+        padding: 0px 32px;
+    }
+    .review-modal-container .review-modal-content form {
         margin-top: 28px;
         padding: 0px 32px;
     }
@@ -1204,7 +1309,8 @@ header{
     .form-modal-container .form-modal-content form .input-group{
         gap: 10px;
     }
-    .form-modal-container .form-modal-content form .input-group label {
+    .form-modal-container .form-modal-content form .input-group label,
+    .review-modal-container .review-modal-content form .input-group label {
         font-size: 14px;
         gap: 5px;
     }
@@ -1216,11 +1322,15 @@ header{
         background: url('../images/drop-down.png') no-repeat right 6px center;
         padding-left: 8px;
         padding-right: 20px; 
-        height: 28px;
+        height: 32px;
         background-size: 7px auto;
     }
     .form-modal-container .form-modal-content form .input-group select,.form-modal-container .form-modal-content form .input-group input{
-        height: 28px;
+        height: 32px;
+    }
+    .review-modal-container .review-modal-content form .input-group input{
+        height: 32px;
+        padding: 6px;
     }
     .form-modal-container .form-modal-content form .input-group input{
         padding: 6px;
@@ -1229,8 +1339,9 @@ header{
         width: 8px;
     }
     .form-modal-container .form-modal-content .modal-footer,
-    .product-modal-container .product-modal-content .modal-footer{
-        padding: 20px 0 5px;
+    .product-modal-container .product-modal-content .modal-footer,
+    .review-modal-container .review-modal-content .modal-footer{
+        padding: 20px 0 7px;
     }
     .form-modal-container .form-modal-content .modal-footer div,
     .product-modal-container .product-modal-content .modal-footer div{
@@ -1261,8 +1372,8 @@ header{
         margin-top: 12px;
     }
     .product-modal-content .product-img-wrapper .product-img-container .main-img-container {
-        height:clamp(210px, 20.4vw, 20.4vw);
-        padding-bottom: 0;
+        height:clamp(210px, 23.98vw, 23.98vw);
+        padding-bottom:15px;
     }
     .product-img-wrapper .product-img-container .thumbnail-img-wrapper .thumbnail-img-container:first-child {
         flex: 1;
@@ -1378,6 +1489,18 @@ header{
     .product-modal-container .product-modal-content .product-img-desc-container .product-img-desc ul li{
         margin-bottom: 5px;
     }
+    .toast-container {
+        font-size: 12px;
+    }
+    .form-modal-container .form-modal-content form .input-group .custom-select {
+        height: 30px;
+    }
+    .form-modal-container .form-modal-content form .input-group select,.form-modal-container .form-modal-content form .input-group input{
+        height: 30px;
+    }
+    .review-modal-container .review-modal-content form .input-group input{
+        height: 30px;
+    }
 }
 
 @media screen and (max-width:600px){
@@ -1394,34 +1517,40 @@ header{
         grid-template-columns: 1fr;
         row-gap: 12px;
     }
-    .form-modal-container .form-modal-content {
+    .additional-details-container .details-body-container {
+        height: 50px;
+    }
+
+    .form-modal-container .form-modal-content,.review-modal-container .review-modal-content {
         padding: 15px 25px;
         width: 90%;
     }
 
-    
+    .form-modal-container .form-modal-content .form-modal-header .modal-close-btn img,
+    .product-modal-container .product-modal-content .product-modal-header .modal-close-btn img,
+    .review-modal-container .review-modal-content .review-modal-header .modal-close-btn img{
+        width: 15px;
+    }
     .form-modal-container .form-modal-content form {
         margin-top: 25px;
-        padding: 0px 25px;
-        margin-right: 10px;
+        padding: 0px 20px;
+        margin-right: 5px;
     }
     .form-modal-container .form-modal-content form::-webkit-scrollbar-track {
         margin-bottom: 18px;
     }
-    .form-modal-container .form-modal-content form .input-group {
+    .form-modal-container .form-modal-content form .input-group{
         margin: 0 auto 12px;
     }
     .form-modal-container .form-modal-content form .input-group .input-wrapper .error {
         font-size: 0.6rem;
     }
-    .form-modal-container .form-modal-content form .input-group label {
+    .form-modal-container .form-modal-content form .input-group label,
+    .review-modal-container .review-modal-content form .input-group label{
         font-size: 13px;
     }
     .form-modal-container .form-modal-content .product-form label:not([for=input-listing-stat]){
         width: 106px;
-    }
-    .form-modal-container .form-modal-content form .input-group label .info img {
-        width: 6px;
     }
     /* .form-modal-container .form-modal-content form .input-group select, .form-modal-container .form-modal-content form .input-group input {
        width: 104px; 
@@ -1434,10 +1563,13 @@ header{
     .form-modal-container .form-modal-content .additional-form label:not([for=input-search-keywords]){
         width: 133.8px;
     }
-    .product-modal-container .product-modal-content {
-        padding: 10px 20px 15px;
+    .review-modal-container .review-modal-content form .input-group label:not([for="location"]){
+        width: 59.5px;
     }
-    .form-modal-container .form-modal-content .modal-footer button, .product-modal-container .product-modal-content .modal-footer button {
+    .product-modal-container .product-modal-content {
+        padding: 15px 20px 15px;
+    }
+    .form-modal-container .form-modal-content .modal-footer button, .product-modal-container .product-modal-content .modal-footer button,.review-modal-container .review-modal-content .modal-footer button{
         padding: 6px 14px;
         font-size: 11px
     }
@@ -1500,52 +1632,65 @@ header{
     .add-product-inner-container .details-container .details-body-container {
         row-gap: 10px;
     }
-    
-    .form-modal-container .form-modal-content form .input-group {
+    .form-modal-container .form-modal-content form{
+        height: auto;
+    }
+    .form-modal-container .form-modal-content form::-webkit-scrollbar {
+        width: 0;
+    }
+    .form-modal-container .form-modal-content form .input-group, .review-modal-container .review-modal-content form .input-group {
         flex-direction: column;
-        justify-content: flex-start;
-        margin: 0 auto 10px;
-        gap: 7px;
     }
-    .form-modal-container .form-modal-content {
-        width: 80%;
-        margin-top: 40px;
-    }
-
-    .form-modal-container .form-modal-content .product-form label{
-        width: 150px;
+    .form-modal-container .form-modal-content form .input-group label, .review-modal-container .review-modal-content form .input-group label{
+        width: 180px;
         text-align: left;
     }
+    .form-modal-container .form-modal-content .product-form label{
+        width: 180px;
+    }
+    
     .form-modal-container .form-modal-content .product-form label:not([for=input-listing-status]) {
-        justify-content: flex-start;
-        width: 150px;
+        width: 180px;
     }
     .form-modal-container .form-modal-content .additional-form .input-group{
         margin-bottom:clamp(20px, 2.08332vw, 2.08332vw);
     }
     .form-modal-container .form-modal-content .additional-form label:not([for=input-search-keywords]){
-        justify-content: flex-start;
-        width: 150px;
+        width: 180px;
     }
     .form-modal-container .form-modal-content .additional-form label{
-        width: 150px;
+        width: 180px;
     }
+    .form-modal-container .form-modal-content {
+        margin-top: 10vh;
+    }
+
+    .form-modal-container .form-modal-content .additional-form .input-group{
+        margin-bottom:clamp(20px, 2.08332vw, 2.08332vw);
+    }
+
     .product-modal-container .product-modal-content {
-        margin-top: 40px;
+        margin-top: 10vh;
     }
     .form-modal-container .form-modal-content .modal-footer,
     .product-modal-container .product-modal-content .modal-footer {
         flex-direction: column;
         gap: 20px;
-        padding: 15px 0 15px;
+        padding: 15px 0 10px;
     }
     .form-modal-container .form-modal-content .modal-footer{
         align-items: center;
+    }
+    .form-modal-container .form-modal-content .modal-footer p{
+        width: 140px;
     }
     .form-modal-container .form-modal-content .modal-footer div,
     .product-modal-container .product-modal-content .modal-footer div {
         align-items: center;
         justify-content: center;
+    }
+    .review-modal-container .review-modal-content form .input-group label:not([for="location"]) {
+        width: 170px;
     }
     .toast-container {
         padding: 8px 10px;
@@ -1554,7 +1699,7 @@ header{
     .toast-container img{
         width: 12px;
     }
-     .form-modal-container .form-modal-content .modal-footer button, .product-modal-container .product-modal-content .modal-footer button {
+     .form-modal-container .form-modal-content .modal-footer button, .product-modal-container .product-modal-content .modal-footer button,.review-modal-container .review-modal-content .modal-footer button {
         padding: 6px 14px;
         font-size: 12px
     }
@@ -1601,6 +1746,3 @@ header{
         font-size: 11px;
     }
 }
-
-
-

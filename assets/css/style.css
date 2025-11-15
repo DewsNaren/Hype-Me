@@ -289,16 +289,18 @@
 .insta-fixed-container{
     width: 60px;
     height: 60px;
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: 40px;
+    bottom: 120px;
     background: url("../images/instabg.jpg");
     object-fit: cover;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
-
+.insta-fixed-container.active{
+    display: flex;
+}
 .insta-fixed-container .instagram-link{
     display: inline-block;
     height: 36px;
@@ -428,7 +430,7 @@
     .insta-fixed-container{
         width: 48px;
         height: 48px;
-        top: 32px;
+        bottom: 100px;
     }
     .insta-fixed-container .instagram-link{
         height: 30px;
@@ -529,7 +531,7 @@
         width: 76%; 
     }
      .brand-box:hover .brand-rotated{
-        transform: rotate(-43deg);
+        transform: rotate(-44deg);
     }
     .brand-rotated img{
         margin-bottom: 15px;
@@ -564,7 +566,7 @@
     .insta-fixed-container{
         width: 42px;
         height: 42px;
-        top: 30px;
+        bottom: 90px;
         border-top-left-radius: 6px;
         border-bottom-left-radius: 6px;
     }
@@ -693,7 +695,7 @@
     .insta-fixed-container{
         width: 35px;
         height: 35px;
-        top: 25px;
+       bottom: 75px;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
     }
@@ -803,6 +805,9 @@
     .ad-container img {
         max-width: 90%;
     }
+    .insta-fixed-container{
+        bottom: 60px;
+    }
     
 }
 
@@ -835,7 +840,7 @@
         width: 12px;
     }
     .search-wrapper{
-        width: 53%;
+        width: 60%;
         padding:8px 20px 12px;
         transform: translate(-50%,-20px);
     }
@@ -873,6 +878,7 @@
     .insta-fixed-container{
         width: 30px;
         height: 30px;
+        bottom: 55px;
     }
     .insta-fixed-container .instagram-link{
         height: 18px;
@@ -905,7 +911,7 @@
         right: 3%;
     }
     .search-wrapper{
-        width: 65%;
+        width: 70%;
         padding:6px 14px 12px;
         transform: translate(-50%,-15px);
     }

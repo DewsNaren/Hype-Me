@@ -215,14 +215,21 @@ budgetBtns.forEach(btn => {
     const token=localStorage.getItem("token");
     if(token){
       const priceContainer = btn.querySelector(".budget-price");
-      const priceArr = priceContainer.getAttribute("data-filter").split('-');
-      const min = Number(priceArr[0]);
-      const max = Number(priceArr[1]);
+      const value = priceContainer.getAttribute("data-filter").replace('$','').trim();
+      let min, max;
 
-      window.name = JSON.stringify({
-        min,
-        max
-      });
+      if (value.includes('-')) {
+          const [low, high] = value.split('-').map(Number);
+          min = low;
+          max = high;
+      } else {
+        console.log(value)
+          min = Number(value)+1;
+          const highestPrice = Math.max(...allProducts.map(p => Number(p.price)));
+          max = highestPrice; 
+      }
+
+      window.name = JSON.stringify({ min, max });
       window.location.href = "./product-list.html";
     }
     else{
@@ -262,5 +269,12 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderScroll(".header", ".sentinel", 0.1);
 });
 
+const instaContainer = document.querySelector(".insta-fixed-container");
 
-
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    instaContainer.classList.add("active");
+  } else {
+    instaContainer.classList.remove("active");
+  }
+});

@@ -303,6 +303,7 @@ a.brand-more-link.not-active,a.model-more-link.not-active,.year-more-link.not-ac
 }
 .no-product{
     color: #fff;
+    margin-top: 20px;
 }
 .product-list-header{
     padding-bottom: 36px;
@@ -958,6 +959,12 @@ footer{
         margin-left: 5px;
         width: 9px;
     }
+    .no-product{
+        font-size: 15px;
+    }
+    .product-list-body{
+        grid-template-columns: repeat(2, minmax(100px,1fr));
+    }
     .product-item span{
         right: 12px;
         top: 10px;
@@ -969,7 +976,7 @@ footer{
         margin-top: 5px;
     }
     .product-shoe-name{
-        font-size: 0.75rem;
+        font-size: 0.85rem;
     }
     .product-shoe-price{
         font-size:0.8rem;
@@ -1002,6 +1009,9 @@ footer{
     }
 }
 @media screen and (max-width:768px){
+    .main-container{
+        min-height: 60vh;
+    }
     .breadcrumb a,.selected{
         font-size: 10px;
     }
@@ -1056,6 +1066,9 @@ footer{
     }
     .sort-button{
         font-size: 0.6rem;
+    }
+    .no-product{
+        font-size: 14px;
     }
     .product-list-body{
         gap: 18px;
@@ -1161,8 +1174,14 @@ footer{
     .filter-container{
         padding: 20px;
     }
-    .product-shoe-name,.product-shoe-price{
+    .no-product{
+        font-size: 12px;
+    }
+    .product-shoe-name{
         font-size: 13px;
+    }
+    .product-shoe-price{
+        font-size: 12px;
     }
      
     .product-list-header{
@@ -1189,7 +1208,7 @@ footer{
     
 }
 
-@media screen and (max-width:385px){
+@media screen and (max-width:390px){
     .product-list-body{
         grid-template-columns:1fr;
     }
