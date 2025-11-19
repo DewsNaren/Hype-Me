@@ -40,8 +40,10 @@ const productModalSaveBtn=document.querySelector(".product-modal-container .prod
 if(uploadImgBtn){
   uploadImgBtn.addEventListener('click', () => {
    productModalContainer.classList.add("active");
-   
+   productModalSaveBtn.setAttribute("disabled","true");
+  productModalSaveBtn.classList.remove("active");
    body.classList.add("not-active");
+
   });
 
 }
@@ -55,6 +57,8 @@ const productModalCloseBtn=document.querySelector(".product-modal-container .pro
 const uploadImgInputs = productModalContainer.querySelectorAll(".product-img-wrapper .product-img-container .thumbnail-img-container .upload-img-input");
 
 let selectedFiles = [];
+let initialThumbSrcs=[];
+let initialMainImgSrc;
 productModalSaveBtn.setAttribute("disabled","true");
 productModalSaveBtn.classList.remove("active");
 
@@ -95,10 +99,10 @@ uploadImgInputs.forEach((input, index) => {
       productModalFooterContent.childNodes[1].textContent =
         "Mandatory product images (1/1) uploaded";
     }
-
     enableProductModalSave();
   });
 });
+
 
 const thumbnailContainers = document.querySelectorAll(".product-img-wrapper .product-img-container .thumbnail-img-wrapper .thumbnail-img-container .thumbnail-img");
 
@@ -119,8 +123,19 @@ thumbnailContainers.forEach(thumbnail => {
     }
     updateThumbnailLabels();
     updateSelectedFilesOrder();
-    updateMainImageAfterReorder();
     changeHeaderText();
+    const thumb1=document.querySelector(".thumbnail-img-wrapper .thumb-1");
+    const mainImg=prodMainImgWrapper.querySelector(".main-img")
+    if(thumb1 && mainImg ){
+      ProductImgSaveBtn.classList.add("active");
+      ProductImgSaveBtn.removeAttribute("disabled");
+      productModalFooterContent.childNodes[1].textContent="Mandatory product images (1/1) uploaded";   
+    }
+    else{
+      ProductImgSaveBtn.classList.remove("active");
+      ProductImgSaveBtn.setAttribute("disabled", true);
+      productModalFooterContent.childNodes[1].textContent="Mandatory product images (0/1) uploaded";
+    }
   });
 
   thumbnail.addEventListener("dragover", (e) => {
@@ -142,14 +157,14 @@ thumbnailContainers.forEach(thumbnail => {
 
 });
 
-const labels = ["Front View", "Side View", "Side / Top", "Top / Bottom"];
+const labels = ["Front View <span class='star'>*</span>", "Side View", "Side / Top", "Top / Bottom"];
 
 function updateThumbnailLabels() {
   const containers = document.querySelectorAll(".thumbnail-img-container");
   containers.forEach((container, index) => {
     const p = container.querySelector("p");
     if (p) {
-      p.textContent = labels[index] || `View ${index + 1}`;
+      p.innerHTML = labels[index] || `View ${index + 1}`;
     }
   });
 }
@@ -167,30 +182,63 @@ function changeHeaderText(){
 });
 }
 
+// function updateSelectedFilesOrder() {
+//   const reorderedFiles = [];
+//   document.querySelectorAll(".thumbnail-img-container").forEach((container, newIndex) => {
+//     const thumbnailImg = container.querySelector(".thumbnail-img");
+//     const originalIndex = thumbnailImg?.dataset.index;
+//     if (originalIndex !== undefined && selectedFiles[originalIndex]) {
+//       reorderedFiles[newIndex] = selectedFiles[originalIndex];
+//       thumbnailImg.dataset.index = newIndex;
+//     }
+//   });
+//   selectedFiles.length = 0;
+//   reorderedFiles.forEach((file, i) => {
+//     if (file) selectedFiles[i] = file;
+//   });
+// }
+
+// function updateMainImageAfterReorder() {
+//   const thumbImgs = document.querySelector(".thumbnail-img-container .thumbnail-img");
+//   let clickedThumb;
+//   thumbImgs.forEach(thumbImg=>{
+//     if(thumbImg.classList.contains("clicked"))
+//       clickedThumb=thumbImg
+//   })
+//   if (clickedThumb) {
+//     const mainImg = prodMainImgWrapper.querySelector(".main-img");
+//     if (mainImg) {
+//       mainImg.src = firstThumb.src;
+//     }
+//   }
+// }
+
 function updateSelectedFilesOrder() {
   const reorderedFiles = [];
-  document.querySelectorAll(".thumbnail-img-container").forEach((container, newIndex) => {
-    const thumbnailImg = container.querySelector(".thumbnail-img");
-    const originalIndex = thumbnailImg?.dataset.index;
+  const containers = document.querySelectorAll(".thumbnail-img-container");
+
+  containers.forEach((container, newIndex) => {
+    const thumbnailImgDiv = container.querySelector(".thumbnail-img");
+    const thumbnailImgTag = container.querySelector("img[class^='thumb-']");
+    const originalIndex = thumbnailImgDiv?.dataset.index;
+
     if (originalIndex !== undefined && selectedFiles[originalIndex]) {
       reorderedFiles[newIndex] = selectedFiles[originalIndex];
-      thumbnailImg.dataset.index = newIndex;
+      thumbnailImgDiv.dataset.index = newIndex;
+    }
+
+    if (thumbnailImgTag) {
+      thumbnailImgTag.className = thumbnailImgTag.className.replace(/thumb-\d+/g, "");
+
+      thumbnailImgTag.classList.add(`thumb-${newIndex + 1}`);
     }
   });
+
+  // overwrite selectedFiles with reorderedFiles
   selectedFiles.length = 0;
   reorderedFiles.forEach((file, i) => {
     if (file) selectedFiles[i] = file;
   });
-}
-
-function updateMainImageAfterReorder() {
-  const firstThumb = document.querySelector(".thumbnail-img-container .thumbnail-img img[class^='thumb-']");
-  if (firstThumb) {
-    const mainImg = prodMainImgWrapper.querySelector(".main-img");
-    if (mainImg) {
-      mainImg.src = firstThumb.src;
-    }
-  }
 }
 
 const imgTextHeader=document.querySelector(".product-img-wrapper .product-img-desc-container h3")
@@ -238,84 +286,84 @@ initThumbnailClickHandler();
 
 deleteThumbImages();
 
-function initMainThumbClick() {
-  const previewWrapper = document.querySelector(".thumbnail-preview-container");
-  const mainContainer = document.querySelector(".image-upload-container .main-image-container");
-  if (!previewWrapper || !mainContainer) return;
+// function initMainThumbClick() {
+//   const previewWrapper = document.querySelector(".thumbnail-preview-container");
+//   const mainContainer = document.querySelector(".image-upload-container .main-image-container");
+//   if (!previewWrapper || !mainContainer) return;
 
-  previewWrapper.addEventListener("click", (e) => {
-    const img = e.target.closest(".thumbnail-preview-img");
-    if (!img) return;
+//   previewWrapper.addEventListener("click", (e) => {
+//     const img = e.target.closest(".thumbnail-preview-img");
+//     if (!img) return;
 
-    previewWrapper.querySelectorAll(".thumbnail-preview-img-container").forEach(el => {
-      el.classList.remove("active");
-    });
+//     previewWrapper.querySelectorAll(".thumbnail-preview-img-container").forEach(el => {
+//       el.classList.remove("active");
+//     });
 
-    const clickedContainer = img.closest(".thumbnail-preview-img-container");
-    if (clickedContainer) {
-      clickedContainer.classList.add("active");
-    }
+//     const clickedContainer = img.closest(".thumbnail-preview-img-container");
+//     if (clickedContainer) {
+//       clickedContainer.classList.add("active");
+//     }
 
   
-    let mainImg = mainContainer.querySelector(".main-image");
-    if (!mainImg) {
-      mainImg = document.createElement("img");
-      mainImg.className = "main-image";
-      mainContainer.innerHTML = "";
-      mainContainer.appendChild(mainImg);
-    }
-    mainImg.src = img.src;
-  });
-}
+//     let mainImg = mainContainer.querySelector(".main-image");
+//     if (!mainImg) {
+//       mainImg = document.createElement("img");
+//       mainImg.className = "main-image";
+//       mainContainer.innerHTML = "";
+//       mainContainer.appendChild(mainImg);
+//     }
+//     mainImg.src = img.src;
+//   });
+// }
 
 
 const thumbnailPreview= document.querySelector(".image-upload-container .thumbnail-preview-container")
 
-if(thumbnailPreview ){
-  initMainThumbClick();
-}
+// if(thumbnailPreview ){
+//   initMainThumbClick();
+// }
 
-function initPreviewDragAndDrop() {
-  const thumbnailPreviewImgs = document.querySelectorAll(
-    ".image-upload-container .thumbnail-preview-container .thumbnail-preview-img-container"
-  );
+// function initPreviewDragAndDrop() {
+//   const thumbnailPreviewImgs = document.querySelectorAll(
+//     ".image-upload-container .thumbnail-preview-container .thumbnail-preview-img-container"
+//   );
 
-  let draggedPreviewItem = null;
+//   let draggedPreviewItem = null;
 
-  thumbnailPreviewImgs.forEach(thumbnailContainer => {
-      thumbnailContainer.draggable = true;
+//   thumbnailPreviewImgs.forEach(thumbnailContainer => {
+//       thumbnailContainer.draggable = true;
     
-    thumbnailContainer.addEventListener("dragstart", (e) => {
-      draggedPreviewItem = thumbnailContainer;
-      e.dataTransfer.effectAllowed = "move";
-      thumbnailContainer.classList.add("dragging");
-    });
+//     thumbnailContainer.addEventListener("dragstart", (e) => {
+//       draggedPreviewItem = thumbnailContainer;
+//       e.dataTransfer.effectAllowed = "move";
+//       thumbnailContainer.classList.add("dragging");
+//     });
 
-    thumbnailContainer.addEventListener("dragend", () => {
-      if (draggedPreviewItem) {
-        draggedPreviewItem.classList.remove("dragging");
-        draggedPreviewItem = null;
-      }
-    });
+//     thumbnailContainer.addEventListener("dragend", () => {
+//       if (draggedPreviewItem) {
+//         draggedPreviewItem.classList.remove("dragging");
+//         draggedPreviewItem = null;
+//       }
+//     });
 
-    thumbnailContainer.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      if (!draggedPreviewItem || draggedPreviewItem === e.currentTarget) return;
+//     thumbnailContainer.addEventListener("dragover", (e) => {
+//       e.preventDefault();
+//       if (!draggedPreviewItem || draggedPreviewItem === e.currentTarget) return;
 
-      const draggingOver = e.currentTarget;
-      const wrapper = draggingOver.closest(".thumbnail-preview-container");
+//       const draggingOver = e.currentTarget;
+//       const wrapper = draggingOver.closest(".thumbnail-preview-container");
 
-      const bounding = draggingOver.getBoundingClientRect();
-      const offset = e.clientX - bounding.left - bounding.width / 2;
+//       const bounding = draggingOver.getBoundingClientRect();
+//       const offset = e.clientX - bounding.left - bounding.width / 2;
 
-      if (offset > 0) {
-        wrapper.insertBefore(draggedPreviewItem, draggingOver.nextSibling);
-      } else {
-        wrapper.insertBefore(draggedPreviewItem, draggingOver);
-      }
-    });
-  });
-}
+//       if (offset > 0) {
+//         wrapper.insertBefore(draggedPreviewItem, draggingOver.nextSibling);
+//       } else {
+//         wrapper.insertBefore(draggedPreviewItem, draggingOver);
+//       }
+//     });
+//   });
+// }
 
 
 const mainImageContainer = document.querySelector(".image-upload-container .main-image-container");
@@ -339,7 +387,6 @@ const selectedFiles = Array.from(thumbnailImgs).map(img => img.src);
   if (selectedFiles.length > 0) {
     const currentMainImg = prodMainImgWrapper.querySelector(".main-img");
     console.log(prodMainImgWrapper)
-    // console.log(currentMainImg)
     if (currentMainImg && currentMainImg.src) {
       mainImageContainer.innerHTML = `<img src="${currentMainImg.src}" class="main-image"/>`;
     }
@@ -350,14 +397,14 @@ const selectedFiles = Array.from(thumbnailImgs).map(img => img.src);
   selectedFiles.forEach((filePath, index) => {
     thumbnailPreview.insertAdjacentHTML(
     "beforeend",
-    `<div class="thumbnail-preview-img-container" draggable="true">
+    `<div class="thumbnail-preview-img-container">
       <img src="${filePath}" class="thumbnail-preview-img" />
     </div>`
     );
   });
 
   // productModalMainImageContainer.innerHTML = "";
-  initPreviewDragAndDrop() 
+  // initPreviewDragAndDrop() 
   // const modalThumbnails = productModalContainer.querySelectorAll(".thumbnail-img");
 
   // modalThumbnails.forEach(thumbnail => {
@@ -385,6 +432,7 @@ const selectedFiles = Array.from(thumbnailImgs).map(img => img.src);
     ProductImgStatImg.src = "./assets/images/completed tick.png";
     ProductImgStatImg.alt = "completed tick";
   }
+  storeInitialImages();
   updateSaveAndSubmitStatus();
   body.classList.remove("not-active");
 }
@@ -417,7 +465,6 @@ productModalCloseBtn.addEventListener('click',()=>{
   productThumbDeleteBtn.removeAttribute("for")
   productModalFooterContent.childNodes[1].textContent="Mandatory product images (0/1) uploaded";
   imgTextHeader.childNodes[0].textContent="Front View";
-
   closeModal();
 
 })
@@ -427,11 +474,11 @@ ProductImgSaveBtn.addEventListener('click',saveProductImages)
 const productImgCancelBtn = document.querySelector(".product-modal-container .product-modal-content .modal-footer .cancel-btn");
 
 function DelProductImages() {
+
   const uploadImgBtn = document.querySelector(".image-upload-container .upload-img-btn");
+  const thumbnails = document.querySelectorAll(".product-img-wrapper .product-img-container .thumbnail-img");
   if(!uploadImgBtn.classList.contains('not-active')){
-      const thumbnails = document.querySelectorAll(
-    ".product-img-wrapper .product-img-container .thumbnail-img"
-  );
+      
 
   thumbnails.forEach(thumbnail => {
     const label = thumbnail.querySelector("label");
@@ -457,6 +504,13 @@ function DelProductImages() {
   selectedFiles.length = 0; 
   prodMainImgWrapper.innerHTML = ""; 
   }
+  else{
+
+    thumbnails.forEach(thumbnail => {
+    thumbnail.classList.remove("clicked");
+  })
+    restoreInitialImages();
+  }
 
   productModalContainer.classList.remove("active"); 
   productModalFooterContent.childNodes[1].textContent="Mandatory product images (0/1) uploaded"
@@ -469,20 +523,109 @@ if (productImgCancelBtn) {
   productImgCancelBtn.addEventListener("click", DelProductImages);
 }
 
+function storeInitialImages() {
+  const containers = document.querySelectorAll(".thumbnail-img-container");
+
+  console.log("HELO")
+  initialThumbSrcs = [];
+  containers.forEach((container, index) => {
+    const img = container.querySelector("img[class^='thumb-']");
+    if (img) initialThumbSrcs[index] = img.src;
+  });
+
+  const mainImg = prodMainImgWrapper.querySelector(".main-img");
+  if (mainImg) initialMainImgSrc = mainImg.src;
+  console.log(initialThumbSrcs)
+}
+
+// function restoreInitialImages() {
+//   const containers = document.querySelectorAll(".thumbnail-img-container");
+
+
+//   containers.forEach((container, index) => {
+//     const img = container.querySelector("img[class^='thumb-']");
+//     if (img && initialThumbSrcs[index]) {
+//       img.src = initialThumbSrcs[index];
+//     }
+//   });
+
+
+//   const mainImg = prodMainImgWrapper.querySelector(".main-img");
+//   if (mainImg && initialMainImgSrc) {
+//     mainImg.src = initialMainImgSrc;
+//   }
+// }
+
+
+function restoreInitialImages() {
+  const containers = document.querySelectorAll(".thumbnail-img-container");
+
+
+  containers.forEach((container, index) => {
+    const img = container.querySelector("img[class^='thumb-']");
+    if (initialThumbSrcs[index]) {
+      if(img){
+        img.src = initialThumbSrcs[index]
+      }
+      else{
+        const html = `
+        <img src="${initialThumbSrcs[index]}" alt="uploaded image" class="thumb-${index + 1}">
+        <span><img src="./assets/images/published.png" alt="published"></span>
+      `;
+        const thumbImg=container.querySelector(".thumbnail-img")
+      thumbImg.insertAdjacentHTML("beforeend", html);
+      const label=thumbImg.querySelector("label")
+      label.classList.add("not-active")
+      }
+    }
+    else{
+      const notFoundimg = container.querySelector(`img[class^='thumb-${index+1}']`);
+      if(notFoundimg){
+        const parent=notFoundimg.parentElement;
+        
+        const span=parent.querySelector("span");
+        const label=parent.querySelector("label");
+        notFoundimg.remove();
+        span.remove();
+        label.classList.remove("not-active");
+      }
+      console.log(notFoundimg)
+    }
+  });
+
+
+  const mainImg = prodMainImgWrapper.querySelector(".main-img");
+  if (mainImg && initialMainImgSrc) {
+    mainImg.src = initialMainImgSrc;
+  }
+  else{
+    prodMainImgWrapper.innerHTML=`<img src="${initialMainImgSrc}" class="main-img" alt="main image">`;
+  }
+}
+
+let isLocalProduct=false;
+
 if (imgEditBtn) {
   imgEditBtn.addEventListener('click', () => {
     productThumbEditBtn.classList.add("active");
     productThumbEditBtn.removeAttribute("for");
     productThumbDeleteBtn.classList.add("active");
     productThumbDeleteBtn.removeAttribute("for");
-    const mainImg=mainImageContainer.querySelector(".main-image")
+  
+  if (isLocalProduct) {
+    const mainImg=document.querySelector(".main-image");
     prodMainImgWrapper.innerHTML=`<img src="${mainImg.src}" class="main-img" alt="main image">`;
+    const previewImages=document.querySelectorAll(".thumbnail-preview-container .thumbnail-preview-img-container .thumbnail-preview-img")
+    let previewImgSrcs=[];
+    previewImages.forEach(previewImg=>{
+      previewImgSrcs.push(previewImg.src)
+      
+    })
+    
     const thumbnailImgsWrapper = productModalContainer.querySelector(".thumbnail-img-wrapper");
-    const thumbnailPreviewImgs=document.querySelectorAll(".thumbnail-preview-img-container .thumbnail-preview-img")
+
     const thumbnailImgContainer=thumbnailImgsWrapper.querySelectorAll(".thumbnail-img")
     
-    const previewImgSrcs = Array.from(thumbnailPreviewImgs).map(img => img.src);
-
     thumbnailImgContainer.forEach((thumbnailImg, index) => {
       thumbnailImg.classList.remove("clicked");
       const existingImg = thumbnailImg.querySelector("img[class^='thumb-']");
@@ -506,9 +649,12 @@ if (imgEditBtn) {
       }
         productModalFooterContent.childNodes[1].textContent="Mandatory product images (1/1) uploaded"
     });
-
+}
+  productModalFooterContent.childNodes[1].textContent =
+    "Mandatory product images (1/1) uploaded";
     productModalContainer.classList.add("active");
     body.classList.add("not-active");
+    
     enableProductModalSave();
   });
 }
@@ -547,7 +693,6 @@ function editThumbImages(){
   thumbnailImgContainer.forEach(container => {
     const imgs = container.querySelectorAll("img");
     imgs.forEach(img => {
-      console.log(img)
       if ([...img.classList].some(cls => cls.startsWith("thumb-"))) thumbImgs.push(img);
     });
   });
@@ -603,8 +748,6 @@ function deleteThumbImages(){
         const parent=label.parentElement;
         const existingImg=parent.querySelector("img[class^='thumb-']");
         const existingSpan=parent.querySelector("span");
-        console.log(parent)
-        console.log(existingImg)
         existingImg.remove();
         existingSpan.remove();
         parent.classList.remove("clicked");
@@ -820,15 +963,17 @@ const formModalCloseBtn=document.querySelector(".form-modal-container .form-moda
 const ProductInputs = productForm.querySelectorAll('input, select');
 
 formModalCloseBtn.addEventListener('click',()=>{
-  // if(activeSection=="product"){
-  //   const prodData=getProductData();
-  //   displayProdData(prodData)
+  if(activeSection=="product"){
+    delProductFormData();
+    // const prodData=getProductData();
+    // displayProdData(prodData)
     
-  // }
-  // else if (activeSection === 'additional'){
-  //   const addData=getAdditionalData();
-  //   displayAddData(addData); 
-  // }
+  }
+  else if (activeSection === 'additional'){
+    delAdditionalData();
+    // const addData=getAdditionalData();
+    // displayAddData(addData); 
+  }
   closeModal();
 })
 
@@ -897,8 +1042,68 @@ function checkUpdateConditions() {
   return isIdFilled && isImagesComplete && isProductComplete;
 }
 
+function delProductFormData(){
+    const prodTexts=productDetailsBodyContainer.querySelectorAll("p")
+  let productDat={};
+    prodTexts.forEach(p => {
+      const span = p.querySelector("span[class^='view-']");
+      if (span) {
+        const key = span.className.replace("view-", "").trim();
+
+        const value = span.innerHTML.trim();
+        
+        productDat[key] = value;
+      }
+    })
+    const ProductInputs = productForm.querySelectorAll('input, select');
+    ProductInputs.forEach(input=>{
+    for (let key in productDat) {
+        let el = input; 
+        
+        if (el.name === `input-${key}` || el.name === key) {
+          el.value = productDat[key];
+        }
+      }
+  })  
+}
+
+function delAdditionalData(){
+   let additData={};
+    const addTexts=addDetailsBodyContainer.querySelectorAll("p");
+    addTexts.forEach(p => {
+      const span = p.querySelector("span");
+      if (span) {
+        const className = span.className.trim();
+        
+
+        const key = className.startsWith("view-")
+          ? className.replace("view-", "")
+          : className;
+        const value = span.innerHTML.trim();
+
+        additData[key] = value;
+      }
+    });
+      const additionalInputs = document.querySelectorAll(".additional-form input, .additional-form select");
+    
+      additionalInputs.forEach(input=>{
+      for (let key in additData) {
+        let el = input; 
+        
+        if (el.name === `input-${key}` || el.name === key) {
+          el.value = additData[key];
+        }
+      }
+    })  
+}
 
 formCancelBtn.addEventListener('click', () => {
+  if(activeSection=="product"){
+    delProductFormData();
+  }
+  else{
+    delAdditionalData();
+  }
   closeModal()
 });
 
@@ -1118,12 +1323,15 @@ async function populateProductSelects() {
 
 function loadProductImages(productData) {
   const isFromAPI = productData.isPosted === true;
-  
+
+
   if (isFromAPI) {
     console.log("API product - no images available");
     return;
   }
-  
+  else{
+    isLocalProduct=true;
+  }
   if (productData.image) {
     mainImageContainer.innerHTML = `<img src="${productData.image}" class="main-image">`;
   }
@@ -1141,8 +1349,10 @@ function loadProductImages(productData) {
       );
     }
   }
-  initPreviewDragAndDrop();
+  
+  // initPreviewDragAndDrop();
   updateImageStatus();
+  
 }
 
 function updateImageStatus() {

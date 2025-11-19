@@ -57,6 +57,9 @@ a{
 .header .logo{
     display: inline-block;
 }
+.header .logo img{
+    display: block;
+}
 .header nav button{
     background: transparent;
     border: none;
@@ -144,6 +147,18 @@ a{
 }
 .user-profile.not-active{
     display: none;
+}
+.login-profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-weight: 500;
+    background-color: rgb(224, 220, 147);
+    color: rgb(22, 18, 18);
+    font-size: 1.4rem;
 }
 .nav-btn-container{
     height: fit-content;
@@ -261,6 +276,11 @@ footer{
     .user-profile{
         width: 40px;
     }
+    .login-profile{
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
     .profile-arrow{
         width: 8px;
     }
@@ -342,7 +362,12 @@ footer{
         width: 110px
     }
     .user-profile{
-        width: 38px;
+        width: 35px;
+    }
+    .login-profile{
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
     }
     .profile-arrow{
         width: 7px;
@@ -422,6 +447,11 @@ footer{
     .user-profile{
         width: 30px;
     }
+    .user-profile{
+        width: 30px;
+        height: 30px;
+        font-size: 0.77rem;
+    }
     .profile-arrow{
         width: 6px;
     }
@@ -481,9 +511,6 @@ footer{
     }
     .location-list img{
         width: 11px;
-    }
-    .user-profile{
-        width: 25px;
     }
     .profile-arrow{
         width: 6px;
@@ -588,6 +615,14 @@ footer{
     }
     .header nav ul {
         gap: 10px;
+    }
+    .user-profile{
+        width: 26px;
+    }
+    .login-profile{
+        width: 26px;
+        height: 26px;
+        font-size: 0.65rem;
     }
     .slider-item{
         top: 56%;
