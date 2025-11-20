@@ -6,6 +6,7 @@
     <title>Hpye Me | Sell Your Products</title>
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/sell-your-products.css">
+    <link rel="stylesheet" href="./assets/css/add-product.css">
     <link rel="icon" href="./assets/images/fav.png" type="image/x-icon">
 </head>
 <body>
@@ -89,8 +90,8 @@
                 </div>
             </div>
         </section>
-        <div class="toast-container">
-            <p></p>
+        <div class="del-toast-container">
+            <p>Failed to Delete Product</p>
             <img src="./assets/images/close-toast.png" alt="close-toast">
         </div>
     </main>
@@ -115,6 +116,456 @@
             <p>&copy; 2021 Hype-me. All Rights Reserved.</p>
         </div>
     </footer>
+    <div class="add-product-modal-container">
+        <div class="modal-main-wrapper">
+            <header class="header">
+                <div class="header-logo-container">
+                    <a href="./index.html" class="logo"><img src="./assets/images/logo.png" alt="logo"></a>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><img src="./assets/images/g-search.png" class="g-search" alt="g-search"></li>
+                        <li class="location-list"><span>TX 77441</span><img src="./assets/images/location.png" alt="location"></li>
+                        <li><span class="user-profile">MC</span><button type="button"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button></li>
+                        <li>
+                            <div class="nav-btn-container">
+                                <a href="./index.html" class="buy-btn">Buy</a>
+                                <a href="#" class="sell-btn">Sell</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="modal-main-container">
+            
+                <div class="close-btn-container">
+                    <button type="button" class="close-btn"><img src="./assets/images/close.png" alt="close"></button>
+                </div>
+                <div class="add-product-wrapper">
+                    <h2>Add Your Product</h2>
+                    <div class="add-product-outer-container">
+                        <h3>Add Your Product info</h3>
+                        <div class="add-product-inner-container">
+                            <div class="upload-container">
+                                <div class="image-upload-container">
+                                    <div class="image-header-container">
+                                        <div>
+                                            <img src="./assets/images/completed tick-default.png" alt="completed tick-default">
+                                            <p>Product Photos <span>(0/4)</span></p>
+                                        </div>
+                                        <button class="edit-product-img-btn">Edit</button>
+                                    </div>
+                                    <button class="upload-img-btn"><img src="./assets/images/add-image.png" alt="Upload Placeholder"></button>
+
+                                    <div class="image-body-container">
+                                        <div class="main-image-container"></div>
+                                        <div class="thumbnail-preview-container"></div>
+                                    </div>
+                                </div>
+                                <div class="details-container">
+                                    <div class="product-details-container">
+                                        <div class="details-header-container">
+                                            <div>
+                                                <img src="./assets/images/completed tick-default.png" alt="completed tick-default">
+                                                <p>Product Details <span>(0/9)</span></p>
+                                            </div>
+                                            <button class="add-product-btn">Add</button>
+                                            <button class="edit-product-btn">Edit</button>
+                                        </div>
+                                        <div class="details-body-container">
+                                            <p>Condition <span class="view-condition"></span></p>
+                                            <p>Listing Status<span class="view-listing_status"></span></p>
+                                            <p>Brand <span class="view-brand"></span></p>
+                                            <p>Model <span class="view-model"></span></p>
+                                            <p>Price <span class="view-price"></span></p>
+                                            <p>Color <span class="view-color"></span></p>
+                                            <p>Size<span class="view-size"></span></p>
+                                            <p>Size Type <span class="view-size_type"></span></p>
+                                            <p>Release Year <span class="view-release_year"></span></p>
+                                            
+                                        </div> 
+                                    </div>
+
+                                    <div class="additional-details-container">
+                                        <div class="details-header-container">
+                                            <div>
+                                                <img src="./assets/images/completed tick-default.png" alt="completed tick-default">
+                                                <p>Additional Details (Optional) <span>(0/8)</span></p>
+                                            </div>
+                                            <button class="add-additional-btn">Add</button>
+                                            <button class="edit-additional-btn">Edit</button>
+                                        </div>
+                                        <div class="details-body-container">
+                                            <p>Search Keywords <span class="view-keywords"></span></p>
+                                            <p>Video URL <span class="view-video_url"></span></p>
+                                            <p>Brand <span class="add-brand"></span></p>
+                                            <p>Model <span class="add-model"></span></p>
+                                            <p>Material <span class="view-material"></span></p> 
+                                            <p>Wide/Normal <span class="view-wide_normal"></span></p> 
+                                            <p>Waranty<span class="view-warranty"></span></p> 
+                                            <p>Origin <span class="view-origin"></span></p> 
+                                        </div>                       
+                                    </div>
+                                    <div class="review-details-container">
+                                        <div class="view-mode">
+                                            <div class="details-header-container">
+                                                <div>
+                                                    <img src="./assets/images/completed tick-default.png" alt="completed tick-default">
+                                                    <p>Review your Details (Optional) <span>(4/4)</span></p>
+                                                </div>
+                                                <button class="view-review-btn">View</button>
+                                            </div>
+                                            <div class="details-body-container">
+                                                <p>Name <span id="view-name">Malhotra Collections</span></p>
+                                                <p>Contact  <span id="view-contact">+1 (713)-585-1189</span></p>
+                                                <p>Location <span id="view-location"> TX7741</span></p>       
+                                                <p>Email <span id="view-email">malhotra@gmail.com</span></p>  
+                                            </div>                                                       
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="save-btn-container">
+                            <button type="button" class="save-btn"  disabled="true">Save and Close</button>
+                            <button type="button" class="save-local-btn">Save and Close</button>
+                            <button type="submit" class="submit-btn" disabled="true">Submit</button>
+                            <button type="button" class="update-btn">Submit</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div  class="toast-container">
+                    <p>Product Created Successfully</p>
+                    <span><img src="./assets/images/close-toast.png" alt="close"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container form-modal-container">
+            <div class="form-modal-content">
+                <div class="form-modal-header">
+                    <h3>Product Details</h3>
+                    <button type="button" class="modal-close-btn"><img src="./assets/images/modal-close.png" alt="close"></button>
+                </div>
+                <form class="product-form">
+                    <div class="input-group-container">
+                        <div class="input-group">
+                            <label for="input-condition">Condition <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                            <div class="input-wrapper">
+                                <select name="condition" id="input-condition" class="custom-select">
+                                    <option value="">Select Condition</option>
+                                    <option value="New">New</option>
+                                    <option value="Like New">Like New</option>
+                                    <option value="Used - Good">Used - Good</option>
+                                    <option value="Used - Fair">Used - Fair</option>
+                                    <option value="For Parts">For Parts</option>
+                                </select>
+                                <p class="error">no error</p>
+                            </div>     
+                        </div>
+                        <div class="input-group">
+                            <label for="input-listing-stat">Listing Status <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                            <div class="input-wrapper">      
+                                <select name="listing_status" id="input-listing-stat" class="custom-select">
+                                    <option value="">Select Status</option>
+                                    <option value="Available">Available</option>
+                                    <option value="Out of Stock">Out of Stock</option>
+                                    <option value="Coming Soon">Coming Soon</option>
+                                    <option value="Discontinued">Discontinued</option>
+
+                                </select>
+                                <p class="error">no error</p>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-brand">Brand <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                            <div class="input-wrapper">                        
+                                <select name="brand" id="input-brand" class="custom-select input-brand">   
+                                </select>
+                                <p class="error">no error</p>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-model">Model <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                            <div class="input-wrapper">
+                                <select name="model" id="input-model" class="custom-select input-model">
+                                </select>
+                                <p class="error">no error</p>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-price">Price <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                            <div class="input-wrapper">
+                                <input type="number" id="input-price" name="price" class="input-price" placeholder="USD">
+                                <p class="error">no error</p>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-size">Size <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                            <div class="input-wrapper">
+                                <select name="size" id="input-size" class="custom-select input-size">
+                                    <option value="">Select Size</option> 
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                </select>
+                                <p class="error">no error</p>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-color">Color <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                            <div class="input-wrapper">
+                                <select name="color" id="input-color" class="custom-select">
+                                    <option value="">Select</option> 
+                                    <option value="Black">Black</option>
+                                    <option value="White">White</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Green">Green</option>
+                                </select>
+                                <p class="error">no error</p>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-size-type">Size Type <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                            <div class="input-wrapper">
+                                <select name="size_type" id="input-size-type" class="custom-select">
+                                    <option value="">Select</option> 
+                                    <option value="Men">Men</option>
+                                    <option value="Women">Women</option>
+                                    <option value="Kids">Kids</option>
+                                </select>
+                                <p class="error">no error</p>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-release-year">Release Year<span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                            <div class="input-wrapper">
+                                <select name="release_year" id="input-release-year" class="custom-select input-release_year">
+                                </select>
+                                <p class="error">no error</p>
+                            </div>
+                        </div>
+                        <input type="text" name="_id" value="" hidden>
+                    </div>
+                </form>
+                <form  class="additional-form">
+                
+                    <div class="input-group">
+                        <label for="input-search-keywords">Search Keywords <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                        <input name="keywords" id="input-search-keywords" autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <label for="input-video-url">Video URL <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                        <div class="input-wrapper">
+                            <input name="video_url" id="input-video-url">
+                            <p class="error">Please enter the valid url</p>
+                        </div>
+                        
+                    </div>
+                    <div class="input-group">
+                        <label for="add-brand">Brand <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                        <select name="add-brand" id="add-brand" class="custom-select">
+                            <option value="">Select Brand</option>
+                            <option value="Nike">Nike</option>     
+                            <option value="Adidas">Adidas</option>
+                            <option value="Puma">Puma</option>
+                            <option value="Reebok">Reebok</option>
+                            <option value="New Balance">New Balance</option>
+                        </select> 
+                    </div>
+                    <div class="input-group">
+                        <label for="add-model">Model <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                        <select name="add-model" id="add-model" class="custom-select">
+                            <option value="">Select Model</option>
+                            <option value="Air Max WotherSpoon">air max sean Wotherspoon</option> 
+                            <option value="Air Max 90">Air Max 90</option>
+                            <option value="Air Jordan 1">Air Jordan 1</option>
+                            <option value="Dunk Low">Dunk Low</option>
+                            <option value="Air Force 1">Air Force 1</option>
+                            <option value="Blazer Mid">Blazer Mid</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-material">Material <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                        <select name="material" id="input-material" class="custom-select">
+                            <option value="">Select Material</option>
+                            <option value="Leather">Leather</option>
+                            <option value="Synthetic Leather">Synthetic Leather</option>
+                            <option value="Mesh">Mesh</option>
+                            <option value="Canvas">Canvas</option>
+                            <option value="Rubber">Rubber</option>
+                            <option value="Foam">Foam</option>
+                            <option value="Textile">Textile</option>
+                            <option value="Suede">Suede</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-wide_normal">Wide_Normal <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                        <select name="wide_normal" id="input-wide_normal" class="custom-select">
+                            <option value="">Select</option>
+                            <option value="Wide">Wide</option>
+                            <option value="Normal">Normal</option> 
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-warranty">Warranty <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                        <select name="warranty" id="input-warranty" class="custom-select">
+                            <option value="">Select Warranty</option>
+                            <option value="No Warranty">No Warranty</option>
+                            <option value="6 Months">6 Months</option>
+                            <option value="1 Year">1 Year</option>
+                            <option value="2 Years">2 Years</option>
+                            <option value="3 Years">3 Years</option> 
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-origin">Origin <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
+                        <select name="origin" id="input-origin" class="custom-select">
+                            <option value="">Select Origin</option>
+                            <option value="India">India</option>
+                            <option value="China">China</option>
+                            <option value="USA">USA</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Other">Other</option> 
+                        </select>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <p><span class="star">*</span>Mandatory fields</p>
+                    <div> 
+                        <button type="reset" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="save-btn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="modal-container product-modal-container">
+            <div class="product-modal-content">
+                <div class="product-modal-header">
+                    <h3>Product Photos</h3>
+                    <button type="button" class="modal-close-btn"><img src="./assets/images/modal-close.png" alt="close"></button>
+                </div>
+                <div class="product-img-wrapper">
+                    <div class="product-img-container">
+                        <div class="main-img-container">
+                            <div class="main-img-inner">
+                                <div class="main-img-wrapper"></div>
+    
+                            </div>
+                            <div class="main-img-btn-container">
+                                <button type="button" class="edit-thumb-img-btn">Edit</button>
+                                <button type="button" class="delete-thumb-img-btn">Delete</button>
+                            </div>                      
+                        </div>
+                        <div class="thumbnail-img-wrapper">
+                            <div class="thumbnail-img-container">
+                                <div class="thumbnail-img front">
+                                    <input type="file" class="upload-img-input" id="upload-img-front" hidden>
+                                    <label for="upload-img-front" class="upload-label">
+                                        <img src="./assets/images/image horizontan.png" alt="horizontan">
+                                    </label>
+                                </div>
+                                <p class="img-text">Front View <span class="star">*</span></p>
+                            </div>
+                            <div class="thumbnail-img-container">
+                                <div class="thumbnail-img">
+                                    <input type="file" class="upload-img-input" id="upload-img-side" hidden>
+                                    <label for="upload-img-side" class="upload-label">
+                                        <img src="./assets/images/image horizontan.png" alt="horizontan">
+                                    </label>
+                                </div>  
+                                <p class="img-text">Side View</p>
+                            </div>
+                            <div class="thumbnail-img-container">
+                                <div class="thumbnail-img">
+                                    <input type="file" class="upload-img-input" id="upload-img-side-top" hidden>
+                                    <label for="upload-img-side-top" class="upload-label">
+                                        <img src="./assets/images/image horizontan.png" alt="horizontan">
+                                    </label>
+                                </div>
+                                <p class="img-text">Side / Top </p>
+                            </div>
+                            <div class="thumbnail-img-container">
+                                <div class="thumbnail-img">
+                                    <input type="file" class="upload-img-input" id="upload-img-top-bottom" hidden>
+                                    <label for="upload-img-top-bottom" class="upload-label">
+                                        <img src="./assets/images/image horizontan.png" alt="horizontan">
+                                    </label>
+                                </div>
+                                <p class="img-text">Top / Bottom</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-img-desc-container">
+                        <h3>Front View <img src="./assets/images/info.png" alt="info"></h3>
+                        <div class="product-img-desc">
+                            <h4>Image Resolution</h4>
+                            <p>Use clear color images with minimum resolution of <span>250x100 px.</span></p>
+                        </div>
+                        <div class="product-img-desc">
+                            <h4>Image Guidelines</h4>
+                            <p>Upload authentic product photos taken in bright lighting</p>
+                        </div>
+                        <div class="product-img-desc">
+                            <h4>Tips</h4>
+                            <ul>
+                                <li>Drag images to the desired position to re-order the images</li>
+                                <li>Check out the sample images to ensure you provide the correct image</li>
+                                <li>View, e.g. First Image has to be the Front View.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p><span class="star">*</span>Mandatory product images (0/1) uploaded</p>
+                    <div>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="save-btn" disabled="true" >Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-container review-modal-container">
+            <div class="review-modal-content">
+                <div class="review-modal-header">
+                    <h3>Review Your Details</h3>
+                     <button type="button" class="modal-close-btn"><img src="./assets/images/modal-close.png" alt="close"></button>
+                </div>
+                <form class="review-form">
+                    <div class="input-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" value="Malhotra Collections" autocomplete="off" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="contact">Contact</label>
+                        <input type="text" name="contact" id="contact" value="+1 (713)-585-1189" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="location">Location</label>
+                        <input type="text" name="location" id="location" value="TX7741" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Eamil</label>
+                        <input type="text" name="email" id="email" value="malhotra@gmail.com" autocomplete="off" readonly>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <div>
+                        <button type="button" class="edit-btn">Edit</button>
+                        <button type="submit" class="confirm-btn">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/add-product.js"></script>
     <script src="./assets/js/sell-your-product.js"></script>
 </body>
 </html>

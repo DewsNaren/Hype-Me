@@ -879,7 +879,7 @@ footer{
     }
     .filter-label{
         margin-left: 5px;
-        font-size: 0.65rem;
+        font-size: 0.7rem;
     }
     .checkbox-filter{
         margin-bottom: 0px;
@@ -1058,12 +1058,12 @@ footer{
         max-width: 80%;
         font-size: 12px;
     }
-    .product-list-header h2 span{
+    /* .product-list-header h2 span{
         font-size: 0.6rem;
-    }
-    .sort-label{
+    } */
+    /* .sort-label{
         font-size: 0.6rem;
-    }
+    } */
     .sort-button{
         font-size: 0.6rem;
     }

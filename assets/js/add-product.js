@@ -1,7 +1,14 @@
-const addProductContainerCloseBtn=document.querySelector(".main-container .close-btn-container .close-btn");
+const addProductContainerCloseBtn=document.querySelector(".modal-main-container .close-btn-container .close-btn");
 
 addProductContainerCloseBtn.addEventListener('click',()=>{
-  window.name = JSON.stringify(savedProducts);
+    const cleanedProducts = savedProducts.map(prod => {
+    if (prod.editing) {
+      delete prod.editing;   
+    }
+    return prod;
+  });
+  window.name = JSON.stringify(cleanedProducts);
+  isLocalProduct=false;
   window.location.href="./sell-your-products.html"
 })
 
@@ -11,7 +18,7 @@ const modalContainers=document.querySelectorAll(".modal-container");
 
 const saveProductsBtn=document.querySelector(".add-product-outer-container .save-btn-container .save-btn");
 const submitProductsBtn=document.querySelector(".add-product-outer-container .save-btn-container .submit-btn");
-
+  const updateLocalProductBtn=document.querySelector(".add-product-outer-container .save-btn-container .save-local-btn");
 const productModalContent = document.querySelector('.product-modal-content');
 const body=document.body;
 
@@ -25,7 +32,7 @@ try {
 function closeModal(){
   modalContainers.forEach(modalContainer=>{
     modalContainer.classList.remove("active");
-    body.classList.remove("not-active");
+    // body.classList.remove("not-active");
   })
 }
 productModalContainer.addEventListener('click', (e) => {
@@ -421,7 +428,21 @@ const selectedFiles = Array.from(thumbnailImgs).map(img => img.src);
   //enab });
 
   productModalContainer.classList.remove("active");
-  // selectedFiles = [];
+  const labels = productModalContainer.querySelector(".thumbnail-img-wrapper").querySelectorAll("label");
+  labels.forEach(label => {
+
+  const next = label.nextElementSibling;
+
+ 
+  const isThumbImg = next?.matches('img[class^="thumb-"]');
+
+
+  if (!isThumbImg) {
+    label.classList.remove("not-active");
+  }
+  })
+
+
   productImgEditBtn.classList.add("active");
   uploadImgBtn.classList.add("not-active");
   ProductImgStat.innerHTML = `(${thumbnailPreview.children.length}/4)`;
@@ -434,7 +455,7 @@ const selectedFiles = Array.from(thumbnailImgs).map(img => img.src);
   }
   storeInitialImages();
   updateSaveAndSubmitStatus();
-  body.classList.remove("not-active");
+  // body.classList.remove("not-active");
 }
 
 productModalCloseBtn.addEventListener('click',()=>{
@@ -515,7 +536,7 @@ function DelProductImages() {
   productModalContainer.classList.remove("active"); 
   productModalFooterContent.childNodes[1].textContent="Mandatory product images (0/1) uploaded"
   imgTextHeader.childNodes[0].textContent="Front View"
-  body.classList.remove("not-active");
+  // body.classList.remove("not-active");
 }
 
 
@@ -612,22 +633,64 @@ if (imgEditBtn) {
     productThumbDeleteBtn.classList.add("active");
     productThumbDeleteBtn.removeAttribute("for");
   
-  if (isLocalProduct) {
-    const mainImg=document.querySelector(".main-image");
-    prodMainImgWrapper.innerHTML=`<img src="${mainImg.src}" class="main-img" alt="main image">`;
-    const previewImages=document.querySelectorAll(".thumbnail-preview-container .thumbnail-preview-img-container .thumbnail-preview-img")
-    let previewImgSrcs=[];
-    previewImages.forEach(previewImg=>{
-      previewImgSrcs.push(previewImg.src)
+  // if (isLocalProduct) {
+  //   const mainImg=document.querySelector(".main-image");
+  //   prodMainImgWrapper.innerHTML=`<img src="${mainImg.src}" class="main-img" alt="main image">`;
+  //   const previewImages=document.querySelectorAll(".thumbnail-preview-container .thumbnail-preview-img-container .thumbnail-preview-img")
+  //   let previewImgSrcs=[];
+  //   previewImages.forEach(previewImg=>{
+  //     previewImgSrcs.push(previewImg.src)
       
-    })
+  //   })
     
-    const thumbnailImgsWrapper = productModalContainer.querySelector(".thumbnail-img-wrapper");
+  //   const thumbnailImgsWrapper = productModalContainer.querySelector(".thumbnail-img-wrapper");
 
-    const thumbnailImgContainer=thumbnailImgsWrapper.querySelectorAll(".thumbnail-img")
+  //   const thumbnailImgContainer=thumbnailImgsWrapper.querySelectorAll(".thumbnail-img")
     
+  //   thumbnailImgContainer.forEach((thumbnailImg, index) => {
+  //     thumbnailImg.classList.remove("clicked");
+  //     const existingImg = thumbnailImg.querySelector("img[class^='thumb-']");
+  //     const existingSpan = thumbnailImg.querySelector("span");
+  //     const thumbLabel = thumbnailImg.querySelector("label");
+
+  //     if (thumbLabel) thumbLabel.classList.add("not-active");
+  //     if (existingImg) existingImg.remove();
+  //     if (existingSpan) existingSpan.remove();
+
+  //     const src = previewImgSrcs[index];
+
+  //     if (src) {
+  //       thumbnailImg.insertAdjacentHTML(
+  //         "beforeend",
+  //         `
+  //         <img src="${src}" alt="uploaded image" class="thumb-${index + 1}">
+  //         <span><img src="./assets/images/published.png" alt="published"></span>
+  //         `
+  //       );
+  //     }
+  //       productModalFooterContent.childNodes[1].textContent="Mandatory product images (1/1) uploaded"
+  //   });
+  // }
+  if (isLocalProduct) {
+  const mainImg = document.querySelector(".main-image");
+  prodMainImgWrapper.innerHTML = `
+    <img src="${mainImg.src}" class="main-img" alt="main image">
+  `;
+
+
+  if (!window.hasEditedOnce) {
+    const previewImages = document.querySelectorAll(
+      ".thumbnail-preview-container .thumbnail-preview-img-container .thumbnail-preview-img"
+    );
+
+    const previewImgSrcs = Array.from(previewImages).map(img => img.src);
+
+    const thumbnailImgsWrapper = productModalContainer.querySelector(".thumbnail-img-wrapper");
+    const thumbnailImgContainer = thumbnailImgsWrapper.querySelectorAll(".thumbnail-img");
+
     thumbnailImgContainer.forEach((thumbnailImg, index) => {
       thumbnailImg.classList.remove("clicked");
+
       const existingImg = thumbnailImg.querySelector("img[class^='thumb-']");
       const existingSpan = thumbnailImg.querySelector("span");
       const thumbLabel = thumbnailImg.querySelector("label");
@@ -637,7 +700,6 @@ if (imgEditBtn) {
       if (existingSpan) existingSpan.remove();
 
       const src = previewImgSrcs[index];
-
       if (src) {
         thumbnailImg.insertAdjacentHTML(
           "beforeend",
@@ -647,9 +709,29 @@ if (imgEditBtn) {
           `
         );
       }
-        productModalFooterContent.childNodes[1].textContent="Mandatory product images (1/1) uploaded"
     });
+
+    window.hasEditedOnce = true;
+  }
+
+  productModalFooterContent.childNodes[1].textContent =
+    "Mandatory product images (1/1) uploaded";
 }
+
+
+  const labels = productModalContainer.querySelector(".thumbnail-img-wrapper").querySelectorAll("label");
+  labels.forEach(label => {
+
+  const next = label.nextElementSibling;
+
+ 
+  const isThumbImg = next?.matches('img[class^="thumb-"]');
+
+
+  if (!isThumbImg) {
+    label.classList.remove("not-active");
+  }
+  })
   productModalFooterContent.childNodes[1].textContent =
     "Mandatory product images (1/1) uploaded";
     productModalContainer.classList.add("active");
@@ -908,7 +990,25 @@ addAditionalBtn.addEventListener('click',()=>{
 })
 
 
+
 const additionalInputs = additionalForm.querySelectorAll('input, select');
+const urlRegex = /^(https?:\/\/)?([\w.-]+)\.([a-z\.]{2,6})([\/\w .-]*)*\/?$/i;
+function validateAdditionalForm() {
+  const videoInput = additionalForm.querySelector("input[name='video_url']");
+  const inputWrapper   = videoInput.parentElement;
+  const value = videoInput.value.trim();
+
+  if (value === "") {
+    return true;
+  }
+  if (!urlRegex.test(value)) {
+    inputWrapper.classList.add("error");
+      return false;
+  }
+  inputWrapper.classList.remove("error");
+  return true;
+}
+
 function getAdditionalData() {
   const formData = {};
   additionalInputs.forEach(input => {
@@ -916,6 +1016,7 @@ function getAdditionalData() {
       formData[input.name] = input.value.trim();
     }
   });
+  console.log(formData)
   return formData;
 }
 
@@ -933,25 +1034,39 @@ function displayAddData(addData) {
     addStatusImg.src="./assets/images/completed tick.png";
     addStatusImg.alt="completed tick"
   }
-  
+  if (addDataLength === 0) {
+    addTexts.forEach(addText => {
+      addText.querySelector("span").innerHTML = "";
+    });
+    addStatusImg.src="./assets/images/completed tick-default.png";
+    addStatusImg.alt="completed tick-default"
+    addStatusCount.innerHTML=`(${addDataLength}/8)`
+    return; 
+  }
   addStatusCount.innerHTML=`(${addDataLength}/8)`
-  addTexts.forEach(addText => {
-    for (let key in addData) {
-      let selector = "";
 
-      if (key === "add-brand") {
-        selector = ".add-brand";
-      } else if (key === "add-model") {
-        selector = ".add-model";
-      } else {
-        selector = `.view-${key}`;
-      }
-      const el = addText.querySelector(selector);
-      if (el) {
-        el.innerHTML = addData[key] || "";
-      }
+  addTexts.forEach(addText => {
+  const fields = addText.querySelectorAll(
+    ".add-brand, .add-model, [class^='view-']"
+  );
+
+  fields.forEach(el => {
+    let className = [...el.classList].find(cls =>
+      cls.startsWith("add-") || cls.startsWith("view-")
+    );
+
+    if (!className) return;
+
+    let key = className.replace("view-", "");
+
+    if (key in addData) {
+      el.innerHTML = addData[key] || "";
+    } else {
+      el.innerHTML = "";
     }
   });
+});
+
 }
 
 
@@ -974,6 +1089,10 @@ formModalCloseBtn.addEventListener('click',()=>{
     // const addData=getAdditionalData();
     // displayAddData(addData); 
   }
+  const inputWrappers=formModalContent.querySelectorAll(".input-wrapper");
+  inputWrappers.forEach(inputWrapper=>{
+    inputWrapper.classList.remove("error")
+  })
   closeModal();
 })
 
@@ -991,21 +1110,26 @@ formSaveBtn.addEventListener('click', (e) => {
       displayProdData(prodData)
       productDetailsData.push(prodData);  
       closeModal()
-      editProductBtn.classList.add("active");
+      editProductBtn.classList.add("error");
       addProductDetailsBtn.classList.add("not-active");
       updateSaveAndSubmitStatus();
     }
   } 
   else if (activeSection === 'additional') {
-    const addData=getAdditionalData()
-    additionalDetailsData.push(addData)
-    displayAddData(addData);
-    closeModal()
-    editAdditionalBtn.classList.add("active");
-    addAditionalBtn.classList.add("not-active");
+    e.preventDefault();
+    if(validateAdditionalForm()){
+      const addData=getAdditionalData()
+      console.log(addData)
+      additionalDetailsData.push(addData)
+      displayAddData(addData);
+      closeModal()
+      editAdditionalBtn.classList.add("active");
+      addAditionalBtn.classList.add("not-active");
+    }
   }
 });
 
+  
 function updateSaveAndSubmitStatus() {
   const isProductDetailsComplete = productStatusImg.alt === "completed tick";
   const isImagesComplete = ProductImgStatImg.alt === "completed tick";
@@ -1028,12 +1152,22 @@ function updateSaveAndSubmitStatus() {
     updateProductBtn.classList.add("active");
     submitProductsBtn.setAttribute("disabled", true);
     submitProductsBtn.classList.add("not-active");
-  } else if (updateProductBtn) {
+  } else {
     updateProductBtn.classList.remove("active");
+    submitProductsBtn.classList.remove("not-active");
+  }
+  if(checkUpdateConditions() && updateLocalProductBtn && isLocalProduct){
+    updateLocalProductBtn.classList.add("active");
+    saveProductsBtn.setAttribute("disabled", true);
+    saveProductsBtn.classList.add("not-active");
+  }
+  else{
+    updateLocalProductBtn.classList.remove("active");
+    saveProductsBtn.classList.remove("not-active");
   }
 
 }
-
+updateLocalProductBtn.classList.remove("active");
 function checkUpdateConditions() {
   const idInput = document.querySelector('input[name="_id"]');
   const isIdFilled = idInput && idInput.value.trim() !== '';
@@ -1104,6 +1238,10 @@ formCancelBtn.addEventListener('click', () => {
   else{
     delAdditionalData();
   }
+  const inputWrappers=formModalContent.querySelectorAll(".input-wrapper");
+  inputWrappers.forEach(inputWrapper=>{
+    inputWrapper.classList.remove("error")
+  })
   closeModal()
 });
 
@@ -1217,11 +1355,13 @@ saveProductsBtn.addEventListener('click',()=>{
   saveOrUpdateProduct(finalProduct)
   scrollToTop();
   showToast("#19762d","Product Saved Successfully");
+  isLocalProduct=false;
     setTimeout(() => {
       toastContainer.classList.remove("show");
       window.name = JSON.stringify(savedProducts);
       window.location.href="./sell-your-products.html";
   }, 5000);
+  
 })
 
 const toastContainer = document.querySelector(".toast-container");
@@ -1277,19 +1417,23 @@ async function createProduct() {
     }
     
   } catch (err) {
+    showToast("#ea2f4b","Failed to create product. Try again.");
     console.error("Network or code error:", err);
+    setTimeout(() => {
+        toastContainer.classList.remove("show");
+      }, 5000);
   }
 }
 
 submitProductsBtn.addEventListener('click', async () => {
   scrollToTop();
   createProduct();
+  isLocalProduct=false;
 });
 
 function scrollToTop(){
-  window.scrollTo({
-    top:0,  
-  });
+  const modalMainWrapper=document.querySelector(".modal-main-wrapper");
+  modalMainWrapper.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 async function populateProductSelects() {
@@ -1377,6 +1521,7 @@ function updateImageStatus() {
 const updateProductBtn=document.querySelector(".add-product-outer-container .save-btn-container .update-btn");
 updateProductBtn.classList.remove("active");
 function updateAPIProductDetails(productData,editing) {
+
   delete productData.editing
   const inputs = document.querySelectorAll(".product-form input, .product-form select");
   const productDetailsData={};
@@ -1414,6 +1559,7 @@ function updateAPIProductDetails(productData,editing) {
         closeModal();
         scrollToTop();
         showToast("#19762d", "Product Updated successfully");
+        isLocalProduct=false;
       } else {
         closeModal();
         scrollToTop();
@@ -1434,6 +1580,7 @@ function updateAPIProductDetails(productData,editing) {
 }
 
 function updateLocalProductDetails(productData,editing) {
+
   delete productData.editing
   const productDetailData={};
   const inputs = document.querySelectorAll(".product-form input, .product-form select");
@@ -1451,7 +1598,7 @@ function updateLocalProductDetails(productData,editing) {
   let additionalData = {};
   const additionalInputs = document.querySelectorAll(".additional-form input, .additional-form select");
 
-  const updateLocalProductBtn=document.querySelector(".add-product-outer-container .save-btn-container .save-local-btn");
+  
   additionalInputs.forEach(input => {
     const key = input.name.replace(/^input-/, "");
     if (productData[key] !== undefined) {
@@ -1470,8 +1617,7 @@ function updateLocalProductDetails(productData,editing) {
   
 
   loadProductImages(productData);
-  saveProductsBtn.classList.add("not-active")
-  updateLocalProductBtn.classList.add("active");
+  
   if (updateLocalProductBtn) {
     updateLocalProductBtn.addEventListener("click", () => {
       const prodData=getProductData()
@@ -1486,6 +1632,7 @@ function updateLocalProductDetails(productData,editing) {
       saveOrUpdateProduct(finalProduct)
       scrollToTop();
       showToast("#19762d", "Product updated successfully");
+      isLocalProduct=false;
       updateLocalProductBtn.classList.remove("active");
       saveProductsBtn.classList.remove("not-active")
       setTimeout(() => {
@@ -1533,7 +1680,7 @@ function updateLocalProductDetails(productData,editing) {
       scrollToTop();     
       if (res.ok && data.includes("Product Created Successfully")) {
         showToast("#19762d","Product Created Successfully");
-
+        isLocalProduct=false;
       } else {
         showToast("#ea2f4b","Failed to create product. Try again.");
         console.error("Error creating product:", data);
@@ -1624,17 +1771,19 @@ confirmBtn.addEventListener("click",()=>{
 
 document.addEventListener("DOMContentLoaded", async () => {
   await populateProductSelects();
+});
 
-  let allProducts = [];
+function processEditedProduct(){
+  let recievedProducts = [];
   try {
-    allProducts = JSON.parse(window.name || "[]");
+    recievedProducts = JSON.parse(window.name || "[]");
   } catch {
-    allProducts = [];
+    recievedProducts = [];
   }
-  const filteredDrafts = allProducts.filter(p => !(p.editing && p.isPosted));
+  const filteredDrafts = recievedProducts.filter(p => !(p.editing && p.isPosted));
   savedProducts=filteredDrafts;
 
-  const productToEdit = allProducts.find(p => p.editing === true);
+  const productToEdit = recievedProducts.find(p => p.editing === true);
   if (productToEdit) {
 
     if (productToEdit.isPosted) {
@@ -1644,4 +1793,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     updateSaveAndSubmitStatus();
   }
-});
+}
+
+  

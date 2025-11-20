@@ -189,7 +189,7 @@ function renderProducts(products, page = 1, headerLabel = "All Shoes") {
       </div> 
       <div class="product-content"> 
         <p class="product-shoe-name">${product.model || "Unknown Product"}</p> 
-        <p class="product-shoe-price">$ ${product.price.toFixed(2)}</p> 
+        <p class="product-shoe-price">$ ${Number(product.price).toFixed(2)}</p> 
       </div> 
     </div> `; 
   }); 

@@ -302,7 +302,7 @@
   color: whitesmoke;
 }
 
-.add-product-btn{
+.products-wrapper .products-body .add-product-btn{
   position: fixed;
   z-index: 2;
   width: 4.167vw;
@@ -313,10 +313,10 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transition: transform 0.2s ease-in;
 }
-.add-product-btn:hover{
+.products-wrapper .products-body .add-product-btn:hover{
   transform: scale(1.1);
 }
-.add-product-btn img{
+.products-wrapper .products-body .add-product-btn img{
   width: 100%;
 }
 
@@ -534,7 +534,7 @@
 }
 
 .review-heading {
-  font-size: 1.083vw;
+  font-size:clamp(15px, 1.083vw, 1.083vw) ;
   font-weight: bold;
   color: rgba(0,0,0,0.7);
 }
@@ -624,7 +624,7 @@
 .review-pagination .page, .review-pagination .prev, .review-pagination .next {
   border: none;
   background-color: transparent;
-  font-size: 0.92vw;
+  font-size:clamp(11px, 0.92vw, 0.92vw) ;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -656,7 +656,6 @@
   display: none;
 }
 
-
 /*Footer */
 footer{
   padding-top: 90px;
@@ -665,6 +664,7 @@ footer{
 .quick-links{
   padding-top: 0;
 }
+
 @media screen and (max-width:1600px){
   .location-list img{
     width: 19px;
@@ -1246,7 +1246,7 @@ footer{
     margin-top: 15px;
   }
   
-  .add-product-btn{
+  .products-wrapper .products-body .add-product-btn{
     width: 40px;
     height: 40px;
   }
@@ -1363,7 +1363,7 @@ footer{
   .styled-select-wrapper{
     align-self: flex-end;
   }
-  .add-product-btn{
+  .products-wrapper .products-body .add-product-btn{
     width: 35px;
     height: 35px;
   }

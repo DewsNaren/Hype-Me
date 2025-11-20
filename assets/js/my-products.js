@@ -12,8 +12,8 @@ const userProfilePicture=document.querySelector(".user-info .profile-img-wrapper
 
 
 let formData;
-if(window.name){
-  formData = JSON.parse(window.name)
+if(window.edit){
+  formData = JSON.parse(window.edit)
 }
 
 
@@ -35,7 +35,7 @@ if(formData){
 const ProductTabs = document.querySelectorAll(".product-tab");
 const productBody = document.querySelector(".products-body");
 const userReviewWrapper = document.querySelector(".user-review-wrapper");
-const addProductBtn=document.querySelector(".add-product-btn");
+const addProductBtn=document.querySelector(".products-wrapper .products-body .add-product-btn");
 
 ProductTabs.forEach(ProductTab => {
   ProductTab.addEventListener('click', () => {
@@ -67,12 +67,12 @@ ProductTabs.forEach(ProductTab => {
   });
 });
 
-if(addProductBtn){
-  addProductBtn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    window.location.href="./add-product.html"
-  })
-}
+// if(addProductBtn){
+//   addProductBtn.addEventListener('click',(e)=>{
+//     e.preventDefault();
+//     window.location.href="./add-product.html"
+//   })
+// }
 function renderProducts(products){
   const productList=document.querySelector(".products-wrapper .products-body .product-list")
   productList.innerHTML="";
@@ -352,3 +352,12 @@ document.querySelector("#sort").addEventListener("change", () => {
 });
  
 
+const addProductModalContainer=document.querySelector(".add-product-modal-container");
+
+if(addProductBtn){
+  addProductBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    addProductModalContainer.classList.add("active");
+    body.classList.add("not-active");
+  })
+}

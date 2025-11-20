@@ -2,11 +2,13 @@ const addProductBtn=document.querySelector(".sell-container .add-unique .add-pro
 const dropdown = document.getElementById('statusDropdown');
 const toggle = document.querySelector('.dropdown-toggle');
 const dropdownList = document.querySelector('.dropdown-list');
-const toastContainer = document.querySelector(".toast-container");
+const delToastContainer = document.querySelector(".del-toast-container");
+const addProductModalContainer=document.querySelector(".add-product-modal-container");
 
 
 
-addProductBtn.addEventListener('click', () => {
+addProductBtn.addEventListener('click', (e) => {
+  e.preventDefault();
   let existingProducts = [];
 
   try {
@@ -30,14 +32,16 @@ addProductBtn.addEventListener('click', () => {
   existingProducts = existingProducts.filter(p => !p.editing);
 
   window.name = JSON.stringify(existingProducts);
-  window.location.href = './add-product.html';
+    e.preventDefault();
+    addProductModalContainer.classList.add("active");
+    body.classList.add("not-active");
 });
 
-function showToast(bgc, message) {
+function showDelToast(bgc, message) {
   
-  toastContainer.querySelector("p").innerHTML= message;
-  toastContainer.style.backgroundColor=bgc;
-  toastContainer.classList.add("show");
+  delToastContainer.querySelector("p").innerHTML= message;
+  delToastContainer.style.backgroundColor=bgc;
+  delToastContainer.classList.add("show");
 }
 toggle.addEventListener('click', () => {
   dropdownList.classList.toggle("active")
@@ -123,14 +127,23 @@ async function populateProductsTable() {
 }
 
 function renderTable() {
+  const tableWrapper=document.querySelector(".products-listing .table-wrapper")
   const tableBody = document.querySelector(".products-listing .product-table tbody");
   tableBody.innerHTML = "";
 
   const start = (currentPage - 1) * rowsPerPage;
   const end = start + rowsPerPage;
   const pageItems = filteredProducts.slice(start, end);
-
-  pageItems.forEach(prod => {
+  if(filteredProducts.length==0){
+      const oldMsg = tableWrapper.querySelector(".no-product");
+      if (oldMsg) oldMsg.remove();
+    tableWrapper.insertAdjacentHTML("beforeend", `<p class="no-product">No Products Found</p>`);
+    return;
+  }
+  else{
+     const oldMsg = tableWrapper.querySelector(".no-product");
+    if (oldMsg) oldMsg.remove();
+    pageItems.forEach(prod => {
     const row = document.createElement("tr");
     const modelDisplay =  prod.model;
     const isDraft = !prod.isPosted;
@@ -155,6 +168,8 @@ function renderTable() {
     tableBody.appendChild(row);
     attachRowListeners()
   });
+  }
+  
 }
 
 // DELETE from API
@@ -169,16 +184,16 @@ async function deleteApiProduct(productId) {
 
     const data = await res.json();
     if (data.success) {
-      scrollToTop();
-      showToast("#EA2F4B", "Product deleted successfully");
+      scrollToSellerTop();
+      showDelToast("#EA2F4B", "Product deleted successfully");
       removeFromAllProducts(productId); 
     } else {
-      scrollToTop();
-      showToast("#EA2F4B", "Failed to delete product. Try again.");
+      scrollToSellerTop();
+      showDelToast("#EA2F4B", "Failed to delete product. Try again.");
       console.error("API delete error:", data);
     }
 
-    setTimeout(() => toastContainer.classList.remove("show"), 5000);
+    setTimeout(() => delToastContainer.classList.remove("show"), 5000);
   } catch (error) {
     console.error("Error:", error);
   }
@@ -191,10 +206,10 @@ function deleteLocalProduct(productId) {
   window.name = JSON.stringify(savedProducts);
   removeFromAllProducts(productId);
 
-  scrollToTop();
-  showToast("#EA2F4B", "Draft deleted successfully");
+  scrollToSellerTop();
+  showDelToast("#EA2F4B", "Draft deleted successfully");
   setTimeout(() => {
-    toastContainer.classList.remove("show");
+    delToastContainer.classList.remove("show");
   }, 5000);
 }
 
@@ -246,8 +261,9 @@ function handleEdit(product) {
   }
 
   window.name = JSON.stringify(allProducts);
-  
-  window.location.href = "./add-product.html";
+  addProductModalContainer.classList.add("active");
+  body.classList.add("not-active");
+   processEditedProduct();
 }
 
 async function deleteProduct(productId) {
@@ -262,15 +278,15 @@ async function deleteProduct(productId) {
   const data = await res.json();
 
   if (data.success) {
-    scrollToTop()
-    showToast( "#EA2F4B", "Product deleted successfully"); 
+    scrollToSellerTop()
+    showDelToast( "#EA2F4B", "Product deleted successfully"); 
   } else {
-    scrollToTop()
-    showToast("#EA2F4B", "Failed to delete product. Try again."); 
+    scrollToSellerTop()
+    showDelToast("#EA2F4B", "Failed to delete product. Try again."); 
     console.error("Error deleting product:", data);
   }
   setTimeout(() => {
-    toastContainer.classList.remove("show");
+    delToastContainer.classList.remove("show");
   }, 5000);
 
   return data;
@@ -279,7 +295,7 @@ async function deleteProduct(productId) {
   }
 }
 
-function scrollToTop(){
+function scrollToSellerTop(){
   window.scrollTo({
     top:0,  
   });

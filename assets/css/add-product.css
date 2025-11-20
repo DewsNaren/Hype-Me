@@ -21,7 +21,7 @@ header{
     height: 50px;
     border-radius: 50%;
     font-weight: 500;
-    background-color: rgb(224, 220, 147);
+    background-color: rgb(199, 196, 145);
     color: rgb(22, 18, 18);
     font-size: 1.4rem;
 }
@@ -36,9 +36,29 @@ header{
 }
 
 /*main*/
-.main-container{
+.add-product-modal-container{
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: none;
+  overflow: hidden;
+}
+.add-product-modal-container.active{
+  display: flex;
+}
+.modal-main-wrapper{
+    width: 100%;
+    height: fit-content;
+    overflow-y: auto;
+    position: relative;
+    max-height: 100vh; 
+}
+.modal-main-container{
     background-color: rgb(52, 40, 60);
     padding: 45px 40px;
+    
 }
 
 .close-btn-container{
@@ -782,7 +802,7 @@ header{
 }
 
 .toast-container.show {
-  top: 5%;
+  top: 130px;
   opacity: 1;
 }
 
@@ -799,7 +819,7 @@ header{
         height: 40px;
         font-size: 1.1rem;
     }
-    .main-container{
+    .modal-main-container{
         padding: 35px 33px;
     }
     .close-btn img{
@@ -973,6 +993,9 @@ header{
     .toast-container img{
         width: 20px;
     }
+    .toast-container.show {
+        top: 120px;
+    }
 
 }
 
@@ -988,7 +1011,7 @@ header{
         height: 35px;
         font-size: 0.9rem;
     }
-    .main-container{
+    .modal-main-container{
         padding: 35px 29px;
     }
     .close-btn img{
@@ -1181,11 +1204,13 @@ header{
     }
     
     .toast-container {
-        top: 20px;
         padding: 12px 16px;
     }
     .toast-container img{
         width: 16px;
+    }
+    .toast-container.show {
+        top: 95px;
     }
 
 }
@@ -1202,7 +1227,7 @@ header{
         height: 30px;
         font-size: 0.77rem;
     }
-    .main-container{
+    .modal-main-container{
         padding: 25px 22px;
     }
     .close-btn img{
@@ -1417,6 +1442,9 @@ header{
     .toast-container img{
         width: 15px;
     }
+    .toast-container.show {
+        top: 70px;
+    }
 }
 
 @media screen and (max-width:768px){
@@ -1504,6 +1532,9 @@ header{
     }
     .review-modal-container .review-modal-content form .input-group input{
         height: 30px;
+    }
+    .toast-container.show {
+        top: 60px;
     }
 }
 
@@ -1611,7 +1642,7 @@ header{
     .location-list img{
         width: 10px;
     }
-    .main-container{
+    .modal-main-container{
         padding: 20px 16px;
     }
     .close-btn img{
@@ -1709,6 +1740,9 @@ header{
     }
     .toast-container img{
         width: 12px;
+    }
+     .toast-container.show {
+       top: 55px;
     }
      .form-modal-container .form-modal-content .modal-footer button, .product-modal-container .product-modal-content .modal-footer button,.review-modal-container .review-modal-content .modal-footer button {
         padding: 6px 14px;

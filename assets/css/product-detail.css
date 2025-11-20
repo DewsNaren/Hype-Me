@@ -626,7 +626,7 @@ footer{
         padding: 6px 15px 40px;
     }
     .product-container-wrapper{
-        max-width: 92%;
+        max-width: 98%;
         padding: 0 5px;
     }
     .breadcrumb .separator{
@@ -719,7 +719,7 @@ footer{
         gap: 10px;
     }
     .selected-product-review p{
-        font-size: 0.55rem;
+        font-size: 0.591rem;
     }
     .buy-now-btn{
         padding: 11px 1.3rem;

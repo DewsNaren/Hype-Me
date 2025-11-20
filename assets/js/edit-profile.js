@@ -113,7 +113,7 @@ function getData(){
         profileImg:profileImgSrc,
     };
 
-    window.name=JSON.stringify(formData)
+    window.edit=JSON.stringify(formData)
     window.location.href = './my-products.html';
 }
 

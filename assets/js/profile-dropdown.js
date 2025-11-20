@@ -42,7 +42,7 @@ const sellBtn=document.querySelector(".header nav .nav-btn-container .sell-btn")
 sellBtn.addEventListener('click',(e)=>{
   const loginToken=localStorage.getItem("token");
   if(loginToken){
-    window.name="";
+    window.edit="";
     window.location.href="./my-products.html";
   }
   else{
