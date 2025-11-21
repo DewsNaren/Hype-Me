@@ -894,7 +894,7 @@ footer{
         height: 25px;
     }
     .price-display {
-        font-size: 0.6rem;
+        font-size: 0.7rem;
         margin-bottom: 25px;
     }
     .highlight-box {
@@ -1026,11 +1026,23 @@ footer{
         overflow-y: hidden;
         height: 100vh;
         min-width: 0;
+        z-index: 5;
+    }
+    .filter-overlay{
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background-color: rgb(0,0,0,0.7);
+        height: 100vh;
         z-index: 4;
+    }
+    .filter-overlay.active{
+        min-width: 100%;
+        right: 0;
     }
     .filter-container.active{
         left: 0;
-        min-width: 100%;
+        min-width: 60%;
         overflow-y: auto;
         transition: left 0.5s ease-in, overflow-y 0.5s ease-in;
      }
@@ -1096,7 +1108,10 @@ footer{
         margin: 0 auto;
         padding: 20px 0;
     }
-
+    .filter-container.active{
+        left: 0;
+        min-width: 100%;
+    }
    
     .product-list-wrapper{
         max-width: 95%;

@@ -393,7 +393,6 @@ const selectedFiles = Array.from(thumbnailImgs).map(img => img.src);
 
   if (selectedFiles.length > 0) {
     const currentMainImg = prodMainImgWrapper.querySelector(".main-img");
-    console.log(prodMainImgWrapper)
     if (currentMainImg && currentMainImg.src) {
       mainImageContainer.innerHTML = `<img src="${currentMainImg.src}" class="main-image"/>`;
     }
@@ -547,7 +546,6 @@ if (productImgCancelBtn) {
 function storeInitialImages() {
   const containers = document.querySelectorAll(".thumbnail-img-container");
 
-  console.log("HELO")
   initialThumbSrcs = [];
   containers.forEach((container, index) => {
     const img = container.querySelector("img[class^='thumb-']");
@@ -556,7 +554,7 @@ function storeInitialImages() {
 
   const mainImg = prodMainImgWrapper.querySelector(".main-img");
   if (mainImg) initialMainImgSrc = mainImg.src;
-  console.log(initialThumbSrcs)
+
 }
 
 // function restoreInitialImages() {
@@ -610,7 +608,7 @@ function restoreInitialImages() {
         span.remove();
         label.classList.remove("not-active");
       }
-      console.log(notFoundimg)
+      
     }
   });
 
@@ -1016,7 +1014,7 @@ function getAdditionalData() {
       formData[input.name] = input.value.trim();
     }
   });
-  console.log(formData)
+  
   return formData;
 }
 
@@ -1119,7 +1117,7 @@ formSaveBtn.addEventListener('click', (e) => {
     e.preventDefault();
     if(validateAdditionalForm()){
       const addData=getAdditionalData()
-      console.log(addData)
+      
       additionalDetailsData.push(addData)
       displayAddData(addData);
       closeModal()
@@ -1470,7 +1468,7 @@ function loadProductImages(productData) {
 
 
   if (isFromAPI) {
-    console.log("API product - no images available");
+    // console.log("API product - no images available");
     return;
   }
   else{

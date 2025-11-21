@@ -4,6 +4,7 @@ let filteredProducts = [];
 let receivedMin = null; 
 let receivedMax = null; 
 let totalProducts = [];
+let searchKeyword;
 const minRange = document.querySelector(".minRange"); 
 const maxRange = document.querySelector(".maxRange"); 
 const priceDisplay = document.querySelector(".price-display"); 
@@ -30,22 +31,32 @@ initSpinnerAnimation();
 const filterBtn = document.querySelector(".filter-btn"); 
 const filterContainer = document.querySelector(".filter-container"); 
 const filterClostBtn = document.querySelector(".filter-close-btn"); 
+const filterOverlay=document.querySelector(".filter-overlay");
+
 
 filterBtn.addEventListener("click", () => { 
   filterContainer.classList.add("active"); 
-
+  filterOverlay.classList.add("active");
   filterClostBtn.classList.add("active");
   setTimeout(()=>{
     body.classList.add("not-active");
   }, 500)
   
-
 }); 
-filterClostBtn.addEventListener("click", () => { 
+function closeFilterContainer(){
   filterContainer.classList.remove("active"); 
   filterClostBtn.classList.remove("active"); 
+  filterOverlay.classList.remove("active");
   body.classList.remove("not-active");
+}
+filterClostBtn.addEventListener("click", () => { 
+ closeFilterContainer();
 }); 
+
+filterOverlay.addEventListener("click",()=>{
+ closeFilterContainer();
+})
+
 function getProducts() {
   let receivedObj;
   try {
@@ -56,8 +67,8 @@ function getProducts() {
     if (receivedObj.min !== undefined && receivedObj.max !== undefined) {
       receivedMin = receivedObj.min;
       receivedMax = receivedObj.max;
-  } else if (Array.isArray(receivedObj)) {
-    totalProducts = receivedObj;
+  }   else if (receivedObj.type === "search" && receivedObj.keyword) {
+    searchKeyword = receivedObj.keyword.toLowerCase().trim();
   }
 }
 
@@ -113,11 +124,58 @@ function applyFilters(page = 1) {
   if (activeTypes.length > 0) { 
     filtered = filtered.filter((p) => activeTypes.includes(p.type)); 
   }
+ 
+  
+  function detectBrand(searchKeyword) {
+    if (!searchKeyword) return "";
+
+    const text = searchKeyword.toLowerCase();
+    const words = text.split(" ");
+
+
+    const allBrands = [...new Set(totalProducts.map(p => p.brand.toLowerCase()))];
+
+
+    for (let brand of allBrands) {
+      if (text.includes(brand)) {
+        return brand; 
+      }
+    }
+
+
+    for (let brand of allBrands) {
+      for (let word of words) {
+        if (brand.startsWith(word)) {
+          return brand; 
+        }
+      }
+    }
+
+    return "not-found";
+  }
+
+  let findedBrand=detectBrand(searchKeyword);
+  console.log(findedBrand)
+  if(findedBrand==="not-found"){
+    filtered=[];
+  }
+  else{
+    const brandInputs=document.querySelectorAll(".brand-filter input");
+    brandInputs.forEach(brandInput=>{
+      if(brandInput.value.toLowerCase() === findedBrand.toLowerCase())
+        brandInput.checked=true;
+    })
+    searchKeyword="";
+  }
+   
+   
   const checkedBrands = Array.from(document.querySelectorAll(".brand-filter input:checked")).map((input) => input.value);
 
   if (checkedBrands.length > 0) {
     filtered = filtered.filter((p) => checkedBrands.includes(p.brand));
   }
+ 
+
   const checkedModels = Array.from(document.querySelectorAll(".model-filter input:checked")).map((input) => input.value);
 
   if (checkedModels.length > 0) {
@@ -281,6 +339,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }); 
   setdropDownHeight();
 });
+
 
 
 /*Brand Search*/
@@ -614,4 +673,13 @@ function setdropDownHeight(){
   });
 }
 
-window.addEventListener('resize',setdropDownHeight())
+window.addEventListener('resize',setdropDownHeight);
+
+window.addEventListener('resize',()=>{
+  if(window.innerWidth<=768){
+    body.classList.remove("not-active");
+  }
+  if(window.innerWidth>768){
+    closeFilterContainer();
+  }
+})

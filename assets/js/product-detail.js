@@ -38,6 +38,7 @@ function renderProductDetail(product){
 window.addEventListener('DOMContentLoaded', async () => {
   const products=await fetchProducts();
   getSelectedProduct(products);
+  shareImage()
   viewMore.addEventListener('click',(e)=>{
     e.preventDefault();
     showAdditionalDatas();
@@ -79,16 +80,12 @@ function activeImage() {
 }
 
 
-const buyBtn=document.querySelector(".product-info .selected-product-wrapper .buy-now-btn");
 
-buyBtn.addEventListener('click',()=>{
-  window.location.href="./chat.html"
-})
 
 const selectedProductLikeBtn=document.querySelector(".product-detail-container .product-container-wrapper .product-header-container .icon-group .like-btn")
 
 selectedProductLikeBtn.addEventListener('click',()=>{
-  const token=sessionStorage.getItem("token")
+  const token=localStorage.getItem("token")
   if(token){
     const likeImg=selectedProductLikeBtn.querySelector("img");
   
@@ -156,4 +153,50 @@ const sellerName=document.querySelector(".product-container-wrapper .product-inf
 sellerName.addEventListener('click',()=>{
   window.location.href="./profile-page.html"
 })
-console.log(sellerName)
+
+const shareBtn=document.querySelector(".product-detail-container .product-container-wrapper .product-header-container .icon-group .share-btn");
+
+const mainImgContainer = document.querySelector('.main-image-container');
+
+
+async function shareImage(){
+  const mainImg = mainImgContainer.querySelector('.main-image');
+  shareBtn.addEventListener("click",async ()=>{
+    const fullSrc = mainImg.src;
+
+
+  const imageUrl = fullSrc.replace(/^https?:\/\/[^\/]+/, "");
+  const title=mainImg.alt
+
+
+  try {
+    const response = await fetch(imageUrl);
+    const blob = await response.blob();
+
+    const fileName = imageUrl.split("/").pop();  
+    const file = new File([blob], fileName, { type: blob.type });
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({
+        title,
+        text: title,
+        files: [file],
+      });
+    } else {
+      console.warn("Sharing not supported on this browser or context.");
+    }
+  } catch (error) {
+    console.error("Error while sharing image:", error);
+  }
+
+})
+}
+
+const buyBtn=document.querySelector(".product-info .selected-product-wrapper .buy-now-btn");
+
+buyBtn.addEventListener('click',(e)=>{
+  e.preventDefault();
+    chatModalWrapper.classList.add("active");
+    body.classList.add("not-active");
+})
+

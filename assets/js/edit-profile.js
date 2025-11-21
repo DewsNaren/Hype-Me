@@ -3,7 +3,7 @@ const fromContainer=document.querySelector('.personal-form-container');
 const profileImage = fromContainer.querySelector('.profile-image-preview img');
 const delProfileInput=fromContainer.querySelector('.profile-image-preview .del-profile-input');
 const actionBtn = fromContainer.querySelector('.profile-image-preview  .action-btn');
-const username = fromContainer.querySelector('.input-wrapper .username');
+const profileUsername = fromContainer.querySelector('.input-wrapper .username');
 const firstName = fromContainer.querySelector('.input-wrapper .first-name');
 const lastName = fromContainer.querySelector('.input-wrapper .last-name');
 const country = fromContainer.querySelector('.input-wrapper .country');
@@ -40,22 +40,23 @@ form.addEventListener('submit', (e) => {
      e.preventDefault();
     if (validateInputs()) {
         getData();
-        form.reset();
+        // form.reset();
     }
+    e.preventDefault();
 });
 function validateInputs(){
-    const usernameVal = username.value.trim()
+    const profileUsernameVal = profileUsername.value.trim()
     const firstNameVal = firstName.value.trim();
     const lastNameVal = lastName.value.trim();
     const zipCodeVal = zipCode.value.trim();
     let success = true
 
-    if(usernameVal ===''){
+    if(profileUsernameVal ===''){
         success=false;
-        setError(username,'Username is required')
+        setError(profileUsername,'Username is required')
     }
     else{
-        setSuccess(username)
+        setSuccess(profileUsername)
     }
     if(firstNameVal ===''){
         success=false;
@@ -64,7 +65,7 @@ function validateInputs(){
     else{
         setSuccess(firstName)
     }
-    console.log(firstNameVal)
+    
    if (lastNameVal === '') {
         success = false;
         setError(lastName, 'Last name is required');
@@ -102,7 +103,7 @@ function setSuccess(element){
 
 function getData(){
     const formData = {
-        username: username.value.trim().toLowerCase(),
+        username: profileUsername.value.trim().toLowerCase(),
         
         firstName: firstName.value.trim().toLowerCase(),
         lastName: lastName.value.trim().toLowerCase(),
@@ -112,14 +113,18 @@ function getData(){
         delProfile:delProfileInput.value,
         profileImg:profileImgSrc,
     };
-
+    console.log(formData)
     window.edit=JSON.stringify(formData)
-    window.location.href = './my-products.html';
+    // window.location.href = './my-products.html';
+        editOverlay.classList.remove("active");
+    body.classList.remove("not-active");
+    getProfileData();
 }
 
 
-const closeBtn=document.querySelector(".close-btn-container .close-btn");
+const editModalcloseBtn=document.querySelector(".edit-modal-main-container .close-btn-container .close-btn");
 
-closeBtn.addEventListener('click',()=>{
-    window.location.href = './my-products.html';
+editModalcloseBtn.addEventListener('click',()=>{
+    editOverlay.classList.remove("active");
+    body.classList.remove("not-active");
 })

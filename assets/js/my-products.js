@@ -1,6 +1,6 @@
 const profileList=document.querySelector(".header .nav .profile-list");
 const locationListZipCode=document.querySelector(".header .nav .location-list span")
-const username=document.querySelector(".user-info .user-details h2");
+const topProfileusername=document.querySelector(".user-info .user-details h2");
 const userLocation=document.querySelector(".user-info .user-details .user-location");
 const zipcode=userLocation.childNodes[1];
 const totalLikesCount=document.querySelector(".user-stats .stat-box .likes-count");
@@ -8,29 +8,36 @@ const totalViewsCount=document.querySelector(".user-stats .stat-box .views-count
 const followersCount=document.querySelector(".user-stats .stat-box .followers-count");
 const followingCount=document.querySelector(".user-stats .stat-box .following-count");
 const userProfilePicture=document.querySelector(".user-info .profile-img-wrapper img")
+console.log(totalViewsCount)
+// console.log(zipcode)
 
-
-
-let formData;
-if(window.edit){
-  formData = JSON.parse(window.edit)
+function getProfileData(){
+  let formData;
+  if(window.edit){
+    formData = JSON.parse(window.edit)
+    console.log(formData)
+    console.log(window.edit)
+  }
+  renderProfileData(formData)
 }
 
-
-if(formData){
-  username.innerHTML=`${formData.firstName} ${formData.lastName}`;
-  zipcode.textContent=`TX ${formData.zipCode}`;
-  locationListZipCode.textContent=`TX ${formData.zipCode}`;
-  if(formData.delProfile=="true"){
-    let profileHtml=`<span class="user-profile">${formData.firstName[0]}${formData.lastName[0]}</span><button type="button"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button>`;
-    profileList.innerHTML="";
-    profileList.innerHTML=profileHtml;
-    userProfilePicture.src="./assets/images/default-profile-pic.jpg"
-  }
-  else{
-    userProfilePicture.src=`./assets/images/${formData.profileImg}`
+function renderProfileData(formData){
+  if(formData){
+    topProfileusername.innerHTML=`${formData.firstName} ${formData.lastName}`;
+    zipcode.textContent=`TX ${formData.zipCode}`;
+    locationListZipCode.textContent=`TX ${formData.zipCode}`;
+    if(formData.delProfile=="true"){
+      let profileHtml=`<span class="user-profile">${formData.firstName[0]}${formData.lastName[0]}</span><button type="button"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button>`;
+      profileList.innerHTML="";
+      profileList.innerHTML=profileHtml;
+      userProfilePicture.src="./assets/images/default-profile-pic.jpg"
+    }
+    else{
+      userProfilePicture.src=`./assets/images/${formData.profileImg}`
+    }
   }
 }
+renderProfileData();
 
 const ProductTabs = document.querySelectorAll(".product-tab");
 const productBody = document.querySelector(".products-body");
@@ -357,7 +364,17 @@ const addProductModalContainer=document.querySelector(".add-product-modal-contai
 if(addProductBtn){
   addProductBtn.addEventListener('click',(e)=>{
     e.preventDefault();
+    window.name="";
     addProductModalContainer.classList.add("active");
     body.classList.add("not-active");
   })
 }
+
+const editProfileBtn=document.querySelector(".top-profile-section .user-info .user-details .edit-link");
+const editOverlay=document.querySelector(".edit-modal-overlay")
+
+editProfileBtn.addEventListener('click',(e)=>{
+  e.preventDefault();
+  editOverlay.classList.add("active");
+  body.classList.add("not-active")
+})

@@ -41,7 +41,7 @@ function setUpLikes(){
   likeBtns.forEach(likeBtn => {
     likeBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const token=sessionStorage.getItem("token")
+      const token=localStorage.getItem("token")
       if(token && token.trim() !== "" ){
         const likeBtnImg=likeBtn.querySelector("img");
         if (likeBtnImg.src.includes("liked-heart.png")) {

@@ -112,22 +112,34 @@ function endSwipe(e) {
 }
 
 
-function handleSearch(searchTerm = "", redirectUrl = "./product-list.html", preFilteredProducts = null) {
-  let matchedProducts = [];
-  let brandWord = "";
+// function handleSearch(searchTerm = "", redirectUrl = "./product-list.html", preFilteredProducts = null) {
+//   let matchedProducts = [];
+//   let brandWord = "";
 
-  if (preFilteredProducts) {
-    matchedProducts = preFilteredProducts;
-  } else {
-    if (!searchTerm) return;
-    brandWord = searchTerm.split(" ")[0].toLowerCase();
+//   if (preFilteredProducts) {
+//     matchedProducts = preFilteredProducts;
+//   } else {
+//     if (!searchTerm) return;
+//     brandWord = searchTerm.split(" ")[0].toLowerCase();
 
-    matchedProducts = allProducts.filter(product =>
-      product.brand.toLowerCase().includes(brandWord)
-    );
-  }
+//     matchedProducts = allProducts.filter(product =>
+//       product.brand.toLowerCase().includes(brandWord)
+//     );
+//   }
 
-  window.name= JSON.stringify(matchedProducts);
+//   window.name= JSON.stringify(matchedProducts);
+//   window.location.href = redirectUrl;
+// }
+
+function handleSearch(searchTerm = "", redirectUrl = "./product-list.html") {
+  if (!searchTerm.trim()) return;
+
+  const dataToSend = {
+    type: "search",
+    keyword: searchTerm.trim().toLowerCase()
+  };
+
+  window.name = JSON.stringify(dataToSend);
   window.location.href = redirectUrl;
 }
 
@@ -148,65 +160,97 @@ renderRecentSearches();
 
 
 const searchInput = document.querySelector(".main-container .search-wrapper .input-container input");
+// searchInput.addEventListener("keydown", (e) => {
+//   if (e.key === "Enter") {
+
+//     const value = e.target.value.trim();
+//     if (!value) return;
+//     const token=localStorage.getItem("token");
+//     if(token){
+//       const existingIndex = recentSearches.indexOf(value);
+//       if (existingIndex !== -1) {
+//         recentSearches.splice(existingIndex, 1);
+//       }
+//       recentSearches.unshift(value);
+//       if (recentSearches.length > 10) {
+//         recentSearches.pop();
+//       }
+//       localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+//       renderRecentSearches();
+//       handleSearch(value, "./product-list.html");
+//     }
+//     else{
+//       openLogIn();
+//     }
+//   }
+// });
+
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-
     const value = e.target.value.trim();
     if (!value) return;
-    const token=localStorage.getItem("token");
-    if(token){
-      const existingIndex = recentSearches.indexOf(value);
-      if (existingIndex !== -1) {
-        recentSearches.splice(existingIndex, 1);
-      }
-      recentSearches.unshift(value);
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      openLogIn();
+      return;
+    }
+    recentSearches.unshift(value);
       if (recentSearches.length > 10) {
         recentSearches.pop();
       }
-      localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+    localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
       renderRecentSearches();
-      handleSearch(value, "./product-list.html");
-    }
-    else{
-      openLogIn();
-    }
+    handleSearch(value, "./product-list.html");
   }
 });
 
 
-
 const recentSearchTags = document.querySelectorAll(".recent-search-list .recent-search-tag");
+
+// recentSearchTags.forEach(tag => {
+//   tag.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     const token=localStorage.getItem("token");
+//     if(token){
+//       handleSearch(tag.textContent.trim(), tag.getAttribute("href"));
+//     }
+//     else{
+//       openLogIn();
+//     }
+//   });
+// });
+
 
 recentSearchTags.forEach(tag => {
   tag.addEventListener("click", (e) => {
     e.preventDefault();
-    const token=localStorage.getItem("token");
-    if(token){
-      handleSearch(tag.textContent.trim(), tag.getAttribute("href"));
-    }
-    else{
+    const token = localStorage.getItem("token");
+
+    if (!token) {
       openLogIn();
+      return;
     }
+
+    handleSearch(tag.textContent.trim(), tag.getAttribute("href"));
   });
 });
 
 
-
 const brandBoxes= document.querySelectorAll(".popular-brands .popular-shoe-container .brand-box")
 
-brandBoxes.forEach(box=>{
-  box.addEventListener('click',()=>{
-    const token=localStorage.getItem("token");
-    if(token){
-      const shoeContainer =box.parentElement;
-      const name= shoeContainer.querySelector(".brand-name").textContent
-      handleSearch(name.toLowerCase().trim(), "./product-list.html");
-    }
-    else{
+brandBoxes.forEach(box => {
+  box.addEventListener('click', () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
       openLogIn();
+      return;
     }
-  })
-})
+    const shoeContainer =box.parentElement;
+    const brandName= shoeContainer.querySelector(".brand-name").textContent
+    handleSearch(brandName, "./product-list.html");
+  });
+});
 
 const budgetBtns = document.querySelectorAll(".shop-under-budget .shop-button-container .budget-btn");
 
@@ -223,7 +267,7 @@ budgetBtns.forEach(btn => {
           min = low;
           max = high;
       } else {
-        console.log(value)
+     
           min = Number(value)+1;
           const highestPrice = Math.max(...allProducts.map(p => Number(p.price)));
           max = highestPrice; 

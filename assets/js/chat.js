@@ -129,16 +129,22 @@ const chatActive=document.querySelector(".chat-inner-container .chat-active");
 
 const chatActiveClose=chatHeader.querySelector(".chat-active-close-btn");
 
-if(window.innerWidth<=768){
-  convoItems.forEach(convoItem=>{
-    convoItem.addEventListener('click',()=>{
-      chatConversations.classList.add("not-active");
-      chatActive.classList.add("active")
+function setActiveChat(){
+  if(window.innerWidth<=768){
+ 
+    convoItems.forEach(convoItem=>{
+      convoItem.addEventListener('click',()=>{
+        chatConversations.classList.add("not-active");
+        chatActive.classList.add("active")
+      })
     })
-  })
-  chatActiveClose.addEventListener("click",()=>{
-    chatActive.classList.remove("active")
-    chatConversations.classList.remove("not-active");
-      
-  })
+    chatActiveClose.addEventListener("click",()=>{
+      chatActive.classList.remove("active")
+      chatConversations.classList.remove("not-active");
+        
+    })
+  }
+
 }
+setActiveChat()
+window.addEventListener('resize', setActiveChat)

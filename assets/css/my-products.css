@@ -974,7 +974,7 @@ footer{
 
 @media screen and (max-width:1024px){
   .top-profile-section{
-    padding: clamp(20px, 3.23vw, 3.23vw)  3vw clamp(20px, 3.23vw, 3.23vw);
+    padding: clamp(20px, 3.23vw, 3.23vw)  2.5vw clamp(20px, 3.23vw, 3.23vw);
   }
   .user-profile{
     width: 28px;
@@ -992,13 +992,13 @@ footer{
   }
   .top-profile-section {
     margin: 26px auto 10px;
-    max-width: 90%;
+    max-width: 95%;
   }
   .profile-img-wrapper .profile-picture{
     width: 70px;
   }
   .user-details h2 {
-    font-size: 14px;
+    font-size: 16px;
   }
   .camera-icon {
     bottom: 5px;
@@ -1009,13 +1009,13 @@ footer{
   }
   .edit-link{
     margin-left: 3px;
-    font-size: 0.6rem;
+    font-size: 0.63rem;
   }
   .edit-link img{
-    width: 7px;
+    width: 9px;
   }
   .member-since{
-    font-size: 11px;
+    font-size: 12px;
   }
   .user-location{
     margin: 5px 0;
@@ -1027,18 +1027,18 @@ footer{
     width: 10px;
   }
   .user-stats {
-    gap: 4.1667vw;
+    gap: 3.1667vw;
   }
   
   .stat-text{
-    font-size: 0.594rem;
+    font-size: 0.69rem;
   }
   .count{
     font-size: 1.45rem ;
   }
   .products-wrapper{
     padding-top: 11px;
-    max-width:90%;
+    max-width:93%;
   }
   .product-main-tabs {
     padding: 0 2.8646vw 1.4vw;
@@ -1152,7 +1152,7 @@ footer{
 
   .user-details h2{
     text-wrap: nowrap;
-    font-size: 14px;
+    font-size: 16px;
   }
   .main-container{
     padding: 15px 0 50px;
@@ -1164,7 +1164,7 @@ footer{
     max-width: 92%;
   }
   .user-info{
-    width: 340px;
+    width: 370px;
   }
   .profile-img-wrapper .profile-picture{
     width: 70px;
@@ -1174,16 +1174,13 @@ footer{
     right: 1px;
   }
 
-  .user-location img{
-    width: 8px;
-  }
   .user-stats {
     gap: 30px;
     flex-wrap: wrap;
     min-width: fit-content;
   }
   .stat-text{
-    font-size: 11px;
+    font-size: 12px;
   }
   .edit-link{
     font-size: 11px;
@@ -1315,6 +1312,9 @@ footer{
   .location-list img{
     width: 11px;
   }
+  .user-info {
+    width: 320px;
+  }
   .user-profile{
     width: 25px;
     height: 25px;
@@ -1332,6 +1332,9 @@ footer{
     grid-template-columns: repeat(2, 1fr);
     min-width: 70%;
     /* justify-items: center; */
+  }
+  .products-wrapper{
+    max-width:90%;
   }
   .product-main-tabs {
     padding: 0 5px 10px;
@@ -1390,9 +1393,6 @@ footer{
   .stat-box img {
     margin-left: 0px;
 }
-  .stat-text{
-    font-size: 11px;
-  }
   .product-main-tabs{
     gap: 17px;
   }
@@ -1434,6 +1434,13 @@ footer{
 }
 
 @media  screen and (max-width:390px) {
+  .user-details h2 {
+    text-wrap: nowrap;
+    font-size: 14px;
+  }
+  .member-since{
+    font-size: 11px;
+  }
   .product-sub-tabs-wrapper{
     flex-direction: column;
     align-items: flex-start;
@@ -1449,6 +1456,7 @@ footer{
     padding: 15px 10px;
     max-width: 90%;
   }
+    
   .user-info{
     width: fit-content;
   }
@@ -1464,7 +1472,7 @@ footer{
     gap: 12px;
   }
   .stat-box img {
-    width: 28px;
+    width: 29px;
   }
   .count{
     font-size: 14px;

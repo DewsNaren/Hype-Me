@@ -253,6 +253,10 @@ async function handleSignUp(form) {
 const API_LOGIN='http://taskapi.devdews.com/api/signin'
 
 async function handleLogin(form) {
+  let profiles;
+  document.querySelectorAll(".profile-container").forEach(container => {
+  profiles = container.querySelectorAll(".user-profile");
+  })
   const email = form.querySelector(".email").value.trim();
   const password = form.querySelector(".password").value.trim();
 
@@ -279,7 +283,7 @@ async function handleLogin(form) {
     
       result.innerHTML=data.message;
       enableLogout();
-      changeProfile();
+      changeProfile(profiles);
       setTimeout(()=>{
         result.classList.remove("active");
         closeOverlay();
@@ -295,7 +299,7 @@ async function handleLogin(form) {
  
 }
 
-const logoutBtn=document.querySelector(".profile-container .profile-menu .logout-btn");
+const logoutBtn=document.querySelectorAll(".profile-container .profile-menu .logout-btn");
 const logoutOverlay = document.querySelector(".logout-overlay");
 const logoutModal=logoutOverlay.querySelector(".logout-modal")
 const logoutModalCloseBtn=logoutModal.querySelector(".modal-close-btn")
@@ -303,23 +307,60 @@ const logoutContentContainer=logoutModal.querySelector(".logout-modal .logout-co
 const cancelLogoutBtn = logoutModal.querySelector(".cancel-btn");
 const confirmLogoutBtn = logoutModal.querySelector(".confirm-btn");
 const logoutSuccessContainer=logoutModal.querySelector(".logout-modal .logout-success-container")
-const signUpBtn=document.querySelector(".profile-container .profile-menu .signup-btn");
+const signUpBtn=document.querySelectorAll(".profile-container .profile-menu .signup-btn");
 const loginBtn=document.querySelector(".profile-container .profile-menu .login-btn");
 
-function enableLogout(){
-  const userToken=localStorage.getItem("token");
-  if(userToken){
-    logoutBtn.classList.add("active");
-    signUpBtn.classList.add("not-active");
-    loginBtn.classList.add("not-active");
-  }else{
-    logoutBtn.classList.remove("active");
-    signUpBtn.classList.remove("not-active");
-    loginBtn.classList.remove("not-active");
-  }
-  logoutBtn.addEventListener("click", () => {
-    logoutOverlay.classList.add("active");
-    body.classList.add("not-active");
+// function enableLogout(){
+//   const userToken=localStorage.getItem("token");
+//   if(userToken){
+//     logoutBtn.classList.add("active");
+//     signUpBtn.classList.add("not-active");
+//     loginBtn.classList.add("not-active");
+//   }else{
+//     logoutBtn.classList.remove("active");
+//     signUpBtn.classList.remove("not-active");
+//     loginBtn.classList.remove("not-active");
+//   }
+//   logoutBtn.addEventListener("click", () => {
+//     logoutOverlay.classList.add("active");
+//     body.classList.add("not-active");
+//   });
+// }
+const chatModalWrapper=document.querySelector(".chat-modal-wrapper");
+function enableLogout() {
+  const signUpBtns  = document.querySelectorAll(".profile-container .profile-menu .signup-btn");
+const loginBtns   = document.querySelectorAll(".profile-container .profile-menu .login-btn");
+const logoutBtns  = document.querySelectorAll(".profile-container .profile-menu .logout-btn");
+const chatModalWrapper=document.querySelector(".chat-modal-wrapper");
+console.log(logoutBtns)  
+const userToken = localStorage.getItem("token");
+
+
+  logoutBtns.forEach(btn => {
+    if (userToken) btn.classList.add("active");
+    else btn.classList.remove("active");
+  });
+
+  signUpBtns.forEach(btn => {
+    if (userToken) btn.classList.add("not-active");
+    else btn.classList.remove("not-active");
+  });
+
+  loginBtns.forEach(btn => {
+    if (userToken) btn.classList.add("not-active");
+    else btn.classList.remove("not-active");
+  });
+
+
+  logoutBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if(chatModalWrapper){
+        chatModalWrapper.classList.remove("active")
+      }
+      logoutOverlay.classList.add("active");
+      body.classList.add("not-active");
+    });
   });
 }
 enableLogout();
@@ -358,6 +399,12 @@ confirmLogoutBtn.addEventListener('click',handleLogout)
 const API_LOGOUT="http://taskapi.devdews.com/api/logout";
 
 async function handleLogout() {
+  
+  let profiles;
+  document.querySelectorAll(".profile-container").forEach(container => {
+  const profileMenu = container.querySelector('.profile-menu');
+  profiles = container.querySelectorAll(".user-profile");
+  })
   const token = localStorage.getItem("token");
   if (token) {
     try {
@@ -377,7 +424,7 @@ async function handleLogout() {
           logoutSuccessContainer.innerHTML+=`<h3>Logout Successful!</h3>
         <p class="logout-msg success">You have been securely logged out. Thank you for using our service. See you soon!</p>`
         enableLogout();
-        changeProfile();
+        changeProfile(profiles);
         
       } else {
         logoutContentContainer.classList.add("not-active");
@@ -527,6 +574,9 @@ function openLogIn(){
 loginBtns.forEach(loginBtn=>{
   loginBtn.addEventListener("click",(e)=>{
     e.preventDefault();
+    if(chatModalWrapper){
+      chatModalWrapper.classList.remove("active")
+    }
     openLogIn()
   })
 })
@@ -551,6 +601,9 @@ function openSignUp(){
 signUpBtns.forEach(signUpBtn=>{
   signUpBtn.addEventListener("click",(e)=>{
     e.preventDefault();
+    if(chatModalWrapper){
+      chatModalWrapper.classList.remove("active")
+    }
     requestAnimationFrame(() => {
       openSignUp();
     });
