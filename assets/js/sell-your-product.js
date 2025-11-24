@@ -9,32 +9,43 @@ const addProductModalContainer=document.querySelector(".add-product-modal-contai
 
 addProductBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  let existingProducts = [];
+  const token=localStorage.getItem("token");
+  if (token && token.trim() !== "") {
+    let existingProducts = [];
 
-  try {
-    existingProducts = JSON.parse(window.name || "[]");
-  } catch {
-    existingProducts = [];
+    try {
+      existingProducts = JSON.parse(window.name || "[]");
+    } catch {
+      existingProducts = [];
+    }
+
+    if (Array.isArray(allProducts) && allProducts.length > 0) {
+
+      allProducts = allProducts.filter(product => !product.editing);
+
+      const allIds = new Set(existingProducts.map(p => p.id));
+      allProducts.forEach(product => {
+        if (!allIds.has(product.id)) {
+          existingProducts.push(product);
+        }
+      });
+    }
+
+    existingProducts = existingProducts.filter(p => !p.editing);
+
+    window.name = JSON.stringify(existingProducts);
+      e.preventDefault();
+      addProductModalContainer.classList.add("active");
+      body.classList.add("not-active");
   }
-
-  if (Array.isArray(allProducts) && allProducts.length > 0) {
-
-    allProducts = allProducts.filter(product => !product.editing);
-
-    const allIds = new Set(existingProducts.map(p => p.id));
-    allProducts.forEach(product => {
-      if (!allIds.has(product.id)) {
-        existingProducts.push(product);
-      }
-    });
-  }
-
-  existingProducts = existingProducts.filter(p => !p.editing);
-
-  window.name = JSON.stringify(existingProducts);
-    e.preventDefault();
-    addProductModalContainer.classList.add("active");
+  else{
     body.classList.add("not-active");
+    overlayContainer.classList.add("active");
+    requestAnimationFrame(() => {
+      loginContainer.classList.add("active");
+    });
+    setupForms();
+  }
 });
 
 function showDelToast(bgc, message) {
@@ -175,7 +186,8 @@ function renderTable() {
 // DELETE from API
 async function deleteApiProduct(productId) {
   const userToken = localStorage.getItem("token");
-  try {
+  if (userToken && userToken.trim() !== "") {
+    try {
     const res = await fetch(`http://taskapi.devdews.com/api/products/delete/${productId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -197,6 +209,16 @@ async function deleteApiProduct(productId) {
   } catch (error) {
     console.error("Error:", error);
   }
+  }
+  else{
+    body.classList.add("not-active");
+    overlayContainer.classList.add("active");
+    requestAnimationFrame(() => {
+      loginContainer.classList.add("active");
+    });
+    setupForms();
+  }
+  
 }
 
 
