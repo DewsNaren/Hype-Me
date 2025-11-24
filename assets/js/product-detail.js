@@ -1,8 +1,8 @@
 function renderProductDetail(product){
 
   const selected= document.querySelector(".main-container .product-detail-container .product-container-wrapper .breadcrumb .selected");
-
-  selected.textContent=product.model
+  if(product){
+    selected.textContent=product.model
 
   const mainImgContainer = document.querySelector('.main-image-container');
   mainImgContainer.innerHTML="";
@@ -33,6 +33,8 @@ function renderProductDetail(product){
     <tr class="hidden"><td class="spec-name">Release Year</td><td class="spec-value">${product.release_year || 'N/A'}</td></tr>
     <tr class="hidden"><td class="spec-name">Wide/Normal</td><td class="spec-value">${product.wide_normal || '--'}</td></tr>
   `;
+  }
+  
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -99,8 +101,12 @@ selectedProductLikeBtn.addEventListener('click',()=>{
     }
   }
   else{ 
-    window.name="openForm"
-    window.location.href="./index.html"
+    body.classList.add("not-active");
+        overlayContainer.classList.add("active");
+        requestAnimationFrame(() => {
+          loginContainer.classList.add("active");
+        });
+        setupForms();
   }
 })
 

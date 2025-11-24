@@ -22,7 +22,7 @@ const saveProductsBtn=document.querySelector(".add-product-outer-container .save
 const submitProductsBtn=document.querySelector(".add-product-outer-container .save-btn-container .submit-btn");
   const updateLocalProductBtn=document.querySelector(".add-product-outer-container .save-btn-container .save-local-btn");
 const productModalContent = document.querySelector('.product-modal-content');
-const body=document.body;
+// const body=document.body;
 
 let savedProducts = [];
 try {

@@ -599,18 +599,29 @@ document.addEventListener("change", (e) => {
 
 function setUpLikes(){
   const productLikeBtns=document.querySelectorAll(".product .product-item span")
+  const token=localStorage.getItem("token");
   productLikeBtns.forEach(productLikeBtn=>{
     productLikeBtn.addEventListener('click',(e)=>{
       e.preventDefault();
-      const likeImg=productLikeBtn.querySelector("img");
+      if (token && token.trim() !== "") {
+        const likeImg=productLikeBtn.querySelector("img");
     
-      if(likeImg.alt=="likes"){
-        likeImg.src="./assets/images/heart.png"
-        likeImg.alt="heart"
+        if(likeImg.alt=="likes"){
+          likeImg.src="./assets/images/heart.png"
+          likeImg.alt="heart"
+        }
+        else{
+          likeImg.src="./assets/images/likes.png"
+          likeImg.alt="likes"
+        }
       }
       else{
-        likeImg.src="./assets/images/likes.png"
-        likeImg.alt="likes"
+        body.classList.add("not-active");
+        overlayContainer.classList.add("active");
+        requestAnimationFrame(() => {
+          loginContainer.classList.add("active");
+        });
+        setupForms();
       }
     })
   })
@@ -620,14 +631,25 @@ function redirectToProductDetail(){
   const productItems=document.querySelectorAll('.product-item > img');
   productItems.forEach(productItem=>{
     productItem.addEventListener('click', (e) => {
-    const product = e.target.closest('div[data-product-id]');
-    const id=product.getAttribute("data-product-id");
-    if (!id) return; 
+      const token=localStorage.getItem("token")
+      if (token && token.trim() !== "") {
+        const product = e.target.closest('div[data-product-id]');
+        const id=product.getAttribute("data-product-id");
+        if (!id) return; 
 
-      window.name=id;
-      setTimeout(() => {
-        window.location.href = "./product-detail.html";
-      }, 0);
+          window.name=id;
+          setTimeout(() => {
+            window.location.href = "./product-detail.html";
+          }, 0);
+      }
+      else{
+        body.classList.add("not-active");
+        overlayContainer.classList.add("active");
+        requestAnimationFrame(() => {
+          loginContainer.classList.add("active");
+        });
+        setupForms();
+      }
     })
   });
 }
