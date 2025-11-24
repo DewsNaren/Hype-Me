@@ -129,6 +129,9 @@
 .convo-item.active{
     background-color: rgb(229, 229, 229);
 }
+.convo-item.not-active{
+    display: none;
+}
 .convo-info{
     display: flex;
     align-items: center;
@@ -186,6 +189,16 @@
     text-align: center;
 }
 
+.convo-list .not-found{
+    display: none;
+}
+
+.convo-list .not-found.active{
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+    font-size: clamp(14px, 0.937vw, 18px);
+}
 .chat-active {
   width: 100%;
   min-width: 240px;
@@ -470,7 +483,7 @@
         width: 4px;
     }
     .right-actions span img{
-        width: 17px;
+        width: 18px;
     }
     .chat-messages {
         padding: 25px 40px;
@@ -639,7 +652,7 @@
         height: 50px;
     }
     .chat-header .contact-name {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     .chat-active  .product-info {
         font-size:0.9rem;
@@ -757,8 +770,8 @@
         width: 13px;
     }
     .convo-filter-btn{
-        font-size: 0.7rem;
-        padding: 5px 10px;
+        font-size: 12px;
+        padding: 6px 11px;
     }
     .unread-btn{
         margin-left: 8px;
@@ -800,7 +813,7 @@
         line-height: 12px;
     }
     .time{
-        font-size: 0.65rem;
+        font-size: 10px;
     }
     .convo-time span img{
         width: 3px;
@@ -821,10 +834,10 @@
         height: 40px;
     }
     .chat-header .contact-name {
-        font-size: 15px;
+        font-size: 17px;
     }
     .chat-active  .product-info {
-        font-size:12px;
+        font-size:13px;
         gap: 15px;
     }
     .right-actions {
@@ -836,9 +849,9 @@
     .right-actions span{
         line-height: 12px; 
     }
-    .right-actions span img{
-        width: 12px;
-    }
+    /* .right-actions span img{
+        width: 16px;
+    } */
     .chat-messages {
         padding: 12px 25px;
     }
@@ -848,7 +861,7 @@
     }
     .message {
         padding: 4px 10px;
-        font-size: 0.7rem;
+        font-size: 12px;
         border-radius: 5px;
         gap: 10px; 
     }
@@ -878,21 +891,18 @@
     }
     .message-composer { 
         gap: 10px;
-        padding: 5px 20px;
+        padding: 7px 20px;
    
     }
     .message-composer .attach{
-        width: 15px;
+        width: 18px;
     }
     .message-composer input {
-        font-size: 0.75rem;
+        font-size: 13px;
         padding: 6px 5px;
     }
-    .message-composer .voice-btn{
-        width: 10px;
-    }
     .message-composer .send-btn{
-        width: 15px;
+        width: 17px;
     }
 }
 
@@ -914,12 +924,24 @@
     .chat-conversations.not-active{
         display: none;
     }
+    .product-preview, .message-preview span {
+        font-size: 12px;
+    }
+    .time {
+        font-size: 11px;
+    }
     .chat-active {
         display: none;
         border-left: none;
     }
     .chat-active.active{
         display: flex;
+    }
+    .message-composer .voice-btn {
+        width: 11px;
+    }
+     .message-composer .send-btn{
+        width: 16px;
     }
 }
 
@@ -999,19 +1021,22 @@
         height: 45px;
     }
     .chat-active  .product-info{
-        font-size: 0.65rem;
-        flex-wrap: wrap;
+        font-size: 12px;
+        text-wrap: nowrap;
         gap: 5px;
     }
     .chat-messages {
         padding: 10px 18px;
     }
     .right-actions{
-        alignment-baseline: 10px;
+        gap: 18px;
     }
     .message {
         width: fit-content;
         max-width: 80%;
+    }
+    .convo-list .not-found.active {
+        font-size: 12px;
     }
 }
 

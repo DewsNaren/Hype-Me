@@ -8,19 +8,18 @@ const totalViewsCount=document.querySelector(".user-stats .stat-box .views-count
 const followersCount=document.querySelector(".user-stats .stat-box .followers-count");
 const followingCount=document.querySelector(".user-stats .stat-box .following-count");
 const userProfilePicture=document.querySelector(".user-info .profile-img-wrapper img")
-console.log(totalViewsCount)
-// console.log(zipcode)
+
+
 
 function getProfileData(){
   let formData;
-  if(window.edit){
-    formData = JSON.parse(window.edit)
-    console.log(formData)
-    console.log(window.edit)
+  const savedData=sessionStorage.getItem("profileData")
+  if(savedData){
+    formData = JSON.parse(savedData)
   }
   renderProfileData(formData)
 }
-
+getProfileData();
 function renderProfileData(formData){
   if(formData){
     topProfileusername.innerHTML=`${formData.firstName} ${formData.lastName}`;

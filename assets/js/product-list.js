@@ -60,7 +60,7 @@ filterOverlay.addEventListener("click",()=>{
 function getProducts() {
   let receivedObj;
   try {
-    receivedObj = JSON.parse(window.name || "{}");
+    receivedObj = JSON.parse(sessionStorage.getItem("productSearchResults") || "{}");
   } catch {
     receivedObj = {};
   }
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   getProducts(); 
   let budgetObj = {}; 
   try { 
-    budgetObj = JSON.parse(window.name || "{}"); 
+    budgetObj = JSON.parse(sessionStorage.getItem("productSearchResults") || "{}"); 
   } catch { 
     budgetObj = {}; 
   } 

@@ -1,13 +1,15 @@
 const addProductContainerCloseBtn=document.querySelector(".modal-main-container .close-btn-container .close-btn");
 
 addProductContainerCloseBtn.addEventListener('click',()=>{
-    const cleanedProducts = savedProducts.map(prod => {
-    if (prod.editing) {
-      delete prod.editing;   
-    }
-    return prod;
-  });
-  window.name = JSON.stringify(cleanedProducts);
+  if(savedProducts.length > 0){
+      const cleanedProducts = savedProducts.map(prod => {
+      if (prod.editing) {
+        delete prod.editing;   
+      }
+      return prod;
+    });
+    window.name = JSON.stringify(cleanedProducts);
+  }
   isLocalProduct=false;
   window.location.href="./sell-your-products.html"
 })

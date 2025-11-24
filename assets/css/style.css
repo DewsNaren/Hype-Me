@@ -617,7 +617,7 @@
         transform: translate(-50%,-38px);
     }
     .search-wrapper input{
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         padding: 0px 28px 9px;
     }
     .input-container img{
@@ -633,12 +633,12 @@
         font-size: 0.9rem;
     }
     .recent-search-list{
-        gap: 12px;
+        gap: 15px;
         padding: 20px 0px;
     }
     .recent-search-tag{
-        padding: 9px 15px;
-        font-size: 0.7rem;
+        padding: 9px 18px;
+        font-size: 13px;
     }
     .popular-brands{
         padding: 3.27% 0 35px;
@@ -675,10 +675,12 @@
     .shop-button-container{
         padding-top: 40px;
         gap: 4.39%;
+        max-width: 90%;
+        flex-wrap: wrap;
     }
     .budget-btn{
-        width: 122px;
-        height: 122px;
+        width: 130px;
+        height: 130px;
         background-image: repeating-linear-gradient(
         135deg,                        
         rgba(255, 255, 255, 0.15),  
@@ -748,7 +750,7 @@
         transform: translate(-50%,-25px);
     }
     .search-wrapper input{
-        font-size: 0.7rem;
+        /* font-size: 0.7rem; */
         padding: 0px 26px 8px;
     }
     .input-container img{
@@ -790,8 +792,8 @@
         flex-wrap: wrap;
     }
     .budget-btn{
-        width: 110px;
-        height: 110px;
+        width: 120px;
+        height: 120px;
     }
     .between{
         font-size: 0.85rem;
@@ -845,7 +847,7 @@
         transform: translate(-50%,-20px);
     }
     .search-wrapper input{
-        font-size: 0.65rem;
+        /* font-size: 0.65rem; */
         padding: 0px 24px 7px;
     }
     .input-container img{
@@ -853,6 +855,10 @@
     }
     .recent-searches{
         padding-top: 45px;
+    }
+    .recent-search-tag{
+        padding: 9px 18px;
+        font-size: 12px;
     }
     .section-title{
         font-size: 1.25rem;
@@ -911,16 +917,16 @@
         right: 3%;
     }
     .search-wrapper{
-        width: 70%;
+        width: 75%;
         padding:6px 14px 12px;
         transform: translate(-50%,-15px);
     }
     .search-wrapper input{
-        font-size: 0.65rem;
+        /* font-size: 0.65rem; */
         padding: 0px 24px 7px;
     }
     .input-container img{
-        width: 10px;
+        width: 11px;
     }
     .section-title{
         font-size: 1.1rem;
@@ -930,15 +936,15 @@
     }
     .popular-shoes-container{
         padding: 40px 0 4.1%;
-        gap: 40px;
+        gap: clamp(60px, 15vw, 15vw);
         max-width: 100%;
         width: 90%;
     }
 
-    .brand-box{
+    /* .brand-box{
         width: 95px;
         height: 95px;
-    }
+    } */
     .popular-shoe-container{
         gap: 20px;
     }
@@ -947,7 +953,9 @@
     }
     .shop-button-container {
         padding-top: 40px;
-        gap: 30px;
+        gap: 40px;
+        /* justify-content: flex-start; */
+        /* align-items: flex-end; */
     }
      .ad-container{
         transform: translateY(-40px);
@@ -961,4 +969,24 @@
         font-size: 13.7px;
         line-height: 22px;
     }
+    .popular-shoes-container{
+        width: 100%;
+    }
+    .recent-search-list {
+        max-width: 92%;
+        gap: 17px;
+    }
+    .recent-search-tag{
+        padding: 9px 20px;
+        font-size: 0.72rem;
+    }
+    .shop-button-container {
+        padding-top: 40px;
+        gap: clamp(48px, 13vw, 105px);
+        align-items: flex-end;
+    }
+    .search-wrapper {
+        width: 92%;
+    }
+    
 }

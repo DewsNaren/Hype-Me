@@ -139,7 +139,7 @@ function handleSearch(searchTerm = "", redirectUrl = "./product-list.html") {
     keyword: searchTerm.trim().toLowerCase()
   };
 
-  window.name = JSON.stringify(dataToSend);
+  sessionStorage.setItem("productSearchResults",JSON.stringify(dataToSend));
   window.location.href = redirectUrl;
 }
 
@@ -273,7 +273,7 @@ budgetBtns.forEach(btn => {
           max = highestPrice; 
       }
 
-      window.name = JSON.stringify({ min, max });
+      sessionStorage.setItem("productSearchResults", JSON.stringify({ min, max }));
       window.location.href = "./product-list.html";
     }
     else{

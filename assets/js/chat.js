@@ -8,14 +8,14 @@ convofilterBtns.forEach(convofilterBtn => {
   convofilterBtn.addEventListener('click', () => {
     if (convofilterBtn.classList.contains("all-btn")) {
       convoItems.forEach(convoItem => {
-        convoItem.style.display = "block";
+        convoItem.classList.remove("not-active")
         
       });
     }
     else{
       convoItems.forEach(convoItem => {
-        if(! convoItem.classList.contains("unread")){
-          convoItem.style.display="none"
+        if(convoItem.classList.contains("active")){
+          convoItem.classList.add("not-active")
         }
       });
     }
@@ -28,22 +28,28 @@ const activeName=chatHeader.querySelector(".contact-info .contact-details .conta
 const activeProductPreview=chatHeader.querySelector(".contact-info .contact-details .contact-user-info .active-product-preview")
 const activePrice=chatHeader.querySelector(".contact-info .contact-details .contact-user-info .product-price")
 
+const messages = [
+  {
+    chat: [
+      { from: "in", text: "Is it available", time: "09.40" },
+      { from: "out",  text: "Yes, it's available", time: "09.58" }
+    ]
+  },
+  {
+    chat: [
+      { from: "in", text: "Is it available", time: "09.40" },
+      { from: "out",  text: "Yes, it's available", time: "09.58" }
+    ]
+  },
+  {
+    chat: [
+      { from: "in", text: "Is it available", time: "09.40" },
+      { from: "out",  text: "Yes, it's available", time: "09.58" }
+    ]
+  }
+];
 
-convoItems.forEach(convoItem=>{
-  convoItem.addEventListener('click',()=>{
-    const selectedProductImg=convoItem.querySelector(".convo-info .convo-detail .convo-product-picture");
-    activeImg.src=selectedProductImg.src;
-    activeImg.alt=selectedProductImg.alt;
 
-    const contactName=convoItem.querySelector(".convo-info .convo-detail .convo-user-info .contact-name");
-    activeName.textContent=contactName.textContent;
-    
-    const productPreview=convoItem.querySelector(".convo-info .convo-detail .convo-detail .convo-user-info .product-preview");
-    activeProductPreview.textContent=productPreview.textContent
-
-    activePrice.textContent=`$${Math.floor(Math.random()*90+999)-90}`
-  })
-})
 
 inputField.addEventListener('input', () => {
   if(inputField.value.trim()== ''){
@@ -73,7 +79,7 @@ const randomMessages = [
   "Thanks for reaching out!"
 ];
 const messagesContainer=document.querySelector(".chat-active .chat-messages");
-function sendMessage(){
+function sendMessage(sellerMsg){
   const date= new Date();
   let  hr= date.getHours();
   hr=hr % 12 || 12
@@ -81,6 +87,15 @@ function sendMessage(){
   let min=date.getMinutes();
   min=paddZero(min)
   const outGoing=inputField.value;
+  let clicked;
+  let messageLength;
+  convoItems.forEach((convoItem,index)=>{
+    if(convoItem.classList.contains("active")){
+      clicked=index;
+    }
+  })
+
+  console.log(messageLength)
   let userMsgHtml=`<div class="message outgoing">
     <p class="message-text"> ${outGoing}</p>
     <div class="message-meta">
@@ -89,31 +104,133 @@ function sendMessage(){
     </div>
   </div>`;
   messagesContainer.innerHTML+=userMsgHtml;
-  const sellerMsg=randomMessages[Math.floor(Math.random()*randomMessages.length)]
   let sellerMsgHtml=`<div class="message incoming">
     <p class="message-text"> ${sellerMsg}</p>
     <div class="message-meta">
       <span class="message-time">${hr}:${min}</span>
     </div>
   </div>`;
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
   setTimeout(()=>{
     messagesContainer.innerHTML+=sellerMsgHtml;
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   },2000)
-  
+  convoItems.forEach((convoItem,index)=>{
+    if(convoItem.classList.contains("active")){
+      console.log(convoItem)
+      const messagePreview=convoItem.querySelector(".convo-info .convo-detail .convo-detail .convo-user-info .message-preview");
+      console.log(messagePreview)
+      messagePreview.innerHTML=` <img src="./assets/images/double-tick.svg" alt="tick" class="double-tick-icon">
+          <span>${outGoing}</span>`;
+      setTimeout(()=>{
+        messagePreview.innerHTML=`
+          <span>${sellerMsg}</span>`;
+      },2000)
+    }
+  })
   inputField.value="";
+}
+
+
+function storeMessage(messageVal){
+  const date= new Date();
+  let  hr= date.getHours();
+  hr=hr % 12 || 12
+  hr=paddZero(hr)
+  let min=date.getMinutes();
+  min=paddZero(min)
+  let clicked;
+  convoItems.forEach((convoItem,index)=>{
+    if(convoItem.classList.contains("active")){
+      clicked=index;
+    }
+  })
+
+  messages[clicked].chat.push({
+  from: "out",
+  text: messageVal,
+  time: `${hr}.${min}`
+});
+  const sellerMsg=randomMessages[Math.floor(Math.random()*randomMessages.length)]
+
+  sendMessage(sellerMsg)
+  messages[clicked].chat.push({
+  from: "in",
+  text: sellerMsg,
+  time: `${hr}.${min}`
+});
+
+console.log(messages)
+
 }
 
 inputField.addEventListener('keydown',(e)=>{
   if(e.key=="Enter"){
     if(e.target.value.trim() !==""){
-      sendMessage()
+      storeMessage(inputField.value)
+      // sendMessage()
+
     }
   }
 })
 
 function paddZero(num){
   return num >9?num:"0"+num
+}
+
+
+convoItems.forEach((convoItem,index)=>{
+  convoItem.addEventListener('click',()=>{
+    const selectedProductImg=convoItem.querySelector(".convo-info .convo-detail .convo-product-picture");
+    activeImg.src=selectedProductImg.src;
+    activeImg.alt=selectedProductImg.alt;
+
+    const contactName=convoItem.querySelector(".convo-info .convo-detail .convo-user-info .contact-name");
+    activeName.textContent=contactName.textContent;
+    
+    const productPreview=convoItem.querySelector(".convo-info .convo-detail .convo-detail .convo-user-info .product-preview");
+    activeProductPreview.textContent=productPreview.textContent
+
+    activePrice.textContent=`$${Math.floor(Math.random()*90+999)-90}`;
+    convoItems.forEach(convoItem=>{
+      convoItem.classList.remove("active");
+    })
+    convoItem.classList.add("active");
+    let clickedIndex;
+    if(convoItem.classList.contains("active")){
+      clickedIndex=index;
+    }
+    renderMessage(clickedIndex)
+  })
+})
+
+function renderMessage(clickedIndex) {
+  const chat = messages[clickedIndex].chat;
+
+  messagesContainer.innerHTML = "";
+
+  chat.forEach(msg => {
+    if (msg.from === "out") {
+      messagesContainer.innerHTML += `
+        <div class="message outgoing">
+          <p class="message-text">${msg.text}</p>
+          <div class="message-meta">
+            <span class="message-time">${msg.time}</span>
+            <img src="./assets/images/double-tick.svg" class="tick-icon">
+          </div>
+        </div>`;
+    } else {
+      messagesContainer.innerHTML += `
+        <div class="message incoming">
+          <p class="message-text">${msg.text}</p>
+          <div class="message-meta">
+            <span class="message-time">${msg.time}</span>
+          </div>
+        </div>`;
+    }
+  });
+
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
 
@@ -148,3 +265,55 @@ function setActiveChat(){
 }
 setActiveChat()
 window.addEventListener('resize', setActiveChat)
+
+const chatSearch=chatConversations.querySelector(".conversation-header .chat-search-wrapper input");
+
+const contactNames=chatConversations.querySelectorAll(".convo-item .convo-detail .contact-name")
+let contactNameArr=[];
+contactNames.forEach(contactName=>{
+  contactNameArr.push(contactName.textContent)
+})
+
+chatSearch.addEventListener("input",(e)=>{
+  const searchVal = e.target.value.toLowerCase().trim();
+  if(! searchVal){
+    convoItems.forEach(convoItem => {
+      convoItem.classList.remove("not-active")
+    })
+    const notFound= document.querySelector(".convo-list .not-found");
+    notFound.classList.remove("active");
+    return;
+  }
+  let results = contactNameArr.filter(name =>
+    name.toLowerCase().includes(searchVal)
+  );
+ renderContacts(results);
+ 
+})
+
+function renderContacts(contactList){
+  const notFound= document.querySelector(".convo-list .not-found");
+  let lowerList = contactList.map(item => item.toLowerCase());
+  if(lowerList.length >0) {
+    notFound.classList.remove("active");
+    convoItems.forEach(convoItem => {
+      const name = convoItem.querySelector(".contact-name").textContent.trim().toLowerCase();
+        console.log(name)
+      let isMatch = lowerList.some(item => name.includes(item));
+        console.log(isMatch)
+      if (isMatch) {
+        convoItem.classList.remove("not-active");
+      } else {
+          convoItem.classList.add("not-active");
+      }
+
+    });
+  }
+  else{
+    convoItems.forEach(convoItem=>{
+      convoItem.classList.add("not-active");
+    })
+    
+    notFound.classList.add("active");
+  }
+}

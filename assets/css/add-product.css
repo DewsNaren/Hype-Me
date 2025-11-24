@@ -434,7 +434,14 @@ header{
     gap: 20px;
     flex: 1;
     justify-content: center;
-    margin: 0 auto 0.9vw;
+    margin: 0 auto clamp(28px, 3vw, 3vw);
+}
+.form-modal-container .form-modal-content form .video-input-group .input-wrapper{
+    position: relative;
+}
+.form-modal-container .form-modal-content form .video-input-group .input-wrapper .error{
+    /* top: 10px; */
+    position: absolute;
 }
 .form-modal-container .form-modal-content form .input-group label,
 .review-modal-container .review-modal-content form .input-group label{
@@ -492,11 +499,15 @@ header{
     padding: 10px;
     outline: none;
 }
+.form-modal-container .form-modal-content form .input-group .input-wrapper{
+    position: relative;
+}
 .form-modal-container .form-modal-content form .input-group .input-wrapper .error{
     color:rgb(242, 18, 18);
-    font-size:clamp(10px, 0.83vw,0.95rem);
+    font-size:clamp(11px, 0.83vw,0.95rem);
     visibility:hidden;
     margin-top: 4px;
+    position: absolute;
 }
 .form-modal-container .form-modal-content form .input-group .input-wrapper.error input,
 .form-modal-container .form-modal-content form .input-group .input-wrapper.error .custom-select{
@@ -583,7 +594,7 @@ header{
 }
 .form-modal-container .form-modal-content .additional-form .input-group,
 .review-modal-container .review-modal-content form .input-group{
-    margin-bottom:clamp(25px, 2.08332vw, 2.08332vw);
+    margin-bottom:clamp(25px, 3vw, 3vw);
 }
 /*Product Modal*/
 .product-modal-container{
@@ -1582,12 +1593,9 @@ header{
     .form-modal-container .form-modal-content form::-webkit-scrollbar-track {
         margin-bottom: 18px;
     }
-    .form-modal-container .form-modal-content form .input-group{
-        margin: 0 auto 12px;
-    }
-    .form-modal-container .form-modal-content form .input-group .input-wrapper .error {
+    /* .form-modal-container .form-modal-content form .input-group .input-wrapper .error {
         font-size: 0.6rem;
-    }
+    } */
     .form-modal-container .form-modal-content form .input-group label,
     .review-modal-container .review-modal-content form .input-group label{
         font-size: 13px;

@@ -159,8 +159,8 @@
 .overlay .form-container .result{
     text-align: center;
     color: white;
-    font-size: clamp(10px,1.1vw,1.2rem);
-    margin-top: 1vw;
+    font-size: clamp(12px,1.1vw,1.2rem);
+    margin-top: clamp(12px, 1vw, 1vw);
     display: none;
 }
 .overlay .form-container .result.active{
@@ -271,7 +271,8 @@
   margin-top: 40px;
   font-size: 0.8rem;
   padding-left: 10px;
-  color: #aaa
+  color: #aaa;
+  align-items: center;
 }
 .signup-form .checkbox-group input[type="checkbox"] {
   appearance: none;
@@ -579,6 +580,11 @@
 }
 
 @media screen and (max-width:1400px){
+    .overlay .form-container{
+        width: 60%;
+    }.overlay .form{
+        width: 75%;
+    }
     .overlay-close-btn img{
         width: 28px;
     }
@@ -617,9 +623,9 @@
         font-size: 1.05rem; 
     }
     
-    .form ,.error-zipcode{
+    .form .input-group .error, .error-zipcode {
         margin-left: 8px;
-        font-size: 0.65rem;
+        font-size: 0.75rem;
     }
     .login-container h2, .overlay .signup-container h2{
         margin-top: 15px;
@@ -639,7 +645,7 @@
         margin-top: 3px;
     }
     .login-form .forgot-link a {
-        font-size: 0.55rem;
+        font-size: 12px;
     }
     .form-container .login-form .submit-btn {
         margin-top: 9px;
@@ -647,11 +653,10 @@
 
     .login-text,.signup-text,.reset-text {
         margin-top: 17px;
-        font-size: 0.74rem;
+        font-size: 0.9rem;
     }
 
     
-
     .signup-form .input-group {
         margin-bottom: 13px;
     }
@@ -666,13 +671,13 @@
         width: 20px;
     }
     .signup-form .password-group .password-hint {
-        font-size: 0.5rem;
+        font-size: 0.75rem;
         margin-top: 5px;
         padding-left: 8px;
     }
     .signup-form .checkbox-group {
         margin-top: 28px;
-        font-size: 0.55rem;
+        font-size: 0.75rem;
     }
     .signup-form .checkbox-group input[type="checkbox"] {
         border-radius: 2px;
@@ -702,7 +707,7 @@
     }
     .reset-form .input-group .error{
         margin-left: 8px;
-        font-size: 0.65rem;
+        font-size: 0.75rem;
     }
     .logout-modal {
         border-radius: 6px;
@@ -710,6 +715,9 @@
 }
 
 @media screen and (max-width:1024px){
+    .overlay .form{
+        width: 80%;
+    }
     .overlay-close-btn img{
         width: 21px;
     }
@@ -718,7 +726,7 @@
     }
     
     .overlay .form-container .social-text {
-        font-size: 0.62rem;
+        font-size: 13px;
         margin: 0px 0 22px;
     }
     .overlay .form-container .social-icons {
@@ -726,28 +734,28 @@
         margin-bottom: 12px;
     }
     .overlay .form-container .social-icons .social-btn img{
-        width: 19px;
+        width: 23px;
     }
     .overlay .form-container .or-text {
-        font-size: 0.62rem;
+        font-size: 13px;
         margin-bottom: 3px;
     }
    
     .overlay .form-container .form input{
         padding: 10px 5px;
-        font-size: 0.72rem;
+        font-size: 0.79rem;
     }
     .overlay .form input::placeholder {
-        font-size: 0.72rem;
+        font-size: 0.79rem;
     }
     
     .form-container .form .submit-btn {
         padding: 12px 10px;
-        font-size: 0.78rem; 
+        font-size: 0.89rem; 
     }
     .form .input-group .error,.error-zipcode{
         margin-left: 5px;
-        font-size: 0.55rem;
+        font-size: 0.72rem;
     }
     .lgoin-container h2, .overlay .signup-container h2 {
         margin-top: 10px;
@@ -763,18 +771,18 @@
         margin-top: 6px;
         font-size: 0.4rem;
     }
-    .login-form .forgot-link a{
+    /* .login-form .forgot-link a{
         font-size: 0.45rem;
-    }
+    } */
     .form-container .login-form .submit-btn{
         margin-top: 3px;
     }
     .login-text,.signup-text,.reset-text {
         margin-top: 12px;
-        font-size: 0.6rem;
+        /* font-size: 0.6rem; */
     }
     .overlay .form-container{
-        width: 60%;
+        width: 70%;
     }
 
     
@@ -786,22 +794,22 @@
         margin-bottom: 5px;
     }
     .signup-form .password-group .eye-icon {
-        width: 15px;
+        width: 17px;
     }
     .signup-form .password-group .password-hint {
-        font-size: 0.5rem;
+        font-size: 0.7rem;
         margin-top: 3px;
         padding-left: 5px;
     }
     .signup-form  .checkbox-group {
         gap: 4px;
         margin-top: 20px;
-        font-size: 0.5rem;
+        font-size: 0.72rem;
         padding-left: 5px;
     }
     .signup-form .checkbox-group input[type="checkbox"] {
-        width: 11px;
-        height: 11px;
+        width: 13px;
+        height: 13px;
     }
     .form-container .signup-form .submit-btn{
         margin-top: 27px;
@@ -812,8 +820,9 @@
         padding-top: 15%;
     }
     .reset-container .reset-desc{
-        font-size: 0.64rem;
+        font-size: 12px;
         margin:0 auto 35px;
+        width: 80%;
     }
 
     .reset-container .reset-form input{
@@ -825,12 +834,12 @@
     }
     .form-container .reset-form .submit-btn {
         padding: 12px 10px;
-        font-size: 0.8rem;
+        font-size: 0.89rem;
         margin-top: 6px;
     }
     .reset-form .input-group .error{
         margin-left: 5px;
-        font-size: 0.55rem;
+        font-size: 0.72rem;
     }
     .logout-modal {
         min-height:clamp(140px,12.6vw, 175px);
@@ -847,37 +856,38 @@
         width: 20px;
     }
     .overlay .form-container{
-        width: 70%;
+        width: 80%;
     }
     .overlay .form-container h2 {
         font-size: 1.3rem;
     }
     .overlay .form-container .social-icons .social-btn img{
-        width: 20px;
+        width: 22px;
     }
     .overlay .form-container .or-text {
-        font-size: 0.65rem;
+        font-size: 12px;
+    }
+    .overlay .form-container .social-text {
+        font-size: 12px;
     }
     .overlay .form{
-        width: 85%;
+        width: 90%;
     }
    
     .overlay .form-container .form  input,.form-container .signup-form input[name="zipcode"],.overlay .form-container .form input::placeholder{
         font-size: 0.75rem;
     }
-    .form .input-group .error,.error-zipcode{
-        font-size: 0.6rem;
-    }
-
+ 
     .signup-form .input-group {
-        margin-bottom:12px;
+        margin-bottom:15px;
     }
     .signup-form  .checkbox-group {
         margin-top: 17px;
+        gap: 5px;
     }
     .signup-form .checkbox-group input[type="checkbox"] {
-        width: 10px;
-        height: 10px;
+        width: 13px;
+        height: 13px;
     }
     .signup-form .checkbox-group input[type="checkbox"]:checked::after {
         content: "✓";
@@ -889,6 +899,9 @@
     }
     .form-container .signup-form .submit-btn {
         margin-top: 25px;
+    }
+    .reset-container .reset-desc{
+        width: 85%;
     }
 }
 
@@ -902,16 +915,17 @@
 }
 
 @media screen and (max-width:480px){
-    
-    
+    .overlay .form{
+        width: 95%;
+    }
     .overlay-close-btn img{
-        width: 15px;
+        width: 17px;
     }
     .overlay .form-container h2{
-        font-size: 1.3rem;
+        font-size: 1.35rem;
     }
     .overlay .form-container .social-text {
-        font-size: 0.62rem;
+        font-size: 12px;
         margin: 0px 0 15px;
     }
     .overlay .form-container .social-icons {
@@ -919,14 +933,14 @@
         margin-bottom: 10px;
     }
     .overlay .form-container .social-icons .social-btn img{
-        width: 20px;
+        width: 23px;
     }
     .overlay .form{
         width: 90%;
     }
     .overlay .form-container .or-text {
-        font-size: 0.65rem;
-        margin-bottom: 3px;
+        font-size: 11px;
+        margin-bottom: 5px;
     }
     .overlay .form-container .form input,.form-container .signup-form input[name="zipcode"]{
         padding: 10px 5px 8px;
@@ -937,12 +951,12 @@
     }
     .form-container .form .submit-btn{
         padding: 10px 8px;
-        font-size: 0.75rem;
+        font-size: 13px;
     }
 
     .login-text,.signup-text,.reset-text {
-        margin-top: 8px;
-        font-size: 0.6rem;
+        margin-top: 10px;
+        font-size: 12px;
     }
     .overlay .login-container{
         padding: 20px 20px 40px;
@@ -960,31 +974,47 @@
     .signup-form .input-group.email-group{
         margin-bottom: 5px;
     }
-    
+    .login-form .forgot-link a {
+        font-size: 10px;
+    }
     .signup-form .password-group .eye-icon {
         width: 15px;
     }
     .signup-form .password-group .password-hint {
-        font-size: 0.45rem;
+        font-size: 11px;
         margin-top: 3px;
         padding-left: 5px;
     }
     .signup-form .checkbox-group {
         margin-top: 12px;
-        font-size: 0.45rem;
+        font-size: 11px;
+        
+        /* flex-wrap: wrap; */
     }
-    
+    /* .signup-form .checkbox-group {
+        align-items: flex-start;
+    } */
+    .signup-form .checkbox-group input[type="checkbox"] {
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+    }
     .form-container .signup-form .submit-btn {
         margin-top: 15px;
     }
     .overlay .reset-container{
         padding: 20px 20px 40px;
     }
+    .reset-container .reset-desc {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width:390px){
-   
     .overlay .form{
         width: 100%;
+    }
+    .signup-form .checkbox-group {
+        display: block;
     }
 }

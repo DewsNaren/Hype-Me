@@ -157,7 +157,7 @@
     text-decoration: underline;
 }
 /* Selected Product Details */
-.product-info{
+.product-body-container .product-info{
     color: rgb(100, 97, 97);
     min-width: 530px;
 }
@@ -393,7 +393,7 @@ footer{
     .read-more{
         font-size: 1rem;
     }
-    .product-info{
+    .product-body-container .product-info{
         min-width:442px ;
     }
     .selected-product-detail{
@@ -533,7 +533,7 @@ footer{
     .read-more{
         font-size: 0.9rem;
     }
-    .product-info{
+    .product-body-container .product-info{
         min-width:377px;
     }
     .selected-product-detail{
@@ -610,6 +610,9 @@ footer{
 }
 
 @media screen and (max-width:1024px){
+    .product-detail-container {
+        max-width: 95%;
+    }
     .location-list img{
         width: 12px;
     }
@@ -633,9 +636,7 @@ footer{
         font-size: 0.4rem;
         color: #aaa;
     }
-    .breadcrumb a,.selected{
-        font-size: 11px;
-    }
+   
     .product-header-container{
         padding: 18px 0 16px;
         padding-right: 10px;
@@ -654,10 +655,10 @@ footer{
         gap: 15px;
     }
     .icon-group .like-btn img{
-        width: 14px;
+        width: 17px;
     }
     .icon-group .share-btn img{
-        width: 13px;
+        width: 15px;
     }
     .main-image-container{
         height: 320px;
@@ -675,25 +676,25 @@ footer{
     }
     
     .product-description h3{
-        font-size: 14px;
+        font-size: 16px;
         margin-bottom: 15px;
     }
     .product-description p{
-        font-size: 11px;
+        font-size: 12px;
         margin-bottom: 10px;
     }
     .read-more{
-        font-size: 0.7rem;
+        font-size: 12px;
     }
-    .product-info{
-        min-width:282px;
-        max-width: 282px;
+    .product-body-container .product-info{
+        min-width:295px;
+        max-width: 295px;
     }
     .selected-product-detail{
         padding: 10px 11px;
     }
     .price-container{
-        font-size: 0.8rem;
+        font-size: 13px;
         margin-left: 0;
     }
     .price{
@@ -708,10 +709,10 @@ footer{
         width: 43px;
     }
     .seller-name{
-        font-size: 0.9rem;
+        font-size: 17px;
     }
     .member-since{
-        font-size: 0.65rem;
+        font-size: 12px;
     }
     .selected-product-review{
         margin-top: 0px;
@@ -730,7 +731,7 @@ footer{
         margin:17px 0 10px;
     }
     .product-specs h3{
-        font-size: 13px;
+        font-size: 16px;
         margin-bottom: 10px;
         padding-left: 3px;
         padding-bottom: 8px;
@@ -738,11 +739,9 @@ footer{
     .details-table{
         margin-bottom: 15px;
     }
-    .details-table .spec-name,.spec-value{
-        padding: 1px 0;
-    }
+    
     .details-table .spec-name,.details-table .spec-value {
-        font-size: 0.78rem;
+        font-size: 13px;
     }
     .details-table .spec-value {
         padding-left: 28px;
@@ -751,7 +750,7 @@ footer{
         margin-top: 0px;
     }
     .view-more a{
-        font-size: 0.7rem;
+        font-size: 12px;
     }
     .section-title{
         font-size: 1.55rem;
@@ -773,9 +772,9 @@ footer{
         max-width: 96%;
     }
     
-    .breadcrumb a,.selected{
+    /* .breadcrumb a,.selected{
         font-size: 10px;
-    }
+    } */
     .product-header-container{
         padding: 18px 0;
     }
@@ -786,21 +785,21 @@ footer{
     .product-description-container{
         width: 100%;
     }
-    .product-description p{
+    /* .product-description p{
         font-size: 0.7rem;
-    }
+    } */
     .details-table .spec-name,.spec-value{
         padding: 3px 0;
     }
     .section-title{
         font-size: 1.4rem;
     }
-    .product-info{
+    .product-body-container .product-info{
         min-width: 100%;
         max-width: 100%;
     }
     .selected-product-review p{
-        font-size: 0.6rem;
+        font-size: 11px;
     }
     .buy-btn{
         padding: 14px 1.2rem;
@@ -831,6 +830,12 @@ footer{
     .selected-shoe-name{
         font-size: 1rem;
     }
+    .icon-group .like-btn img{
+        width: 16px;
+    }
+    .icon-group .share-btn img{
+        width: 14px;
+    }
     .thumbnail-row{
         margin-top: 10px;
         gap: 10px;
@@ -843,14 +848,14 @@ footer{
         margin-top: 35px;
     }
     .product-description h3{
-        font-size: 0.75rem;
+        font-size: 15px;
     }
-    .product-description p{
-        font-size: 0.61rem;
-    }
-    .read-more{
-        font-size: 0.65rem;
-    }
+    /* .product-description p{
+        font-size: 0.;
+    } */
+    /* .read-more{
+        font-size: 11px;
+    } */
     .price{
         font-size: 1.4rem;
     }
@@ -861,10 +866,10 @@ footer{
         padding: 8px;
     }
     .selected-product-review p{
-        font-size: 0.55rem;
+        font-size: 10px;
     }
     .details-table .spec-name,.details-table .spec-value {
-        font-size: 0.75rem;
+        font-size: 13px;
     }
     .details-table .spec-value {
         padding-left: 30px;

@@ -119,7 +119,7 @@ async function populateProductsTable() {
 
 
   filteredProducts = [
-  ...allProducts.filter(p => !p.isPosted),  
+  ...allProducts.filter(p => !p.isPosted).reverse(),  
   ...allProducts.filter(p => p.isPosted).reverse()
 ];
   renderTable();
@@ -384,18 +384,22 @@ productSearchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     const searchTerm = e.target.value.trim(); 
     if (!searchTerm) return; 
+    const dataToSend = {
+    type: "search",
+    keyword: searchTerm.trim().toLowerCase()
+  };
 
-    let matchedProducts = [];
-    const brandWord = searchTerm.split(" ")[0].toLowerCase();
+    // let matchedProducts = [];
+    // const brandWord = searchTerm.split(" ")[0].toLowerCase();
   
-    matchedProducts = allProducts
-      .filter(product => product.brand.toLowerCase().includes(brandWord))
-      .map((product, index) => ({
-        ...product,
-        image: `${images[index % images.length]}`
-      }));
+    // matchedProducts = allProducts
+    //   .filter(product => product.brand.toLowerCase().includes(brandWord))
+    //   .map((product, index) => ({
+    //     ...product,
+    //     image: `${images[index % images.length]}`
+    //   }));
 
-    window.name = JSON.stringify(matchedProducts);
+     sessionStorage.setItem("productSearchResults",JSON.stringify(dataToSend));
     window.location.href = "./product-list.html";
   }
 });

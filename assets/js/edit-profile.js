@@ -40,7 +40,7 @@ form.addEventListener('submit', (e) => {
      e.preventDefault();
     if (validateInputs()) {
         getData();
-        // form.reset();
+        
     }
     e.preventDefault();
 });
@@ -114,8 +114,9 @@ function getData(){
         profileImg:profileImgSrc,
     };
     console.log(formData)
-    window.edit=JSON.stringify(formData)
+    // window.edit=JSON.stringify(formData)
     // window.location.href = './my-products.html';
+    sessionStorage.setItem("profileData", JSON.stringify(formData));
         editOverlay.classList.remove("active");
     body.classList.remove("not-active");
     getProfileData();
@@ -125,6 +126,7 @@ function getData(){
 const editModalcloseBtn=document.querySelector(".edit-modal-main-container .close-btn-container .close-btn");
 
 editModalcloseBtn.addEventListener('click',()=>{
+    form.reset();
     editOverlay.classList.remove("active");
     body.classList.remove("not-active");
 })
