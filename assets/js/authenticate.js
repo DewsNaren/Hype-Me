@@ -15,7 +15,14 @@ function closeOverlay(){
     overlayContainer.classList.remove("active");
     body.classList.remove("not-active");
   },600)
-  
+  const forms=overlayContainer.querySelectorAll(".form");
+  forms.forEach(form=>{
+    form.reset();
+    const errors=form.querySelectorAll('.error');
+    errors.forEach(error=>{
+      error.classList.remove("active");
+    })
+  })
 }
 overlayCloseBtns.forEach(overlayCloseBtn=>{
     overlayCloseBtn.addEventListener('click',()=>{
@@ -64,7 +71,7 @@ function validateEmailVal(email,emailVal){
     return false;
   }
   else if (!validateEmail(emailVal)) {
-    setError(email, 'Invalid email');
+    setError(email, 'Please enter the valid email');
     return  false;
   } else {
     setSuccess(email);
@@ -229,14 +236,13 @@ async function handleSignUp(form) {
         errorElement.classList.remove("active");
       });
 
-      const result = form.parentElement.querySelector(".result");
-      result.classList.add("active");
-      result.innerHTML = typeof data === "string" ? data : "User Created Successfully";
-
+      if(typeof data==="string"){
+        showAuthenticateToast(".signup-toast-container","#19762d", "User Created Successfully!")
+      }
+      
       setTimeout(() => {
-        result.classList.remove("active");
         closeOverlay();
-      }, 4000);
+      }, 3000);
     } else {
       if (typeof data === "object") {
         showErrors(data.messages, form);
@@ -245,10 +251,31 @@ async function handleSignUp(form) {
       }
     }
   } catch (err) {
+    showAuthenticateToast(".signup-toast-container","#ea2f4b", "Failed to signup. Please try again.")
     console.error("Signup error:", err);
   }
 }
 
+function showAuthenticateToast(toastSelector, bgColor, message) {
+  const formContainer = document.querySelector(".form-container.active");
+  formContainer.scrollTo({ top: 0, behavior: "smooth" });
+  const toast = document.querySelector(toastSelector);
+  toast.querySelector("p").innerHTML = message;
+  toast.style.backgroundColor = bgColor;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
+
+const authenticateCloseBtns=document.querySelectorAll(".authenticate-toast-container img");
+authenticateCloseBtns.forEach(closeBtn=>{ 
+  closeBtn.addEventListener("click",()=>{   
+    const toast=closeBtn.parentElement.parentElement;
+    toast.classList.remove("show");
+  })
+})
 
 const API_LOGIN='http://taskapi.devdews.com/api/signin'
 
@@ -280,20 +307,27 @@ async function handleLogin(form) {
       })
       const result=form.parentElement.querySelector(".result");
       result.classList.add("active");
-    
-      result.innerHTML=data.message;
+      sessionStorage.setItem("userInitial",email.charAt(0));
+      showAuthenticateToast(".login-toast-container","#19762d", data.message);
+      const defaultProfile=document.querySelector("header .nav .profile-container .default");
+      const loginProfile=document.querySelector("header .nav .profile-container .login-profile");
+      if(defaultProfile && loginProfile){
+        defaultProfile.classList.add("not-active");
+        loginProfile.classList.remove("not-active");
+        loginProfile.textContent=`${sessionStorage.getItem("userInitial").toUpperCase()}`;
+      }
       enableLogout();
       changeProfile(profiles);
       setTimeout(()=>{
         result.classList.remove("active");
         closeOverlay();
-        
-      },4000)
-
+      },3000)
+  
     } else {
       showErrors(data.messages,form);
     }
   } catch (err) {
+    showAuthenticateToast(".login-toast-container","#ea2f4b", "Failed to login. Please try again.")
     console.error("Login error:", err);
   }
  
@@ -332,7 +366,7 @@ function enableLogout() {
 const loginBtns   = document.querySelectorAll(".profile-container .profile-menu .login-btn");
 const logoutBtns  = document.querySelectorAll(".profile-container .profile-menu .logout-btn");
 const chatModalWrapper=document.querySelector(".chat-modal-wrapper");
-console.log(logoutBtns)  
+ 
 const userToken = localStorage.getItem("token");
 
 
@@ -362,6 +396,10 @@ const userToken = localStorage.getItem("token");
       body.classList.add("not-active");
     });
   });
+
+  if(!userToken){
+    sessionStorage.removeItem("userInitial");
+  }
 }
 enableLogout();
 
@@ -379,6 +417,7 @@ function closeLogout(){
 }
 logoutModalCloseBtn.addEventListener("click", () => {
   closeLogout();
+  window.location.href="./index.html"
 });
 cancelLogoutBtn.addEventListener("click", () => {
   closeLogout();
@@ -425,7 +464,7 @@ async function handleLogout() {
         <p class="logout-msg success">You have been securely logged out. Thank you for using our service. See you soon!</p>`
         enableLogout();
         changeProfile(profiles);
-        
+        sessionStorage.removeItem("userInitial");
       } else {
         logoutContentContainer.classList.add("not-active");
         logoutSuccessContainer.innerHTML = `
@@ -457,19 +496,22 @@ async function handleLogout() {
       logoutContentContainer.classList.remove("not-active");
       window.location.href="./index.html"
       localStorage.setItem("recentSearches", JSON.stringify(defaultSearches));
-    },4000)
+    },3000)
     
 }
 
 
 function handleReset(form){
-  const resetSuccessMessage = document.querySelector(".reset-container .reset-success-message");
+  // const resetSuccessMessage = document.querySelector(".reset-container .reset-success-message");
   form.reset()
-  resetSuccessMessage.classList.add("active");
+  const resetError=form.querySelector('.error');
+  resetError.classList.remove("active");
+  showAuthenticateToast(".reset-toast-container","#19762d", "Password reset link has been sent to your email successfully!")
+  // resetSuccessMessage.classList.add("active");
   setTimeout(()=>{
-    resetSuccessMessage.classList.remove("active");
+    // resetSuccessMessage.classList.remove("active");
     closeOverlay();
-  },6000)
+  },3000)
 }
 function showErrors(messages,form) {
   Object.entries(messages || {}).forEach(([field, message]) => {
@@ -532,6 +574,10 @@ function setupForms() {
           isValid = validateLoginForm(form);
         } else if (container.classList.contains('reset-container')) {
           isValid = validateResetForm(form);
+          if(isValid){
+            const resetError=form.querySelector('.error');
+            resetError.classList.remove("active");
+          }
         }
 
         if (isValid) {
@@ -607,7 +653,6 @@ signUpBtns.forEach(signUpBtn=>{
     requestAnimationFrame(() => {
       openSignUp();
     });
-    
   })
 })
 

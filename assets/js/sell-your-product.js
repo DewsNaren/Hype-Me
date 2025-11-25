@@ -3,8 +3,13 @@ const dropdown = document.getElementById('statusDropdown');
 const toggle = document.querySelector('.dropdown-toggle');
 const dropdownList = document.querySelector('.dropdown-list');
 const delToastContainer = document.querySelector(".del-toast-container");
+const delToastBtn=delToastContainer.querySelector(".del-toast-container img");
 const addProductModalContainer=document.querySelector(".add-product-modal-container");
 
+
+delToastBtn.addEventListener("click",()=>{
+  delToastContainer.classList.remove("show");
+});
 
 
 addProductBtn.addEventListener('click', (e) => {
@@ -246,7 +251,21 @@ function removeFromAllProducts(productId) {
 
 function attachRowListeners() {
   document.querySelectorAll(".edit-btn").forEach((btn, index) => {
-    btn.onclick = () => handleEdit(filteredProducts[index]);
+    btn.onclick = () => {
+      const token=localStorage.getItem("token");
+      if(token && token.trim() !== "" ){
+        handleEdit(filteredProducts[index])
+      }
+      else{
+        body.classList.add("not-active");
+        overlayContainer.classList.add("active");
+        requestAnimationFrame(() => {
+          loginContainer.classList.add("active");
+        });
+        setupForms();
+      }
+
+    };
   });
 
   document.querySelectorAll(".delete-btn").forEach((btn, index) => {
@@ -404,13 +423,26 @@ const images = ["shoe-1.jpg", "shoe-2.jpg", "shoe-3.jpg", "shoe-4.jpg","s1.jpg",
 
 productSearchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    const searchTerm = e.target.value.trim(); 
-    if (!searchTerm) return; 
-    const dataToSend = {
-    type: "search",
-    keyword: searchTerm.trim().toLowerCase()
-  };
-
+    const token=localStorage.getItem("token")
+    if(token && token.trim() !== "" ){
+      const searchTerm = e.target.value.trim(); 
+      if (!searchTerm) return; 
+      const dataToSend = {
+        type: "search",
+        keyword: searchTerm.trim().toLowerCase()
+      };
+      sessionStorage.setItem("productSearchResults",JSON.stringify(dataToSend));
+      window.location.href = "./product-list.html";
+    }
+    else{
+      body.classList.add("not-active");
+      overlayContainer.classList.add("active");
+      requestAnimationFrame(() => {
+        loginContainer.classList.add("active");
+      });
+      setupForms();
+    }
+    
     // let matchedProducts = [];
     // const brandWord = searchTerm.split(" ")[0].toLowerCase();
   
@@ -421,8 +453,7 @@ productSearchInput.addEventListener("keydown", (e) => {
     //     image: `${images[index % images.length]}`
     //   }));
 
-     sessionStorage.setItem("productSearchResults",JSON.stringify(dataToSend));
-    window.location.href = "./product-list.html";
+    
   }
 });
 

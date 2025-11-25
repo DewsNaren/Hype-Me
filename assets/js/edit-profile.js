@@ -28,10 +28,11 @@ actionBtn.addEventListener('click', () => {
             profileImgSrc=file.name;
             delProfileInput.value = 'false';
             profileImage.src=`./assets/images/${profileImgSrc}`
+             actionBtn.classList.remove('add-image-btn');
+            actionBtn.classList.add('delete-image-btn');
+            actionBtn.textContent = 'Delete Image';
         })
-        
     }
-
 })
 
 
@@ -45,6 +46,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 });
 function validateInputs(){
+    const actionBtn = fromContainer.querySelector('.profile-image-preview  .action-btn');
     const profileUsernameVal = profileUsername.value.trim()
     const firstNameVal = firstName.value.trim();
     const lastNameVal = lastName.value.trim();
@@ -53,39 +55,49 @@ function validateInputs(){
 
     if(profileUsernameVal ===''){
         success=false;
-        setError(profileUsername,'Username is required')
+        setInvalid(profileUsername,'Username is required')
     }
     else{
-        setSuccess(profileUsername)
+        setValid(profileUsername)
+    }
+
+    if(actionBtn.classList.contains('add-image-btn')){
+        success=false;
+        setInvalid(actionBtn.parentElement,'Please provide a profile image')
+        console.log(actionBtn.parentElement)
+    }
+    else{
+        setValid(actionBtn)
+        success=true;
     }
     if(firstNameVal ===''){
         success=false;
-        setError(firstName,'First name is required')
+        setInvalid(firstName,'First name is required')
     }
     else{
-        setSuccess(firstName)
+        setValid(firstName)
     }
     
    if (lastNameVal === '') {
         success = false;
-        setError(lastName, 'Last name is required');
+        setInvalid(lastName, 'Last name is required');
     } else {
-        setSuccess(lastName);
+        setValid(lastName);
     }
      if (zipCodeVal === '') {
         success = false;
-        setError(zipCode, 'Zip code is required');
+        setInvalid(zipCode, 'Zip code is required');
     } else if (!/^\d{5,6}$/.test(zipCodeVal)) {
         success = false;
         setError(zipCode, 'Enter a valid zip code');
     } else {
-        setSuccess(zipCode);
+        setValid(zipCode);
     }
     return success;
 
 }
 
-function setError(element,message){
+function setInvalid(element,message){
     const inputWrapper = element.parentElement;
     const errorElement = inputWrapper.querySelector('.error')
 
@@ -93,12 +105,18 @@ function setError(element,message){
     inputWrapper.classList.add('error')
 }
 
-function setSuccess(element){
+function setValid(element){
     const inputWrapper = element.parentElement;
     const errorElement = inputWrapper.querySelector('.error')
 
     errorElement.innerText = 'no error';
     inputWrapper.classList.remove('error')
+
+    if(element===actionBtn){
+        const imagePreview=element.parentElement;
+        const imageGroup=imagePreview.parentElement;
+        imageGroup.classList.remove('error')
+    }
 }
 
 function getData(){
@@ -110,14 +128,15 @@ function getData(){
         country: country.value.trim().toLowerCase(),
         city: city.value.trim().toLowerCase(),
         zipCode: zipCode.value.trim().toLowerCase(),
-        delProfile:delProfileInput.value,
+        // delProfile:delProfileInput.value,
         profileImg:profileImgSrc,
     };
     console.log(formData)
-    // window.edit=JSON.stringify(formData)
+    window.edit=JSON.stringify(formData)
     // window.location.href = './my-products.html';
-    sessionStorage.setItem("profileData", JSON.stringify(formData));
-        editOverlay.classList.remove("active");
+    const body=document.body;
+    // sessionStorage.setItem("profileData", JSON.stringify(formData));
+    editOverlay.classList.remove("active");
     body.classList.remove("not-active");
     getProfileData();
 }
@@ -126,6 +145,7 @@ function getData(){
 const editModalcloseBtn=document.querySelector(".edit-modal-main-container .close-btn-container .close-btn");
 
 editModalcloseBtn.addEventListener('click',()=>{
+    const body=document.body;
     form.reset();
     editOverlay.classList.remove("active");
     body.classList.remove("not-active");

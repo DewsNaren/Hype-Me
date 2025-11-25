@@ -1,4 +1,4 @@
-const profileList=document.querySelector(".header .nav .profile-list");
+const profileList=document.querySelector(".header .nav .profile-container");
 const locationListZipCode=document.querySelector(".header .nav .location-list span")
 const topProfileusername=document.querySelector(".user-info .user-details h2");
 const userLocation=document.querySelector(".user-info .user-details .user-location");
@@ -7,35 +7,55 @@ const totalLikesCount=document.querySelector(".user-stats .stat-box .likes-count
 const totalViewsCount=document.querySelector(".user-stats .stat-box .views-count");
 const followersCount=document.querySelector(".user-stats .stat-box .followers-count");
 const followingCount=document.querySelector(".user-stats .stat-box .following-count");
-const userProfilePicture=document.querySelector(".user-info .profile-img-wrapper img")
+const userProfilePicture=document.querySelector(".user-info .profile-img-wrapper img");
 
 
 
 function getProfileData(){
   let formData;
-  const savedData=sessionStorage.getItem("profileData")
-  if(savedData){
-    formData = JSON.parse(savedData)
+  // const savedData=sessionStorage.getItem("profileData")
+  if(window.edit){
+    formData = JSON.parse(window.edit);
   }
   renderProfileData(formData)
 }
 getProfileData();
+
+
+
+// function changeUserProfilePicture(){
+    // const activeProfile=document.querySelector(".header .nav .profile-container .active-profile");
+  // const token=localStorage.getItem("token");
+//   if(token && token.trim() !== ""){
+//     userProfilePicture.src="./assets/images/default-profile-pic.jpg"
+//   }
+// }
+// changeUserProfilePicture();
 function renderProfileData(formData){
-  if(formData){
+  const token=localStorage.getItem("token");
+  const activeProfile=document.querySelector(".header .nav .profile-container .active-profile");
+  const defaultProfile=document.querySelector(".header .nav .profile-container .default");
+  const loginProfile=document.querySelector(".header .nav .profile-container .user-profile.login-profile");
+  
+  if(token && formData){
     topProfileusername.innerHTML=`${formData.firstName} ${formData.lastName}`;
     zipcode.textContent=`TX ${formData.zipCode}`;
     locationListZipCode.textContent=`TX ${formData.zipCode}`;
     if(formData.delProfile=="true"){
-      let profileHtml=`<span class="user-profile">${formData.firstName[0]}${formData.lastName[0]}</span><button type="button"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button>`;
-      profileList.innerHTML="";
-      profileList.innerHTML=profileHtml;
+      loginProfile.classList.remove("not-active");
       userProfilePicture.src="./assets/images/default-profile-pic.jpg"
+      activeProfile.classList.add("not-active");
     }
-    else{
+    else if(formData.profileImg){
+      console.log(formData.profileImg)
       userProfilePicture.src=`./assets/images/${formData.profileImg}`
+      activeProfile.src=`./assets/images/${formData.profileImg}`
+      loginProfile.classList.add("not-active");
+      activeProfile.classList.remove("not-active");
     }
   }
 }
+
 renderProfileData();
 
 const ProductTabs = document.querySelectorAll(".product-tab");
@@ -363,9 +383,20 @@ const addProductModalContainer=document.querySelector(".add-product-modal-contai
 if(addProductBtn){
   addProductBtn.addEventListener('click',(e)=>{
     e.preventDefault();
-    window.name="";
-    addProductModalContainer.classList.add("active");
-    body.classList.add("not-active");
+    const token=localStorage.getItem("token");
+    if(token &&  token.trim() !== ""){
+      window.name="";
+      addProductModalContainer.classList.add("active");
+      body.classList.add("not-active");
+    }
+    else{
+      body.classList.add("not-active");
+      overlayContainer.classList.add("active");
+      requestAnimationFrame(() => {
+        loginContainer.classList.add("active");
+      });
+      setupForms();
+      }
   })
 }
 
@@ -373,7 +404,20 @@ const editProfileBtn=document.querySelector(".top-profile-section .user-info .us
 const editOverlay=document.querySelector(".edit-modal-overlay")
 
 editProfileBtn.addEventListener('click',(e)=>{
+  const body=document.body;
   e.preventDefault();
-  editOverlay.classList.add("active");
-  body.classList.add("not-active")
+  const token=localStorage.getItem("token");
+  if(token && token.trim() !== ""){
+    editOverlay.classList.add("active");
+    body.classList.add("not-active")
+  }
+  else{
+    body.classList.add("not-active");
+    overlayContainer.classList.add("active");
+    requestAnimationFrame(() => {
+      loginContainer.classList.add("active");
+    });
+    setupForms();
+  }
+  
 })

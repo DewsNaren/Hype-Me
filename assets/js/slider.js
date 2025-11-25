@@ -1,4 +1,5 @@
 function getProduct(mainProduct){
+  
   const mainPrice=mainProduct.price
   const similarProducts = allProducts.filter(product => {
     return product._id !== mainProduct._id && 

@@ -282,7 +282,7 @@
                                     <option value="Used - Fair">Used - Fair</option>
                                     <option value="For Parts">For Parts</option>
                                 </select>
-                                <p class="error">no error</p>
+                                <p class="error">please select the condition</p>
                             </div>     
                         </div>
                         <div class="input-group">
@@ -296,7 +296,7 @@
                                     <option value="Discontinued">Discontinued</option>
 
                                 </select>
-                                <p class="error">no error</p>
+                                <p class="error">please select the status</p>
                             </div>
                         </div>
                         <div class="input-group">
@@ -304,7 +304,7 @@
                             <div class="input-wrapper">                        
                                 <select name="brand" id="input-brand" class="custom-select input-brand">   
                                 </select>
-                                <p class="error">no error</p>
+                                <p class="error">please select the brand</p>
                             </div>
                         </div>
                         <div class="input-group">
@@ -312,14 +312,14 @@
                             <div class="input-wrapper">
                                 <select name="model" id="input-model" class="custom-select input-model">
                                 </select>
-                                <p class="error">no error</p>
+                                <p class="error">please select the model</p>
                             </div>
                         </div>
                         <div class="input-group">
                             <label for="input-price">Price <span class="star">*</span> <span class="info"><img src="./assets/images/info.png" alt="info"></span></label>
                             <div class="input-wrapper">
                                 <input type="number" id="input-price" name="price" class="input-price" placeholder="USD">
-                                <p class="error">no error</p>
+                                <p class="error">please enter the price</p>
                             </div>
                         </div>
                         <div class="input-group">
@@ -333,7 +333,7 @@
                                     <option value="10">10</option>
                                     <option value="11">11</option>
                                 </select>
-                                <p class="error">no error</p>
+                                <p class="error">please select the size</p>
                             </div>
                         </div>
                         <div class="input-group">
@@ -347,7 +347,7 @@
                                     <option value="Blue">Blue</option>
                                     <option value="Green">Green</option>
                                 </select>
-                                <p class="error">no error</p>
+                                <p class="error">please select the color</p>
                             </div>
                         </div>
                         <div class="input-group">
@@ -359,7 +359,7 @@
                                     <option value="Women">Women</option>
                                     <option value="Kids">Kids</option>
                                 </select>
-                                <p class="error">no error</p>
+                                <p class="error">please select the size type</p>
                             </div>
                         </div>
                         <div class="input-group">
@@ -367,7 +367,7 @@
                             <div class="input-wrapper">
                                 <select name="release_year" id="input-release-year" class="custom-select input-release_year">
                                 </select>
-                                <p class="error">no error</p>
+                                <p class="error">please select the release year</p>
                             </div>
                         </div>
                         <input type="text" name="_id" value="" hidden>
@@ -619,6 +619,10 @@
 
             <p class="signup-text">Don't you have an account? <a href="#" class="signup-btn">Sign Up</a></p>
             <p class="result"></p>
+            <div class="authenticate-toast-container login-toast-container">
+                <p>Login SuccessFull!</p>
+                <span><img src="./assets/images/close-toast.png" alt="close"></span>
+            </div>
         </div>
         <div class="form-container signup-container">
             <div class="overlay-close-btn-container">
@@ -666,6 +670,10 @@
 
             <p class="login-text">Already have an account? <a href="#" class="login-btn">Log In</a></p>
             <p class="result"></p>
+            <div class="authenticate-toast-container signup-toast-container">
+                <p>Signup Successful!</p>
+                <span><img src="./assets/images/close-toast.png" alt="close"></span>
+            </div>
         </div>
         <div class="form-container reset-container">
             <div class="overlay-close-btn-container">
@@ -685,6 +693,10 @@
 
             <p class="reset-text">Back to <span><a href="#" class="login-btn">Log In </a> / <a href="#" class="signup-btn">Sign Up</a></span></p>
             <p class="reset-success-message">Password reset link has been sent to your email successfully!.</p>
+            <div class="authenticate-toast-container reset-toast-container">
+                <p>Signup Successful!</p>
+                <span><img src="./assets/images/close-toast.png" alt="close"></span>
+            </div>
         </div>
     </div>
     <div class="logout-overlay">

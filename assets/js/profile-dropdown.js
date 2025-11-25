@@ -7,10 +7,13 @@ function changeProfile(profiles) {
   if (loginToken) {
     profiles.forEach(p => {
       if (p.classList.contains("default")) p.classList.add("not-active");
+      if(p.classList.contains("active-profile")) p.classList.add("not-active");
+      if(p.classList.contains("login-profile")) p.textContent=sessionStorage.getItem("userInitial").toUpperCase();
     });
   } else {
     profiles.forEach(p => {
       if (p.classList.contains("login-profile")) p.classList.add("not-active");
+      if(p.classList.contains("active-profile")) p.classList.add("not-active");
     });
   }
 }

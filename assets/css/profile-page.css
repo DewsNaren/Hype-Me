@@ -100,20 +100,20 @@
     filter: brightness(0) invert(1);
     background-color: transparent;
 }
-.social-icons{
+.profile-card .social-icons{
     padding: 18px 0 7px;
 }
-.social-icons img {
+.profile-card .social-icons img {
   width: 24px;
   height: 24px;
   margin: 0 11px;
   cursor: pointer;
 }
-.social-icons a{
+.profile-card .social-icons a{
     display: inline-block;
     transition: transform 0.3s ease-in;
 }
-.social-icons a:hover {
+.profile-card .social-icons a:hover {
  transform: scale(1.1);
 }
 /*Product lists */
@@ -283,10 +283,10 @@ footer{
         width: 28px;
         height: 28px;
     }
-    .social-icons{
+    .profile-card .social-icons{
         padding: 12px 0 7px;
     }
-    .social-icons img {
+    .profile-card .social-icons img {
         width: 20px;
         height: 20px;
         margin: 0 8px;
@@ -375,10 +375,10 @@ footer{
         width: 24px;
         height: 24px;
     }
-    .social-icons{
+    .profile-card .social-icons{
         padding: 10px 0 5px;
     }
-    .social-icons img {
+    .profile-card .social-icons img {
         width: 18px;
         height: 18px;
         margin: 0 8px;
@@ -465,10 +465,10 @@ footer{
         width: 20px;
         height: 20px;
     }
-    .social-icons{
+    .profile-card .social-icons{
         padding: 8px 0px 0px;
     }
-    .social-icons img {
+    .profile-card .social-icons img {
         width: 16px;
         height: 16px;
         margin: 0 5px;

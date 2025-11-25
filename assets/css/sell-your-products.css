@@ -341,7 +341,9 @@ footer .quick-links {
   top: 35px;
   opacity: 1;
 }
-
+.del-toast-container img{
+  cursor: pointer;
+}
 @media screen and (max-width:1600px){
   .location-list img{
     width: 19px;
@@ -825,7 +827,7 @@ footer .quick-links {
   }
 }
 
-@media screen and (max-width:385px){
+@media screen and (max-width:390px){
   .sell-products,.products-listing {
     max-width: 96%;
   }
@@ -843,11 +845,17 @@ footer .quick-links {
     align-self: center;
     width: 80%;
   }
-  .toast-container {
+  .del-toast-container {
     padding: 8px 10px;
     gap: 30px;
+    width: 92%;
+    text-wrap: wrap;
   }
-  .toast-container img{
-    width: 12px;
+  .del-toast-container  img{
+    width: 14px;
   }
+   .del-toast-container.show{
+    top: 18px;
+  }
+
 }

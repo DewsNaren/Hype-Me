@@ -13,11 +13,21 @@
     height: 50px;
     border-radius: 50%;
     font-weight: 500;
-    background-color: rgb(224, 220, 147);
+    /* background-color: rgb(224, 220, 147); */
     color: rgb(22, 18, 18);
     font-size: 1.4rem;
 }
 
+/* .edit-modal-overlay .user-profile{
+    background-color: ;
+} */
+.user-profile.span{
+    background-color: rgb(224, 220, 147);
+    display: none;
+}
+.user-profile.span.active{
+    display: flex;
+}
 .buy-btn{
     background-color: rgb(76, 21, 187);
     color: rgb(233, 233, 233);
@@ -103,7 +113,7 @@
 .profile-inner-container .form-group{
     display: flex;
     align-items: center;
-    margin-bottom: 0.9vw;
+    margin-bottom: clamp(27px, 3vw, 3vw);
     gap: 2.08332vw;
 }
 .profile-inner-container .form-group label {
@@ -128,7 +138,6 @@
     display: flex;
     align-items: start;
     gap: 2.08332vw;
-    margin-bottom: 2.08332vw;
 }
 .profile-inner-container .profile-image-preview {
     position: relative;
@@ -188,19 +197,34 @@
   transform: translateY(-50%);
   pointer-events: none;  
 }
+.profile-inner-container .input-wrapper{
+    position: relative;
+}
 .profile-inner-container .input-wrapper .error{
     color:rgb(242, 18, 18);
     font-size:clamp(10px, 0.83vw,0.95rem);
     visibility:hidden;
     margin-top: 5px;
+    position: absolute;
 }
 
+.profile-inner-container .image-group .error{
+    color:rgb(242, 18, 18);
+    font-size:clamp(11px, 0.83vw,0.95rem);
+    visibility:hidden;
+    margin-top: 5px;
+    position: absolute;
+}
 .profile-inner-container .input-wrapper.error input{
     border-color:rgb(206, 67, 67);
 }
 
 .profile-inner-container .input-wrapper.error .error{
     visibility: visible;
+}
+.profile-inner-container .image-group.error .error{
+    visibility: visible;
+    text-wrap: nowrap;
 }
 
 
@@ -642,9 +666,6 @@
     .profile-inner-container .form-group input[type="text"],.custom-select select{
         font-size: 12px;
     }
-    .profile-inner-container .image-group{
-        margin-bottom: 25px;
-    }
     .profile-inner-container .profile-image-preview {
         height: 110px;
     }
@@ -817,11 +838,7 @@
         font-size: 17px;
     }
     .profile-inner-container  .form-group{
-        margin-bottom: 10px;
         gap: 15px;
-    }
-    .profile-inner-container  .image-group{
-        margin-bottom: 25px;
     }
 
     .profile-inner-container  .form-row{
@@ -870,7 +887,6 @@
    
     .profile-inner-container  .image-group{
         width: 160px;
-        margin-bottom: 25px;
     }
     .profile-inner-container .profile-image-preview{
         height: 120px;
@@ -892,7 +908,6 @@
 @media screen and (max-width:390px){
      .profile-inner-container  .form-group{
         flex-direction: column;
-        margin: 0 0 10px;
         gap: 8px;
         align-items: flex-start; 
         width: fit-content;

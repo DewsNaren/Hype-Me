@@ -12,12 +12,21 @@
   height: 50px;
   border-radius: 50%;
   font-weight: 500;
-  background-color: rgb(224, 220, 147);
   color: rgb(22, 18, 18);
   font-size: 1.4rem;
   text-transform: uppercase;
 }
 
+.user-profile.default.not-active{
+  display: none;
+}
+.user-profile.active-profile.not-active{
+  display: none;
+}
+.user-profile.span{
+  display: none;
+  background-color: rgb(224, 220, 147);
+}
 .user-profile-pic{
   width: 50px;
   
@@ -36,7 +45,6 @@
   background-color: rgb(52, 40, 60);
   padding: 36px 0 85px;
 }
-
 
 .top-profile-section {
   max-width: 88.542vw;

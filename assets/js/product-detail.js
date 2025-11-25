@@ -51,10 +51,13 @@ const productId=window.name;
 
 function getSelectedProduct(products){
   const product = products.find(p => p._id === productId);
-  renderProductDetail(product);
+  if(product){
+    renderProductDetail(product);
+    activeImage();
+    const similarProducts = getProduct(product);
+    renderSimilarProducts(similarProducts);
+  }
   activeImage();
-  const similarProducts = getProduct(product);
-  renderSimilarProducts(similarProducts);
 }
 
 
@@ -102,11 +105,11 @@ selectedProductLikeBtn.addEventListener('click',()=>{
   }
   else{ 
     body.classList.add("not-active");
-        overlayContainer.classList.add("active");
-        requestAnimationFrame(() => {
-          loginContainer.classList.add("active");
-        });
-        setupForms();
+    overlayContainer.classList.add("active");
+    requestAnimationFrame(() => {
+      loginContainer.classList.add("active");
+    });
+    setupForms();
   }
 })
 
@@ -157,7 +160,18 @@ productReadMoreBtn.addEventListener('click',(e)=>{
 const sellerName=document.querySelector(".product-container-wrapper .product-info .selected-product-wrapper .selected-product-detail .seller-info .seller-name");
 
 sellerName.addEventListener('click',()=>{
-  window.location.href="./profile-page.html"
+   const token=localStorage.getItem("token");
+  if (token && token.trim() !== "") {
+    window.location.href="./profile-page.html"
+  }
+  else{
+    body.classList.add("not-active");
+    overlayContainer.classList.add("active");
+    requestAnimationFrame(() => {
+      loginContainer.classList.add("active");
+    });
+    setupForms();
+  }
 })
 
 const shareBtn=document.querySelector(".product-detail-container .product-container-wrapper .product-header-container .icon-group .share-btn");
@@ -166,43 +180,68 @@ const mainImgContainer = document.querySelector('.main-image-container');
 
 
 async function shareImage(){
+ 
   const mainImg = mainImgContainer.querySelector('.main-image');
   shareBtn.addEventListener("click",async ()=>{
-    const fullSrc = mainImg.src;
+    const token=localStorage.getItem("token");
+      if (token && token.trim() !== "") {
+      const fullSrc = mainImg.src;
 
 
-  const imageUrl = fullSrc.replace(/^https?:\/\/[^\/]+/, "");
-  const title=mainImg.alt
+      const imageUrl = fullSrc.replace(/^https?:\/\/[^\/]+/, "");
+      const title=mainImg.alt
 
 
-  try {
-    const response = await fetch(imageUrl);
-    const blob = await response.blob();
+      try {
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
 
-    const fileName = imageUrl.split("/").pop();  
-    const file = new File([blob], fileName, { type: blob.type });
+        const fileName = imageUrl.split("/").pop();  
+        const file = new File([blob], fileName, { type: blob.type });
 
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({
-        title,
-        text: title,
-        files: [file],
-      });
-    } else {
-      console.warn("Sharing not supported on this browser or context.");
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            title,
+            text: title,
+            files: [file],
+          });
+        } else {
+          console.warn("Sharing not supported on this browser or context.");
+        }
+      } catch (error) {
+        console.error("Error while sharing image:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error while sharing image:", error);
-  }
-
-})
+    else{
+      body.classList.add("not-active");
+      overlayContainer.classList.add("active");
+      requestAnimationFrame(() => {
+        loginContainer.classList.add("active");
+      });
+      setupForms();
+   }
+  })
+  
 }
 
 const buyBtn=document.querySelector(".product-info .selected-product-wrapper .buy-now-btn");
 
 buyBtn.addEventListener('click',(e)=>{
+
   e.preventDefault();
+  const token=localStorage.getItem("token");
+  if (token && token.trim() !== "") {
     chatModalWrapper.classList.add("active");
     body.classList.add("not-active");
+  }
+  else{
+    body.classList.add("not-active");
+    overlayContainer.classList.add("active");
+    requestAnimationFrame(() => {
+      loginContainer.classList.add("active");
+    });
+    setupForms();
+  }
+    
 })
 

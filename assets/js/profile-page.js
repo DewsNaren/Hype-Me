@@ -75,11 +75,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 const followBtn = document.querySelector(".product-list-container .follow-btn");
 
 followBtn.addEventListener("click", () => {
-  if(followBtn.childNodes[2].textContent === "Follow") {
-    followBtn.childNodes[2].textContent = "Following";
-  } else {
-    followBtn.childNodes[2].textContent = "Follow";
+
+  const token=localStorage.getItem("token")
+  if(token && token.trim() !== "" ){
+    const followImg=followBtn.querySelector("img");
+    if(followBtn.childNodes[2].textContent === "Follow") {
+      followBtn.childNodes[2].textContent = "Following";
+      followBtn.style.backgroundColor="rgba(26, 110, 27, 1)"
+      
+      followImg.src="./assets/images/following.png"
+    } else {
+      followBtn.childNodes[2].textContent = "Follow";
+      followImg.src="./assets/images/followers.png"
+      followBtn.style.backgroundColor="rgb(87, 24, 190)"
+    }
   }
+  else{
+    body.classList.add("not-active");
+      overlayContainer.classList.add("active");
+      requestAnimationFrame(() => {
+        loginContainer.classList.add("active");
+      });
+      setupForms();
+  }
+  
 });
 
 function setUpLikes(){
@@ -87,16 +106,27 @@ function setUpLikes(){
   productLikeBtns.forEach(productLikeBtn=>{
     productLikeBtn.addEventListener('click',(e)=>{
       e.preventDefault();
-      const likeImg=productLikeBtn.querySelector("img");
-    
-      if(likeImg.alt=="likes"){
-        likeImg.src="./assets/images/heart.png"
-        likeImg.alt="heart"
+      const token=localStorage.getItem("token")
+      if(token){
+        const likeImg=productLikeBtn.querySelector("img");
+      
+        if(likeImg.alt=="likes"){
+          likeImg.src="./assets/images/heart.png"
+          likeImg.alt="heart"
+        }
+        else{
+          likeImg.src="./assets/images/likes.png"
+          likeImg.alt="likes"
+        }
       }
-      else{
-        likeImg.src="./assets/images/likes.png"
-        likeImg.alt="likes"
-      }
+    else{
+      body.classList.add("not-active");
+      overlayContainer.classList.add("active");
+      requestAnimationFrame(() => {
+        loginContainer.classList.add("active");
+      });
+      setupForms();
+    }
     })
   })
 }

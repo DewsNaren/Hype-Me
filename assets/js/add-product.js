@@ -907,10 +907,10 @@ function validateProductForm() {
     if (input.closest('.input-group').querySelector('.star')) {
     if (value === '') {
       isValid = false;
-      errorElement.innerText = 'This field is required';
+      // errorElement.innerText = 'This field is required';
       inputWrapper.classList.add('error');
     } else {
-      errorElement.innerText = 'no error';
+      // errorElement.innerText = 'no error';
       inputWrapper.classList.remove('error');
     }
   }
