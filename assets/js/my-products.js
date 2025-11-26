@@ -77,12 +77,7 @@ ProductTabs.forEach(ProductTab => {
   });
 });
 
-// if(addProductBtn){
-//   addProductBtn.addEventListener('click',(e)=>{
-//     e.preventDefault();
-//     window.location.href="./add-product.html"
-//   })
-// }
+
 function renderProducts(products){
   const productList=document.querySelector(".products-wrapper .products-body .product-list")
   productList.innerHTML="";

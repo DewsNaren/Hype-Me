@@ -1,32 +1,16 @@
-const addProductContainerCloseBtn=document.querySelector(".modal-main-container .close-btn-container .close-btn");
-
-addProductContainerCloseBtn.addEventListener('click',()=>{
-  if(savedProducts.length > 0){
-      const cleanedProducts = savedProducts.map(prod => {
-      if (prod.editing) {
-        delete prod.editing;   
-      }
-      return prod;
-    });
-    window.name = JSON.stringify(cleanedProducts);
-  }
-  isLocalProduct=false;
-  window.location.href="./sell-your-products.html"
-})
-
 const modalCloseBtns=document.querySelectorAll(".modal-container .modal-close-btn");
 const productModalContainer=document.querySelector(".product-modal-container");
 const modalContainers=document.querySelectorAll(".modal-container");
 
 const saveProductsBtn=document.querySelector(".add-product-outer-container .save-btn-container .save-btn");
 const submitProductsBtn=document.querySelector(".add-product-outer-container .save-btn-container .submit-btn");
-  const updateLocalProductBtn=document.querySelector(".add-product-outer-container .save-btn-container .save-local-btn");
+const updateLocalProductBtn=document.querySelector(".add-product-outer-container .save-btn-container .save-local-btn");
 const productModalContent = document.querySelector('.product-modal-content');
-// const body=document.body;
+
 
 let savedProducts = [];
 try {
-  savedProducts = JSON.parse(window.name || "[]");
+  savedProducts = JSON.parse(sessionStorage.getItem("savedProducts") || "[]")
 } catch {
   savedProducts = [];
 }
@@ -295,35 +279,6 @@ initThumbnailClickHandler();
 
 deleteThumbImages();
 
-// function initMainThumbClick() {
-//   const previewWrapper = document.querySelector(".thumbnail-preview-container");
-//   const mainContainer = document.querySelector(".image-upload-container .main-image-container");
-//   if (!previewWrapper || !mainContainer) return;
-
-//   previewWrapper.addEventListener("click", (e) => {
-//     const img = e.target.closest(".thumbnail-preview-img");
-//     if (!img) return;
-
-//     previewWrapper.querySelectorAll(".thumbnail-preview-img-container").forEach(el => {
-//       el.classList.remove("active");
-//     });
-
-//     const clickedContainer = img.closest(".thumbnail-preview-img-container");
-//     if (clickedContainer) {
-//       clickedContainer.classList.add("active");
-//     }
-
-  
-//     let mainImg = mainContainer.querySelector(".main-image");
-//     if (!mainImg) {
-//       mainImg = document.createElement("img");
-//       mainImg.className = "main-image";
-//       mainContainer.innerHTML = "";
-//       mainContainer.appendChild(mainImg);
-//     }
-//     mainImg.src = img.src;
-//   });
-// }
 
 
 const thumbnailPreview= document.querySelector(".image-upload-container .thumbnail-preview-container")
@@ -866,6 +821,8 @@ const formModalContent = formModalContainer.querySelector('.form-modal-content')
 formModalContainer.addEventListener('click', (e) => {
   if (!formModalContent.contains(e.target)) {
     closeModal(); 
+    delProductFormData();
+    delAdditionalData();
   }
 });
 let activeSection = null; 
@@ -1358,7 +1315,8 @@ saveProductsBtn.addEventListener('click',()=>{
   isLocalProduct=false;
     setTimeout(() => {
       toastContainer.classList.remove("show");
-      window.name = JSON.stringify(savedProducts);
+      // window.name = JSON.stringify(savedProducts);
+      sessionStorage.setItem("savedProducts", JSON.stringify(savedProducts));
       window.location.href="./sell-your-products.html";
   }, 5000);
   
@@ -1637,7 +1595,8 @@ function updateLocalProductDetails(productData,editing) {
       saveProductsBtn.classList.remove("not-active")
       setTimeout(() => {
         toastContainer.classList.remove("show");
-        window.name = JSON.stringify(savedProducts);
+        // window.name = JSON.stringify(savedProducts);
+        sessionStorage.setItem("savedProducts", JSON.stringify(savedProducts));
         window.location.href="./sell-your-products.html";
       },5000);
     })
@@ -1710,7 +1669,7 @@ function saveOrUpdateProduct(product) {
   } else {
     savedProducts.push(product);
   }
-  window.name = JSON.stringify(savedProducts);
+  sessionStorage.setItem("savedProducts", JSON.stringify(savedProducts));
 }
 
 const viewReviewBtn=document.querySelector(".review-details-container .view-review-btn");
@@ -1776,7 +1735,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 function processEditedProduct(){
   let recievedProducts = [];
   try {
-    recievedProducts = JSON.parse(window.name || "[]");
+    recievedProducts = JSON.parse(sessionStorage.getItem("savedProducts") || "[]");
   } catch {
     recievedProducts = [];
   }
@@ -1795,4 +1754,51 @@ function processEditedProduct(){
   }
 }
 
-  
+const addProductContainerCloseBtn=document.querySelector(".modal-main-container .close-btn-container .close-btn");
+
+addProductContainerCloseBtn.addEventListener('click',()=>{
+  if(savedProducts.length > 0){
+      const cleanedProducts = savedProducts.map(prod => {
+      if (prod.editing) {
+        delete prod.editing;   
+      }
+      return prod;
+    });
+    sessionStorage.setItem("savedProducts", JSON.stringify(cleanedProducts));
+    // window.name = JSON.stringify(cleanedProducts);
+
+  }
+  isLocalProduct=false;
+  const modalFormContainers=document.querySelectorAll(".modal-main-container .form-container");
+  closeModal();
+  const productDetailsBodyContainer=productDetailsContainer.querySelector(".details-body-container");
+  const prodTexts=productDetailsBodyContainer.querySelectorAll("p") 
+  // prodTexts.forEach(prodText=>{
+  //   prodText.querySelector("span").innerHTML=""
+  // })
+  productStatusImg.src="./assets/images/completed tick-default.png";
+  productStatusImg.alt="completed tick-default"
+  productStatusCount.innerHTML="(0/9)";
+  editProductBtn.classList.remove("active");
+  addProductDetailsBtn.classList.remove("not-active");
+
+  const addDetailsBodyContainer=addDetailsContainer.querySelector(".details-body-container");
+  const addTexts=addDetailsBodyContainer.querySelectorAll("p");
+  // addTexts.forEach(addText=>{
+  //   addText.querySelector("span").innerHTML="";
+  // }
+  // )
+  addStatusImg.src="./assets/images/completed tick-default.png";
+  addStatusImg.alt="completed tick-default"
+  addStatusCount.innerHTML="(0/8)";
+  editAdditionalBtn.classList.remove("active");
+  addAditionalBtn.classList.remove("not-active");
+// }
+// )
+  delProductFormData();
+    delAdditionalData();
+
+
+  addProductModalContainer.classList.remove("active");
+  body.classList.remove("not-active");
+})

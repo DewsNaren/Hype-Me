@@ -19,7 +19,7 @@ addProductBtn.addEventListener('click', (e) => {
     let existingProducts = [];
 
     try {
-      existingProducts = JSON.parse(window.name || "[]");
+      existingProducts = JSON.parse(sessionStorage.getItem("savedProducts") || "[]");
     } catch {
       existingProducts = [];
     }
@@ -38,7 +38,8 @@ addProductBtn.addEventListener('click', (e) => {
 
     existingProducts = existingProducts.filter(p => !p.editing);
 
-    window.name = JSON.stringify(existingProducts);
+    // window.name = JSON.stringify(existingProducts);
+   sessionStorage.setItem("savedProducts", JSON.stringify(existingProducts));
       e.preventDefault();
       addProductModalContainer.classList.add("active");
       body.classList.add("not-active");
@@ -113,7 +114,13 @@ async function populateProductsTable() {
   tableBody.innerHTML = ""; 
 
   
-  let drafts = window.name ? JSON.parse(window.name) : [];
+  // let drafts = window.name ? JSON.parse(window.name) : [];
+  let drafts = [];
+  try {
+    drafts = JSON.parse(sessionStorage.getItem("savedProducts") || "[]");
+  } catch {
+    drafts = [];
+  }
   drafts = drafts.filter(p => !(p.editing && p.isPosted));
   let published = [];
   try {
@@ -228,9 +235,16 @@ async function deleteApiProduct(productId) {
 
 
 function deleteLocalProduct(productId) {
-  let savedProducts = window.name ? JSON.parse(window.name) : [];
+  // let savedProducts = window.name ? JSON.parse(window.name) : [];
+  let savedProducts = [];
+  try {
+    savedProducts = JSON.parse(sessionStorage.getItem("savedProducts") || "[]");  
+  } catch {
+    savedProducts = [];
+  }
   savedProducts = savedProducts.filter(p => p._id !== productId);
-  window.name = JSON.stringify(savedProducts);
+  // window.name = JSON.stringify(savedProducts);
+  sessionStorage.setItem("savedProducts", JSON.stringify(savedProducts));
   removeFromAllProducts(productId);
 
   scrollToSellerTop();
@@ -285,7 +299,8 @@ function handleEdit(product) {
   
   let allProducts = [];
   try {
-    allProducts = JSON.parse(window.name || "[]");
+    // allProducts = JSON.parse(window.name || "[]");
+    allProducts = JSON.parse(sessionStorage.getItem("savedProducts") || "[]");
   } catch {
     allProducts = [];
   }
@@ -301,7 +316,8 @@ function handleEdit(product) {
     allProducts[productIndex] = { ...product, editing: true };
   }
 
-  window.name = JSON.stringify(allProducts);
+  // window.name = JSON.stringify(allProducts);
+  sessionStorage.setItem("savedProducts", JSON.stringify(allProducts));
   addProductModalContainer.classList.add("active");
   body.classList.add("not-active");
    processEditedProduct();
