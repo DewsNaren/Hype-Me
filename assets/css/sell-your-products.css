@@ -78,7 +78,7 @@
   width: 100%;
   padding: 10px 10px clamp(7px, 0.8vw, 15px) clamp(20px, 2.3vw, 40px);
   margin-top: 12px;
-  font-size:clamp(11px, 1vw, 1.2rem) ;
+  font-size:clamp(13px, 1vw, 1.2rem) ;
   border:none;
   outline: none;
   border-bottom: 1px solid #aaa;
@@ -98,7 +98,7 @@
 .sell-container .search-existing .search-box .search-note {
   display: block;
   margin-top: 10px;
-  font-size: clamp(11px, 0.735vw, 14px);
+  font-size: clamp(12px, 0.735vw, 14px);
   color: #888;
 }
 .sell-container .add-unique {
@@ -588,14 +588,14 @@ footer .quick-links {
     width: 75%;
   }
   .sell-products .sell-container .search-existing p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .sell-container .search-existing .search-box .search-img {
     width: 12px;
     transform: translateY(120%);
   }
   .sell-container .add-unique p{
-    font-size: 13px;
+    font-size: 14px;
   }
   .sell-container .add-unique .add-product-btn {
     padding: 9px 14px;
@@ -688,6 +688,13 @@ footer .quick-links {
     font-size: 16px;
     margin-bottom: 14px;
   }
+  .sell-products .sell-container .search-existing p {
+    font-size: 15px;
+  }
+
+  .sell-container .add-unique p{
+    font-size: 15px;
+  }
   .sell-products .sell-container {
     flex-direction: column;
     gap: 25px;
@@ -763,6 +770,12 @@ footer .quick-links {
     text-align: center;
     
   }
+  .products-listing .table-wrapper .product-table tbody td.status img {
+    width: 12px;
+  }
+      .products-listing .table-wrapper .product-table tbody td.actions button.edit-btn img {
+        width: 13px;
+    }
   .del-toast-container{
     font-size: 12px;
   }
@@ -809,6 +822,9 @@ footer .quick-links {
   }
   .sell-products .sell-container .search-existing {
     min-width: 80%;
+  }
+  .sell-container .search-existing  .search-box input {
+    font-size: 12px;
   }
   .sell-products h2,.products-listing h2{
     font-size: 14px;

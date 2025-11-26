@@ -269,9 +269,9 @@
     .recent-slider-frame,.recent-slider-indicator-container{
         max-width: 85%;
     }
-    .recent-slider-item a img{
+    /* .recent-slider-item a img{
        width:  100%;
-    }
+    } */
     .recent-slider-item span{
         right: 8px;
         top: 5px;

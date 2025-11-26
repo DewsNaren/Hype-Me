@@ -485,9 +485,9 @@ footer{
         font-size: 0.55rem;
         color: #aaa;
     }
-    .breadcrumb a,.selected{
+    /* .breadcrumb a,.selected{
         font-size: 11px;
-    }
+    } */
     .product-container-wrapper{
         padding: 0 7px;
     }

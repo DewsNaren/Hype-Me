@@ -8,29 +8,20 @@ const totalViewsCount=document.querySelector(".user-stats .stat-box .views-count
 const followersCount=document.querySelector(".user-stats .stat-box .followers-count");
 const followingCount=document.querySelector(".user-stats .stat-box .following-count");
 const userProfilePicture=document.querySelector(".user-info .profile-img-wrapper img");
+const userReviewImg=document.querySelector(".user-review-profile .user-review-profile-header .profile-pic");
 
 
-
+let formData;
 function getProfileData(){
-  let formData;
-  // const savedData=sessionStorage.getItem("profileData")
-  if(window.edit){
-    formData = JSON.parse(window.edit);
+  const savedData=sessionStorage.getItem("profileData")
+  if(savedData){
+    formData = JSON.parse(savedData);
   }
   renderProfileData(formData)
 }
 getProfileData();
 
 
-
-// function changeUserProfilePicture(){
-    // const activeProfile=document.querySelector(".header .nav .profile-container .active-profile");
-  // const token=localStorage.getItem("token");
-//   if(token && token.trim() !== ""){
-//     userProfilePicture.src="./assets/images/default-profile-pic.jpg"
-//   }
-// }
-// changeUserProfilePicture();
 function renderProfileData(formData){
   const token=localStorage.getItem("token");
   const activeProfile=document.querySelector(".header .nav .profile-container .active-profile");
@@ -41,22 +32,15 @@ function renderProfileData(formData){
     topProfileusername.innerHTML=`${formData.firstName} ${formData.lastName}`;
     zipcode.textContent=`TX ${formData.zipCode}`;
     locationListZipCode.textContent=`TX ${formData.zipCode}`;
-    if(formData.delProfile=="true"){
-      loginProfile.classList.remove("not-active");
-      userProfilePicture.src="./assets/images/default-profile-pic.jpg"
-      activeProfile.classList.add("not-active");
-    }
-    else if(formData.profileImg){
-      console.log(formData.profileImg)
       userProfilePicture.src=`./assets/images/${formData.profileImg}`
       activeProfile.src=`./assets/images/${formData.profileImg}`
       loginProfile.classList.add("not-active");
       activeProfile.classList.remove("not-active");
-    }
+      userReviewImg.src=`./assets/images/${formData.profileImg}`;
   }
 }
 
-renderProfileData();
+renderProfileData(formData);
 
 const ProductTabs = document.querySelectorAll(".product-tab");
 const productBody = document.querySelector(".products-body");
@@ -81,7 +65,7 @@ ProductTabs.forEach(ProductTab => {
 
       addProductBtn.style.display = 'block';
     } 
-    else if (tabName.includes("user reviews(265)")) {
+    else if (tabName.includes("user reviews")) {
       userReviewWrapper.classList.add("show");
       userReviewWrapper.classList.remove("hide");
 
@@ -229,10 +213,14 @@ function renderPagination(containerSelector, totalItems, itemsPerPage, currentPa
     if (currentPage < totalPages) onPageChange(currentPage + 1);
   });
 }
+// let countriesList=[];
+let countrySelect=document.querySelector(".country");
 
 document.addEventListener('DOMContentLoaded',async()=>{
   initializeProducts("used");
 })
+
+
 
 const reviewHeadings = [
   "Stylish slip, perfect for staying at home during COVID!",
@@ -243,11 +231,11 @@ const reviewHeadings = [
 ];
 
 const reviewTexts = [
-  "I'm someone who is very flat footed so have to wear shoes orthotic inserts, otherwise I experience serious issues after a few weeks of walking barefoot. I have been looking for good shoes that I can slip on and off that allow me to quickly change when needed and provide support when...",
+  "I'm someone who is very flat footed so have to wear orthotic inserts, otherwise I experience serious issues after a few weeks of walking barefoot. I have been looking for good shoes that I can slip on and off that allow me to quickly change when needed and provide support when wearing my orthotics. After trying several brands, I've found that shoes with removable insoles work best since they give me enough room for my custom inserts.",
   "Great comfortable shoe. Purchased 9.5(us)and they fit perfectly.Wears well and love how they are light weight and got some great compliments on them at the gym.",
-  "I got those shoes for a low pricr than the regular price si is a good deal, then i got then delyvered a day before that the day amazon said i gonna recived... The shoes feel so good and confortable, lite wait shoes, good for walk if you walk a lot.",
-  "I bought these for my husband as a birthday gift. They look great on him, but he says they feel loose and his feet slide around in the shoe. I ordered his usual size he wears in adidas shoes. My family basically only wears adidas shoes because they are quality made and durable. I...",
-  "Color descriptions and pictures do not match up.I selected black shoes with a white sole(based on the pictures).I got the right shoe style but the wrong color.The shoes I received weere all black, including thte soles. Super annoying, these are a gift so I will see if they are ok with this color..."
+  "I got those shoes for a low pricr than the regular price si is a good deal, then i got then delyvered a day before that the day amazon said i gonna recived I was so joy. The shoes feel so good and confortable, lite wait shoes, good for walk if you walk a lot.",
+  "I bought these for my husband as a birthday gift. They look great on him, but he says they feel loose and his feet slide around in the shoe. I ordered his usual size he wears in adidas shoes. My family basically only wears adidas shoes because they are quality made and durable. I hope these shoes will break in and fit better over time.",
+  "Color descriptions and pictures do not match up.I selected black shoes with a white sole(based on the pictures).I got the right shoe style but the wrong color.The shoes I received weere all black, including thte soles. Super annoying, these are a gift so I will see if they are ok with this color"
 ];
 
 const reviewUsers = [
@@ -258,7 +246,15 @@ let allReviews = [];
 let filteredReviews = [];
 let currentPage = 1;
 const reviewsPerPage = 5;
-let totalPages = 53; 
+let totalreviewPages = Math.floor(Math.random() * 35) + 20;
+
+const reviewTab=document.querySelector(".product-tab.user-review-tab");
+const reviewCount=reviewTab.querySelector(".product-count");
+reviewCount.textContent=`(${totalreviewPages * reviewsPerPage})`;
+
+const ratingCount=document.querySelector(".profile-rating-container .rating-count");
+ratingCount.textContent=`${totalreviewPages * reviewsPerPage} Ratings`;
+
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -271,7 +267,7 @@ function formatDate(daysAgo) {
   return `${Math.floor(daysAgo / 365)} years ago`;
 }
 
-for (let i = 0; i < totalPages * reviewsPerPage; i++) {
+for (let i = 0; i < totalreviewPages * reviewsPerPage; i++) {
   const daysAgo = randomNumber(1, 1825); 
   const ran=randomNumber(0,5-1);
   allReviews.push({
@@ -313,14 +309,104 @@ function renderReviews(page) {
           <div class="review-rating">${starHtml}</div>
           <div class="review-actions">
             <span class="review-helpful">The review was helpful</span>
-            <button><i class="fa-solid fa-thumbs-up"></i>(${review.likes})</button>
-            <button><i class="fa-solid fa-thumbs-down"></i>(${review.dislikes})</button>
+            <button class="review-like-btn"><i class="fa-solid fa-thumbs-up"></i>(${review.likes})</button>
+            <button class="review-dislike-btn"><i class="fa-solid fa-thumbs-down"></i>(${review.dislikes})</button>
           </div>
         </div>
       </div>
     `;
+    
+  });
+  giveLikeDislike()
+  addReadMoreFunctionality();
+}
+
+function addReadMoreFunctionality() {
+  const reviewItems = document.querySelectorAll(".review-item");
+
+  reviewItems.forEach(item => {
+    const textEl = item.querySelector(".review-text");
+    const btn = item.querySelector(".read-more");
+
+    if (!textEl || !btn) return;
+
+    const lineHeight = parseInt(window.getComputedStyle(textEl).lineHeight);
+    const maxHeight = lineHeight * 3;
+
+    if (textEl.clientHeight > maxHeight) {
+      btn.style.display = "none"; 
+    }
+    else {
+      btn.style.display = "inline"; 
+    }
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      textEl.classList.toggle("expanded");
+      btn.textContent = textEl.classList.contains("expanded") ? "Read Less" : "Read More";
+    });
   });
 }
+
+
+
+addReadMoreFunctionality();
+
+
+function giveLikeDislike() {
+  document.querySelectorAll(".review-like-btn").forEach((likeBtn, index) => {
+    likeBtn.addEventListener("click", () => { 
+      allReviews[index].likes += 1;
+      likeBtn.innerHTML = `<i class="fa-solid fa-thumbs-up"></i>(${allReviews[index].likes})`;
+    });
+  });
+  document.querySelectorAll(".review-dislike-btn").forEach((dislikeBtn, index) => {
+    dislikeBtn.addEventListener("click", () => { 
+      allReviews[index].dislikes += 1;
+      dislikeBtn.innerHTML = `<i class="fa-solid fa-thumbs-down"></i>(${allReviews[index].dislikes})`;
+      
+    });
+  });
+}
+function calculateReviewStats(reviews) {
+  const totalReviews = reviews.length;
+  const starCounts = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+
+  reviews.forEach(r => {
+    if (r.stars >= 1 && r.stars <= 5) starCounts[r.stars]++;
+  });
+
+  const starPercentages = {};
+  for (let i = 1; i <= 5; i++) {
+    starPercentages[i] = ((starCounts[i] / totalReviews) * 100).toFixed(0); 
+  }
+
+  const overallRating = (
+    (starCounts[5] * 5 + starCounts[4] * 4 + starCounts[3] * 3 + starCounts[2] * 2 + starCounts[1] * 1) /
+    totalReviews
+  ).toFixed(1);
+
+  return { totalReviews, starCounts, starPercentages, overallRating };
+}
+
+const stats = calculateReviewStats(allReviews);
+const ratingScore=document.querySelector(".profile-rating-container .profile-rating-score-container .rating-score .profile-rating-score");
+ratingScore.textContent=stats.overallRating;
+
+
+const ratingBarContainers=document.querySelectorAll(".user-review-profile .rating-bar-group .rating-bar");
+ratingBarContainers.forEach(barContainer=>{
+  for (let star = 1; star <= 5; star++) {
+  const fillBar = barContainer.querySelector(`.fill-${star}`);
+  const percentSpan = barContainer.querySelector(`.percent`);
+
+  if (fillBar && percentSpan && stats.starPercentages[star] !== undefined) {
+    const widthPercent = stats.starPercentages[star];
+    fillBar.style.width = widthPercent + "%";
+    percentSpan.textContent = widthPercent + "%";
+  }
+}
+});
+
 
 
 function updateReviewPagination() {
@@ -408,6 +494,17 @@ editProfileBtn.addEventListener('click',(e)=>{
   e.preventDefault();
   const token=localStorage.getItem("token");
   if(token && token.trim() !== ""){
+    const profileData=sessionStorage.getItem("profileData");
+    if(profileData){
+      const profileDat=JSON.parse(profileData);
+      profileUsername.value=profileDat.username;
+      firstName.value=profileDat.firstName;
+      lastName.value=profileDat.lastName;
+      country.value=profileDat.country;
+      city.value=profileDat.city;
+      zipCode.value=profileDat.zipCode;
+      profileImage.src=`./assets/images/${profileDat.profileImg}`;
+    }
     editOverlay.classList.add("active");
     body.classList.add("not-active")
   }

@@ -113,7 +113,65 @@ function initRecentSlider() {
         firstVisit = false;      
       }
     }
+    
+    function goToSlide(next = true) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex += next ? 1 : -1;
+      updateSlide(currentIndex);
+    }
+    let startX = 0;
+    let startY = 0;
+    const swipeThreshold = 5;
+    let isDragging = false;
 
+    function getEventX(e) {
+      return e.type.includes("mouse") ? e.pageX : e.changedTouches[0].screenX;
+    }
+
+    function getEventY(e) {
+      return e.type.includes("mouse") ? e.pageY : e.changedTouches[0].screenY;
+    }
+
+    function swipeStart(e) {
+      startX = getEventX(e);
+      startY = getEventY(e);
+      isDragging = true;
+      container.style.userSelect = "none";
+    
+    //   container.querySelectorAll("a").forEach(a => {
+    //    e.preventDefault();
+    //   a.style.cursor="default"
+    // });
+    }
+
+    function swipeMove(e) {
+      if (!isDragging) return;
+    }
+
+    function swipeEnd(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      let endX = getEventX(e);
+      let distX = endX - startX;
+      container.style.userSelect = ""; 
+
+      if (distX > swipeThreshold) goToSlide(false);
+      else if (distX < -swipeThreshold) goToSlide(true);
+      //  container.querySelectorAll("a").forEach(a => {
+      //    e.preventDefault();
+      //   a.style.cursor="pointer"
+      // });
+
+    }
+
+    container.addEventListener("touchstart", swipeStart);
+    container.addEventListener("touchmove", swipeMove);
+    container.addEventListener("touchend", swipeEnd);
+
+    container.addEventListener("mousedown", swipeStart);
+    container.addEventListener("mouseup", swipeEnd);
+    container.addEventListener("mouseleave", swipeEnd);
     function handleTransitionEnd() {
       isTransitioning = false;
       const total = allSlides.length;
@@ -152,7 +210,7 @@ document.querySelector('.recent-slider-container').addEventListener('click', (e)
   e.preventDefault(); 
 
   const productId = link.dataset.productId;
-  window.name = productId;
+  history.pushState({ productId: productId }, '', './product-detail.html');
   setTimeout(() => {
     window.location.href = link.href;
   }, 0);

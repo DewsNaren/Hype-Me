@@ -28,7 +28,7 @@ const activeName=chatHeader.querySelector(".contact-info .contact-details .conta
 const activeProductPreview=chatHeader.querySelector(".contact-info .contact-details .contact-user-info .active-product-preview")
 const activePrice=chatHeader.querySelector(".contact-info .contact-details .contact-user-info .product-price")
 
-const messages = [
+const defaultMessages = [
   {
     chat: [
       { from: "in", text: "Is it available", time: "09.40" },
@@ -49,6 +49,7 @@ const messages = [
   }
 ];
 
+let messages = JSON.parse(sessionStorage.getItem("storedMessages")) || [ ...defaultMessages];
 
 
 inputField.addEventListener('input', () => {
@@ -88,14 +89,12 @@ function sendMessage(sellerMsg){
   min=paddZero(min)
   const outGoing=inputField.value;
   let clicked;
-  let messageLength;
   convoItems.forEach((convoItem,index)=>{
     if(convoItem.classList.contains("active")){
       clicked=index;
     }
   })
 
-  console.log(messageLength)
   let userMsgHtml=`<div class="message outgoing">
     <p class="message-text"> ${outGoing}</p>
     <div class="message-meta">
@@ -160,7 +159,7 @@ function storeMessage(messageVal){
   time: `${hr}.${min}`
 });
 
-console.log(messages)
+  sessionStorage.setItem("storedMessages", JSON.stringify(messages));
 
 }
 
@@ -204,6 +203,23 @@ convoItems.forEach((convoItem,index)=>{
   })
 })
 
+
+function updateAllPreviews() {
+  convoItems.forEach((item, index) => {
+    const previewEl = item.querySelector(".message-preview");
+    const chats = messages[index].chat;
+
+    if (chats.length > 0) {
+      const lastMsg = chats[chats.length - 1]; 
+      previewEl.innerHTML = `
+        ${lastMsg.from === "out" ? `<img src="./assets/images/double-tick.svg" class="double-tick-icon">` : ""}
+        <span>${lastMsg.text}</span>
+      `;
+    }
+  });
+}
+
+
 function renderMessage(clickedIndex) {
   const chat = messages[clickedIndex].chat;
 
@@ -229,10 +245,12 @@ function renderMessage(clickedIndex) {
         </div>`;
     }
   });
-
+    updateAllPreviews();
   messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
+renderMessage(0);
+updateAllPreviews();
 
 const chatCloseBtn=document.querySelector(".chat-close-btn-container .chat-close-btn");
 

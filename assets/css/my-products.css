@@ -550,8 +550,34 @@
 .review-text {
   font-size: 0.955vw;
   color: #444;
-  padding: 1.56vw 0 10px;
+  padding: 1.56vw 0 0;
+  margin-bottom: 10px;
 }
+
+.review-text {
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+} 
+
+ .review-text.expanded {
+  line-clamp: 3;
+  -webkit-line-clamp: unset;
+  text-overflow: unset;
+}
+
+
+
+.review-text.expanded{
+  line-clamp: unset;
+  -webkit-line-clamp: unset;
+  max-height: none;
+}
+
 
 .read-more {
   color: rgb(76, 21, 187);
@@ -1305,8 +1331,9 @@ footer{
     padding-left: 10px;
   }
   .review-text{
-    padding: 15px 10px;
+    padding: 15px 10px 0;
     font-size: 12px;
+    margin-bottom: 15px;
   }
   .review-actions button i {
     font-size: 12px;
@@ -1378,6 +1405,14 @@ footer{
     width: 35px;
     height: 35px;
   }
+  .review-text {
+    line-clamp: 4;
+    -webkit-line-clamp: 4; 
+  } 
+
+ .review-text.expanded {
+    line-clamp: 4;
+  }
 }
 
 @media screen and (max-width:480px){
@@ -1425,7 +1460,8 @@ footer{
     padding-left: 5px;
   }
   .review-text{
-    padding: 10px 5px;
+    padding: 10px 5px 0;
+    margin-bottom: 10px;
   }
   .review-footer{
     gap: 5px;
@@ -1490,6 +1526,9 @@ footer{
   }
   .product-list{
     grid-template-columns: repeat(1, minmax(150px, 1fr));
+  }
+  .user-review-list {
+    padding: 15px 13px;
   }
   .review-filter-bar {
     padding: 0 0px 15px;

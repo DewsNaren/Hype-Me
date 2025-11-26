@@ -16,6 +16,7 @@ function renderProductDetail(product){
 
   const specsTableBody = document.querySelector('.details-table tbody');
   const thumbnailRow=document.querySelector(".thumbnail-row");
+  thumbnailRow.innerHTML="";
   thumbnailRow.innerHTML = `
   <div class="thumb-wrapper thumb1"><img src="./assets/images/${product.image}" alt="Thumb1"></div>
   <div class="thumb-wrapper thumb2 active"><img src="./assets/images/${product.image}" alt="Thumb2"></div>
@@ -23,12 +24,12 @@ function renderProductDetail(product){
   <div class="thumb-wrapper thumb4"><img src="./assets/images/${product.image}" alt="Thumb4"></div>
 `;
 
-
+  specsTableBody.innerHTML = '';
   specsTableBody.innerHTML = `
     <tr><td class="spec-name">Brand</td><td class="spec-value">${product.brand || 'N/A'}</td></tr>
     <tr><td class="spec-name">Model</td><td class="spec-value">${product.model || 'N/A'}</td></tr>
     <tr><td class="spec-name">Color</td><td class="spec-value">${product.color || 'N/A'}</td></tr>
-    <tr><td class="spec-name">Size</td><td class="spec-value">${product.size_type || 'N/A'}</td></tr>
+    <tr><td class="spec-name">Size Type</td><td class="spec-value">${product.size_type || 'N/A'}</td></tr>
     <tr class="hidden"><td class="spec-name ">Size</td><td class="spec-value">${product.size || 'N/A'}</td></tr>
     <tr class="hidden"><td class="spec-name">Release Year</td><td class="spec-value">${product.release_year || 'N/A'}</td></tr>
     <tr class="hidden"><td class="spec-name">Wide/Normal</td><td class="spec-value">${product.wide_normal || '--'}</td></tr>
@@ -47,8 +48,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   })
 });
 
-const productId=window.name;
-
+const productId= history.state?.productId;
 function getSelectedProduct(products){
   const product = products.find(p => p._id === productId);
   if(product){
@@ -57,6 +57,10 @@ function getSelectedProduct(products){
     const similarProducts = getProduct(product);
     renderSimilarProducts(similarProducts);
   }
+  else{
+    renderSimilarProducts(products);
+  }
+  
   activeImage();
 }
 

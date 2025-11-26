@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./assets/css/edit-profile.css">
     <link rel="stylesheet" href="./assets/css/authenticate.css">
     <link rel="icon" href="./assets/images/fav.png" type="image/x-icon">
+    
 </head>
 <body>
     <header class="header">
@@ -98,7 +99,7 @@
                 <div class="product-tabs-wrapper">
                     <div class="product-main-tabs">
                         <button type="button" class="product-tab active">My Products<span class="product-count">(64)</span></button>
-                        <button class="product-tab">User Reviews<span class="product-count">(265)</span></button>
+                        <button class="product-tab user-review-tab">User Reviews<span class="product-count">(265)</span></button>
                     </div>
                 </div>
             </div>
@@ -125,7 +126,7 @@
                 <div class="user-review-container">
                     <div class="user-review-profile">
                         <div class="user-review-profile-header">
-                            <img src="./assets/images/profile-pic.jpg" class="profile-pic" alt="profile-pic">
+                            <img src="./assets/images/default-profile-pic.jpg" class="profile-pic" alt="profile-pic">
                             <div class="profile-rating-container">
                                 <div class="profile-rating-score-container">
                                     <i class="fa-solid fa-star profile-star"></i>
@@ -757,9 +758,9 @@
                                     <div class="input-wrapper">
                                         <div class="custom-select">
                                             <select id="country" name="country" class="country" autocomplete="off">
-                                                <option>United States</option>
-                                                <option>India</option>
-                                                <option>Canada</option>
+                                                <option value="united states">United States</option>
+                                                <option value="india">India</option>
+                                                <option value="canada">Canada</option>
                                             </select>
                                             <span class="dropdown-icon"><img src="./assets/images/drop-down.png"  alt="dropdown"></span>
                                         </div>
@@ -773,9 +774,9 @@
                                     <div class="input-wrapper">
                                         <div class="custom-select">
                                             <select id="city" class="city">
-                                                <option>Texas</option>
-                                                <option>India</option>
-                                                <option>Canada</option>
+                                                <option value="texas">Texas</option>
+                                                <option value="india">India</option>
+                                                <option value="canada">Canada</option>
                                             </select>
                                             <span class="dropdown-icon"><img src="./assets/images/drop-down.png"  alt="dropdown"></span>
                                         </div>
@@ -985,6 +986,7 @@
             </div>
         </div>
     </div>
+    <script src="./assets/js/check-valid.js"></script>
     <script src="./assets/js/product.js" defer></script>    
     <script src="./assets/js/my-products.js"></script>
     <script src="./assets/js/add-product.js"></script>

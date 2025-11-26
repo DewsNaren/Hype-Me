@@ -307,14 +307,14 @@ async function handleLogin(form) {
       })
       const result=form.parentElement.querySelector(".result");
       result.classList.add("active");
-      sessionStorage.setItem("userInitial",email.charAt(0));
+      localStorage.setItem("userInitial",email.charAt(0));
       showAuthenticateToast(".login-toast-container","#19762d", data.message);
       const defaultProfile=document.querySelector("header .nav .profile-container .default");
       const loginProfile=document.querySelector("header .nav .profile-container .login-profile");
       if(defaultProfile && loginProfile){
         defaultProfile.classList.add("not-active");
         loginProfile.classList.remove("not-active");
-        loginProfile.textContent=`${sessionStorage.getItem("userInitial").toUpperCase()}`;
+        loginProfile.textContent=`${localStorage.getItem("userInitial").toUpperCase()}`;
       }
       enableLogout();
       changeProfile(profiles);
@@ -397,9 +397,9 @@ const userToken = localStorage.getItem("token");
     });
   });
 
-  if(!userToken){
-    sessionStorage.removeItem("userInitial");
-  }
+  // if(!userToken){
+  //   localStorage.removeItem("userInitial");
+  // }
 }
 enableLogout();
 
@@ -464,7 +464,8 @@ async function handleLogout() {
         <p class="logout-msg success">You have been securely logged out. Thank you for using our service. See you soon!</p>`
         enableLogout();
         changeProfile(profiles);
-        sessionStorage.removeItem("userInitial");
+        localStorage.removeItem("userInitial");
+        sessionStorage.removeItem("profileData");
       } else {
         logoutContentContainer.classList.add("not-active");
         logoutSuccessContainer.innerHTML = `

@@ -637,7 +637,7 @@ function redirectToProductDetail(){
         const id=product.getAttribute("data-product-id");
         if (!id) return; 
 
-          window.name=id;
+          history.pushState({ productId: id }, '', './product-detail.html');
           setTimeout(() => {
             window.location.href = "./product-detail.html";
           }, 0);

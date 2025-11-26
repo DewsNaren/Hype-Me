@@ -18,9 +18,9 @@ function renderSlider(products) {
     let slider = `
       <div class="recent-slider" >
         <div class="recent-slider-item" >
-        <a href="./product-detail.html" data-product-id="${
+        <a  href="./product-detail.html" data-product-id="${
           product._id
-        }" data-product-img="./assets/images/${product.image}">
+        }" data-product-img="./assets/images/${product.image}" class="product-link">
           <img src="./assets/images/${product.image}" alt="shoe-${index + 1}">
         </a>
 
@@ -84,7 +84,7 @@ function initRecentSlider() {
       indicator.style.transition = "transform 0.6s ease-in-out";
       indicator.style.transform = `translateX(${relativeIndex * step}px)`;
     }
-
+    
     function updateSlide(index, animate = true) {
       container.style.transition = animate
         ? "transform 0.6s ease-in-out"
@@ -101,6 +101,7 @@ function initRecentSlider() {
       currentIndex += next ? 1 : -1;
       updateSlide(currentIndex);
     }
+   
 
     function handleTransitionEnd() {
       isTransitioning = false;
@@ -185,13 +186,18 @@ document
     const token = localStorage.getItem("token");
     if (token) {
       const productId = link.dataset.productId;
-
-      window.name = productId;
+      history.pushState({ productId: productId }, '', './product-detail.html');
+      // window.name = productId;
       setTimeout(() => {
-        window.location.href = link.href;
+        window.location.href = "./product-detail.html";
       }, 0);
     } else {
-      openLogIn();
+      body.classList.add("not-active");
+        overlayContainer.classList.add("active");
+        requestAnimationFrame(() => {
+          loginContainer.classList.add("active");
+        });
+        setupForms();
     }
   });
 

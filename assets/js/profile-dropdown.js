@@ -8,7 +8,7 @@ function changeProfile(profiles) {
     profiles.forEach(p => {
       if (p.classList.contains("default")) p.classList.add("not-active");
       if(p.classList.contains("active-profile")) p.classList.add("not-active");
-      if(p.classList.contains("login-profile")) p.textContent=sessionStorage.getItem("userInitial").toUpperCase();
+      if(p.classList.contains("login-profile")) p.textContent=localStorage.getItem("userInitial").toUpperCase();
     });
   } else {
     profiles.forEach(p => {
@@ -18,12 +18,25 @@ function changeProfile(profiles) {
   }
 }
 
+
+
+
+
+
+
 document.querySelectorAll(".profile-container").forEach(container => {
   const profileMenu = container.querySelector('.profile-menu');
   const profiles = container.querySelectorAll(".user-profile");
 
- 
-  changeProfile(profiles);
+  
+  if(window.location.pathname.includes("my-products.html")){
+    getProfileData();
+    changeProfile(profiles);
+  }
+ else {
+   changeProfile(profiles);
+}
+  
 
   container.addEventListener("click", () => {
     profileMenu.classList.toggle("active");

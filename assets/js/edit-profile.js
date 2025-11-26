@@ -12,7 +12,7 @@ const zipCode = fromContainer.querySelector('.input-wrapper .zip-code');
 const addImageInput=fromContainer.querySelector('.profile-image-preview  .add-image-input');
 
 
-let profileImgSrc="profile-pic.jpg";
+let profileImgSrc;
 actionBtn.addEventListener('click', () => {
     if (actionBtn.classList.contains('delete-image-btn')) {
         profileImage.src = './assets/images/default-profile-pic.jpg';
@@ -28,7 +28,7 @@ actionBtn.addEventListener('click', () => {
             profileImgSrc=file.name;
             delProfileInput.value = 'false';
             profileImage.src=`./assets/images/${profileImgSrc}`
-             actionBtn.classList.remove('add-image-btn');
+            actionBtn.classList.remove('add-image-btn');
             actionBtn.classList.add('delete-image-btn');
             actionBtn.textContent = 'Delete Image';
         })
@@ -133,9 +133,9 @@ function getData(){
     };
     console.log(formData)
     window.edit=JSON.stringify(formData)
-    // window.location.href = './my-products.html';
+    window.location.href = './my-products.html';
     const body=document.body;
-    // sessionStorage.setItem("profileData", JSON.stringify(formData));
+    sessionStorage.setItem("profileData", JSON.stringify(formData));
     editOverlay.classList.remove("active");
     body.classList.remove("not-active");
     getProfileData();
@@ -150,3 +150,4 @@ editModalcloseBtn.addEventListener('click',()=>{
     editOverlay.classList.remove("active");
     body.classList.remove("not-active");
 })
+
