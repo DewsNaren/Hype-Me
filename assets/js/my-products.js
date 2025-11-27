@@ -1,42 +1,64 @@
-const profileList=document.querySelector(".header .nav .profile-container");
-const locationListZipCode=document.querySelector(".header .nav .location-list span")
-const topProfileusername=document.querySelector(".user-info .user-details h2");
-const userLocation=document.querySelector(".user-info .user-details .user-location");
-const zipcode=userLocation.childNodes[1];
-const totalLikesCount=document.querySelector(".user-stats .stat-box .likes-count");
-const totalViewsCount=document.querySelector(".user-stats .stat-box .views-count");
-const followersCount=document.querySelector(".user-stats .stat-box .followers-count");
-const followingCount=document.querySelector(".user-stats .stat-box .following-count");
-const userProfilePicture=document.querySelector(".user-info .profile-img-wrapper img");
-const userReviewImg=document.querySelector(".user-review-profile .user-review-profile-header .profile-pic");
-
+const profileList = document.querySelector(".header .nav .profile-container");
+const locationListZipCode = document.querySelector(
+  ".header .nav .location-list span"
+);
+const topProfileusername = document.querySelector(
+  ".user-info .user-details h2"
+);
+const userLocation = document.querySelector(
+  ".user-info .user-details .user-location"
+);
+const zipcode = userLocation.childNodes[1];
+const totalLikesCount = document.querySelector(
+  ".user-stats .stat-box .likes-count"
+);
+const totalViewsCount = document.querySelector(
+  ".user-stats .stat-box .views-count"
+);
+const followersCount = document.querySelector(
+  ".user-stats .stat-box .followers-count"
+);
+const followingCount = document.querySelector(
+  ".user-stats .stat-box .following-count"
+);
+const userProfilePicture = document.querySelector(
+  ".user-info .profile-img-wrapper img"
+);
+const userReviewImg = document.querySelector(
+  ".user-review-profile .user-review-profile-header .profile-pic"
+);
 
 let formData;
-function getProfileData(){
-  const savedData=sessionStorage.getItem("profileData")
-  if(savedData){
+function getProfileData() {
+  const savedData = sessionStorage.getItem("profileData");
+  if (savedData) {
     formData = JSON.parse(savedData);
   }
-  renderProfileData(formData)
+  renderProfileData(formData);
 }
 getProfileData();
 
+function renderProfileData(formData) {
+  const token = localStorage.getItem("token");
+  const activeProfile = document.querySelector(
+    ".header .nav .profile-container .active-profile"
+  );
+  const defaultProfile = document.querySelector(
+    ".header .nav .profile-container .default"
+  );
+  const loginProfile = document.querySelector(
+    ".header .nav .profile-container .user-profile.login-profile"
+  );
 
-function renderProfileData(formData){
-  const token=localStorage.getItem("token");
-  const activeProfile=document.querySelector(".header .nav .profile-container .active-profile");
-  const defaultProfile=document.querySelector(".header .nav .profile-container .default");
-  const loginProfile=document.querySelector(".header .nav .profile-container .user-profile.login-profile");
-  
-  if(token && formData){
-    topProfileusername.innerHTML=`${formData.firstName} ${formData.lastName}`;
-    zipcode.textContent=`TX ${formData.zipCode}`;
-    locationListZipCode.textContent=`TX ${formData.zipCode}`;
-      userProfilePicture.src=`./assets/images/${formData.profileImg}`
-      activeProfile.src=`./assets/images/${formData.profileImg}`
-      loginProfile.classList.add("not-active");
-      activeProfile.classList.remove("not-active");
-      userReviewImg.src=`./assets/images/${formData.profileImg}`;
+  if (token && formData) {
+    topProfileusername.innerHTML = `${formData.firstName} ${formData.lastName}`;
+    zipcode.textContent = `TX ${formData.zipCode}`;
+    locationListZipCode.textContent = `TX ${formData.zipCode}`;
+    userProfilePicture.src = `./assets/images/${formData.profileImg}`;
+    activeProfile.src = `./assets/images/${formData.profileImg}`;
+    loginProfile.classList.add("not-active");
+    activeProfile.classList.remove("not-active");
+    userReviewImg.src = `./assets/images/${formData.profileImg}`;
   }
 }
 
@@ -45,15 +67,15 @@ renderProfileData(formData);
 const ProductTabs = document.querySelectorAll(".product-tab");
 const productBody = document.querySelector(".products-body");
 const userReviewWrapper = document.querySelector(".user-review-wrapper");
-const addProductBtn=document.querySelector(".products-wrapper .products-body .add-product-btn");
+const addProductBtn = document.querySelector(
+  ".products-wrapper .products-body .add-product-btn"
+);
 
-ProductTabs.forEach(ProductTab => {
-  ProductTab.addEventListener('click', () => {
-  
-    ProductTabs.forEach(tab => tab.classList.remove("active"));
+ProductTabs.forEach((ProductTab) => {
+  ProductTab.addEventListener("click", () => {
+    ProductTabs.forEach((tab) => tab.classList.remove("active"));
     ProductTab.classList.add("active");
 
-    
     const tabName = ProductTab.textContent.trim().toLowerCase();
 
     if (tabName.includes("my products")) {
@@ -63,26 +85,26 @@ ProductTabs.forEach(ProductTab => {
       userReviewWrapper.classList.add("hide");
       userReviewWrapper.classList.remove("show");
 
-      addProductBtn.style.display = 'block';
-    } 
-    else if (tabName.includes("user reviews")) {
+      addProductBtn.style.display = "block";
+    } else if (tabName.includes("user reviews")) {
       userReviewWrapper.classList.add("show");
       userReviewWrapper.classList.remove("hide");
 
       productBody.classList.add("hide");
       productBody.classList.remove("show");
 
-      addProductBtn.style.display = 'none';
+      addProductBtn.style.display = "none";
     }
   });
 });
 
-
-function renderProducts(products){
-  const productList=document.querySelector(".products-wrapper .products-body .product-list")
-  productList.innerHTML="";
-  products.forEach(product=>{
-    productList.innerHTML+=`
+function renderProducts(products) {
+  const productList = document.querySelector(
+    ".products-wrapper .products-body .product-list"
+  );
+  productList.innerHTML = "";
+  products.forEach((product) => {
+    productList.innerHTML += `
     <div class="product">
       <img src="./assets/images/${product.image}" alt="${product.model}">
         <div class="product-content">
@@ -90,53 +112,72 @@ function renderProducts(products){
             <div class="product-meta">
                 <p class="product-shoe-price">$${product.price.toFixed(2)}</p>
                 <div class="product-meta-item">
-                    <p><img src="./assets/images/views.png" class="views"> <span class="view-count">${product.views}</span></p>
-                    <p><img src="./assets/images/likes.png" class="likes"> <span class="like-count">${product.likes}</span></p>
+                    <p><img src="./assets/images/views.png" class="views"> <span class="view-count">${
+                      product.views
+                    }</span></p>
+                    <p><img src="./assets/images/likes.png" class="likes"> <span class="like-count">${
+                      product.likes
+                    }</span></p>
                 </div>
             </div> 
         </div>
       </div>
     `;
-  })
+  });
 }
 async function initializeProducts(defaultType) {
   const allProducts = await fetchProducts();
 
-  const productTypeBtns=document.querySelectorAll(".products-body .product-sub-tabs-wrapper .product-sub-tabs .product-sub-tab");
-  const filteredProducts = allProducts.filter(p => p.type === defaultType);
+  const productTypeBtns = document.querySelectorAll(
+    ".products-body .product-sub-tabs-wrapper .product-sub-tabs .product-sub-tab"
+  );
+  const filteredProducts = allProducts.filter((p) => p.type === defaultType);
   productPage = 1;
   renderProducts(filteredProducts.slice(0, productsPerPage));
   updateProductPagination(filteredProducts);
-  productTypeBtns.forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      productTypeBtns.forEach(pBtn=>pBtn.classList.remove("active"));
+  productTypeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      productTypeBtns.forEach((pBtn) => pBtn.classList.remove("active"));
       btn.classList.add("active");
-      let filteredProducts=[];
-      let btnType=btn.textContent.toLowerCase().includes('new')?"new":"used"
-      filteredProducts=allProducts.filter(p=>p.type==btnType)
+      let filteredProducts = [];
+      let btnType = btn.textContent.toLowerCase().includes("new")
+        ? "new"
+        : "used";
+      filteredProducts = allProducts.filter((p) => p.type == btnType);
       renderProducts(filteredProducts.slice(0, productsPerPage));
-      updateProductPagination(filteredProducts)
-    })
-  })
-  const totalViews = allProducts.reduce((sum, product) => sum + product.views, 0);
-  totalViewsCount.innerHTML=totalViews
-  const totalLikes = allProducts.reduce((sum, product) => sum + product.likes,0);
-  totalLikesCount.innerHTML=totalLikes;
-  followersCount.innerHTML=Math.floor(Math.random()*200-100+1)+100;
-  followingCount.innerHTML=Math.floor(Math.random()*100-20+1)+20;
+      updateProductPagination(filteredProducts);
+    });
+  });
+  const totalViews = allProducts.reduce(
+    (sum, product) => sum + product.views,
+    0
+  );
+  totalViewsCount.innerHTML = totalViews;
+  const totalLikes = allProducts.reduce(
+    (sum, product) => sum + product.likes,
+    0
+  );
+  totalLikesCount.innerHTML = totalLikes;
+  followersCount.innerHTML = Math.floor(Math.random() * 200 - 100 + 1) + 100;
+  followingCount.innerHTML = Math.floor(Math.random() * 100 - 20 + 1) + 20;
 
   updateProductCounts();
 }
 
-
 function updateProductCounts() {
-  const totalCountEl = document.querySelector('.product-main-tabs .product-tab.active .product-count');
-  const newCountEl = document.querySelector('.product-sub-tabs .product-sub-tab:nth-child(1) .product-count');
-  const usedCountEl = document.querySelector('.product-sub-tabs .product-sub-tab:nth-child(2) .product-count');
+  const totalCountEl = document.querySelector(
+    ".product-main-tabs .product-tab.active .product-count"
+  );
+  const newCountEl = document.querySelector(
+    ".product-sub-tabs .product-sub-tab:nth-child(1) .product-count"
+  );
+  const usedCountEl = document.querySelector(
+    ".product-sub-tabs .product-sub-tab:nth-child(2) .product-count"
+  );
 
   const totalProducts = allProducts.length;
-  const newProducts = allProducts.filter(p => p.type === "new").length;
-  const usedProducts = allProducts.filter(p => p.type === "used").length;
+  const newProducts = allProducts.filter((p) => p.type === "new").length;
+  const usedProducts = allProducts.filter((p) => p.type === "used").length;
 
   if (totalCountEl) totalCountEl.textContent = `(${totalProducts})`;
   if (newCountEl) newCountEl.textContent = `(${newProducts})`;
@@ -148,29 +189,38 @@ let productsPerPage = 16;
 
 function updateProductPagination(filteredProducts) {
   renderPagination(
-    ".pagination", 
-    filteredProducts.length, 
-    productsPerPage, 
-    productPage, 
+    ".pagination",
+    filteredProducts.length,
+    productsPerPage,
+    productPage,
     (page) => {
       productPage = page;
-      renderProducts(filteredProducts.slice(
-        (productPage - 1) * productsPerPage,
-        productPage * productsPerPage
-      ));
+      renderProducts(
+        filteredProducts.slice(
+          (productPage - 1) * productsPerPage,
+          productPage * productsPerPage
+        )
+      );
       updateProductPagination(filteredProducts);
     }
   );
 }
 
-function renderPagination(containerSelector, totalItems, itemsPerPage, currentPage, onPageChange) {
+function renderPagination(
+  containerSelector,
+  totalItems,
+  itemsPerPage,
+  currentPage,
+  onPageChange
+) {
   const pagination = document.querySelector(containerSelector);
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   let html = "";
 
   if (currentPage > 1) html += `<button class="prev">Prev</button>`;
 
-  let startPage = 1, endPage = 8;
+  let startPage = 1,
+    endPage = 8;
   if (currentPage > 4) {
     startPage = currentPage - 4;
     endPage = currentPage + 4;
@@ -180,7 +230,9 @@ function renderPagination(containerSelector, totalItems, itemsPerPage, currentPa
   }
 
   for (let i = startPage; i <= endPage; i++) {
-    html += `<button class="page ${i === currentPage ? "active" : ""}">${i}</button>`;
+    html += `<button class="page ${
+      i === currentPage ? "active" : ""
+    }">${i}</button>`;
   }
 
   if (endPage < totalPages - 1) {
@@ -192,37 +244,37 @@ function renderPagination(containerSelector, totalItems, itemsPerPage, currentPa
 
   pagination.innerHTML = html;
 
-  pagination.querySelectorAll(".page").forEach(btn => {
+  pagination.querySelectorAll(".page").forEach((btn) => {
     btn.addEventListener("click", () => {
       onPageChange(parseInt(btn.textContent));
     });
   });
 
   const prevBtn = pagination.querySelector(".prev");
-  if (prevBtn) prevBtn.addEventListener("click", () => {
-    if (currentPage > 1) onPageChange(currentPage - 1);
-  });
+  if (prevBtn)
+    prevBtn.addEventListener("click", () => {
+      if (currentPage > 1) onPageChange(currentPage - 1);
+    });
 
   const nextBtn = pagination.querySelector(".next");
-  if (nextBtn) nextBtn.addEventListener("click", () => {
-    if (currentPage < totalPages) onPageChange(currentPage + 1);
-  });
+  if (nextBtn)
+    nextBtn.addEventListener("click", () => {
+      if (currentPage < totalPages) onPageChange(currentPage + 1);
+    });
 }
 // let countriesList=[];
-let countrySelect=document.querySelector(".country");
+let countrySelect = document.querySelector(".country");
 
-document.addEventListener('DOMContentLoaded',async()=>{
+document.addEventListener("DOMContentLoaded", async () => {
   initializeProducts("used");
-})
-
-
+});
 
 const reviewHeadings = [
   "Stylish slip, perfect for staying at home during COVID!",
   "Decently, priced for a cool looking pair of shoes",
   "Great product great price",
   "Looks great but feels loose",
-  "Beware the color descriptions and pictures do not add up!"
+  "Beware the color descriptions and pictures do not add up!",
 ];
 
 const reviewTexts = [
@@ -230,11 +282,15 @@ const reviewTexts = [
   "Great comfortable shoe. Purchased 9.5(us)and they fit perfectly.Wears well and love how they are light weight and got some great compliments on them at the gym.",
   "I got those shoes for a low pricr than the regular price si is a good deal, then i got then delyvered a day before that the day amazon said i gonna recived I was so joy. The shoes feel so good and confortable, lite wait shoes, good for walk if you walk a lot.",
   "I bought these for my husband as a birthday gift. They look great on him, but he says they feel loose and his feet slide around in the shoe. I ordered his usual size he wears in adidas shoes. My family basically only wears adidas shoes because they are quality made and durable. I hope these shoes will break in and fit better over time.",
-  "Color descriptions and pictures do not match up.I selected black shoes with a white sole(based on the pictures).I got the right shoe style but the wrong color.The shoes I received weere all black, including thte soles. Super annoying, these are a gift so I will see if they are ok with this color"
+  "Color descriptions and pictures do not match up.I selected black shoes with a white sole(based on the pictures).I got the right shoe style but the wrong color.The shoes I received weere all black, including thte soles. Super annoying, these are a gift so I will see if they are ok with this color",
 ];
 
 const reviewUsers = [
-  "Siddarth Sharma", "Faraaz", "Angel Mendez", "DisneyFam", "Eric Olivera"
+  "Siddarth Sharma",
+  "Faraaz",
+  "Angel Mendez",
+  "DisneyFam",
+  "Eric Olivera",
 ];
 
 let allReviews = [];
@@ -243,28 +299,34 @@ let currentPage = 1;
 const reviewsPerPage = 5;
 let totalreviewPages = Math.floor(Math.random() * 35) + 20;
 
-const reviewTab=document.querySelector(".product-tab.user-review-tab");
-const reviewCount=reviewTab.querySelector(".product-count");
-reviewCount.textContent=`(${totalreviewPages * reviewsPerPage})`;
+const reviewTab = document.querySelector(".product-tab.user-review-tab");
+const reviewCount = reviewTab.querySelector(".product-count");
+reviewCount.textContent = `(${totalreviewPages * reviewsPerPage})`;
 
-const ratingCount=document.querySelector(".profile-rating-container .rating-count");
-ratingCount.textContent=`${totalreviewPages * reviewsPerPage} Ratings`;
+const ratingCount = document.querySelector(
+  ".profile-rating-container .rating-count"
+);
+ratingCount.textContent = `${totalreviewPages * reviewsPerPage} Ratings`;
 
+sessionStorage.setItem("totalReviews", totalreviewPages * reviewsPerPage);
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function formatDate(daysAgo) {
-  if (daysAgo < 30) return `${daysAgo} day${daysAgo > 1 ? 's' : ''} ago`;
-  if (daysAgo < 365) return `${Math.floor(daysAgo / 30)} month${Math.floor(daysAgo / 30) > 1 ? 's' : ''} ago`;
+  if (daysAgo < 30) return `${daysAgo} day${daysAgo > 1 ? "s" : ""} ago`;
+  if (daysAgo < 365)
+    return `${Math.floor(daysAgo / 30)} month${
+      Math.floor(daysAgo / 30) > 1 ? "s" : ""
+    } ago`;
   if (daysAgo < 730) return `1 year ago`;
   return `${Math.floor(daysAgo / 365)} years ago`;
 }
 
 for (let i = 0; i < totalreviewPages * reviewsPerPage; i++) {
-  const daysAgo = randomNumber(1, 1825); 
-  const ran=randomNumber(0,5-1);
+  const daysAgo = randomNumber(1, 1825);
+  const ran = randomNumber(0, 5 - 1);
   allReviews.push({
     heading: reviewHeadings[ran],
     text: reviewTexts[ran],
@@ -272,7 +334,7 @@ for (let i = 0; i < totalreviewPages * reviewsPerPage; i++) {
     stars: randomNumber(1, 5),
     likes: randomNumber(0, 10),
     dislikes: randomNumber(0, 5),
-    date: formatDate(daysAgo)
+    date: formatDate(daysAgo),
   });
 }
 
@@ -285,10 +347,12 @@ function renderReviews(page) {
   const end = start + reviewsPerPage;
   const reviews = filteredReviews.slice(start, end);
 
-  reviews.forEach(review => {
+  reviews.forEach((review) => {
     let starHtml = "";
     for (let i = 1; i <= 5; i++) {
-      starHtml += `<i class="fa-solid fa-star${i > review.stars ? ' fa-unfill' : ''}"></i>`;
+      starHtml += `<i class="fa-solid fa-star${
+        i > review.stars ? " fa-unfill" : ""
+      }"></i>`;
     }
 
     reviewContainer.innerHTML += `
@@ -310,16 +374,15 @@ function renderReviews(page) {
         </div>
       </div>
     `;
-    
   });
-  giveLikeDislike()
+  giveLikeDislike();
   addReadMoreFunctionality();
 }
 
 function addReadMoreFunctionality() {
   const reviewItems = document.querySelectorAll(".review-item");
 
-  reviewItems.forEach(item => {
+  reviewItems.forEach((item) => {
     const textEl = item.querySelector(".review-text");
     const btn = item.querySelector(".read-more");
 
@@ -329,54 +392,57 @@ function addReadMoreFunctionality() {
     const maxHeight = lineHeight * 3;
 
     if (textEl.clientHeight > maxHeight) {
-      btn.style.display = "none"; 
+      btn.style.display = "none";
+    } else {
+      btn.style.display = "inline";
     }
-    else {
-      btn.style.display = "inline"; 
-    }
-    btn.addEventListener("click", e => {
+    btn.addEventListener("click", (e) => {
       e.preventDefault();
       textEl.classList.toggle("expanded");
-      btn.textContent = textEl.classList.contains("expanded") ? "Read Less" : "Read More";
+      btn.textContent = textEl.classList.contains("expanded")
+        ? "Read Less"
+        : "Read More";
     });
   });
 }
 
-
-
 addReadMoreFunctionality();
-
 
 function giveLikeDislike() {
   document.querySelectorAll(".review-like-btn").forEach((likeBtn, index) => {
-    likeBtn.addEventListener("click", () => { 
+    likeBtn.addEventListener("click", () => {
       allReviews[index].likes += 1;
       likeBtn.innerHTML = `<i class="fa-solid fa-thumbs-up"></i>(${allReviews[index].likes})`;
     });
   });
-  document.querySelectorAll(".review-dislike-btn").forEach((dislikeBtn, index) => {
-    dislikeBtn.addEventListener("click", () => { 
-      allReviews[index].dislikes += 1;
-      dislikeBtn.innerHTML = `<i class="fa-solid fa-thumbs-down"></i>(${allReviews[index].dislikes})`;
-      
+  document
+    .querySelectorAll(".review-dislike-btn")
+    .forEach((dislikeBtn, index) => {
+      dislikeBtn.addEventListener("click", () => {
+        allReviews[index].dislikes += 1;
+        dislikeBtn.innerHTML = `<i class="fa-solid fa-thumbs-down"></i>(${allReviews[index].dislikes})`;
+      });
     });
-  });
 }
 function calculateReviewStats(reviews) {
   const totalReviews = reviews.length;
   const starCounts = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
 
-  reviews.forEach(r => {
+  reviews.forEach((r) => {
     if (r.stars >= 1 && r.stars <= 5) starCounts[r.stars]++;
   });
 
   const starPercentages = {};
   for (let i = 1; i <= 5; i++) {
-    starPercentages[i] = ((starCounts[i] / totalReviews) * 100).toFixed(0); 
+    starPercentages[i] = ((starCounts[i] / totalReviews) * 100).toFixed(0);
   }
 
   const overallRating = (
-    (starCounts[5] * 5 + starCounts[4] * 4 + starCounts[3] * 3 + starCounts[2] * 2 + starCounts[1] * 1) /
+    (starCounts[5] * 5 +
+      starCounts[4] * 4 +
+      starCounts[3] * 3 +
+      starCounts[2] * 2 +
+      starCounts[1] * 1) /
     totalReviews
   ).toFixed(1);
 
@@ -384,25 +450,26 @@ function calculateReviewStats(reviews) {
 }
 
 const stats = calculateReviewStats(allReviews);
-const ratingScore=document.querySelector(".profile-rating-container .profile-rating-score-container .rating-score .profile-rating-score");
-ratingScore.textContent=stats.overallRating;
+const ratingScore = document.querySelector(
+  ".profile-rating-container .profile-rating-score-container .rating-score .profile-rating-score"
+);
+ratingScore.textContent = stats.overallRating;
 
-
-const ratingBarContainers=document.querySelectorAll(".user-review-profile .rating-bar-group .rating-bar");
-ratingBarContainers.forEach(barContainer=>{
+const ratingBarContainers = document.querySelectorAll(
+  ".user-review-profile .rating-bar-group .rating-bar"
+);
+ratingBarContainers.forEach((barContainer) => {
   for (let star = 1; star <= 5; star++) {
-  const fillBar = barContainer.querySelector(`.fill-${star}`);
-  const percentSpan = barContainer.querySelector(`.percent`);
+    const fillBar = barContainer.querySelector(`.fill-${star}`);
+    const percentSpan = barContainer.querySelector(`.percent`);
 
-  if (fillBar && percentSpan && stats.starPercentages[star] !== undefined) {
-    const widthPercent = stats.starPercentages[star];
-    fillBar.style.width = widthPercent + "%";
-    percentSpan.textContent = widthPercent + "%";
+    if (fillBar && percentSpan && stats.starPercentages[star] !== undefined) {
+      const widthPercent = stats.starPercentages[star];
+      fillBar.style.width = widthPercent + "%";
+      percentSpan.textContent = widthPercent + "%";
+    }
   }
-}
 });
-
-
 
 function updateReviewPagination() {
   renderPagination(
@@ -418,24 +485,24 @@ function updateReviewPagination() {
   );
 }
 
-
 function applyFilter() {
-  const activeFilterBtn = document.querySelector(".filter-buttons .active span");
+  const activeFilterBtn = document.querySelector(
+    ".filter-buttons .active span"
+  );
   const sortSelect = document.querySelector("#sort").value;
 
   filteredReviews = [...allReviews];
 
   if (activeFilterBtn.textContent !== "All") {
     const star = parseInt(activeFilterBtn.textContent);
-    filteredReviews = filteredReviews.filter(r => r.stars === star);
+    filteredReviews = filteredReviews.filter((r) => r.stars === star);
   }
 
   if (sortSelect === "high") {
     filteredReviews.sort((a, b) => b.stars - a.stars);
-  } 
-  else if(sortSelect=="low"){
+  } else if (sortSelect == "low") {
     filteredReviews.sort((a, b) => a.stars - b.stars);
-  } 
+  }
 
   currentPage = 1;
   renderReviews(currentPage);
@@ -445,71 +512,76 @@ function applyFilter() {
 renderReviews(currentPage);
 updateReviewPagination();
 
-document.querySelectorAll(".filter-buttons button").forEach(btn => {
+document.querySelectorAll(".filter-buttons button").forEach((btn) => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".filter-buttons button").forEach(b => b.classList.remove("active"));
+    document
+      .querySelectorAll(".filter-buttons button")
+      .forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
     applyFilter();
   });
 });
 
-
 document.querySelector("#sort").addEventListener("change", () => {
   applyFilter();
 });
- 
 
-const addProductModalContainer=document.querySelector(".add-product-modal-container");
+const addProductModalContainer = document.querySelector(
+  ".add-product-modal-container"
+);
 
-if(addProductBtn){
-  addProductBtn.addEventListener('click',(e)=>{
+if (addProductBtn) {
+  addProductBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    const token=localStorage.getItem("token");
-    if(token &&  token.trim() !== ""){
-      window.name="";
+    const token = localStorage.getItem("token");
+    if (token && token.trim() !== "") {
+      window.name = "";
       addProductModalContainer.classList.add("active");
-      body.classList.add("not-active");
-    }
-    else{
-      body.classList.add("not-active");
+      body.classList.add("not-scroll");
+    } else {
+      lockBody();
       overlayContainer.classList.add("active");
       requestAnimationFrame(() => {
         loginContainer.classList.add("active");
       });
       setupForms();
-      }
-  })
+    }
+  });
 }
 
-const editProfileBtn=document.querySelector(".top-profile-section .user-info .user-details .edit-link");
-const editOverlay=document.querySelector(".edit-modal-overlay")
+const editProfileBtn = document.querySelector(
+  ".top-profile-section .user-info .user-details .edit-link"
+);
+const editOverlay = document.querySelector(".edit-modal-overlay");
 
-editProfileBtn.addEventListener('click',(e)=>{
-  const body=document.body;
+editProfileBtn.addEventListener("click", (e) => {
+  const body = document.body;
   e.preventDefault();
-  const token=localStorage.getItem("token");
-  if(token && token.trim() !== ""){
-    const profileData=sessionStorage.getItem("profileData");
-    if(profileData){
-      const profileDat=JSON.parse(profileData);
-      profileUsername.value=profileDat.username;
-      firstName.value=profileDat.firstName;
-      lastName.value=profileDat.lastName;
-      country.value=profileDat.country;
-      city.value=profileDat.city;
-      zipCode.value=profileDat.zipCode;
-      profileImage.src=`./assets/images/${profileDat.profileImg}`;
+  const token = localStorage.getItem("token");
+  if (token && token.trim() !== "") {
+    const profileData = sessionStorage.getItem("profileData");
+    if (profileData) {
+      const profileDat = JSON.parse(profileData);
+      profileUsername.value = profileDat.username;
+      firstName.value = profileDat.firstName;
+      lastName.value = profileDat.lastName;
+      country.value = profileDat.country;
+      city.value = profileDat.city;
+      zipCode.value = profileDat.zipCode;
+      profileImage.src = `./assets/images/${profileDat.profileImg}`;
+      profileImgSrc=profileDat.profileImg;
+      actionBtn.classList.remove("add-image-btn");
+      actionBtn.classList.add("delete-image-btn");
+      actionBtn.textContent = "Delete Image";
     }
     editOverlay.classList.add("active");
-    body.classList.add("not-active")
-  }
-  else{
-    body.classList.add("not-active");
+    body.classList.add("not-scroll")
+  } else {
+    lockBody();
     overlayContainer.classList.add("active");
     requestAnimationFrame(() => {
       loginContainer.classList.add("active");
     });
     setupForms();
   }
-  
-})
+});

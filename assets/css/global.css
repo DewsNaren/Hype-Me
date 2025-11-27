@@ -32,9 +32,11 @@ html{
 }
 body{
     font-family: 'Poppins',sans-serif;
+   
 }
 body.not-active{
-    overflow: hidden;
+    overflow-y: hidden;
+    padding-right: var(--scrollbar-width);
 }
 a{
     text-decoration: none;
@@ -131,6 +133,15 @@ a{
 }
 .profile-container .profile-menu a.logout-btn.active{
     display: block;
+}
+.profile-container .profile-menu a.chat-btn{
+    display: none;
+}
+.profile-container .profile-menu a.chat-btn.active{
+    display: block;
+}
+.profile-container .profile-menu a.chat-btn{
+    border-bottom: 1px solid rgb(185, 183, 183);
 }
 .profile-menu a.login-btn:has(+ a.logout-btn.active){
     border-bottom: 1px solid rgb(185, 183, 183);
@@ -522,12 +533,12 @@ footer{
     .nav-btn-container a{
         font-size: 0.6rem;
     }
-    .buy-btn{
+    /* .buy-btn{
         padding: 6px 6px;
     }
     .sell-btn{
         padding: 6px 8px;
-    }
+    } */
 
     .quick-links ul{
         gap: 45px;

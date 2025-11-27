@@ -1,3 +1,6 @@
+body.not-scroll{
+    overflow-y: hidden;
+}
 .header{
     position: sticky;
     top: 0px;
@@ -38,7 +41,7 @@
 .chat-modal-wrapper.active{
   display: flex;
 }
-.modal-main-wrapper{
+.chat-main-wrapper{
     width: 100%;
     height: fit-content;
     overflow-y: auto;
@@ -46,7 +49,7 @@
     max-height: 100vh; 
 }
 
-.modal-main-container{
+.chat-main-container{
     background-color: rgb(52, 40, 60);
     padding: 40px;
 }
@@ -334,6 +337,7 @@
 .message-text{
     align-self: flex-start;
     color: rgba(0,0,0,0.7);
+    word-break: break-all;
 }
 .message-meta .tick-icon {
     width: 14px;
@@ -387,7 +391,7 @@
     .chat-close-btn img{
         width: 33px;
     }
-    .modal-main-container{
+    .chat-main-container{
         padding: 37px 34px;
     }
     .chat-title{
@@ -558,7 +562,7 @@
     .chat-close-btn img{
         width: 28px;
     }
-    .modal-main-container{
+    .chat-main-container{
         padding: 33px 29px;
     }
     .chat-wrapper{
@@ -735,7 +739,7 @@
     .chat-close-btn img{
         width: 21px;
     }
-    .modal-main-container{
+    .chat-main-container{
         padding: 25px 21px 100px;
     }
     .chat-wrapper{
@@ -917,6 +921,9 @@
         padding: 28px 22px 50px;
         padding-right: 22px;
     }
+    .buy-btn {
+        padding: 7px 7px;
+    }
     .chat-conversations{
         flex: 0 1 100%; 
         height: 400px;
@@ -949,7 +956,7 @@
     .chat-close-btn img{
         width: 18px;
     }
-    .modal-main-container {
+    .chat-main-container {
         padding: 20px 16px 70px;
     }
     .chat-title{
@@ -977,7 +984,7 @@
     .chat-close-btn img{
         width: 18px;
     }
-    .modal-main-container {
+    .chat-main-container {
         padding: 18px 16px 70px;
     }
     .chat-wrapper{

@@ -601,13 +601,13 @@
         width: 18px;
     }
     .discover-btn{
-        font-size: 0.65rem;
+        font-size: 0.85rem;
         margin-left:8.37%;
         margin-top: 32px;
     }
     .discover-btn .arrow{
         margin-left: 10px;
-        width: 15px;
+        width: 18px;
     }
     .slider-indicator-container{
         bottom: 13.87%;
@@ -671,7 +671,7 @@
         margin-bottom: 10px;
     }
     .brand-name{
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
     
     .shop-under-budget{
@@ -727,21 +727,22 @@
         top: 55%;
     }
     .slider-desc{
-        font-size: 26px;
+        /* width: 54%; */
+        font-size: 25px;
         line-height: 36px;
-        margin-left: 8.5%;
+        margin-left: 7.8%;
     }
     .slider-btn img{
         width: 15px;
     }
     .discover-btn{
-        font-size: 0.65rem;
-        margin-left:8.5%;
-        margin-top: 25px;
+        font-size: 0.72rem;
+        margin-left:7.8%;
+        margin-top: 20px;
     }
     .discover-btn .arrow{
         margin-left: 10px;
-        width: 13px;
+        width: 14px;
     }
     .slider-indicator-container{
         gap: 10px;
@@ -784,7 +785,7 @@
         height: 105px;
     }
     .brand-name{
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
     
     .shop-under-budget{
@@ -823,6 +824,7 @@
         top: 58%;
     }
     .slider-desc{
+        width: 48%;
         margin-left: 11%;
         font-size: 1.2rem;
         line-height: 32px;
@@ -907,9 +909,9 @@
 
 @media  screen and (max-width:480px){
     .slider-desc{
-        width: 40%;
+        width: 48%;
         margin-left: 11%;
-        font-size: 0.9rem;
+        font-size: 16px;
         line-height: 25px;
     }
     .slider-btn img{
@@ -920,6 +922,13 @@
     }
     .next{
         right: 3%;
+    }
+    .discover-btn{
+        font-size: 11px;
+        
+    }
+    .discover-btn .arrow{
+        margin-left: 8px;
     }
     .search-wrapper{
         width: 75%;
@@ -934,7 +943,7 @@
         width: 11px;
     }
     .section-title{
-        font-size: 1.1rem;
+        font-size: 1.15rem;
     }
     .recent-search-list {
         max-width: 90%;
@@ -969,9 +978,9 @@
 
 @media  screen and (max-width:390px) {
     .slider-desc {
-        width: 50%;
+        width: 54.5%;
         margin-left: 11%;
-        font-size: 13.7px;
+        font-size: 0.9rem;
         line-height: 22px;
     }
     .popular-shoes-container{
@@ -984,6 +993,9 @@
     .recent-search-tag{
         padding: 9px 20px;
         font-size: 0.72rem;
+    }
+    .brand-name {
+        font-size: 13px;
     }
     .shop-button-container {
         padding-top: 40px;

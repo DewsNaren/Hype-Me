@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     overlayContainer.classList.add("active");
     loginContainer.classList.add("active");
     setupForms();
-    body.classList.add("not-active");
+    lockBody();
     window.name = "";
   }
 });
@@ -20,7 +20,9 @@ function renderSlider(products) {
         <div class="recent-slider-item" >
         <a  href="./product-detail.html" data-product-id="${
           product._id
-        }" data-product-img="./assets/images/${product.image}" class="product-link">
+        }" data-product-img="./assets/images/${
+      product.image
+    }" class="product-link">
           <img src="./assets/images/${product.image}" alt="shoe-${index + 1}">
         </a>
 
@@ -84,7 +86,7 @@ function initRecentSlider() {
       indicator.style.transition = "transform 0.6s ease-in-out";
       indicator.style.transform = `translateX(${relativeIndex * step}px)`;
     }
-    
+
     function updateSlide(index, animate = true) {
       container.style.transition = animate
         ? "transform 0.6s ease-in-out"
@@ -101,7 +103,6 @@ function initRecentSlider() {
       currentIndex += next ? 1 : -1;
       updateSlide(currentIndex);
     }
-   
 
     function handleTransitionEnd() {
       isTransitioning = false;
@@ -159,7 +160,7 @@ function setupLikeBtns() {
         }
         return;
       } else {
-        body.classList.add("not-active");
+        lockBody();
         overlayContainer.classList.add("active");
         requestAnimationFrame(() => {
           loginContainer.classList.add("active");
@@ -183,22 +184,12 @@ document
     if (!link) return;
 
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    if (token) {
-      const productId = link.dataset.productId;
-      history.pushState({ productId: productId }, '', './product-detail.html');
-      // window.name = productId;
-      setTimeout(() => {
-        window.location.href = "./product-detail.html";
-      }, 0);
-    } else {
-      body.classList.add("not-active");
-        overlayContainer.classList.add("active");
-        requestAnimationFrame(() => {
-          loginContainer.classList.add("active");
-        });
-        setupForms();
-    }
+
+    const productId = link.dataset.productId;
+    sessionStorage.setItem("productId", productId);
+    setTimeout(() => {
+      window.location.href = "./product-detail.html";
+    }, 0);
   });
 
 const viewAll = document.querySelector(

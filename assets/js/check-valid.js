@@ -1,6 +1,6 @@
 (function () {
   const publicPages = [
-    '', 'index.html'
+    '', 'index.html','product-detail.html','product-list.html'
   ];
 
   const current = location.pathname.split('/').pop();

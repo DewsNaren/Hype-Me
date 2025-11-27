@@ -9,7 +9,7 @@
   left: 0;
   z-index: 5;
   display: none;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .overlay.active{
@@ -399,25 +399,25 @@
     cursor: pointer;
 }
 .logout-modal .modal-close-btn img{
-    width: clamp(12px,1.2vw, 21px);
+    width: clamp(14px,1.2vw, 21px);
 }
 .logout-modal .logout-content-container.not-active{
     display: none;
 }
 .logout-modal .logout-content-container h3 {
   margin-bottom: clamp(10px, 0.84vw, 16px);
-  font-size: clamp(14px, 1.37vw, 26px);
+  font-size: clamp(15px, 1.37vw, 26px);
 }
 .logout-modal p{
     margin-bottom: clamp(10px, 0.84vw, 16px);
-    font-size: clamp(12px, 0.84vw, 16px);
+    font-size: clamp(13px, 0.84vw, 16px);
 }
 .logout-modal .modal-buttons button {
   margin-top:clamp(10px,1.065vw, 20px);
-  padding: clamp(6px, 0.7vw,10px) clamp(12px, 1.35vw,25px);
+  padding: clamp(6px, 0.7vw,10px) clamp(14px, 1.35vw,25px);
   cursor: pointer;
   border: transparent;
-  font-size: clamp(10px, 0.84vw, 16px);
+  font-size: clamp(12px, 0.84vw, 16px);
 
 }
 .logout-modal .modal-buttons button.confirm-btn{
@@ -433,13 +433,13 @@
 
 .logout-success-container h3 {
    margin-bottom: clamp(10px, 0.84vw, 16px);
-  font-size: clamp(14px, 1.37vw, 26px);
+  font-size: clamp(15px, 1.37vw, 26px);
   font-weight: 600;
   color: #222;
 }
 
 .logout-success-container .logout-msg {
-  font-size:  clamp(12px, 0.95vw, 18px);
+  font-size:  clamp(13px, 0.95vw, 18px);
   line-height: 1.5;
   margin-top: clamp(10px,1vw, 1vw);
   font-weight: 500;

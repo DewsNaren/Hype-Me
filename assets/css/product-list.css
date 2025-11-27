@@ -358,6 +358,7 @@ a.brand-more-link.not-active,a.model-more-link.not-active,.year-more-link.not-ac
 
 .product-item > img{
     width: 100%;
+    cursor: pointer;
 }
 
 .product-item{

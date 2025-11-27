@@ -29,6 +29,7 @@
                     <div class="profile-menu">
                         <a href="#" class="signup-btn">Sign Up</a>
                         <a href="#" class="login-btn">LogIn</a>
+                        <a href="#" class="chat-btn">Chat</a>
                         <a href="#" class="logout-btn">Logout</a>
                     </div>
                 </li>
@@ -79,9 +80,7 @@
                         </div>
                         <div class="product-description">
                             <h3>Product Description</h3>
-                            <p>Asian Group of Industries started its shoe-making journey in the year 1994 when we decided to deliver high quality & affordable range of casual, sports and school shoes to the people of India.</p>
-                            <p class="hidden">From the time of introduction today, Asian has never stopped working on improving the quality and comfort of its shoes</p>
-                            <a href="#" class="read-more">Read More</a>
+                            <p>Asian Group of Industries started its shoe-making journey in the year 1994 when we decided to deliver high quality & affordable range of casual, sports and school shoes to the people of India.  <span class="extra-text" hidden>From the time of introduction today, Asian has never stopped working on improving the quality and comfort of its shoes</span>  <a href="#" class="read-more">Read More</a> </p>
                         </div>
                     </div>
                 
@@ -111,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="buy-now-btn">Buy Now</button>
+                            <button type="button" class="buy-now-btn" disabled="true">Buy Now</button>
 
                         </div>
                         <div class="product-specs">
@@ -139,7 +138,7 @@
         <section class="similar-products">
             <h2 class="section-title">Similar Products</h2>
             <div class="recent-slider-wrapper">
-                <button class="recent-slider-btn prev" disabled="true"  type="button" >
+                <button class="recent-slider-btn prev"  type="button" >
                     <img src="./assets/images/disable-left-arrow.png" alt="Prev-arrow">
                 </button>
                 <button class="recent-slider-btn next" type="button">
@@ -303,165 +302,165 @@
         </div>
     </div>
     <div class="chat-modal-wrapper">
-        <div class="modal-main-wrapper">
+        <div class="chat-main-wrapper">
             <header class="header">
-        <div class="header-logo-container">
-            <a href="./index.html" class="logo"><img src="./assets/images/logo.png" alt="logo"></a>
-        </div>
-        <nav class="nav">
-            <ul>
-                <li><img src="./assets/images/g-search.png" class="g-search" alt="g-search"></li>
-                <li class="location-list"><span>TX 77441</span><img src="./assets/images/location.png" alt="location"></li>
-                <li class="profile-container">
-                    <img src="./assets/images/user.png" class="user-profile default" alt="profile">
-                    <span class="user-profile login-profile">MC</span>
-                    <button type="button" class="profile-toggle"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button>
-                    <div class="profile-menu">
-                        <a href="#" class="signup-btn">Sign Up</a>
-                        <a href="#" class="login-btn">LogIn</a>
-                        <a href="#" class="logout-btn">Logout</a>
-                    </div>
-                </li>
-                
-                <li>
-                    <div class="nav-btn-container">
-                        <a href="#" class="add-btn">+</a>
-                        <a href="./my-products.html" class="sell-btn">Sell</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
-            <main class="modal-main-container">
-        <div class="chat-close-btn-container">
-            <button type="button" class="chat-close-btn"><img src="./assets/images/close.png" alt="close"></button>
-        </div>
-        <div class="chat-wrapper">
-            <h2 class="chat-title">Chats</h2>
-            <div class="chat-outer-container">
-                <div class="chat-inner-container">
-                    <div class="chat-conversations">
-                        <div class="conversation-header">
-                            <div class="chat-search-wrapper">
-                                <input type="text" name="chat-search-input" class="chat-search-input" placeholder="Search" autocomplete="off">
-                                <span class="chat-search-icon"><img src="./assets/images/search.png" alt="search"></span>
+                <div class="header-logo-container">
+                    <a href="./index.html" class="logo"><img src="./assets/images/logo.png" alt="logo"></a>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><img src="./assets/images/g-search.png" class="g-search" alt="g-search"></li>
+                        <li class="location-list"><span>TX 77441</span><img src="./assets/images/location.png" alt="location"></li>
+                        <li class="profile-container">
+                            <img src="./assets/images/user.png" class="user-profile default" alt="profile">
+                            <span class="user-profile login-profile">MC</span>
+                            <button type="button" class="profile-toggle"><img src="./assets/images/profile-arrow.png" class="profile-arrow" alt="profile-arrow"></button>
+                            <div class="profile-menu">
+                                <a href="#" class="signup-btn">Sign Up</a>
+                                <a href="#" class="login-btn">LogIn</a>
+                                <a href="#" class="logout-btn">Logout</a>
                             </div>
-                            <div class="convo-filter-container">
-                                <button type="button" class="convo-filter-btn all-btn active">All</button>
-                                <button type="button" class="convo-filter-btn unread-btn">Unread Chats</button>
-                            </div>
-                        </div>
+                        </li>
                         
-                        <div class="convo-list">
-                            <div class="convo-item active">
-                                <div class="convo-info">
-                                    <div class="convo-detail">
-                                        <img class="convo-product-picture" src="./assets/images/product-picture-1.png" alt="product-picture-1">
-                                        <div class="convo-detail">
-                                            <div class="convo-user-info">
+                        <li>
+                            <div class="nav-btn-container">
+                                <a href="#" class="buy-btn">Buy</a>
+                                <a href="#" class="sell-btn">Sell</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="chat-main-container">
+                <div class="chat-close-btn-container">
+                    <button type="button" class="chat-close-btn"><img src="./assets/images/close.png" alt="close"></button>
+                </div>
+                <div class="chat-wrapper">
+                    <h2 class="chat-title">Chats</h2>
+                    <div class="chat-outer-container">
+                        <div class="chat-inner-container">
+                            <div class="chat-conversations">
+                                <div class="conversation-header">
+                                    <div class="chat-search-wrapper">
+                                        <input type="text" name="chat-search-input" class="chat-search-input" placeholder="Search" autocomplete="off">
+                                        <span class="chat-search-icon"><img src="./assets/images/search.png" alt="search"></span>
+                                    </div>
+                                    <div class="convo-filter-container">
+                                        <button type="button" class="convo-filter-btn all-btn active">All</button>
+                                        <button type="button" class="convo-filter-btn unread-btn">Unread Chats</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="convo-list">
+                                    <div class="convo-item active">
+                                        <div class="convo-info">
+                                            <div class="convo-detail">
+                                                <img class="convo-product-picture" src="./assets/images/product-picture-1.png" alt="product-picture-1">
+                                                <div class="convo-detail">
+                                                    <div class="convo-user-info">
+                                                        <p class="contact-name">Siva Sanz</p>
+                                                        <p class="product-preview">Low One Blue Shine</p>
+                                                        <div class="message-preview">
+                                                            <img src="./assets/images/double-tick.svg" alt="tick" class="double-tick-icon">
+                                                            <span>yes, it's available</span>
+                                                        </div>
+                                                    </div>  
+                                                </div>
+                                                <div class="convo-time">
+                                                    <span class="time">09:58</span>
+                                                    <span class="more"><img src="./assets/images/more.png" alt="more"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="convo-item">
+                                        <div class="convo-info">
+                                            <div class="convo-detail">
+                                                <img class="convo-product-picture" src="./assets/images/product-picture-2.png" alt="product-picture-1">
+                                                <div class="convo-detail">
+                                                    <div class="convo-user-info">
+                                                        <p class="contact-name">Tony</p>
+                                                        <p class="product-preview">Supernal Men's Running</p>
+                                                        <div class="message-preview">
+                                                            <img src="./assets/images/double-tick.svg" alt="tick" class="double-tick-icon">
+                                                            <span>yes, it's available</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="convo-time">
+                                                <span class="time">16/04/21</span>
+                                                <span class="more"><img src="./assets/images/more.png" alt="more"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="convo-item">
+                                        <div class="convo-info">
+                                            <div class="convo-detail">
+                                                <img class="convo-product-picture" src="./assets/images/product-picture-3.png" alt="product-picture-1">
+                                                <div class="convo-detail">
+                                                    <div class="convo-user-info">
+                                                        <p class="contact-name">Tushar</p>
+                                                        <p class="product-preview">Smash Badmiton Shoes</p>
+                                                        <div class="message-preview">
+                                                            <img src="./assets/images/double-tick.svg" alt="tick" class="double-tick-icon">
+                                                            <span>yes, it's available</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="convo-time">
+                                                <span class="time">24/02/21</span>
+                                                <span class="more"><img src="./assets/images/more.png" alt="more"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="not-found">No Results Found</p>
+                                </div>
+                            </div>
+                    
+                            <div class="chat-active">
+                                <div class="chat-header">
+                                    <div class="contact-info">
+                                        <img src="./assets/images/product-picture-1-large.png" alt="Product" class="product-img">
+                                        <div class="contact-details">
+                                            <div class="contact-user-info">
                                                 <p class="contact-name">Siva Sanz</p>
-                                                <p class="product-preview">Low One Blue Shine</p>
-                                                <div class="message-preview">
-                                                    <img src="./assets/images/double-tick.svg" alt="tick" class="double-tick-icon">
-                                                    <span>yes, it's available</span>
-                                                </div>
-                                            </div>  
-                                        </div>
-                                        <div class="convo-time">
-                                            <span class="time">09:58</span>
-                                            <span class="more"><img src="./assets/images/more.png" alt="more"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="convo-item">
-                                <div class="convo-info">
-                                    <div class="convo-detail">
-                                        <img class="convo-product-picture" src="./assets/images/product-picture-2.png" alt="product-picture-1">
-                                        <div class="convo-detail">
-                                            <div class="convo-user-info">
-                                                <p class="contact-name">Tony</p>
-                                                <p class="product-preview">Supernal Men's Running</p>
-                                                <div class="message-preview">
-                                                    <img src="./assets/images/double-tick.svg" alt="tick" class="double-tick-icon">
-                                                    <span>yes, it's available</span>
-                                                </div>
+                                                <p class="product-info"> <span class="active-product-preview">Low One Blue Shine</span> |  <span class="product-price">$345</span></p> 
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="convo-time">
-                                        <span class="time">16/04/21</span>
-                                        <span class="more"><img src="./assets/images/more.png" alt="more"></span>
+                                    <div class="right-actions">
+                                        <img src="./assets/images/chat-more.png" alt="chat-more">
+                                        <span class="chat-active-close-btn"><img src="./assets/images/chat-close.png" alt="close"></span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="convo-item">
-                                <div class="convo-info">
-                                    <div class="convo-detail">
-                                        <img class="convo-product-picture" src="./assets/images/product-picture-3.png" alt="product-picture-1">
-                                        <div class="convo-detail">
-                                            <div class="convo-user-info">
-                                                <p class="contact-name">Tushar</p>
-                                                <p class="product-preview">Smash Badmiton Shoes</p>
-                                                <div class="message-preview">
-                                                    <img src="./assets/images/double-tick.svg" alt="tick" class="double-tick-icon">
-                                                    <span>yes, it's available</span>
-                                                </div>
-                                            </div>
+                                <div class="chat-messages">
+                                    <p class="chat-date">Today</p>     
+                                    <div class="message incoming">
+                                        <p class="message-text">Is it available?</p>
+                                        <div class="message-meta">
+                                            <span class="message-time">09:40</span>
                                         </div>
                                     </div>
-                                    <div class="convo-time">
-                                        <span class="time">24/02/21</span>
-                                        <span class="more"><img src="./assets/images/more.png" alt="more"></span>
+                                    <div class="message outgoing">
+                                        <p class="message-text"> Yes, it's available</p>
+                                        <div class="message-meta">
+                                            <span class="message-time">09:58</span>
+                                            <img src="./assets/images/double-tick.svg" class="tick-icon" alt="read">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <p class="not-found">No Results Found</p>
-                        </div>
-                    </div>
-            
-                    <div class="chat-active">
-                        <div class="chat-header">
-                            <div class="contact-info">
-                                <img src="./assets/images/product-picture-1-large.png" alt="Product" class="product-img">
-                                <div class="contact-details">
-                                    <div class="contact-user-info">
-                                        <p class="contact-name">Siva Sanz</p>
-                                        <p class="product-info"> <span class="active-product-preview">Low One Blue Shine</span> |  <span class="product-price">$345</span></p> 
-                                    </div>
+                                <div class="message-composer">
+                                    <img src="./assets/images/attach.png" class="attach" alt="Attach">
+                                    <input type="text" name="type-message" placeholder="Type a message" autocomplete="off">
+                                    <img src="./assets/images/mic.png" alt="mic" class="voice-btn">
                                 </div>
                             </div>
-                            <div class="right-actions">
-                                <img src="./assets/images/chat-more.png" alt="chat-more">
-                                <span class="chat-active-close-btn"><img src="./assets/images/chat-close.png" alt="close"></span>
-                            </div>
-                        </div>
-                        <div class="chat-messages">
-                            <p class="chat-date">Today</p>     
-                            <div class="message incoming">
-                                <p class="message-text">Is it available?</p>
-                                <div class="message-meta">
-                                    <span class="message-time">09:40</span>
-                                </div>
-                            </div>
-                            <div class="message outgoing">
-                                <p class="message-text"> Yes, it's available</p>
-                                 <div class="message-meta">
-                                    <span class="message-time">09:58</span>
-                                    <img src="./assets/images/double-tick.svg" class="tick-icon" alt="read">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="message-composer">
-                            <img src="./assets/images/attach.png" class="attach" alt="Attach">
-                            <input type="text" name="type-message" placeholder="Type a message" autocomplete="off">
-                            <img src="./assets/images/mic.png" alt="mic" class="voice-btn">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
         </div>
     </div>
     <script src="./assets/js/check-valid.js"></script>

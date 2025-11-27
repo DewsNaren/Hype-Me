@@ -1,10 +1,10 @@
-body{
+/* body{
     position: relative;
 }
 body.not-active{
     height: 100vh;
     overflow-y: hidden;
-}
+} */
 header{
     position: sticky !important;
     top: 0;
@@ -1230,6 +1230,11 @@ header{
 
 }
 
+@media screen and (max-width:1200px){
+    .add-product-wrapper {
+        max-width: 90%;
+    }
+}
 @media screen and (max-width:1024px){
     .location-list img{
         width: 12px;
