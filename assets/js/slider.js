@@ -1,14 +1,37 @@
+// function getProduct(mainProduct) {
+//   const mainPrice = mainProduct.price;
+//   const similarProducts = allProducts.filter((product) => {
+//     return (
+//       product._id !== mainProduct._id &&
+//       product.price >= mainPrice - 100 &&
+//       product.price <= mainPrice + 100
+//     );
+//   });
+//   return similarProducts;
+// }
+
 function getProduct(mainProduct) {
   const mainPrice = mainProduct.price;
-  const similarProducts = allProducts.filter((product) => {
-    return (
+  
+
+  let similarProducts = allProducts.filter(product =>
+    product._id !== mainProduct._id &&
+    product.price >= mainPrice - 100 &&
+    product.price <= mainPrice + 100
+  );
+
+
+  if (similarProducts.length < 2) {
+    similarProducts = allProducts.filter(product =>
       product._id !== mainProduct._id &&
-      product.price >= mainPrice - 100 &&
-      product.price <= mainPrice + 100
+      product.price >= mainPrice - 400 &&
+      product.price <= mainPrice    
     );
-  });
+  }
+
   return similarProducts;
 }
+
 
 function renderSimilarProducts(similarProducts) {
   const products = similarProducts;

@@ -128,3 +128,14 @@ function setUpLikes() {
     });
   });
 }
+
+function changeProfileAvatar(){
+  const avatar=document.querySelector(".profile-card .avatar-container .avatar");
+
+if(localStorage.getItem("userInitial")){
+  avatar.textContent = localStorage.getItem("userInitial").toUpperCase();
+}
+
+}
+
+changeProfileAvatar()

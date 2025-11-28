@@ -83,7 +83,7 @@
 
 
 .user-details h2 {
-  font-size: 1.45834vw;
+  font-size: clamp(17px, 1.45834vw, 1.46vw);
   color:rgb(69, 69, 69) ;
   text-transform: capitalize;
 }
@@ -285,7 +285,7 @@
 .pagination .page, .pagination .prev, .pagination .next {
   border: none;
   background-color: transparent;
-  font-size: 0.92vw;
+  font-size:clamp(11px, 0.92vw, 0.92vw);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -295,6 +295,7 @@
 .pagination .page{
   width: 28px;
   height: 28px;
+  line-height: 1;
 }
 .pagination .prev,.pagination .next{
   padding: 5px;
@@ -667,6 +668,7 @@
 .review-pagination .page{
   width: 28px;
   height: 28px;
+  line-height: 1;
 }
 .review-pagination .prev,.review-pagination .next{
   color: rgb(85, 21, 180);
@@ -883,7 +885,7 @@ footer{
     width: 30px;
   }
   .stat-text{
-    font-size: 0.7rem;
+    font-size: 0.73rem;
   }
   .count{
     font-size: 2rem ;
@@ -994,8 +996,8 @@ footer{
     gap: 8px;
   }
   .review-pagination .page{
-    width: 21px;
-    height: 21px;
+    width: 23px;
+    height: 23px;
   }
   .review-actions button{
     font-size: 0.7rem;
@@ -1004,6 +1006,15 @@ footer{
   footer{
     padding-top: 68px;
   }
+}
+
+@media screen and (max-width:1200px){
+  .top-profile-section{
+    width: 92%;
+  }
+   .products-wrapper{
+    max-width:92vw;
+   }
 }
 
 @media screen and (max-width:1024px){
@@ -1270,9 +1281,6 @@ footer{
   .product-meta-item .views{
     width: 14px;
   }
-  .product-meta-item .likes{
-    width: 9px;
-  }
   .pagination{
     margin-top: 15px;
   }
@@ -1350,11 +1358,7 @@ footer{
   .user-info {
     width: 320px;
   }
-  .user-profile{
-    width: 25px;
-    height: 25px;
-    font-size: 0.65rem;
-  }
+ 
   .main-container{
     padding: 15px 0 40px;
   }
@@ -1382,7 +1386,7 @@ footer{
   }
   .product-list{
     grid-template-columns:  repeat(2, minmax(150px, 1fr));
-    padding: 30px 5px;
+    padding: 30px 0px;
   }
   .product-content{
     margin-top: 5px;
@@ -1417,9 +1421,9 @@ footer{
 
 @media screen and (max-width:480px){
   .user-profile{
-    width: 25px;
-    height: 25px;
-    font-size: 0.65rem;
+    width: 27px;
+    height: 27px;
+    font-size: 0.68rem;
   }
    .user-profile-pic{
     width: 25px;
@@ -1514,6 +1518,9 @@ footer{
     display: flex;
     align-items: center;
     gap: 12px;
+  }
+  .product-list{
+    gap: 25px;
   }
   .stat-box img {
     width: 29px;

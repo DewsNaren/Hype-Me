@@ -532,7 +532,7 @@ async function handleLogout() {
     window.location.href = "./index.html";
     unlockBody();
     localStorage.setItem("recentSearches", JSON.stringify(defaultSearches));
-  }, 3000);
+  }, 2000);
 }
 
 function handleReset(form) {

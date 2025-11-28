@@ -276,7 +276,7 @@ body.not-scroll{
 }
 .message {
     width: fit-content;
-    max-width: 40%;
+    max-width: 50%;
     padding: 7px 10px;
     font-size: 1.15rem;
     position: relative;
@@ -503,7 +503,7 @@ body.not-scroll{
         gap: 20px; 
     }
     .incoming{
-        margin-top: 10px;
+        margin-top: 20px;
         border-top-left-radius: 0;
     }
     .incoming::after {
@@ -682,6 +682,7 @@ body.not-scroll{
         font-size: 0.8rem;
         border-radius: 6px;
         gap: 15px; 
+        max-width: 60%;
     }
     .incoming{
         border-top-left-radius: 0;
@@ -727,13 +728,19 @@ body.not-scroll{
     }
 }
 
+@media screen and (max-width:1200px){
+    .chat-wrapper {
+        max-width: 95%;
+    }
+}
+
 @media screen and (max-width:1024px){
     .location-list img{
         width: 12px;
     }
     .user-profile{
-        width: 28px;
-        height: 28px;
+        width: 30px;
+        height: 30px;
         font-size: 0.72rem;
     }
     .chat-close-btn img{
@@ -868,14 +875,19 @@ body.not-scroll{
         font-size: 12px;
         border-radius: 5px;
         gap: 10px; 
+        max-width: 70%;
     }
     .incoming{
         border-top-left-radius: 0;
+        margin-top: 18px;
     }
     .incoming::after {
         left: -8px;
         border-bottom: 8px solid transparent;
         border-right: 8px solid #e6f0ff;
+    }
+    .outgoing{
+        margin-top: 18px;
     }
     .outgoing::after {
         right: -8px;
@@ -922,7 +934,7 @@ body.not-scroll{
         padding-right: 22px;
     }
     .buy-btn {
-        padding: 7px 7px;
+        padding: 7px 9px;
     }
     .chat-conversations{
         flex: 0 1 100%; 
@@ -944,6 +956,12 @@ body.not-scroll{
     .chat-active.active{
         display: flex;
     }
+    .message {
+        max-width: 75%;
+    }
+    .message-composer {
+        padding: 7px 18px;
+    }
     .message-composer .voice-btn {
         width: 11px;
     }
@@ -964,11 +982,11 @@ body.not-scroll{
         padding-top: 0px;
         margin-bottom: 12px;
     }
-    .user-profile{
+    /* .user-profile{
         width: 25px;
         height: 25px;
         font-size: 0.65rem;
-    }
+    } */
     .chat-outer-container{
         padding: 22px 25px 50px;
         padding-right: 25px;
@@ -977,9 +995,9 @@ body.not-scroll{
 
 @media screen and (max-width:480px){
     .user-profile{
-        width: 25px;
-        height: 25px;
-        font-size: 0.65rem;
+        width: 27px;
+        height: 27px;
+        font-size: 0.68rem;
     }
     .chat-close-btn img{
         width: 18px;
@@ -1040,10 +1058,16 @@ body.not-scroll{
     }
     .message {
         width: fit-content;
-        max-width: 80%;
+        max-width: 90%;
     }
     .convo-list .not-found.active {
         font-size: 12px;
+    }
+    .message-composer .attach {
+        width: 16px;
+    }
+    .message-composer .send-btn {
+        width: 14px;
     }
 }
 
@@ -1051,5 +1075,8 @@ body.not-scroll{
      .chat-outer-container{
         padding: 18px 15px 30px;
         padding-right: 15px;
+    }
+    .message-composer {
+        padding: 7px 15px;
     }
 }

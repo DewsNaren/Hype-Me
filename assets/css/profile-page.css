@@ -61,7 +61,7 @@
 }
 
 .profile-name {
-  font-size: 1.50vw;
+  font-size: clamp(18px, 1.50vw, 1.50vw) ;
   font-weight: 600;
   margin: 4px 0 1px;
   color: rgb(32, 31, 31);
@@ -73,7 +73,7 @@
 }
 
 .location {
-  font-size:clamp(10px, 1.04vw, 1.04vw);
+  font-size:clamp(12px, 1.04vw, 1.04vw);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -221,6 +221,7 @@
 .pagination .page{
   width: 28px;
   height: 28px;
+  line-height: 1;
 }
 .pagination .prev,.pagination .next{
   padding: 5px;
@@ -427,6 +428,17 @@ footer{
     }
 }
 
+@media screen and (max-width:1200px){
+    .product-item span img {
+        width: 18px;
+    }
+    .product-shoe-name {
+        font-size: 0.97rem;
+    }
+        .product-shoe-price {
+        font-size: 0.92rem;
+        }
+}
 @media screen and (max-width:1024px){
     .product-list-wrapper{
         max-width: 90%;
@@ -441,7 +453,8 @@ footer{
         height: 70px;
     }
     .profile-name{
-        margin: 0;
+        margin: 0 0 5px;
+        font-size: 17px;
     }
     .camera-icon{
         width: 25px;
@@ -456,10 +469,10 @@ footer{
         width: 11px;
     }
     .follow-btn {
-        font-size: 11px;
-        padding: 6px 40px;
+        font-size: 12px;
+        padding: 8px 40px;
         margin: 18px 0 15px;
-        width: 135px;
+        width: 150px;
     }
     .follow-icon{
         width: 20px;
@@ -545,12 +558,9 @@ footer{
         width: 70px;
         height: 70px;
     }
-    .profile-name{
-        font-size: 15px;
-    }
-     .member-since{
+     /* .member-since{
         font-size: 11px;
-    }
+    } */
     .location{
         margin-top: 5px;
         gap: 4px;  
@@ -612,10 +622,7 @@ footer{
         min-width: 100%;
         max-width: 100%;
     }
-    .profile-name{
-        font-size: 14px;
-    }
-   
+
     .follow-btn {
         width: 150px;
     }
@@ -651,6 +658,9 @@ footer{
     .pagination .page, .pagination .prev,.pagination .next{
         font-size: 11px;
     }
+      .follow-btn {
+        width: 130px;
+    }
 
 }
 
@@ -660,5 +670,8 @@ footer{
     }
     .product-list-body{
         grid-template-columns: repeat(1,1fr);
+    }
+    .follow-btn {
+        width: 130px;
     }
 }

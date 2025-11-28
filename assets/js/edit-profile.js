@@ -58,38 +58,37 @@ function validateInputs() {
 
   if (profileUsernameVal === "") {
     success = false;
-    setInvalid(profileUsername, "Username is required");
+    setInvalid(profileUsername, "please provide the username");
   } else {
     setValid(profileUsername);
   }
 
   if (actionBtn.classList.contains("add-image-btn")) {
     success = false;
-    setInvalid(actionBtn.parentElement, "Please provide a profile image");
-    console.log(actionBtn.parentElement);
+    setInvalid(actionBtn.parentElement, "please provide a profile image");
   } else {
     setValid(actionBtn);
     success = true;
   }
   if (firstNameVal === "") {
     success = false;
-    setInvalid(firstName, "First name is required");
+    setInvalid(firstName, "please provide the first name");
   } else {
     setValid(firstName);
   }
 
   if (lastNameVal === "") {
     success = false;
-    setInvalid(lastName, "Last name is required");
+    setInvalid(lastName, "please provide the last name");
   } else {
     setValid(lastName);
   }
   if (zipCodeVal === "") {
     success = false;
-    setInvalid(zipCode, "Zip code is required");
+    setInvalid(zipCode, "please provide the zip code");
   } else if (!/^\d{5,6}$/.test(zipCodeVal)) {
     success = false;
-    setError(zipCode, "Enter a valid zip code");
+    setError(zipCode, "please provide the valid zip code");
   } else {
     setValid(zipCode);
   }
@@ -130,9 +129,7 @@ function getData() {
     // delProfile:delProfileInput.value,
     profileImg: profileImgSrc,
   };
-//   console.log(formData);
-//   window.edit = JSON.stringify(formData);
-//   window.location.href = "./my-products.html";
+
   const body = document.body;
   sessionStorage.setItem("profileData", JSON.stringify(formData));
   editOverlay.classList.remove("active");

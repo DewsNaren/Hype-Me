@@ -1517,7 +1517,6 @@ function loadProductImages(productData) {
   const isFromAPI = productData.isPosted === true;
 
   if (isFromAPI) {
-    // console.log("API product - no images available");
     return;
   } else {
     isLocalProduct = true;

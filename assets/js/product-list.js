@@ -37,9 +37,7 @@ filterBtn.addEventListener("click", () => {
   filterContainer.classList.add("active");
   filterOverlay.classList.add("active");
   filterClostBtn.classList.add("active");
-  setTimeout(() => {
-    lockBody();
-  }, 500);
+  lockBody();
 });
 function closeFilterContainer() {
   filterContainer.classList.remove("active");
@@ -157,7 +155,6 @@ function applyFilters(page = 1) {
   }
 
   let findedBrand = detectBrand(searchKeyword);
-  console.log(findedBrand);
   if (findedBrand === "not-found") {
     filtered = [];
   } else {
@@ -705,3 +702,19 @@ window.addEventListener("resize", () => {
     closeFilterContainer();
   }
 });
+
+document
+  .querySelectorAll(".header nav .nav-btn-container .sell-btn")
+  .forEach((sellBtn) => {
+    sellBtn.addEventListener("click", (e) => {
+      const loginToken = localStorage.getItem("token");
+
+      if (loginToken) {
+        window.edit = "";
+        window.location.href = "./my-products.html";
+      } else {
+        e.preventDefault();
+        openLogIn();
+      }
+    });
+  });

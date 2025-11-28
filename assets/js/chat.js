@@ -137,11 +137,9 @@ function sendMessage() {
   }, 2000);
   convoItems.forEach((convoItem, index) => {
     if (convoItem.classList.contains("active")) {
-      console.log(convoItem);
       const messagePreview = convoItem.querySelector(
         ".convo-info .convo-detail .convo-detail .convo-user-info .message-preview"
       );
-      console.log(messagePreview);
       messagePreview.innerHTML = ` <img src="./assets/images/double-tick.svg" alt="tick" class="double-tick-icon">
           <span>${outGoing}</span>`;
       setTimeout(() => {
@@ -375,9 +373,7 @@ function renderContacts(contactList) {
         .querySelector(".contact-name")
         .textContent.trim()
         .toLowerCase();
-      console.log(name);
       let isMatch = lowerList.some((item) => name.includes(item));
-      console.log(isMatch);
       if (isMatch) {
         convoItem.classList.remove("not-active");
       } else {

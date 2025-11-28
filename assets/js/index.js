@@ -243,3 +243,19 @@ window.addEventListener("scroll", () => {
     instaContainer.classList.remove("active");
   }
 });
+
+document
+  .querySelectorAll(".header nav .nav-btn-container .sell-btn")
+  .forEach((sellBtn) => {
+    sellBtn.addEventListener("click", (e) => {
+      const loginToken = localStorage.getItem("token");
+
+      if (loginToken) {
+        window.edit = "";
+        window.location.href = "./my-products.html";
+      } else {
+        e.preventDefault();
+        openLogIn();
+      }
+    });
+  });

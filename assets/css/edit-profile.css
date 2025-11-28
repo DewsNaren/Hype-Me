@@ -186,7 +186,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   border: none;
-  width: 100%;
+  width: 110%;
   cursor: pointer;
 }
 
@@ -202,7 +202,7 @@
 }
 .profile-inner-container .input-wrapper .error{
     color:rgb(242, 18, 18);
-    font-size:clamp(10px, 0.83vw,0.95rem);
+    font-size:clamp(11px, 0.83vw,0.95rem);
     visibility:hidden;
     margin-top: 5px;
     position: absolute;
@@ -550,6 +550,7 @@
 
     .profile-inner-container .custom-select .dropdown-icon {
         right: 10px;
+        line-height: 0.7;
     }
     .profile-inner-container .custom-select .dropdown-icon img{
         width: 10px;
@@ -612,6 +613,10 @@
         padding: 10px 28px;
         font-size: 0.85rem;
     }
+     .profile-inner-container .image-group .error {
+        margin-top: 3px;
+        padding-bottom: 7px;
+    }
 }
 
 @media screen and (max-width:1024px){
@@ -622,7 +627,7 @@
     .user-profile{
         width: 28px;
         height: 28px;
-        font-size: 0.72rem;
+        font-size: 0.77rem;
     }
     .close-btn img{
         width: 21px;
@@ -631,7 +636,7 @@
         padding: 25px 21px 65px;
     }
     .seller-profile-wrapper{
-        max-width:  95%;
+        max-width:  96%;
         padding-top: 0px;
     }
     .profile-title{
@@ -651,7 +656,7 @@
     }
     .personal-form-container{
         padding-top: 2.345vw;
-        max-width: 80%;
+        max-width: 85%;
         padding-right: 1.46vw;
     }
     .profile-inner-container .form-group label {
@@ -660,22 +665,22 @@
     }
 
     .profile-inner-container .form-group input[type="text"],.custom-select {
-        padding: 7px;
-        width: 17.188vw;
+        padding: 8px;
+        width: clamp(148px, 17.188vw, 17.188vw);
     }
     .profile-inner-container .form-group input[type="text"],.custom-select select{
         font-size: 12px;
     }
     .profile-inner-container .profile-image-preview {
-        height: 110px;
+        height: 115px;
     }
     .profile-inner-container .profile-image-preview img{
-        width: 110px;
-        height: 110px;
+        width: 115px;
+        height: 115px;
     }
     .profile-inner-container .delete-image-btn {
-        padding: 5px 0;
-        font-size: 0.68rem;
+        padding: 7px 0;
+        font-size: 0.7rem;
     }
 
     .profile-inner-container .custom-select .dropdown-icon {
@@ -746,6 +751,9 @@
         padding: 10px 25px;
         font-size: 13px;
     }
+    .profile-inner-container .image-group .error {
+        margin-top: 0px;
+    }
 }
 @media screen and (max-width:768px){
     .location-list img{
@@ -793,9 +801,7 @@
     .profile-inner-container  .custom-select .dropdown-icon {
         right: 8px;
     }
-    .profile-inner-container  .custom-select .dropdown-icon img{
-        width: 8px;
-    }
+    
     .profile-inner-container .form-row-label, .sign-in-option .label-title, .more-options .label-title {
         width:clamp(92px, 16vw, 118px);
     }
@@ -859,9 +865,9 @@
 @media screen and (max-width:480px){
     
     .user-profile{
-        width: 25px;
-        height: 25px;
-        font-size: 0.65rem;
+        width: 27px;
+        height: 27px;
+        font-size: 0.68rem;
     }
     .edit-modal-main-container{
         padding: 20px 16px;

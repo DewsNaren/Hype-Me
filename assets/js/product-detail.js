@@ -265,3 +265,19 @@ if (sessionStorage.getItem("totalReviews")) {
     "totalReviews"
   )} Reviews | <a href="#">Write a review</a>`;
 }
+
+function changeAvatar(){
+  const avatar=document.querySelector(".avatar");
+const sellerImg=document.querySelector(".seller-info img")
+
+if(localStorage.getItem("userInitial")){
+  sellerImg.classList.add("not-active")
+  avatar.classList.add("active")
+  avatar.textContent = localStorage.getItem("userInitial").toUpperCase();
+}
+else{
+  sellerImg.classList.remove("not-active")
+  avatar.classList.remove("active")
+}
+}
+changeAvatar()

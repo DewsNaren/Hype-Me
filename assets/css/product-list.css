@@ -40,8 +40,8 @@
     display: none;
     align-items: center;
     gap: 5px;
-    padding: 5px;
-    font-size: 0.7rem;
+    padding: 7px 9px;
+    font-size: 0.72rem;
     cursor: pointer;
 }
 /* Filter Container */
@@ -70,7 +70,7 @@
     width: 18px;
 }
 .filter-sub-container{
-    padding: 24px 8px 15px;
+    padding: 24px 8px 18px;
     border-bottom: 1px solid rgb(134, 131, 136);
 }
 .filter-title{
@@ -456,6 +456,7 @@ a.brand-more-link.not-active,a.model-more-link.not-active,.year-more-link.not-ac
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    line-height: 1;
 }
 
 .page-btn.active{
@@ -517,7 +518,7 @@ footer{
         padding-left: 8px;
     }
     .filter-sub-container{
-        padding: 18px 8px 11px;
+        padding: 18px 8px 15px;
     }
     .filter-title{
         margin-bottom: 13px;
@@ -637,8 +638,8 @@ footer{
         margin-top: 35px;
     }
     .page-btn:not(.next-btn){
-        width: 23px;
-        height: 23px;
+        width: 26px;
+        height: 26px;
     }
     .page-btn{
         font-size: 0.9rem;
@@ -683,7 +684,7 @@ footer{
         padding-left: 8px;
     }
     .filter-sub-container{
-        padding: 16px 8px 11px;
+        padding: 16px 8px 14px;
     }
     .filter-title{
         margin-bottom: 9px;
@@ -831,12 +832,31 @@ footer{
     }
 }
 
+@media screen and (max-width:1200px){
+    .product-list-wrapper {
+        max-width: 90%;
+        padding: 15px 9px 35px;
+    }
+        .filter-container {
+        min-width: 250px;
+        max-width: 250px;
+    }
+    .product-item span{
+        top: 16px;
+        right: 15px;
+    }
+    .product-item span img{
+        width: 18px;
+        
+    }
+}
+
 @media screen and (max-width:1024px){
     .location-list img{
         width: 12px;
     }
     .product-list-wrapper{
-        padding: 12px 5px 50px;
+        padding: 17px 5px 50px;
         max-width: 93%;
     }
     .breadcrumb {
@@ -858,20 +878,20 @@ footer{
         max-width: 200px;
     }
     .filter-container h2{
-        font-size: 0.85rem;
+        font-size: 1.05rem;
         padding-bottom: 17px;
         padding-left: 8px;
     }
     .filter-sub-container{
-        padding: 12px 8px 8px;
+        padding: 12px 8px 12px;
     }
     .filter-title{
         margin-bottom: 5px;
-        font-size: 0.68rem;
+        font-size: 0.8rem;
     }
     .checkbox-filter input{
-        width: 9px;
-        height: 9px;
+        width: 10px;
+        height: 10px;
     }
     .checkbox-filter input[type="checkbox"]::before {
         top: -3px;
@@ -880,7 +900,7 @@ footer{
     }
     .filter-label{
         margin-left: 5px;
-        font-size: 0.7rem;
+        font-size: 0.72rem;
     }
     .checkbox-filter{
         margin-bottom: 0px;
@@ -895,7 +915,7 @@ footer{
         height: 25px;
     }
     .price-display {
-        font-size: 0.7rem;
+        font-size: 0.72rem;
         margin-bottom: 25px;
     }
     .highlight-box {
@@ -917,7 +937,7 @@ footer{
     }
     .brand-search-input,.model-search-input{
         padding: 6px 6px 7px 22px;
-        font-size: 0.7rem;
+        font-size: 0.72rem;
     }
     
     .brand-search-icon img,.model-search-icon img{
@@ -940,7 +960,7 @@ footer{
         padding-left: 1px;
     }
     .product-list-header h2{
-        font-size: 0.8rem;
+        font-size: 1.05rem;
     }
     .product-list-header h2 span{
         font-size: 0.7rem;
@@ -950,7 +970,7 @@ footer{
         padding-right: 5px;
     }
     .sort-label{
-        font-size: 0.7rem;
+        font-size: 0.73rem;
     }
     .sort-button{
         margin-left: 4px;
@@ -966,21 +986,21 @@ footer{
     .product-list-body{
         grid-template-columns: repeat(2, minmax(100px,1fr));
     }
-    .product-item span{
-        right: 12px;
-        top: 10px;
+    .product-item span {
+        right: 14px;
+        top: 12px;
     }
     .product-item span img {
-        width: 15px;
+        width: 17px;
     }
     .product-content{
         margin-top: 5px;
     }
     .product-shoe-name{
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
     .product-shoe-price{
-        font-size:0.8rem;
+        font-size:0.85rem;
     }
     .spinner-container{
         padding:40px 0 30px;
@@ -995,13 +1015,7 @@ footer{
     .pagination{
         margin-top: 25px;
     }
-    .page-btn:not(.next-btn){
-        width: 18px;
-        height: 18px;
-    }
-    .page-btn{
-        font-size: 0.68rem;
-    }
+   
     .next-btn{
         padding: 0 6px;
     }
@@ -1013,9 +1027,7 @@ footer{
     .main-container{
         min-height: 60vh;
     }
-    .breadcrumb a,.selected{
-        font-size: 10px;
-    }
+  
     .filter-container{
         position: fixed;
         top: 0;
@@ -1067,9 +1079,24 @@ footer{
         height: 16px;
         top: -4px;
     }
+    .product-list-header h2{
+        font-size: 15px;
+    }
     .brand-search-input,.model-search-input{
         max-width: 80%;
         font-size: 12px;
+    }
+    .checkbox-filter {
+        margin-bottom: 4px;
+    }
+     .checkbox-filter input{
+        width: 12px;
+        height: 12px;
+    }
+    .checkbox-filter input[type="checkbox"]::before {
+        top: -3px;
+        left: 1px;
+        font-size: 11px;
     }
     /* .product-list-header h2 span{
         font-size: 0.6rem;
@@ -1077,23 +1104,24 @@ footer{
     /* .sort-label{
         font-size: 0.6rem;
     } */
-    .sort-button{
+    /* .sort-button{
         font-size: 0.6rem;
-    }
+    } */
     .no-product{
         font-size: 14px;
     }
+    .product-item span {
+        right: 16px;
+        top: 14px;
+    }
+    .product-item span img {
+        width: 18px;
+    }
     .product-list-body{
         gap: 18px;
-        grid-template-columns: repeat(2, minmax(100px,1fr));
+        grid-template-columns: repeat(3, minmax(100px,1fr));
     }
-     .page-btn:not(.next-btn){
-        width: 17px;
-        height: 17px;
-    }
-    .page-btn{
-        font-size: 0.65rem;
-    }
+   
     footer{
         padding-top: 40px;
     }
@@ -1113,7 +1141,10 @@ footer{
         left: 0;
         min-width: 100%;
     }
-   
+   .filter-btn{
+        padding: 6px 9px;
+        font-size: 0.7rem;
+   }
     .product-list-wrapper{
         max-width: 95%;
     }
@@ -1126,11 +1157,11 @@ footer{
     }
 
     .checkbox-filter input {
-        width: 10px;
-        height: 10px;
+        width: 11px;
+        height: 11px;
     }
     .price-display{
-        font-size: 11px;
+        font-size: 12px;
     }
     
     .product-list{
@@ -1138,20 +1169,16 @@ footer{
         margin: 0 auto 0;
         padding-bottom: 30px;
     }
-    
+    .product-list-body{
+        grid-template-columns: repeat(2, minmax(100px,1fr));
+    }
     .product-shoe-name{
         font-size: 14px;
     }
     .product-shoe-price{
         font-size:13px;
     }
-    .page-btn:not(.next-btn){
-        width: 15px;
-        height: 15px;
-    }
-    .page-btn{
-        font-size: 0.6rem;
-    }
+    
     footer.not-active{
         display: none;
     }
@@ -1162,6 +1189,9 @@ footer{
     .breadcrumb{
         max-width: 90%;
      }
+    .breadcrumb a,.selected{
+        font-size: 10px;
+    }
      .product-list{
         max-width: 90%;
      }
@@ -1177,11 +1207,11 @@ footer{
         padding-right: 5px;
     }
     .sort-label{
-        font-size: 0.65rem;
+        font-size: 0.69rem;
     }
     .sort-button{
         margin-left: 4px;
-        font-size: 0.65rem;
+        font-size: 0.66rem;
     }
     
     .product-list-container{
@@ -1193,11 +1223,15 @@ footer{
     .no-product{
         font-size: 12px;
     }
-    .product-shoe-name{
-        font-size: 13px;
+     .product-item span {
+        right: 14px;
+        top: 10px;
+    }
+    .product-item span img {
+        width: 17px;
     }
     .product-shoe-price{
-        font-size: 12px;
+        font-size: 13px;
     }
      
     .product-list-header{
@@ -1213,8 +1247,12 @@ footer{
         margin: 0 auto;
     }
     
+    .page-btn:not(.next-btn){
+        width: 18px;
+        height: 18px;
+    }
     .page-btn{
-        font-size: 0.65rem;
+        font-size: 0.66rem;
     }
 
     footer{
@@ -1228,4 +1266,8 @@ footer{
     .product-list-body{
         grid-template-columns:1fr;
     }
+    .filter-btn{
+        padding: 5px 8px;
+        font-size: 0.7rem;
+   }
 }

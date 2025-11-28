@@ -356,6 +356,7 @@ footer{
         gap: 21px;
         padding-top: 2px;
     }
+
     .header nav ul li{
         gap: 5px;
     }
@@ -380,6 +381,9 @@ footer{
         height: 35px;
         font-size: 0.9rem;
     }
+    .profile-container, .profile-container .profile-toggle {
+        line-height: 1;
+    }
     .profile-arrow{
         width: 7px;
     }
@@ -391,7 +395,7 @@ footer{
         padding: 8.5px 10px;
     }
     .sell-btn{
-        padding: 8.5px 13px;
+        padding: 8.5px 11px;
     }
 
     .ad-container{
@@ -446,7 +450,7 @@ footer{
         gap: 3px;
     }
     .location-list span{
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
     .location-list img{
         width: 13px;
@@ -463,21 +467,21 @@ footer{
         height: 30px;
         font-size: 0.77rem;
     }
-    .profile-arrow{
+    /* .profile-arrow{
         width: 6px;
-    }
+    } */
     .profile-container .profile-menu {
         width: 90px;
         border-radius: 3px;
     }
     .nav-btn-container a{
-        font-size: 0.62rem;
+        font-size: 0.72rem;
     }
     .buy-btn{
-        padding: 7px 7px;
+        padding: 7px 9px;
     }
     .sell-btn{
-        padding: 7px 9px;
+        padding: 7px 10px;
     }
 
     .quick-links{
@@ -517,9 +521,6 @@ footer{
         width: 14px;
         margin-right: 5px;
     }
-    .location-list span{
-        font-size: 0.65rem;
-    }
     .location-list img{
         width: 11px;
     }
@@ -531,14 +532,9 @@ footer{
         border-radius: 3px;
     }
     .nav-btn-container a{
-        font-size: 0.6rem;
+        font-size: 0.7rem;
     }
-    /* .buy-btn{
-        padding: 6px 6px;
-    }
-    .sell-btn{
-        padding: 6px 8px;
-    } */
+  
 
     .quick-links ul{
         gap: 45px;
@@ -577,19 +573,19 @@ footer{
         border-radius: 2px;
     }
     .profile-container .profile-menu a{
-        padding:7px 8px;
+        padding:9px 9px;
     }
     .header{
         padding: 10px 16px 7px;
     }
     .nav-btn-container a{
-        font-size: 0.6rem;
+        font-size: 0.66rem;
     }
     .buy-btn{
-        padding: 5px 5px;
+        padding: 7px 8px;
     }
     .sell-btn{
-        padding: 5px 7px;
+        padding: 7px 10px;
     }
 
     .quick-links ul{
@@ -622,14 +618,17 @@ footer{
 
 @media screen and (max-width:480px){
       .header .logo img{
-        width: 60px;
+        width: 62px;
     }
     .header nav ul {
         gap: 10px;
     }
+    .g-search{
+        display: none;
+    }
     .user-profile{
-        width: 25px;
-        height: 25px;
+        width: 27px;
+        height: 27px;
     }
     .login-profile{
         width: 25px;
